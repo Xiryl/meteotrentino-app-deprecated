@@ -4,17 +4,24 @@
   xmlns:app="http://schemas.android.com/apk/res-auto">
   <data>
   </data>
-  <LinearLayout
+  <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <TextView
-      android:layout_width="wrap_content"
+    <LinearLayout
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="Hello World!"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
-  </LinearLayout>
+      android:layout_marginBottom="@dimen/slot_weather_conteiner_height"
+      android:background="@drawable/bg_day">
+
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/slot_weather_conteiner_height"
+      android:layout_alignParentBottom="true"
+      android:background="@color/white_gray"
+      android:orientation="vertical">
+    </LinearLayout>
+  </RelativeLayout>
+
 </layout>
