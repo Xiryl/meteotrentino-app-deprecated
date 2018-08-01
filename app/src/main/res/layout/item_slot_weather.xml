@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+  <data>
+  </data>
+  <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/slot_weather_conteiner_height"
+    android:background="#fff">
+
+    <android.support.v7.widget.CardView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_margin="@dimen/offset_15"
+      app:cardElevation="15dp">
+
+      <TextView
+        android:id="@+id/item_slot_weather_txt_fascia"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:text=" Fascia: 0 - 6 "
+        android:padding="@dimen/offset_5"
+        android:textColor="@color/white_gray"
+        android:background="@drawable/rounded_corner"
+        />
+
+    </android.support.v7.widget.CardView>
+  </RelativeLayout>
+</layout>
