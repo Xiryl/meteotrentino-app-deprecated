@@ -21,11 +21,13 @@
       android:layout_alignParentBottom="true"
       android:background="@color/white_gray"
       android:orientation="vertical">
-      
+
       <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/rv_show_list"/>
+        android:scrollbars="horizontal"
+        android:id="@+id/activity_main_rv_weather_slot"
+        android:orientation="horizontal"/>
     </LinearLayout>
 
 
