@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <item
+    android:id="@+id/bottombaritem_coupons"
+    android:title="Oggi"
+    android:icon="@drawable/icon"
+    app:showAsAction="always"/>
+
+  <item
+    android:id="@+id/bottombaritem_scanqr"
+    android:icon="@drawable/ic_7days"
+    android:title="7 Giorni"
+    app:showAsAction="always"/>
+
+  <item
+    android:id="@+id/bottombaritem_account"
+    android:icon="@drawable/ic_radar"
+    android:title="Radar"
+    app:showAsAction="always"/>
+
+</menu>
