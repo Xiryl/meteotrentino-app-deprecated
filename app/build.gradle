@@ -36,4 +36,7 @@ dependencies {
     // RecyclerView
     // https://medium.com/@sanjeevy133/an-idiots-guide-to-android-recyclerview-dd24f5113f63
     implementation 'com.android.support:recyclerview-v7:27.1.1'
+
+    // support design for bottomnavigation view
+    implementation 'com.android.support:design:27.1.1'
 }
