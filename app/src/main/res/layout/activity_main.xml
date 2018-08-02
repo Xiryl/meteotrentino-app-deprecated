@@ -7,19 +7,57 @@
   <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout
+    <RelativeLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_marginBottom="@dimen/slot_weather_conteiner_height"
       android:background="@drawable/bg_day">
 
-    </LinearLayout>
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#fff"
+        android:text="Arco"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="15dp"
+        android:textSize="40dp"/>
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#fff"
+        android:text="Lunedi 29 Settembre"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="15dp"
+        android:textSize="20dp"/>
+
+      <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/offset_15"
+        android:src="@drawable/ic_sun"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"/>
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#fff"
+        android:text="35°"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:paddingBottom="40dp"
+        android:layout_marginLeft="15dp"
+        android:textSize="90dp"/>
+
+    </RelativeLayout>
 
     <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="@dimen/slot_weather_conteiner_height"
       android:layout_alignParentBottom="true"
       android:background="@color/white_gray"
+      android:layout_marginBottom="52dp"
       android:orientation="vertical">
 
       <android.support.v7.widget.RecyclerView
@@ -30,7 +68,13 @@
         android:orientation="horizontal"/>
     </LinearLayout>
 
-
+    <android.support.design.widget.BottomNavigationView
+      android:id="@+id/main_activity_bottom_nav"
+      android:layout_alignParentBottom="true"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:layout_gravity="bottom"
+      app:menu="@menu/bottombar_menu"/>
   </RelativeLayout>
 
 </layout>

@@ -40,7 +40,7 @@ public class MainActivity extends SampleActivity {
     mRecyclerView.setLayoutManager(horizontalLayoutManagaer);
 
     // specify an adapter (see also next example)
-    String[] tmp = {"Fascia 0-6", "Fascia 6-12", "Fascia 12-18", "Fascia 18-24"};
+    String[] tmp = {" Fascia oraria: 0-6 ", " Fascia oraria: 6-12 ", " Fascia oraria: 12-18 ", " Fascia oraria: 8-24 "};
     WeatherSlotAdapter adapter = new WeatherSlotAdapter(tmp);
     mRecyclerView.setAdapter(adapter);
   }
