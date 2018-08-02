@@ -21,7 +21,7 @@
         android:layout_marginTop="@dimen/offset_15"
         android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content"
-        android:text=" Fascia: 0 - 6 "
+        android:text=" Fascia oraria: 0 - 6 "
         android:padding="@dimen/offset_5"
         android:textColor="@color/white_gray"
         android:background="@drawable/rounded_corner"
@@ -53,7 +53,7 @@
             <TextView
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:textColor="#313335"
+              android:textColor="#9A9A9B"
               android:layout_marginTop="30dp"
               android:text="Temperatura"/>
             <TextView
@@ -79,7 +79,7 @@
             <TextView
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:textColor="#313335"
+              android:textColor="#9A9A9B"
               android:layout_marginTop="30dp"
               android:text="Prob. Precipitazioni"/>
             <TextView
@@ -87,8 +87,7 @@
               android:layout_height="wrap_content"
               android:textColor="#313335"
               android:layout_marginTop="5dp"
-              android:text="media"
-              />
+              android:text="media" />
           </LinearLayout>
 
         </LinearLayout>
@@ -103,7 +102,7 @@
           <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/ic_thunder"
+            android:src="@drawable/ic_wind"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="30dp"/>
           <LinearLayout
@@ -114,22 +113,22 @@
             <TextView
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:textColor="#313335"
+              android:textColor="#9A9A9B"
               android:layout_marginTop="30dp"
-              android:text="Temperatura"/>
+              android:text="Vento Valle"/>
             <TextView
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:textColor="#313335"
               android:layout_marginTop="5dp"
-              android:text="35° / 45°"
+              android:text="basso"
               />
           </LinearLayout>
 
           <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/ic_rain"
+            android:src="@drawable/ic_thunder"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"/>
           <LinearLayout
@@ -140,15 +139,15 @@
             <TextView
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:textColor="#313335"
+              android:textColor="#9A9A9B"
               android:layout_marginTop="30dp"
-              android:text="Prob. Precipitazioni"/>
+              android:text="Prob. Temporali"/>
             <TextView
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:textColor="#313335"
               android:layout_marginTop="5dp"
-              android:text="media"
+              android:text="bassa"
               />
           </LinearLayout>
 
