@@ -39,4 +39,6 @@ dependencies {
 
     // support design for bottomnavigation view
     implementation 'com.android.support:design:27.1.1'
+
+    implementation 'me.biubiubiu.justifytext:library:1.1'
 }
