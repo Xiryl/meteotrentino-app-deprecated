@@ -11,44 +11,62 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_marginBottom="@dimen/slot_weather_conteiner_height"
-      android:background="@drawable/bg_day">
+      android:background="@drawable/bg_day"
+      android:paddingBottom="@dimen/offset_5">
 
       <TextView
+        android:id="@+id/activity_main_txt_position"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#fff"
+        android:textColor="@color/white"
         android:text="Arco"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="15dp"
-        android:textSize="40dp"/>
+        android:layout_marginTop="@dimen/offset_50"
+        android:layout_marginStart="@dimen/offset_15"
+        android:textSize="@dimen/position_text_size"/>
+
       <TextView
+        android:id="@+id/activity_main_txt_date_today"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#fff"
+        android:textColor="@color/white"
         android:text="Lunedi 29 Settembre"
         android:layout_marginTop="100dp"
-        android:layout_marginLeft="15dp"
-        android:textSize="20dp"/>
+        android:layout_marginStart="@dimen/offset_15"
+        android:textSize="@dimen/day_text_size"/>
 
       <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="@dimen/offset_15"
+        android:id="@+id/activity_main_img_weather"
+        android:layout_width="@dimen/offset_100"
+        android:layout_height="@dimen/offset_100"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/offset_15"
         android:src="@drawable/ic_sun"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginStart="@dimen/offset_10"
+        android:layout_marginTop="@dimen/offset_30"/>
 
       <TextView
+        android:id="@+id/activity_main_txt_temperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#fff"
+        android:textColor="@color/white"
         android:text="35°"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="40dp"
-        android:paddingBottom="40dp"
-        android:layout_marginLeft="15dp"
-        android:textSize="90dp"/>
+        android:layout_marginBottom="@dimen/offset_40"
+        android:paddingBottom="@dimen/offset_40"
+        android:layout_marginStart="@dimen/offset_15"
+        android:textSize="@dimen/temperature_text_size"/>
+
+      <android.support.v7.widget.AppCompatButton
+        android:id="@+id/activity_main_btn_bollettino"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="   Vedi Bollettino   "
+        android:layout_marginEnd="@dimen/btn_bollettino_margin"
+        android:layout_marginBottom="@dimen/btn_bollettino_margin"
+        android:textColor="@color/blue_azure"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/rounded_button"/>
 
     </RelativeLayout>
 
@@ -57,7 +75,7 @@
       android:layout_height="@dimen/slot_weather_conteiner_height"
       android:layout_alignParentBottom="true"
       android:background="@color/white_gray"
-      android:layout_marginBottom="52dp"
+      android:layout_marginBottom="@dimen/rv_margin_bottom"
       android:orientation="vertical">
 
       <android.support.v7.widget.RecyclerView
@@ -72,9 +90,8 @@
       android:id="@+id/main_activity_bottom_nav"
       android:layout_alignParentBottom="true"
       android:layout_width="match_parent"
-      android:layout_height="50dp"
+      android:layout_height="@dimen/bottom_nav_view_height"
       android:layout_gravity="bottom"
       app:menu="@menu/bottombar_menu"/>
   </RelativeLayout>
-
 </layout>

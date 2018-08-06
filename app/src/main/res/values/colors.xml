@@ -7,4 +7,6 @@
   <!-- Main Activity -->
   <color name="white_gray">#F6F6F6</color>
   <color name="azure_slot">#2C556E</color>
+  <color name="white">#FFFFFF</color>
+  <color name="blue_azure">#5098D8</color>
 </resources>
