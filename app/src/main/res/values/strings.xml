@@ -1,3 +1,8 @@
 <resources>
   <string name="app_name">MeteoTrentinoApp</string>
+
+  <!-- CODE STRINGS -->
+
+  <!-- API_locality -->
+  <string name="API_locality_alert">Ottengo le località..</string>
 </resources>
