@@ -1,6 +1,6 @@
 package it.chiarani.meteotrentinoapp.models;
 
-public class locality {
+public class Locality {
 
   // #REGION PRIVATE FIELDS
   private String loc;
@@ -14,14 +14,14 @@ public class locality {
   /**
    * def. constructor
    */
-  public locality() {
+  public Locality() {
 
   }
 
   /**
    * full constructor
    */
-  public locality(String loc, String municipality, int height, String latitude, String longitude) {
+  public Locality(String loc, String municipality, int height, String latitude, String longitude) {
     this.loc          = loc;
     this.municipality = municipality;
     this.height       = height;
