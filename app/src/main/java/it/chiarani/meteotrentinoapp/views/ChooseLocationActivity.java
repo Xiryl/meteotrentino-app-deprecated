@@ -44,21 +44,29 @@ public class ChooseLocationActivity extends SampleActivity implements API_locali
   public void processFinish(ArrayList<Locality> output) {
     mylocs = output;
 
-    String[] COUNTRIES = new String[mylocs.size()];
+    String[] all_locs = listTostring(output);
 
-    int i = 0;
-    for(Locality l : mylocs) {
-      COUNTRIES[i++] = l.getLoc();
-    }
+    // create adapter with all localities
+    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, all_locs);
 
-    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-    android.R.layout.simple_dropdown_item_1line, COUNTRIES);
-
-    AutoCompleteTextView textView = (AutoCompleteTextView)
-        findViewById(R.id.chooseLocationAutoCompleteTxt);
-
-    textView.setAdapter(adapter);
+    // set adapter to autocomplete text
+    binding.chooseLocationAutoCompleteTxt.setAdapter(adapter);
   }
 
+  /**
+   * Convert ArrayList to String[] containing all localities
+   * @param data ArrayList to convert
+   * @return String[] with locality
+   */
+  private String[] listTostring(ArrayList<Locality> data) {
+    String[] tmp = new String[data.size()];
+
+    int i = 0;
+    for(Locality loc : data) {
+      tmp[i++] = loc.getLoc();
+    }
+
+    return tmp;
+  }
 
 }
