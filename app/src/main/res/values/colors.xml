@@ -9,4 +9,7 @@
   <color name="azure_slot">#2C556E</color>
   <color name="white">#FFFFFF</color>
   <color name="blue_azure">#5098D8</color>
+
+  <!-- choose location Activity-->
+  <color name="aqua">#47A6F8</color>
 </resources>
