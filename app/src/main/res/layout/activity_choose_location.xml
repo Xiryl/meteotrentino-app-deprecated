@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+  <data>
+  </data>
+  <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/aqua">
+
+    <ImageView
+      android:id="@+id/chooseLocationIcon"
+      android:layout_width="wrap_content"
+      android:layout_height="120dp"
+      android:layout_marginTop="@dimen/offset_30"
+      android:src="@drawable/ic_map_picker"/>
+
+    <TextView
+      android:id="@+id/chooseLocationtxtTitle"
+      android:layout_below="@id/chooseLocationIcon"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textColor="@color/white"
+      android:text="Seleziona Un Luogo"
+      android:layout_marginTop="@dimen/offset_50"
+      android:layout_centerHorizontal="true"
+      android:textSize="@dimen/offset_30"/>
+
+    <me.biubiubiu.justifytext.library.JustifyTextView
+      android:id="@+id/chooseLocationtxtSubtitle"
+      android:layout_below="@id/chooseLocationtxtTitle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textColor="@color/white"
+      android:text="Tutte le località del trentino sono supportate. "
+      android:layout_marginTop="@dimen/offset_10"
+      android:layout_centerHorizontal="true"
+      android:textSize="@dimen/offset_15"/>
+
+      <android.support.v7.widget.AppCompatAutoCompleteTextView
+        android:id="@+id/chooseLocationAutoCompleteTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:layout_below="@id/chooseLocationtxtSubtitle"
+        android:layout_centerHorizontal="true"
+        android:dropDownHeight="200dp"
+        android:inputType="textAutoComplete|textAutoCorrect"
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="@dimen/offset_40"
+        android:hint="Inserisci una località.."/>
+
+
+    <android.support.v7.widget.AppCompatButton
+      android:id="@+id/activity_main_btn_bollettino"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="   Prosegui   "
+      android:textColor="@color/blue_azure"
+      android:layout_centerHorizontal="true"
+      android:layout_alignParentBottom="true"
+      android:layout_marginBottom="@dimen/offset_40"
+      android:background="@drawable/rounded_button"/>
+  </RelativeLayout>
+</layout>
