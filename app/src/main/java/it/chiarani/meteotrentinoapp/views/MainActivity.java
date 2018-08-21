@@ -1,6 +1,7 @@
 package it.chiarani.meteotrentinoapp.views;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,12 +19,11 @@ import it.chiarani.meteotrentinoapp.api.API_locality_response;
 import it.chiarani.meteotrentinoapp.databinding.ActivityMainBinding;
 import it.chiarani.meteotrentinoapp.models.Locality;
 
-public class MainActivity extends SampleActivity implements API_locality_response{
+public class MainActivity extends SampleActivity{
 
   // #REGION PRIVATE FIELDS
   private final static String MAINACTIVITY_TAG = "MAINACTIVITY";
   ActivityMainBinding binding;
-  public ArrayList<Locality> mylocs;
   // #ENDREGION
 
   @Override
@@ -42,8 +42,6 @@ public class MainActivity extends SampleActivity implements API_locality_respons
 
     Log.d( MAINACTIVITY_TAG, "Start mainactivity");
 
-    // Launch asynctask for get locality
-    new API_locality(this, this::processFinish).execute();
 
     // use this setting to improve performance if you know that changes
     // in content do not change the layout size of the RecyclerView
@@ -66,10 +64,8 @@ public class MainActivity extends SampleActivity implements API_locality_respons
     AlertDialog alertDialog = dialogBuilder.create();
     alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     alertDialog.show();*/
-  }
 
-  @Override
-  public void processFinish(ArrayList<Locality> output) {
-    mylocs = output;
+    Intent myIntent = new Intent(MainActivity.this, ChooseLocationActivity.class);
+    MainActivity.this.startActivity(myIntent);
   }
 }
