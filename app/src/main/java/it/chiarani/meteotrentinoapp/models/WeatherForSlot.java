@@ -63,6 +63,7 @@ public class WeatherForSlot {
   }
 
   // #REGION GETTER & SETTER
+
   public int getIdPrevisioneFascia() {
     return idPrevisioneFascia;
   }
