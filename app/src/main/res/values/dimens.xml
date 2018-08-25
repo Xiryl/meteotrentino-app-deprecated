@@ -19,5 +19,6 @@
   <dimen name="bottom_nav_view_height">50dp</dimen>
   <dimen name="rv_margin_bottom">52dp</dimen>
 
+  <dimen name="prob_precip_w">120dp</dimen>
 
 </resources>
