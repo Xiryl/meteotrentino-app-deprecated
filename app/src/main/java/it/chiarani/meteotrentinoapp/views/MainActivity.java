@@ -19,6 +19,7 @@ import it.chiarani.meteotrentinoapp.adapters.WeatherSlotAdapter;
 import it.chiarani.meteotrentinoapp.api.API_locality;
 import it.chiarani.meteotrentinoapp.api.API_locality_response;
 import it.chiarani.meteotrentinoapp.databinding.ActivityMainBinding;
+import it.chiarani.meteotrentinoapp.helper.Converter;
 import it.chiarani.meteotrentinoapp.models.Locality;
 
 public class MainActivity extends SampleActivity{
