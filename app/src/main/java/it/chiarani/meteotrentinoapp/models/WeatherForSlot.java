@@ -39,10 +39,10 @@ public class WeatherForSlot {
   public WeatherForSlot(int idPrevisioneFascia, String fascia, String fasciaPer, String fasciaOre, int icona, String descIcona, int idPrecProb, String descPrecProb, int idPrecInten, String descPrecInten, int idTempProb, String descTempProb, int idVentoIntQuota, String descVentoIntQuota, int idVentoDirQuota, String descVentoDirQuota, int idVentoIntValle, String descVentoIntValle, int idVentoDirValle, String descVentoDirValle, int iconaVentoQuota, int zeroTermico) {
 
     this.idPrevisioneFascia = idPrevisioneFascia;
-    this.fascia = fascia;
+    this.fascia    = fascia;
     this.fasciaPer = fasciaPer;
     this.fasciaOre = fasciaOre;
-    this.icona = icona;
+    this.icona     = icona;
     this.descIcona = descIcona;
     this.idPrecProb = idPrecProb;
     this.descPrecProb = descPrecProb;
