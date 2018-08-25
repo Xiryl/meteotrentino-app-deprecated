@@ -10,7 +10,7 @@
     <RelativeLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginBottom="@dimen/slot_weather_conteiner_height"
+      android:layout_marginBottom="300dp"
       android:background="@drawable/bg_day"
       android:paddingBottom="@dimen/offset_5">
 
@@ -61,8 +61,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="   Vedi Bollettino   "
-        android:layout_marginEnd="@dimen/btn_bollettino_margin"
-        android:layout_marginBottom="@dimen/btn_bollettino_margin"
         android:textColor="@color/blue_azure"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
@@ -71,11 +69,12 @@
     </RelativeLayout>
 
     <LinearLayout
+      android:id="@+id/llRcv"
       android:layout_width="match_parent"
-      android:layout_height="@dimen/slot_weather_subcontainer_height"
-      android:layout_alignParentBottom="true"
+      android:layout_height="wrap_content"
       android:background="@color/white_gray"
       android:layout_marginBottom="@dimen/rv_margin_bottom"
+      android:layout_alignParentBottom="true"
       android:orientation="vertical">
 
       <android.support.v7.widget.RecyclerView

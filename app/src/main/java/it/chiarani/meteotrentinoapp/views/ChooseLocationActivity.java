@@ -1,10 +1,12 @@
 package it.chiarani.meteotrentinoapp.views;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -36,7 +38,7 @@ public class ChooseLocationActivity extends SampleActivity implements API_locali
 
     Log.d( CHOOSELOCATIONACTIVITY_TAG, "Start choose location actiity");
 
-    // Launch asynctask for get locality
+    // Launch async task for get locality
     new API_locality(this, this::processFinish).execute();
   }
 
@@ -46,11 +48,29 @@ public class ChooseLocationActivity extends SampleActivity implements API_locali
 
     String[] all_locs = listTostring(output);
 
+    if(all_locs == null) {
+      // TODO: place in @String
+      Toast.makeText(this, "Impossibile scaricare le località. riprova.", Toast.LENGTH_LONG).show();
+      return;
+    }
+
     // create adapter with all localities
     ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, all_locs);
 
     // set adapter to autocomplete text
     binding.chooseLocationAutoCompleteTxt.setAdapter(adapter);
+
+    // set next button handler
+    binding.chooseLocationBtnNext.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+
+        // launch main activity
+
+        Intent myIntent = new Intent(ChooseLocationActivity.this, MainActivity.class);
+        startActivity(myIntent);
+      }
+    });
   }
 
   /**
@@ -59,6 +79,9 @@ public class ChooseLocationActivity extends SampleActivity implements API_locali
    * @return String[] with locality
    */
   private String[] listTostring(ArrayList<Locality> data) {
+    if(data.isEmpty())
+      return null;
+
     String[] tmp = new String[data.size()];
 
     int i = 0;
@@ -69,4 +92,8 @@ public class ChooseLocationActivity extends SampleActivity implements API_locali
     return tmp;
   }
 
+  @Override
+  public void onBackPressed() {
+    // do nothing
+  }
 }
