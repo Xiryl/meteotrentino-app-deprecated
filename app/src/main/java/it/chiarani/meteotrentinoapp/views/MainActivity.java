@@ -2,8 +2,10 @@ package it.chiarani.meteotrentinoapp.views;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -42,7 +44,6 @@ public class MainActivity extends SampleActivity{
 
     Log.d( MAINACTIVITY_TAG, "Start mainactivity");
 
-
     // use this setting to improve performance if you know that changes
     // in content do not change the layout size of the RecyclerView
     binding.activityMainRvWeatherSlot.setHasFixedSize(true);
@@ -55,17 +56,42 @@ public class MainActivity extends SampleActivity{
     WeatherSlotAdapter adapter = new WeatherSlotAdapter(tmp);
     binding.activityMainRvWeatherSlot.setAdapter(adapter);
 
-/*
-    AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-    LayoutInflater inflater = this.getLayoutInflater();
-    View dialogView = inflater.inflate(R.layout.today_weather_dialog, null);
-    dialogBuilder.setView(dialogView);
+    launchIsFirstThread();
+  }
 
-    AlertDialog alertDialog = dialogBuilder.create();
-    alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-    alertDialog.show();*/
+  private void launchIsFirstThread() {
+    Thread t = new Thread(new Runnable() {
+      @Override
+      public void run() {
+        //  Initialize SharedPreferences
+        SharedPreferences getPrefs = PreferenceManager
+            .getDefaultSharedPreferences(getBaseContext());
 
-    Intent myIntent = new Intent(MainActivity.this, ChooseLocationActivity.class);
-    MainActivity.this.startActivity(myIntent);
+        //  Create a new boolean and preference and set it to true
+        boolean isFirstStart = getPrefs.getBoolean("firstStart", true);
+
+        //  If the activity has never started before...
+        if (isFirstStart) {
+          Intent myIntent = new Intent(MainActivity.this, ChooseLocationActivity.class);
+
+          runOnUiThread(new Runnable() {
+            @Override public void run() {
+              startActivity(myIntent);
+            }
+          });
+
+          //  Make a new preferences editor
+          SharedPreferences.Editor e = getPrefs.edit();
+
+          //  Edit preference to make it false because we don't want this to run again
+          e.putBoolean("firstStart", false);
+
+          //  Apply changes
+          e.apply();
+        }
+      }
+    });
+
+    t.start();
   }
 }
