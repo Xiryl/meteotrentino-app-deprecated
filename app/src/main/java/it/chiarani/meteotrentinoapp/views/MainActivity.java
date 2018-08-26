@@ -107,5 +107,9 @@ public class MainActivity extends SampleActivity implements API_weatherReport_re
     Toast.makeText(this, "ok fatto", Toast.LENGTH_LONG).show();
     WeatherSlotAdapter adapter = new WeatherSlotAdapter(report);
     binding.activityMainRvWeatherSlot.setAdapter(adapter);
+
+    binding.activityMainTxtPosition.setText(report.getPrevisione().getLocalita());
+    binding.activityMainTxtTemperature.setText(report.getPrevisione().getGiorni().get(0).gettMaxGiorno() + "°");
+    binding.activityMainTxtPrev.setText(report.getPrevisione().getGiorni().get(0).getDescIcona());
   }
 }
