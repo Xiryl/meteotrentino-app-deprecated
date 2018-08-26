@@ -47,7 +47,7 @@
             <ImageView
               android:layout_width="40dp"
               android:layout_height="40dp"
-              android:src="@drawable/ic_thermo"
+              android:src="@drawable/ic_humidity"
               android:layout_marginLeft="10dp"
               android:gravity="center"/>
             <LinearLayout
@@ -62,15 +62,16 @@
                 android:textColor="#9A9A9B"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:text="Temperatura"/>
+                android:text="Umidita"/>
               <TextView
+                android:id="@+id/item_slot_weather_txt_humidity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#313335"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:layout_marginTop="5dp"
-                android:text="35° / 45°"
+                android:text="75%"
                 />
             </LinearLayout>
           </LinearLayout>
@@ -97,6 +98,7 @@
                 android:textColor="#9A9A9B"
                 android:text="Prob. Precipitazioni"/>
               <TextView
+                android:id="@+id/item_slot_weather_txt_prob_prec"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#313335"
@@ -137,6 +139,7 @@
                 android:layout_weight="1"
                 android:text="Vento"/>
               <TextView
+                android:id="@+id/item_slot_weather_txt_vento"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#313335"
@@ -170,6 +173,7 @@
                 android:textColor="#9A9A9B"
                 android:text="Prob. Temporali"/>
               <TextView
+                android:id="@+id/item_slot_weather_txt_prob_temp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#313335"
