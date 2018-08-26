@@ -49,7 +49,7 @@ public class WeatherSlotAdapter extends RecyclerView.Adapter<WeatherSlotAdapter.
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
     //Set data to the individual list item
-    holder.txt_time_slot.setText(_report.getPrevisione().getGiorni().get(0).getFasce().get(position).getFasciaOre());
+    holder.txt_time_slot.setText("Fascia Oraria: " + _report.getPrevisione().getGiorni().get(0).getFasce().get(position).getFasciaOre());
     holder.txt_prob_prec.setText(_report.getPrevisione().getGiorni().get(0).getFasce().get(position).getDescPrecProb());
     holder.txt_humidity.setText("75%");
     holder.txt_prob_temp.setText(_report.getPrevisione().getGiorni().get(0).getFasce().get(position).getDescTempProb());
