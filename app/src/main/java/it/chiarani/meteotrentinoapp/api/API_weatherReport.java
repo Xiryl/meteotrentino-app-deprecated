@@ -50,7 +50,7 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
   protected void onPreExecute() {
     super.onPreExecute();
     AlertDialog.Builder alert = new AlertDialog.Builder(mContext);
-    alert.setMessage(mContext.getResources().getString(R.string.API_locality_alert)).create();
+    alert.setMessage(mContext.getResources().getString(R.string.API_weather_alert)).create();
     alert.setCancelable(false);
     builder = alert.show();
   }
