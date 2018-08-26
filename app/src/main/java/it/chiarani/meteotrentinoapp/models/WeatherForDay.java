@@ -10,7 +10,7 @@ public class WeatherForDay {
   private int idIcona;
   private int icona;
   private String descIcona;
-  private int icoAllerte;
+  private String icoAllerte;
   private String coloreAllerte;
   private String descIconaAllerte;
   private String testoGiorno;
@@ -29,7 +29,7 @@ public class WeatherForDay {
   /**
    * full constructor
    */
-  public  WeatherForDay(int idPrevisioneGiorno, String giorno, int idIcona, int icona, String descIcona, int icoAllerte, String coloreAllerte, String descIconaAllerte, String testoGiorno, int tMinGiorno, int tMaxGiorno, List<WeatherForSlot> fasce) {
+  public  WeatherForDay(int idPrevisioneGiorno, String giorno, int idIcona, int icona, String descIcona, String icoAllerte, String coloreAllerte, String descIconaAllerte, String testoGiorno, int tMinGiorno, int tMaxGiorno, List<WeatherForSlot> fasce) {
 
     this.idPrevisioneGiorno = idPrevisioneGiorno;
     this.giorno = giorno;
@@ -87,11 +87,11 @@ public class WeatherForDay {
     this.descIcona = descIcona;
   }
 
-  public int getIcoAllerte() {
+  public String getIcoAllerte() {
     return icoAllerte;
   }
 
-  public void setIcoAllerte(int icoAllerte) {
+  public void setIcoAllerte(String icoAllerte) {
     this.icoAllerte = icoAllerte;
   }
 

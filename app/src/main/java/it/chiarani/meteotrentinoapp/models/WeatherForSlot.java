@@ -25,6 +25,7 @@ public class WeatherForSlot {
   private String descVentoDirValle;
   private int iconaVentoQuota;
   private int zeroTermico;
+  private int limiteNevicate;
   // #ENDREGION*/
 
   /**
@@ -36,7 +37,7 @@ public class WeatherForSlot {
   /**
    * full constructor
    */
-  public WeatherForSlot(int idPrevisioneFascia, String fascia, String fasciaPer, String fasciaOre, int icona, String descIcona, int idPrecProb, String descPrecProb, int idPrecInten, String descPrecInten, int idTempProb, String descTempProb, int idVentoIntQuota, String descVentoIntQuota, int idVentoDirQuota, String descVentoDirQuota, int idVentoIntValle, String descVentoIntValle, int idVentoDirValle, String descVentoDirValle, int iconaVentoQuota, int zeroTermico) {
+  public WeatherForSlot(int idPrevisioneFascia, String fascia, String fasciaPer, String fasciaOre, int icona, String descIcona, int idPrecProb, String descPrecProb, int idPrecInten, String descPrecInten, int idTempProb, String descTempProb, int idVentoIntQuota, String descVentoIntQuota, int idVentoDirQuota, String descVentoDirQuota, int idVentoIntValle, String descVentoIntValle, int idVentoDirValle, String descVentoDirValle, int iconaVentoQuota, int zeroTermico, int limiteNevicate) {
 
     this.idPrevisioneFascia = idPrevisioneFascia;
     this.fascia    = fascia;
@@ -60,6 +61,7 @@ public class WeatherForSlot {
     this.descVentoDirValle = descVentoDirValle;
     this.iconaVentoQuota = iconaVentoQuota;
     this.zeroTermico = zeroTermico;
+    this.limiteNevicate = limiteNevicate;
   }
 
   // #REGION GETTER & SETTER
@@ -238,6 +240,14 @@ public class WeatherForSlot {
 
   public void setZeroTermico(int zeroTermico) {
     this.zeroTermico = zeroTermico;
+  }
+
+  public int getLimiteNevicate() {
+    return limiteNevicate;
+  }
+
+  public void setLimiteNevicate(int limiteNevicate) {
+    this.limiteNevicate = limiteNevicate;
   }
 
   // #ENDREGION

@@ -5,7 +5,7 @@ import java.util.List;
 public class WeatherForWeek {
 
   // #REGION PRIVATE FIELDS
-  private int localita;
+  private String localita;
   private int quota;
   private List<WeatherForDay> giorni;
   // #ENDREGION
@@ -20,17 +20,17 @@ public class WeatherForWeek {
   /**
    * full constructor
    */
-  public WeatherForWeek(int localita, int quota, List<WeatherForDay> giorni) {
+  public WeatherForWeek(String localita, int quota, List<WeatherForDay> giorni) {
     this.localita = localita;
     this.quota = quota;
     this.giorni = giorni;
   }
 
-  public int getLocalita() {
+  public String getLocalita() {
     return localita;
   }
 
-  public void setLocalita(int localita) {
+  public void setLocalita(String localita) {
     this.localita = localita;
   }
 

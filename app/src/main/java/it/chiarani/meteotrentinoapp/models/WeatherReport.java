@@ -10,7 +10,7 @@ public class WeatherReport {
   private String evoluzione;
   private String evoluzioneBreve;
   private String[] allerteList;
-  private List<WeatherForWeek> previsione;
+  private WeatherForWeek previsione;
   // #ENDREGION
 
   /**
@@ -23,7 +23,7 @@ public class WeatherReport {
   /**
    * full constructor
    */
-  public WeatherReport(String dataPubblicazione, int idPrevisione, String evoluzione, String evoluzioneBreve, String[] allerteList, List<WeatherForWeek> previsione) {
+  public WeatherReport(String dataPubblicazione, int idPrevisione, String evoluzione, String evoluzioneBreve, String[] allerteList, WeatherForWeek previsione) {
     this.dataPubblicazione = dataPubblicazione;
     this.idPrevisione = idPrevisione;
     this.evoluzione = evoluzione;
@@ -72,11 +72,11 @@ public class WeatherReport {
     this.allerteList = allerteList;
   }
 
-  public List<WeatherForWeek> getPrevisione() {
+  public WeatherForWeek getPrevisione() {
     return previsione;
   }
 
-  public void setPrevisione(List<WeatherForWeek> previsione) {
+  public void setPrevisione(WeatherForWeek previsione) {
     this.previsione = previsione;
   }
 }
