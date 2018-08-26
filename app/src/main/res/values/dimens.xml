@@ -3,7 +3,7 @@
   <dimen name="slot_weather_conteiner_height">350dp</dimen>
   <dimen name="slot_weather_subcontainer_height">300dp</dimen>
   <dimen name="position_text_size">40sp</dimen>
-  <dimen name="day_text_size">20sp</dimen>
+  <dimen name="day_text_size">14sp</dimen>
   <dimen name="temperature_text_size">90sp</dimen>
 
   <dimen name="offset_15">15dp</dimen>

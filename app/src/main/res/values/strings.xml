@@ -5,4 +5,7 @@
 
   <!-- API_locality -->
   <string name="API_locality_alert">Ottengo le località..</string>
+
+  <!-- API_weatherReport -->
+  <string name="API_weather_alert">Ottengo i dati meteo..</string>
 </resources>
