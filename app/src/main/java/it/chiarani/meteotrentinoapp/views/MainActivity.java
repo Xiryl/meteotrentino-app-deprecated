@@ -111,5 +111,7 @@ public class MainActivity extends SampleActivity implements API_weatherReport_re
     binding.activityMainTxtPosition.setText(report.getPrevisione().getLocalita());
     binding.activityMainTxtTemperature.setText(report.getPrevisione().getGiorni().get(0).gettMaxGiorno() + "°");
     binding.activityMainTxtPrev.setText(report.getPrevisione().getGiorni().get(0).getDescIcona());
+    binding.activityMainTxtAllerta.setText(report.getPrevisione().getGiorni().get(0).getDescIconaAllerte());
+   // binding.activityMainTxtAllerta.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_wind, 0, 0, 0);
   }
 }
