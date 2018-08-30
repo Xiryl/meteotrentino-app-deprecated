@@ -9,7 +9,6 @@ import java.util.List;
 public class WeatherForDayEntity {
 
   // #REGION PRIVATE FIELDS
-  @PrimaryKey
   private int idPrevisioneGiorno;
   private String giorno;
   private int idIcona;

@@ -7,8 +7,6 @@ public class WeatherReportEntity {
 
   // #REGION PRIVATE FIELDS
   private String dataPubblicazione;
-
-  @PrimaryKey
   private int idPrevisione;
   private String evoluzione;
   private String evoluzioneBreve;

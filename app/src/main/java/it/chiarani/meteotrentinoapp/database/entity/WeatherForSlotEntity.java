@@ -7,7 +7,6 @@ import android.arch.persistence.room.PrimaryKey;
 public class WeatherForSlotEntity {
 
   // #REGION PRIVATE FIELDS
-  @PrimaryKey
   private int idPrevisioneFascia;
   private String fascia;
   private String fasciaPer;
