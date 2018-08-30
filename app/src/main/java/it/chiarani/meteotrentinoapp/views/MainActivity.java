@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
+
 
 import java.util.ArrayList;
 
@@ -31,6 +34,7 @@ public class MainActivity extends SampleActivity implements API_weatherReport_re
   // #REGION PRIVATE FIELDS
   private final static String MAINACTIVITY_TAG = "MAINACTIVITY";
   ActivityMainBinding binding;
+  private WeatherReport _report;
   // #ENDREGION
 
   @Override
@@ -64,6 +68,15 @@ public class MainActivity extends SampleActivity implements API_weatherReport_re
     launchIsFirstThread();
 
     new API_weatherReport(this, this::processFinish, "TRENTO").execute();
+
+    binding.activityMainBtnBollettino.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent myIntent = new Intent(MainActivity.this, WeatherReportActivity.class);
+        myIntent.putExtra("report", _report.getPrevisione().getGiorni().get(0).getFasce().get(0));
+        startActivity(myIntent);
+      }
+    });
   }
 
   private void launchIsFirstThread() {
@@ -104,10 +117,11 @@ public class MainActivity extends SampleActivity implements API_weatherReport_re
 
   @Override
   public void processFinish(WeatherReport report) {
+    _report = report;
+
     Toast.makeText(this, "ok fatto", Toast.LENGTH_LONG).show();
     WeatherSlotAdapter adapter = new WeatherSlotAdapter(report);
     binding.activityMainRvWeatherSlot.setAdapter(adapter);
-
     binding.activityMainTxtPosition.setText(report.getPrevisione().getLocalita());
     binding.activityMainTxtTemperature.setText(report.getPrevisione().getGiorni().get(0).gettMaxGiorno() + "°");
     binding.activityMainTxtPrev.setText(report.getPrevisione().getGiorni().get(0).getDescIcona());

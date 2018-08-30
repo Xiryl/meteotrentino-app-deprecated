@@ -1,7 +1,5 @@
 package it.chiarani.meteotrentinoapp.models;
 
-import java.util.List;
-
 public class WeatherReport {
 
   // #REGION PRIVATE FIELDS
