@@ -18,7 +18,8 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <activity android:name=".views.ChooseLocationActivity"></activity>
+    <activity android:name=".views.ChooseLocationActivity" />
+    <activity android:name=".views.WeatherReportActivity"></activity>
   </application>
 
 </manifest>
