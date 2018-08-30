@@ -24,16 +24,6 @@
         android:layout_marginStart="@dimen/offset_15"
         android:textSize="@dimen/position_text_size"/>
 
-      <TextView
-        android:id="@+id/activity_main_txt_date_today"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:text="Lunedi 29 Settembre"
-        android:layout_marginTop="100dp"
-        android:layout_marginStart="@dimen/offset_15"
-        android:textStyle="italic"
-        android:textSize="@dimen/day_text_size"/>
 
       <TextView
         android:id="@+id/activity_main_txt_prev"
@@ -41,8 +31,8 @@
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:text="Previsione"
-        android:textStyle="bold"
-        android:layout_marginTop="130dp"
+        android:textStyle="bold|italic"
+        android:layout_marginTop="100dp"
         android:layout_marginStart="@dimen/offset_15"
         android:textSize="@dimen/day_text_size"/>
       <TextView
@@ -52,7 +42,7 @@
         android:textColor="#932327"
         android:text="Allerta"
         android:textStyle="bold"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="120dp"
         android:layout_marginStart="@dimen/offset_15"
         android:textSize="@dimen/day_text_size"/>
 
@@ -81,7 +71,7 @@
       <android.support.v7.widget.AppCompatButton
         android:id="@+id/activity_main_btn_bollettino"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="   Vedi Bollettino   "
         android:textColor="@color/blue_azure"
         android:layout_alignParentBottom="true"
