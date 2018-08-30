@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+  <data>
+  </data>
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <TextView
+      android:id="@+id/item_weather_report_txt_fascia"
+      android:layout_width="wrap_content"
+      android:layout_gravity="center"
+      android:layout_marginTop="40dp"
+      android:layout_marginBottom="20dp"
+      android:layout_height="wrap_content"
+      android:text=" Mattina (06-12) "
+      android:padding="@dimen/offset_5"
+      android:textColor="@color/white_gray"
+      android:background="@drawable/rounded_corner_red"
+      />
+
+    <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="15dp"
+      android:layout_marginLeft="@dimen/offset_15"
+      android:orientation="horizontal">
+
+      <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_thermo"
+        />
+
+      <TextView
+        android:id="@+id/item_weather_report_txt_t_min"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Temperatura minima: 5°"
+        android:textColor="#5098D8"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:textSize="15dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="15dp"
+      android:layout_marginLeft="@dimen/offset_15"
+      android:orientation="horizontal">
+
+      <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_thermo"
+        />
+
+      <TextView
+        android:id="@+id/item_weather_report_txt_t_max"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Temperatura massima: 5°"
+        android:textColor="#5098D8"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:textSize="15dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="15dp"
+      android:layout_marginLeft="@dimen/offset_15"
+      android:orientation="horizontal">
+
+      <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_humidity"
+        />
+
+      <TextView
+        android:id="@+id/item_weather_report_txt_humidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Umidità: 87%"
+        android:textColor="#5098D8"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:textSize="15dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="15dp"
+      android:layout_marginLeft="@dimen/offset_15"
+      android:orientation="horizontal">
+
+      <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_pressure"
+        />
+
+      <TextView
+        android:id="@+id/item_weather_report_txt_pressure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pressione: 1023 hPa"
+        android:textColor="#5098D8"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:textSize="15dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="15dp"
+      android:layout_marginLeft="@dimen/offset_15"
+      android:orientation="horizontal">
+
+      <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_rain"
+        />
+
+      <TextView
+        android:id="@+id/item_weather_report_txt_prob_prec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Probabilità precipitazioni: molto bassa"
+        android:textColor="#5098D8"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:textSize="15dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="15dp"
+      android:layout_marginLeft="@dimen/offset_15"
+      android:orientation="horizontal">
+
+      <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_rain"
+        />
+
+      <TextView
+        android:id="@+id/item_weather_report_txt_intensita_prec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Intensità precipitazioni: debole"
+        android:textColor="#5098D8"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:textSize="15dp"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="10dp"
+      android:layout_marginLeft="@dimen/offset_15"
+      android:orientation="horizontal">
+
+      <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_thunder"
+        />
+
+      <TextView
+        android:id="@+id/item_weather_report_txt_prob_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Probabilità temporali: bassa"
+        android:textColor="#5098D8"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:textSize="15dp"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="10dp"
+      android:layout_marginLeft="@dimen/offset_15"
+      android:orientation="horizontal">
+
+      <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_wind"
+        />
+
+      <TextView
+        android:id="@+id/item_weather_report_txt_vento_quota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vento in quota: debole"
+        android:textColor="#5098D8"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:textSize="15dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="10dp"
+      android:layout_marginLeft="@dimen/offset_15"
+      android:orientation="horizontal">
+
+      <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_wind"
+        />
+
+      <TextView
+        android:id="@+id/item_weather_report_txt_vento_valle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vento in valle: debole"
+        android:textColor="#5098D8"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:textSize="15dp"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="10dp"
+      android:layout_marginLeft="@dimen/offset_15"
+      android:orientation="horizontal">
+
+      <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_wind"
+        />
+
+      <TextView
+        android:id="@+id/item_weather_report_txt_vento_quota_dir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Direzione vento in quota: O"
+        android:textColor="#5098D8"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:textSize="15dp"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="10dp"
+      android:layout_marginLeft="@dimen/offset_15"
+      android:orientation="horizontal">
+
+      <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_wind"
+        />
+
+      <TextView
+        android:id="@+id/item_weather_report_txt_vento_valle_dir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Direzione vento in valle: Brezza"
+        android:textColor="#5098D8"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:textSize="15dp"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="10dp"
+      android:layout_marginLeft="@dimen/offset_15"
+      android:orientation="horizontal">
+
+      <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_thermo"
+        />
+
+      <TextView
+        android:id="@+id/item_weather_report_txt_zero_termico"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zero Termico: 323"
+        android:textColor="#5098D8"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:textSize="15dp"/>
+
+    </LinearLayout>
+  </LinearLayout>
+</layout>
