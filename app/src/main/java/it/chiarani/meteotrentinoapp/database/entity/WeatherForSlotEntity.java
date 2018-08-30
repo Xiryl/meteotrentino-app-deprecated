@@ -6,7 +6,7 @@ import android.arch.persistence.room.Entity;
  * Guide: https://developer.android.com/training/data-storage/room/
  */
 
-@Entity
+@Entity(tableName = "weatherForSlot")
 public class WeatherForSlotEntity {
 
   // #REGION PRIVATE FIELDS

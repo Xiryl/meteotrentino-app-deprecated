@@ -8,7 +8,7 @@ import java.util.List;
  * Guide: https://developer.android.com/training/data-storage/room/
  */
 
-@Entity
+@Entity(tableName = "weatherForDay")
 public class WeatherForDayEntity {
 
   // #REGION PRIVATE FIELDS

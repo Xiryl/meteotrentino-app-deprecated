@@ -8,7 +8,7 @@ import it.chiarani.meteotrentinoapp.models.WeatherForDay;
  * Guide: https://developer.android.com/training/data-storage/room/
  */
 
-@Entity
+@Entity(tableName = "weatherForWeek")
 public class WeatherForWeekEntity {
 
   // #REGION PRIVATE FIELDS

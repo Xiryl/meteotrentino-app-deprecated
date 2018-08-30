@@ -1,11 +1,12 @@
 package it.chiarani.meteotrentinoapp.database.entity;
+import android.arch.persistence.room.Entity;
+import it.chiarani.meteotrentinoapp.models.WeatherForWeek;
 
 /**
  * Guide: https://developer.android.com/training/data-storage/room/
  */
 
-import it.chiarani.meteotrentinoapp.models.WeatherForWeek;
-
+@Entity(tableName = "weatherForReport")
 public class WeatherReportEntity {
 
   // #REGION PRIVATE FIELDS
