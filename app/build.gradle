@@ -49,4 +49,9 @@ dependencies {
     // volley
     // https://www.londonappdeveloper.com/consuming-a-json-rest-api-in-android/
     implementation 'com.mcxiaoke.volley:library:1.0.19'
+
+    // Room
+    // https://developer.android.com/topic/libraries/architecture/adding-components#room
+    implementation "android.arch.persistence.room:runtime:1.1.1"
+    annotationProcessor "android.arch.persistence.room:compiler:1.1.1" // use kapt for Kotlin
 }
