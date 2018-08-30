@@ -4,6 +4,10 @@ import android.arch.persistence.room.Entity;
 import java.util.List;
 import it.chiarani.meteotrentinoapp.models.WeatherForDay;
 
+/**
+ * Guide: https://developer.android.com/training/data-storage/room/
+ */
+
 @Entity
 public class WeatherForWeekEntity {
 

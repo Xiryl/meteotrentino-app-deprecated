@@ -1,7 +1,10 @@
 package it.chiarani.meteotrentinoapp.database.entity;
 
 import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
+
+/**
+ * Guide: https://developer.android.com/training/data-storage/room/
+ */
 
 @Entity
 public class WeatherForSlotEntity {

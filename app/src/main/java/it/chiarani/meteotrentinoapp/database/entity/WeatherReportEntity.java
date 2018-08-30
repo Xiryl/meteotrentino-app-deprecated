@@ -1,5 +1,8 @@
 package it.chiarani.meteotrentinoapp.database.entity;
-import android.arch.persistence.room.PrimaryKey;
+
+/**
+ * Guide: https://developer.android.com/training/data-storage/room/
+ */
 
 import it.chiarani.meteotrentinoapp.models.WeatherForWeek;
 

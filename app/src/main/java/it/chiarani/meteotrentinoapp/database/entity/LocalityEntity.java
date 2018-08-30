@@ -1,6 +1,9 @@
 package it.chiarani.meteotrentinoapp.database.entity;
-
 import android.arch.persistence.room.Entity;
+
+/**
+ * Guide: https://developer.android.com/training/data-storage/room/
+ */
 
 @Entity
 public class LocalityEntity {
