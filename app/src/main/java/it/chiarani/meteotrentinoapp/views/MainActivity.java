@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Executors;
 
 import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.adapters.WeatherSlotAdapter;
@@ -24,10 +26,12 @@ import it.chiarani.meteotrentinoapp.api.API_locality;
 import it.chiarani.meteotrentinoapp.api.API_locality_response;
 import it.chiarani.meteotrentinoapp.api.API_weatherReport;
 import it.chiarani.meteotrentinoapp.api.API_weatherReport_response;
+import it.chiarani.meteotrentinoapp.database.entity.LocalityEntity;
 import it.chiarani.meteotrentinoapp.databinding.ActivityMainBinding;
 import it.chiarani.meteotrentinoapp.helper.Converter;
 import it.chiarani.meteotrentinoapp.models.Locality;
 import it.chiarani.meteotrentinoapp.models.WeatherReport;
+import it.chiarani.meteotrentinoapp.repositories.LocalityRepository;
 
 public class MainActivity extends SampleActivity implements API_weatherReport_response{
 
@@ -73,10 +77,10 @@ public class MainActivity extends SampleActivity implements API_weatherReport_re
       @Override
       public void onClick(View v) {
         Intent myIntent = new Intent(MainActivity.this, WeatherReportActivity.class);
-        myIntent.putExtra("report", _report.getPrevisione().getGiorni().get(0).getFasce().get(0));
         startActivity(myIntent);
       }
     });
+
   }
 
   private void launchIsFirstThread() {
@@ -119,13 +123,22 @@ public class MainActivity extends SampleActivity implements API_weatherReport_re
   public void processFinish(WeatherReport report) {
     _report = report;
 
-    Toast.makeText(this, "ok fatto", Toast.LENGTH_LONG).show();
     WeatherSlotAdapter adapter = new WeatherSlotAdapter(report);
     binding.activityMainRvWeatherSlot.setAdapter(adapter);
-    binding.activityMainTxtPosition.setText(report.getPrevisione().getLocalita());
+    //binding.activityMainTxtPosition.setText(report.getPrevisione().getLocalita());
     binding.activityMainTxtTemperature.setText(report.getPrevisione().getGiorni().get(0).gettMaxGiorno() + "°");
     binding.activityMainTxtPrev.setText(report.getPrevisione().getGiorni().get(0).getDescIcona());
     binding.activityMainTxtAllerta.setText(report.getPrevisione().getGiorni().get(0).getDescIconaAllerte());
    // binding.activityMainTxtAllerta.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_wind, 0, 0, 0);
+
+
+    LocalityRepository repository = new LocalityRepository(getApplication());
+
+    List<Locality> x = new ArrayList<>();
+    repository.getAll().observe(this, entries -> {
+      binding.activityMainTxtPosition.setText(entries.get(0).getLoc());
+      Toast.makeText(this, entries.get(0).getLoc(), Toast.LENGTH_SHORT).show();
+
+    });
   }
 }
