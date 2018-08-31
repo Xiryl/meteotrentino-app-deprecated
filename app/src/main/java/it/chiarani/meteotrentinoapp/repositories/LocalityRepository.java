@@ -3,14 +3,11 @@ package it.chiarani.meteotrentinoapp.repositories;
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Room;
-
 import java.util.List;
 import java.util.concurrent.Executors;
-
 import it.chiarani.meteotrentinoapp.database.AppDatabase;
 import it.chiarani.meteotrentinoapp.database.dao.LocalityDao;
 import it.chiarani.meteotrentinoapp.database.entity.LocalityEntity;
-import it.chiarani.meteotrentinoapp.models.Locality;
 
 public class LocalityRepository {
 
