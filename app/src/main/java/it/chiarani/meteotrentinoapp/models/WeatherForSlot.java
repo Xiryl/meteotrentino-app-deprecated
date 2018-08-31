@@ -1,254 +1,97 @@
 package it.chiarani.meteotrentinoapp.models;
 
-public class WeatherForSlot {
+public interface WeatherForSlot {
 
-  // #REGION PRIVATE FIELDS
-  private int idPrevisioneFascia;
-  private String fascia;
-  private String fasciaPer;
-  private String fasciaOre;
-  private int icona;
-  private String descIcona;
-  private int idPrecProb;
-  private String descPrecProb;
-  private int idPrecInten;
-  private String descPrecInten;
-  private int idTempProb;
-  private String descTempProb;
-  private int idVentoIntQuota;
-  private String descVentoIntQuota;
-  private int idVentoDirQuota;
-  private String descVentoDirQuota;
-  private int idVentoIntValle;
-  private String descVentoIntValle;
-  private int idVentoDirValle;
-  private String descVentoDirValle;
-  private int iconaVentoQuota;
-  private int zeroTermico;
-  private int limiteNevicate;
-  // #ENDREGION*/
+  int getIdPrevisioneFascia();
 
-  /**
-   * def. constructor
-   */
-  public WeatherForSlot() {
-  }
+  void setIdPrevisioneFascia(int idPrevisioneFascia);
 
-  /**
-   * full constructor
-   */
-  public WeatherForSlot(int idPrevisioneFascia, String fascia, String fasciaPer, String fasciaOre, int icona, String descIcona, int idPrecProb, String descPrecProb, int idPrecInten, String descPrecInten, int idTempProb, String descTempProb, int idVentoIntQuota, String descVentoIntQuota, int idVentoDirQuota, String descVentoDirQuota, int idVentoIntValle, String descVentoIntValle, int idVentoDirValle, String descVentoDirValle, int iconaVentoQuota, int zeroTermico, int limiteNevicate) {
+  String getFascia();
 
-    this.idPrevisioneFascia = idPrevisioneFascia;
-    this.fascia    = fascia;
-    this.fasciaPer = fasciaPer;
-    this.fasciaOre = fasciaOre;
-    this.icona     = icona;
-    this.descIcona = descIcona;
-    this.idPrecProb = idPrecProb;
-    this.descPrecProb = descPrecProb;
-    this.idPrecInten = idPrecInten;
-    this.descPrecInten = descPrecInten;
-    this.idTempProb = idTempProb;
-    this.descTempProb = descTempProb;
-    this.idVentoIntQuota = idVentoIntQuota;
-    this.descVentoIntQuota = descVentoIntQuota;
-    this.idVentoDirQuota = idVentoDirQuota;
-    this.descVentoDirQuota = descVentoDirQuota;
-    this.idVentoIntValle = idVentoIntValle;
-    this.descVentoIntValle = descVentoIntValle;
-    this.idVentoDirValle = idVentoDirValle;
-    this.descVentoDirValle = descVentoDirValle;
-    this.iconaVentoQuota = iconaVentoQuota;
-    this.zeroTermico = zeroTermico;
-    this.limiteNevicate = limiteNevicate;
-  }
+  void setFascia(String fascia);
 
-  // #REGION GETTER & SETTER
+  String getFasciaPer();
 
-  public int getIdPrevisioneFascia() {
-    return idPrevisioneFascia;
-  }
+  void setFasciaPer(String fasciaPer);
 
-  public void setIdPrevisioneFascia(int idPrevisioneFascia) {
-    this.idPrevisioneFascia = idPrevisioneFascia;
-  }
+  String getFasciaOre();
 
-  public String getFascia() {
-    return fascia;
-  }
+  void setFasciaOre(String fasciaOre);
 
-  public void setFascia(String fascia) {
-    this.fascia = fascia;
-  }
+  int getIcona();
 
-  public String getFasciaPer() {
-    return fasciaPer;
-  }
+  void setIcona(int icona);
 
-  public void setFasciaPer(String fasciaPer) {
-    this.fasciaPer = fasciaPer;
-  }
+  String getDescIcona();
 
-  public String getFasciaOre() {
-    return fasciaOre;
-  }
+  void setDescIcona(String descIcona);
 
-  public void setFasciaOre(String fasciaOre) {
-    this.fasciaOre = fasciaOre;
-  }
+  int getIdPrecProb();
 
-  public int getIcona() {
-    return icona;
-  }
+  void setIdPrecProb(int idPrecProb);
 
-  public void setIcona(int icona) {
-    this.icona = icona;
-  }
+  String getDescPrecProb();
 
-  public String getDescIcona() {
-    return descIcona;
-  }
+  void setDescPrecProb(String descPrecProb);
 
-  public void setDescIcona(String descIcona) {
-    this.descIcona = descIcona;
-  }
+  int getIdPrecInten();
 
-  public int getIdPrecProb() {
-    return idPrecProb;
-  }
+  void setIdPrecInten(int idPrecInten);
 
-  public void setIdPrecProb(int idPrecProb) {
-    this.idPrecProb = idPrecProb;
-  }
+  String getDescPrecInten();
 
-  public String getDescPrecProb() {
-    return descPrecProb;
-  }
+  void setDescPrecInten(String descPrecInten);
 
-  public void setDescPrecProb(String descPrecProb) {
-    this.descPrecProb = descPrecProb;
-  }
+  int getIdTempProb();
 
-  public int getIdPrecInten() {
-    return idPrecInten;
-  }
+  void setIdTempProb(int idTempProb);
 
-  public void setIdPrecInten(int idPrecInten) {
-    this.idPrecInten = idPrecInten;
-  }
+  String getDescTempProb();
 
-  public String getDescPrecInten() {
-    return descPrecInten;
-  }
+  void setDescTempProb(String descTempProb);
 
-  public void setDescPrecInten(String descPrecInten) {
-    this.descPrecInten = descPrecInten;
-  }
+  int getIdVentoIntQuota();
 
-  public int getIdTempProb() {
-    return idTempProb;
-  }
+  void setIdVentoIntQuota(int idVentoIntQuota);
 
-  public void setIdTempProb(int idTempProb) {
-    this.idTempProb = idTempProb;
-  }
+  String getDescVentoIntQuota();
 
-  public String getDescTempProb() {
-    return descTempProb;
-  }
+  void setDescVentoIntQuota(String descVentoIntQuota);
 
-  public void setDescTempProb(String descTempProb) {
-    this.descTempProb = descTempProb;
-  }
+  int getIdVentoDirQuota();
 
-  public int getIdVentoIntQuota() {
-    return idVentoIntQuota;
-  }
+  void setIdVentoDirQuota(int idVentoDirQuota);
 
-  public void setIdVentoIntQuota(int idVentoIntQuota) {
-    this.idVentoIntQuota = idVentoIntQuota;
-  }
+  String getDescVentoDirQuota();
 
-  public String getDescVentoIntQuota() {
-    return descVentoIntQuota;
-  }
+  void setDescVentoDirQuota(String descVentoDirQuota);
 
-  public void setDescVentoIntQuota(String descVentoIntQuota) {
-    this.descVentoIntQuota = descVentoIntQuota;
-  }
+  int getIdVentoIntValle();
 
-  public int getIdVentoDirQuota() {
-    return idVentoDirQuota;
-  }
+  void setIdVentoIntValle(int idVentoIntValle);
 
-  public void setIdVentoDirQuota(int idVentoDirQuota) {
-    this.idVentoDirQuota = idVentoDirQuota;
-  }
+  String getDescVentoIntValle();
 
-  public String getDescVentoDirQuota() {
-    return descVentoDirQuota;
-  }
+  void setDescVentoIntValle(String descVentoIntValle);
 
-  public void setDescVentoDirQuota(String descVentoDirQuota) {
-    this.descVentoDirQuota = descVentoDirQuota;
-  }
+  int getIdVentoDirValle();
 
-  public int getIdVentoIntValle() {
-    return idVentoIntValle;
-  }
+  void setIdVentoDirValle(int idVentoDirValle);
 
-  public void setIdVentoIntValle(int idVentoIntValle) {
-    this.idVentoIntValle = idVentoIntValle;
-  }
+  String getDescVentoDirValle();
 
-  public String getDescVentoIntValle() {
-    return descVentoIntValle;
-  }
+  void setDescVentoDirValle(String descVentoDirValle);
 
-  public void setDescVentoIntValle(String descVentoIntValle) {
-    this.descVentoIntValle = descVentoIntValle;
-  }
+  int getIconaVentoQuota();
 
-  public int getIdVentoDirValle() {
-    return idVentoDirValle;
-  }
+  void setIconaVentoQuota(int iconaVentoQuota);
 
-  public void setIdVentoDirValle(int idVentoDirValle) {
-    this.idVentoDirValle = idVentoDirValle;
-  }
+  int getZeroTermico();
 
-  public String getDescVentoDirValle() {
-    return descVentoDirValle;
-  }
+  void setZeroTermico(int zeroTermico);
 
-  public void setDescVentoDirValle(String descVentoDirValle) {
-    this.descVentoDirValle = descVentoDirValle;
-  }
+  int getLimiteNevicate();
 
-  public int getIconaVentoQuota() {
-    return iconaVentoQuota;
-  }
+  void setLimiteNevicate(int limiteNevicate);
 
-  public void setIconaVentoQuota(int iconaVentoQuota) {
-    this.iconaVentoQuota = iconaVentoQuota;
-  }
-
-  public int getZeroTermico() {
-    return zeroTermico;
-  }
-
-  public void setZeroTermico(int zeroTermico) {
-    this.zeroTermico = zeroTermico;
-  }
-
-  public int getLimiteNevicate() {
-    return limiteNevicate;
-  }
-
-  public void setLimiteNevicate(int limiteNevicate) {
-    this.limiteNevicate = limiteNevicate;
-  }
-
-  // #ENDREGION
 }
