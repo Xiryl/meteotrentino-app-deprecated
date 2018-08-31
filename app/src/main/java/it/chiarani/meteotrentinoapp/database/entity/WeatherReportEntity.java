@@ -3,13 +3,14 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 
 import it.chiarani.meteotrentinoapp.models.WeatherForWeek;
+import it.chiarani.meteotrentinoapp.models.WeatherReport;
 
 /**
  * Guide: https://developer.android.com/training/data-storage/room/
  */
 
 @Entity(tableName = "weatherForReport")
-public class WeatherReportEntity {
+public class WeatherReportEntity implements WeatherReport {
 
   // #REGION PRIVATE FIELDS
   private String dataPubblicazione;
@@ -40,50 +41,51 @@ public class WeatherReportEntity {
     this.previsione = previsione;
   }
 
+  @Override
   public String getDataPubblicazione() {
     return dataPubblicazione;
   }
-
+  @Override
   public void setDataPubblicazione(String dataPubblicazione) {
     this.dataPubblicazione = dataPubblicazione;
   }
-
+  @Override
   public int getIdPrevisione() {
     return idPrevisione;
   }
-
+  @Override
   public void setIdPrevisione(int idPrevisione) {
     this.idPrevisione = idPrevisione;
   }
-
+  @Override
   public String getEvoluzione() {
     return evoluzione;
   }
-
+  @Override
   public void setEvoluzione(String evoluzione) {
     this.evoluzione = evoluzione;
   }
-
+  @Override
   public String getEvoluzioneBreve() {
     return evoluzioneBreve;
   }
-
+  @Override
   public void setEvoluzioneBreve(String evoluzioneBreve) {
     this.evoluzioneBreve = evoluzioneBreve;
   }
-
+  @Override
   public String[] getAllerteList() {
     return allerteList;
   }
-
+  @Override
   public void setAllerteList(String[] allerteList) {
     this.allerteList = allerteList;
   }
-
+  @Override
   public WeatherForWeek getPrevisione() {
     return previsione;
   }
-
+  @Override
   public void setPrevisione(WeatherForWeek previsione) {
     this.previsione = previsione;
   }
