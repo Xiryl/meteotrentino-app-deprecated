@@ -13,8 +13,10 @@ import java.util.ArrayList;
 import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.api.API_locality;
 import it.chiarani.meteotrentinoapp.api.API_locality_response;
+import it.chiarani.meteotrentinoapp.database.entity.LocalityEntity;
 import it.chiarani.meteotrentinoapp.databinding.ActivityChooseLocationBinding;
 import it.chiarani.meteotrentinoapp.models.Locality;
+import it.chiarani.meteotrentinoapp.repositories.LocalityRepository;
 
 public class ChooseLocationActivity extends SampleActivity implements API_locality_response {
 
@@ -39,7 +41,18 @@ public class ChooseLocationActivity extends SampleActivity implements API_locali
     Log.d( CHOOSELOCATIONACTIVITY_TAG, "Start choose location actiity");
 
     // Launch async task for get locality
-    new API_locality(this, this::processFinish).execute();
+    new API_locality(getApplication(), this, this::processFinish).execute();
+
+    // set next button handler
+    binding.chooseLocationBtnNext.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+
+        // launch main activity
+        Intent myIntent = new Intent(ChooseLocationActivity.this, MainActivity.class);
+        startActivity(myIntent);
+      }
+    });
   }
 
   @Override
@@ -60,17 +73,7 @@ public class ChooseLocationActivity extends SampleActivity implements API_locali
     // set adapter to autocomplete text
     binding.chooseLocationAutoCompleteTxt.setAdapter(adapter);
 
-    // set next button handler
-    binding.chooseLocationBtnNext.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
 
-        // launch main activity
-
-        Intent myIntent = new Intent(ChooseLocationActivity.this, MainActivity.class);
-        startActivity(myIntent);
-      }
-    });
   }
 
   /**
