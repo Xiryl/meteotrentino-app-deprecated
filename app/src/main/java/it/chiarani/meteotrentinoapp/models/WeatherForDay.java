@@ -2,146 +2,53 @@ package it.chiarani.meteotrentinoapp.models;
 
 import java.util.List;
 
-public class WeatherForDay {
+public interface WeatherForDay {
 
-  // #REGION PRIVATE FIELDS
-  private int idPrevisioneGiorno;
-  private String giorno;
-  private int idIcona;
-  private int icona;
-  private String descIcona;
-  private String icoAllerte;
-  private String coloreAllerte;
-  private String descIconaAllerte;
-  private String testoGiorno;
-  private int tMinGiorno;
-  private int tMaxGiorno;
-  private List<WeatherForSlot> fasce;
-  // #ENDREGION
+  int getIdPrevisioneGiorno();
 
-  /**
-   * def. constructor
-   */
-  public WeatherForDay () {
+  void setIdPrevisioneGiorno(int idPrevisioneGiorno);
 
-  }
+  String getGiorno();
 
-  /**
-   * full constructor
-   */
-  public  WeatherForDay(int idPrevisioneGiorno, String giorno, int idIcona, int icona, String descIcona, String icoAllerte, String coloreAllerte, String descIconaAllerte, String testoGiorno, int tMinGiorno, int tMaxGiorno, List<WeatherForSlot> fasce) {
+  void setGiorno(String giorno);
 
-    this.idPrevisioneGiorno = idPrevisioneGiorno;
-    this.giorno = giorno;
-    this.idIcona = idIcona;
-    this.icona = icona;
-    this.descIcona = descIcona;
-    this.icoAllerte = icoAllerte;
-    this.coloreAllerte = coloreAllerte;
-    this.descIconaAllerte = descIconaAllerte;
-    this.testoGiorno = testoGiorno;
-    this.tMinGiorno = tMinGiorno;
-    this.tMaxGiorno = tMaxGiorno;
-    this.fasce = fasce;
-  }
+  int getIdIcona();
 
-  // #REGION GETTER & SETTER
+  void setIdIcona(int idIcona);
 
-  public int getIdPrevisioneGiorno() {
-    return idPrevisioneGiorno;
-  }
+  int getIcona();
 
-  public void setIdPrevisioneGiorno(int idPrevisioneGiorno) {
-    this.idPrevisioneGiorno = idPrevisioneGiorno;
-  }
+  void setIcona(int icona);
 
-  public String getGiorno() {
-    return giorno;
-  }
+  String getDescIcona();
 
-  public void setGiorno(String giorno) {
-    this.giorno = giorno;
-  }
+  void setDescIcona(String descIcona);
 
-  public int getIdIcona() {
-    return idIcona;
-  }
+  String getIcoAllerte();
 
-  public void setIdIcona(int idIcona) {
-    this.idIcona = idIcona;
-  }
+  void setIcoAllerte(String icoAllerte);
 
-  public int getIcona() {
-    return icona;
-  }
+  String getColoreAllerte() ;
 
-  public void setIcona(int icona) {
-    this.icona = icona;
-  }
+  void setColoreAllerte(String coloreAllerte);
 
-  public String getDescIcona() {
-    return descIcona;
-  }
+  String getDescIconaAllerte();
 
-  public void setDescIcona(String descIcona) {
-    this.descIcona = descIcona;
-  }
+  void setDescIconaAllerte(String descIconaAllerte);
 
-  public String getIcoAllerte() {
-    return icoAllerte;
-  }
+  String getTestoGiorno();
 
-  public void setIcoAllerte(String icoAllerte) {
-    this.icoAllerte = icoAllerte;
-  }
+  void setTestoGiorno(String testoGiorno);
 
-  public String getColoreAllerte() {
-    return coloreAllerte;
-  }
+  int gettMinGiorno();
 
-  public void setColoreAllerte(String coloreAllerte) {
-    this.coloreAllerte = coloreAllerte;
-  }
+  void settMinGiorno(int tMinGiorno);
 
-  public String getDescIconaAllerte() {
-    return descIconaAllerte;
-  }
+  int gettMaxGiorno();
 
-  public void setDescIconaAllerte(String descIconaAllerte) {
-    this.descIconaAllerte = descIconaAllerte;
-  }
+  void settMaxGiorno(int tMaxGiorno);
 
-  public String getTestoGiorno() {
-    return testoGiorno;
-  }
+  List<WeatherForSlot> getFasce();
 
-  public void setTestoGiorno(String testoGiorno) {
-    this.testoGiorno = testoGiorno;
-  }
-
-  public int gettMinGiorno() {
-    return tMinGiorno;
-  }
-
-  public void settMinGiorno(int tMinGiorno) {
-    this.tMinGiorno = tMinGiorno;
-  }
-
-  public int gettMaxGiorno() {
-    return tMaxGiorno;
-  }
-
-  public void settMaxGiorno(int tMaxGiorno) {
-    this.tMaxGiorno = tMaxGiorno;
-  }
-
-  public List<WeatherForSlot> getFasce() {
-    return fasce;
-  }
-
-  public void setFasce(List<WeatherForSlot> fasce) {
-    this.fasce = fasce;
-  }
-
-  // #ENDREGION
+  void setFasce(List<WeatherForSlot> fasce);
 }
