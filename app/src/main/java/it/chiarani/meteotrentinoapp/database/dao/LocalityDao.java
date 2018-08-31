@@ -20,5 +20,5 @@ public interface LocalityDao {
   void deleteAll();
 
   @Insert
-  void Insert(LocalityEntity entity);
+  void insert(LocalityEntity entity);
 }
