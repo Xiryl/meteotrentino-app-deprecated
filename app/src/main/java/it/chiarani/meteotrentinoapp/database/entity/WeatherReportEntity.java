@@ -9,7 +9,7 @@ import it.chiarani.meteotrentinoapp.models.WeatherReport;
  * Guide: https://developer.android.com/training/data-storage/room/
  */
 
-@Entity(tableName = "weatherForReport")
+@Entity(tableName = "weatherReport")
 public class WeatherReportEntity implements WeatherReport {
 
   // #REGION PRIVATE FIELDS
