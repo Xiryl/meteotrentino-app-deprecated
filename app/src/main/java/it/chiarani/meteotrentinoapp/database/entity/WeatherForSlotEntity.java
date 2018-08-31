@@ -1,6 +1,7 @@
 package it.chiarani.meteotrentinoapp.database.entity;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 
 /**
  * Guide: https://developer.android.com/training/data-storage/room/
@@ -38,6 +39,7 @@ public class WeatherForSlotEntity {
   /**
    * def. constructor
    */
+  @Ignore
   public WeatherForSlotEntity() {
   }
 

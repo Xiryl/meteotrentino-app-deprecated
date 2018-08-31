@@ -1,5 +1,7 @@
 package it.chiarani.meteotrentinoapp.database.entity;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
 
 /**
  * Guide: https://developer.android.com/training/data-storage/room/
@@ -9,6 +11,9 @@ import android.arch.persistence.room.Entity;
 public class LocalityEntity {
 
   // #REGION PRIVATE FIELDS
+  @PrimaryKey (autoGenerate = true)
+  private int idLocality;
+
   private String loc;
   private String municipality;
   private int    height;
@@ -20,6 +25,7 @@ public class LocalityEntity {
   /**
    * def. constructor
    */
+  @Ignore
   public LocalityEntity() {
 
   }
@@ -75,6 +81,14 @@ public class LocalityEntity {
 
   public void setLongitude(String longitude) {
     this.longitude = longitude;
+  }
+
+  public int getIdLocality() {
+    return idLocality;
+  }
+
+  public void setIdLocality(int idLocality) {
+    this.idLocality = idLocality;
   }
 
   // #ENDREGION
