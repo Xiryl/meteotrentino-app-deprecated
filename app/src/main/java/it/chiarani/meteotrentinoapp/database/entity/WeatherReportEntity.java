@@ -2,6 +2,8 @@ package it.chiarani.meteotrentinoapp.database.entity;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 
+import java.util.List;
+
 import it.chiarani.meteotrentinoapp.models.WeatherForWeek;
 import it.chiarani.meteotrentinoapp.models.WeatherReport;
 
@@ -17,7 +19,7 @@ public class WeatherReportEntity implements WeatherReport {
   private int idPrevisione;
   private String evoluzione;
   private String evoluzioneBreve;
-  private String[] allerteList;
+  private List<String> allerteList;
   private WeatherForWeek previsione;
   // #ENDREGION
 
@@ -32,7 +34,7 @@ public class WeatherReportEntity implements WeatherReport {
   /**
    * full constructor
    */
-  public WeatherReportEntity(String dataPubblicazione, int idPrevisione, String evoluzione, String evoluzioneBreve, String[] allerteList, WeatherForWeek previsione) {
+  public WeatherReportEntity(String dataPubblicazione, int idPrevisione, String evoluzione, String evoluzioneBreve, List<String> allerteList, WeatherForWeek previsione) {
     this.dataPubblicazione = dataPubblicazione;
     this.idPrevisione = idPrevisione;
     this.evoluzione = evoluzione;
@@ -74,11 +76,11 @@ public class WeatherReportEntity implements WeatherReport {
     this.evoluzioneBreve = evoluzioneBreve;
   }
   @Override
-  public String[] getAllerteList() {
+  public List<String> getAllerteList() {
     return allerteList;
   }
   @Override
-  public void setAllerteList(String[] allerteList) {
+  public void setAllerteList(List<String> allerteList) {
     this.allerteList = allerteList;
   }
   @Override

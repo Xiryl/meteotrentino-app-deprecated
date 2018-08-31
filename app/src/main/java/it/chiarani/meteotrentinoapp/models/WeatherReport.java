@@ -1,5 +1,7 @@
 package it.chiarani.meteotrentinoapp.models;
 
+import java.util.List;
+
 public interface WeatherReport {
 
   String getDataPubblicazione();
@@ -18,9 +20,9 @@ public interface WeatherReport {
 
   void setEvoluzioneBreve(String evoluzioneBreve);
 
-  String[] getAllerteList();
+  List<String> getAllerteList();
 
-  void setAllerteList(String[] allerteList);
+  void setAllerteList(List<String> allerteList);
 
   WeatherForWeek getPrevisione();
 
