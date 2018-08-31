@@ -1,75 +1,38 @@
 package it.chiarani.meteotrentinoapp.models;
 
-public class Locality {
+/**
+ * Locality class:
+     "localita": "ALA",
+     "comune": "ALA",
+     "quota": 177,
+     "latitudine": "45.757142",
+     "longitudine": "11.004772"
+ */
 
-  // #REGION PRIVATE FIELDS
-  private String loc;
-  private String municipality;
-  private int    height;
-  private String latitude;
-  private String longitude;
-  // #ENDREGION
+public interface Locality {
 
+  int getIdLocality();
 
-  /**
-   * def. constructor
-   */
-  public Locality() {
+  void setIdLocality(int idLocality);
 
-  }
+  String getLoc();
 
-  /**
-   * full constructor
-   */
-  public Locality(String loc, String municipality, int height, String latitude, String longitude) {
-    this.loc          = loc;
-    this.municipality = municipality;
-    this.height       = height;
-    this.latitude     = latitude;
-    this.longitude    = longitude;
-  }
+  void setLoc(String loc);
 
-  // #REGION GETTER & SETTER
+  String getMunicipality();
 
-  public String getLoc() {
-    return loc;
-  }
+  void setMunicipality(String municipality);
 
-  public void setLoc(String loc) {
-    this.loc = loc;
-  }
+  int getHeight();
 
-  public String getMunicipality() {
-    return municipality;
-  }
+  void setHeight(int height);
 
-  public void setMunicipality(String municipality) {
-    this.municipality = municipality;
-  }
+  String getLatitude();
 
-  public int getHeight() {
-    return height;
-  }
+  void setLatitude(String latitude);
 
-  public void setHeight(int height) {
-    this.height = height;
-  }
+  String getLongitude();
 
-  public String getLatitude() {
-    return latitude;
-  }
+  void setLongitude(String longitude);
 
-  public void setLatitude(String latitude) {
-    this.latitude = latitude;
-  }
-
-  public String getLongitude() {
-    return longitude;
-  }
-
-  public void setLongitude(String longitude) {
-    this.longitude = longitude;
-  }
-
-  // #ENDREGION
 }
