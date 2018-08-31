@@ -1,6 +1,7 @@
 package it.chiarani.meteotrentinoapp.api;
 
 import android.app.AlertDialog;
+import android.app.Application;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -18,7 +19,9 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import it.chiarani.meteotrentinoapp.R;
+import it.chiarani.meteotrentinoapp.database.entity.LocalityEntity;
 import it.chiarani.meteotrentinoapp.models.Locality;
+import it.chiarani.meteotrentinoapp.repositories.LocalityRepository;
 
 public class API_locality extends AsyncTask<String, Integer, Integer>{
 
@@ -27,7 +30,7 @@ public class API_locality extends AsyncTask<String, Integer, Integer>{
   private final static String URL_API = "https://www.meteotrentino.it/protcivtn-meteo/api/front/localitaOpenData";
   Context mContext;
   AlertDialog builder;
-  public ArrayList<Locality> tmp_locality;
+  Application _app;
   public API_locality_response delegate = null;
   // #END REGION
 
@@ -36,7 +39,8 @@ public class API_locality extends AsyncTask<String, Integer, Integer>{
    * @param mContext app context
    * @param res callback interface for get content async
    */
-  public API_locality(Context mContext, API_locality_response res) {
+  public API_locality(Application app, Context mContext, API_locality_response res) {
+    this._app = app;
     this.mContext = mContext;
     this.delegate = res;
   }
@@ -60,7 +64,6 @@ public class API_locality extends AsyncTask<String, Integer, Integer>{
   @Override
   protected void onPostExecute(Integer integer) {
     builder.dismiss();
-    delegate.processFinish(tmp_locality);
   }
 
   /**
@@ -69,7 +72,7 @@ public class API_locality extends AsyncTask<String, Integer, Integer>{
    */
   @Override
   protected Integer doInBackground(String... s) {
-    tmp_locality = new ArrayList<>();
+    LocalityRepository repository = new LocalityRepository(_app);
 
     HttpURLConnection connection = null;
     BufferedReader reader = null;
@@ -101,21 +104,19 @@ public class API_locality extends AsyncTask<String, Integer, Integer>{
         int quota = Integer.parseInt(arr.getJSONObject(i).getString("quota"));
         String latitudine = arr.getJSONObject(i).getString("latitudine");
         String longitudine = arr.getJSONObject(i).getString("longitudine");
-        tmp_locality.add(new Locality(locality, place, quota, latitudine, longitudine));
+
+        repository.insert(new LocalityEntity(locality, place, quota, latitudine, longitudine));
       }
 
     } catch (MalformedURLException e) {
       e.printStackTrace();
       Log.e(API_LOCALITY_TAG, "Errore MalformedURLException: "+  e.toString());
-      tmp_locality = null;
     } catch (IOException e) {
       e.printStackTrace();
       Log.e(API_LOCALITY_TAG, "Errore IOException: "+  e.toString());
-      tmp_locality = null;
     } catch (Exception e) {
       e.printStackTrace();
       Log.e(API_LOCALITY_TAG, "Errore Exception: "+  e.toString());
-      tmp_locality = null;
     } finally {
       if (connection != null) {
         connection.disconnect();
@@ -127,7 +128,6 @@ public class API_locality extends AsyncTask<String, Integer, Integer>{
       } catch (IOException e) {
         e.printStackTrace();
         Log.e(API_LOCALITY_TAG, "Errore IOException1: "+  e.toString());
-        tmp_locality = null;
       }
     }
     Log.d(API_LOCALITY_TAG, "DATI locality Correttamente scaricati");
