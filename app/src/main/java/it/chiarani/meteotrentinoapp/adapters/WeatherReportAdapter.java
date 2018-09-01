@@ -9,13 +9,14 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 import it.chiarani.meteotrentinoapp.R;
+import it.chiarani.meteotrentinoapp.database.entity.WeatherReportEntity;
 import it.chiarani.meteotrentinoapp.models.WeatherReport;
 
 public class WeatherReportAdapter extends RecyclerView.Adapter<WeatherReportAdapter.ViewHolder> {
 
-  WeatherReport _report;
+  WeatherReportEntity _report;
 
-  public WeatherReportAdapter(WeatherReport report) {
+  public WeatherReportAdapter(WeatherReportEntity report) {
     _report = report;
   }
 
