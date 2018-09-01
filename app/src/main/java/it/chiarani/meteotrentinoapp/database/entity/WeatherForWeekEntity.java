@@ -16,7 +16,7 @@ public class WeatherForWeekEntity implements WeatherForWeek {
   // #REGION PRIVATE FIELDS
   private String localita;
   private int quota;
-  private List<WeatherForDay> giorni;
+  private List<WeatherForDayEntity> giorni;
   // #ENDREGION
 
   /**
@@ -30,7 +30,7 @@ public class WeatherForWeekEntity implements WeatherForWeek {
   /**
    * full constructor
    */
-  public WeatherForWeekEntity(String localita, int quota, List<WeatherForDay> giorni) {
+  public WeatherForWeekEntity(String localita, int quota, List<WeatherForDayEntity> giorni) {
     this.localita = localita;
     this.quota = quota;
     this.giorni = giorni;
@@ -53,11 +53,11 @@ public class WeatherForWeekEntity implements WeatherForWeek {
     this.quota = quota;
   }
   @Override
-  public List<WeatherForDay> getGiorni() {
+  public List<WeatherForDayEntity> getGiorni() {
     return giorni;
   }
   @Override
-  public void setGiorni(List<WeatherForDay> giorni) {
+  public void setGiorni(List<WeatherForDayEntity> giorni) {
     this.giorni = giorni;
   }
 }

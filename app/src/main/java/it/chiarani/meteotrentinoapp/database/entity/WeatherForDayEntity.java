@@ -25,7 +25,7 @@ public class WeatherForDayEntity implements WeatherForDay {
   private String testoGiorno;
   private int tMinGiorno;
   private int tMaxGiorno;
-  private List<WeatherForSlot> fasce;
+  private List<WeatherForSlotEntity> fasce;
   // #ENDREGION
 
   /**
@@ -39,7 +39,7 @@ public class WeatherForDayEntity implements WeatherForDay {
   /**
    * full constructor
    */
-  public  WeatherForDayEntity(int idPrevisioneGiorno, String giorno, int idIcona, int icona, String descIcona, String icoAllerte, String coloreAllerte, String descIconaAllerte, String testoGiorno, int tMinGiorno, int tMaxGiorno, List<WeatherForSlot> fasce) {
+  public  WeatherForDayEntity(int idPrevisioneGiorno, String giorno, int idIcona, int icona, String descIcona, String icoAllerte, String coloreAllerte, String descIconaAllerte, String testoGiorno, int tMinGiorno, int tMaxGiorno, List<WeatherForSlotEntity> fasce) {
 
     this.idPrevisioneGiorno = idPrevisioneGiorno;
     this.giorno = giorno;
@@ -145,11 +145,11 @@ public class WeatherForDayEntity implements WeatherForDay {
     this.tMaxGiorno = tMaxGiorno;
   }
   @Override
-  public List<WeatherForSlot> getFasce() {
+  public List<WeatherForSlotEntity> getFasce() {
     return fasce;
   }
   @Override
-  public void setFasce(List<WeatherForSlot> fasce) {
+  public void setFasce(List<WeatherForSlotEntity> fasce) {
     this.fasce = fasce;
   }
 

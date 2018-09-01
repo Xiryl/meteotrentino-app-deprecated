@@ -1,6 +1,7 @@
 package it.chiarani.meteotrentinoapp.database.entity;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
 
 import java.util.List;
 
@@ -15,12 +16,14 @@ import it.chiarani.meteotrentinoapp.models.WeatherReport;
 public class WeatherReportEntity implements WeatherReport {
 
   // #REGION PRIVATE FIELDS
+  @PrimaryKey(autoGenerate = true)
+  private int idWeatherReport;
   private String dataPubblicazione;
   private int idPrevisione;
   private String evoluzione;
   private String evoluzioneBreve;
-  private List<String> allerteList;
-  private WeatherForWeek previsione;
+  private String allerteList;
+  private WeatherForWeekEntity previsione;
   // #ENDREGION
 
   /**
@@ -34,7 +37,7 @@ public class WeatherReportEntity implements WeatherReport {
   /**
    * full constructor
    */
-  public WeatherReportEntity(String dataPubblicazione, int idPrevisione, String evoluzione, String evoluzioneBreve, List<String> allerteList, WeatherForWeek previsione) {
+  public WeatherReportEntity(String dataPubblicazione, int idPrevisione, String evoluzione, String evoluzioneBreve, String allerteList, WeatherForWeekEntity previsione) {
     this.dataPubblicazione = dataPubblicazione;
     this.idPrevisione = idPrevisione;
     this.evoluzione = evoluzione;
@@ -76,19 +79,27 @@ public class WeatherReportEntity implements WeatherReport {
     this.evoluzioneBreve = evoluzioneBreve;
   }
   @Override
-  public List<String> getAllerteList() {
+  public String getAllerteList() {
     return allerteList;
   }
   @Override
-  public void setAllerteList(List<String> allerteList) {
+  public void setAllerteList(String allerteList) {
     this.allerteList = allerteList;
   }
   @Override
-  public WeatherForWeek getPrevisione() {
+  public WeatherForWeekEntity getPrevisione() {
     return previsione;
   }
   @Override
-  public void setPrevisione(WeatherForWeek previsione) {
+  public void setPrevisione(WeatherForWeekEntity previsione) {
     this.previsione = previsione;
+  }
+  @Override
+  public int getIdWeatherReport() {
+    return idWeatherReport;
+  }
+  @Override
+  public void setIdWeatherReport(int idWeatherReport) {
+    this.idWeatherReport = idWeatherReport;
   }
 }
