@@ -1,6 +1,6 @@
 package it.chiarani.meteotrentinoapp.models;
-
 import java.util.List;
+import it.chiarani.meteotrentinoapp.database.entity.WeatherForSlotEntity;
 
 public interface WeatherForDay {
 
@@ -48,7 +48,7 @@ public interface WeatherForDay {
 
   void settMaxGiorno(int tMaxGiorno);
 
-  List<WeatherForSlot> getFasce();
+  List<WeatherForSlotEntity> getFasce();
 
-  void setFasce(List<WeatherForSlot> fasce);
+  void setFasce(List<WeatherForSlotEntity> fasce);
 }

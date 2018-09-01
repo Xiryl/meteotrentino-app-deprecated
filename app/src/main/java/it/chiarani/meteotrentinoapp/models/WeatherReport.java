@@ -1,8 +1,12 @@
 package it.chiarani.meteotrentinoapp.models;
 
-import java.util.List;
+import it.chiarani.meteotrentinoapp.database.entity.WeatherForWeekEntity;
 
 public interface WeatherReport {
+
+  int getIdWeatherReport();
+
+  void setIdWeatherReport(int idWeatherReport);
 
   String getDataPubblicazione();
 
@@ -20,12 +24,12 @@ public interface WeatherReport {
 
   void setEvoluzioneBreve(String evoluzioneBreve);
 
-  List<String> getAllerteList();
+  String getAllerteList();
 
-  void setAllerteList(List<String> allerteList);
+  void setAllerteList(String allerteList);
 
-  WeatherForWeek getPrevisione();
+  WeatherForWeekEntity getPrevisione();
 
-  void setPrevisione(WeatherForWeek previsione);
+  void setPrevisione(WeatherForWeekEntity previsione);
 
 }

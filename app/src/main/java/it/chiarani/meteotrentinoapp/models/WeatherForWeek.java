@@ -1,6 +1,6 @@
 package it.chiarani.meteotrentinoapp.models;
-
 import java.util.List;
+import it.chiarani.meteotrentinoapp.database.entity.WeatherForDayEntity;
 
 public interface WeatherForWeek {
 
@@ -12,7 +12,7 @@ public interface WeatherForWeek {
 
   void setQuota(int quota);
 
-  List<WeatherForDay> getGiorni();
+  List<WeatherForDayEntity> getGiorni();
 
-  void setGiorni(List<WeatherForDay> giorni);
+  void setGiorni(List<WeatherForDayEntity> giorni);
 }
