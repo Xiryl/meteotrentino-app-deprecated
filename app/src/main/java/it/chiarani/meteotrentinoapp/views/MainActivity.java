@@ -71,7 +71,7 @@ public class MainActivity extends SampleActivity implements API_weatherReport_re
 
     launchIsFirstThread();
 
-    new API_weatherReport(this, this::processFinish, "TRENTO").execute();
+    new API_weatherReport(getApplication(),this, this::processFinish, "TRENTO").execute();
 
     binding.activityMainBtnBollettino.setOnClickListener(new View.OnClickListener() {
       @Override
