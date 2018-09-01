@@ -1,6 +1,7 @@
 package it.chiarani.meteotrentinoapp.api;
 
 import android.app.AlertDialog;
+import android.app.Application;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -19,12 +20,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.chiarani.meteotrentinoapp.R;
+import it.chiarani.meteotrentinoapp.database.entity.WeatherForDayEntity;
+import it.chiarani.meteotrentinoapp.database.entity.WeatherForSlotEntity;
+import it.chiarani.meteotrentinoapp.database.entity.WeatherForWeekEntity;
+import it.chiarani.meteotrentinoapp.database.entity.WeatherReportEntity;
 import it.chiarani.meteotrentinoapp.helper.Converter;
 import it.chiarani.meteotrentinoapp.models.Locality;
 import it.chiarani.meteotrentinoapp.models.WeatherForDay;
 import it.chiarani.meteotrentinoapp.models.WeatherForSlot;
 import it.chiarani.meteotrentinoapp.models.WeatherForWeek;
 import it.chiarani.meteotrentinoapp.models.WeatherReport;
+import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
 
 public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
 
@@ -33,12 +39,14 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
   private String URL_API = "https://www.meteotrentino.it/protcivtn-meteo/api/front/previsioneOpenDataLocalita?localita=";
   Context mContext;
   AlertDialog builder;
-  public WeatherReport tmp_report;
+  public WeatherReportEntity tmp_report;
+  private Application _app;
   public API_weatherReport_response delegate = null;
   // #END REGION
 
-  public API_weatherReport(Context mContext, API_weatherReport_response res, String location) {
+  public API_weatherReport(Application app, Context mContext, API_weatherReport_response res, String location) {
     this.mContext = mContext;
+    this._app = app;
     this.delegate = res;
     URL_API += location;
   }
@@ -71,8 +79,9 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
    */
   @Override
   protected Integer doInBackground(String... s) {
-    tmp_report = new WeatherReport();
-    WeatherForWeek wfw = new WeatherForWeek();
+    WeatherReportRepository reportRepository = new WeatherReportRepository(_app);
+    tmp_report = new WeatherReportEntity();
+    WeatherForWeekEntity wfw = new WeatherForWeekEntity();
 
     HttpURLConnection connection = null;
     BufferedReader reader = null;
@@ -111,11 +120,11 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
 
       JSONArray arr_giorni = arr_previsione.getJSONObject(0).getJSONArray("giorni");  // giorni
 
-      List<WeatherForDay> a_wfd = new ArrayList<>();
+      List<WeatherForDayEntity> a_wfd = new ArrayList<>();
 
       // ciclo i giorni ( max 7 )
       for(int i = 0; i < arr_giorni.length(); i++) {
-        WeatherForDay wfd = new WeatherForDay();
+        WeatherForDayEntity wfd = new WeatherForDayEntity();
 
         wfd.setIdPrevisioneGiorno(arr_giorni.getJSONObject(i).optInt("idPrevisioneGiorno"));          // idPrevisioneGiorno
         wfd.setGiorno(arr_giorni.getJSONObject(i).optString("giorno"));                               // giorno
@@ -130,10 +139,10 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
 
         JSONArray arr_fasce = arr_giorni.getJSONObject(i).getJSONArray("fasce");                      // fasce
 
-        List<WeatherForSlot> a_wfs = new ArrayList<>();
+        List<WeatherForSlotEntity> a_wfs = new ArrayList<>();
         // ciclo le fasce ( max 4 )
         for(int j = 0; j < arr_fasce.length(); j++) {
-          WeatherForSlot wfs = new WeatherForSlot();
+          WeatherForSlotEntity wfs = new WeatherForSlotEntity();
 
           wfs.setIdPrevisioneFascia(arr_fasce.getJSONObject(j).optInt("idPrevisioneFascia"));         // idPrevisioneFascia
           wfs.setFascia(arr_fasce.getJSONObject(j).optString("fascia"));                              // fascia
@@ -176,6 +185,7 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
       // aggiungo la lista di settimana alla previsione
       tmp_report.setPrevisione(wfw);
 
+      reportRepository.insert(tmp_report);
       // --------------
       //      DONE
       // --------------
