@@ -14,4 +14,7 @@ public interface WeatherReportDao {
 
   @Insert
   void insert(WeatherReportEntity entity);
+
+  @Query("DELETE FROM weatherReport")
+  void deleteAll();
 }

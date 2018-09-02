@@ -33,4 +33,12 @@ public class WeatherReportRepository {
   public LiveData<List<WeatherReportEntity>> getAll() {
     return  weatherReportentity;
   }
+
+  public void deleteAll() {
+    // start on a new thread
+    Executors.newSingleThreadExecutor().execute(() -> {
+      weatherReportDao.deleteAll();
+    });
+  }
+
 }
