@@ -65,6 +65,14 @@ public class MainActivity extends SampleActivity implements API_weatherReport_re
     // log start activity
     Log.d( MAINACTIVITY_TAG, "Start mainactivity");
 
+    Intent intent = getIntent();
+
+    String user_location = "TRENTO";
+
+    if(intent.hasExtra("POSITION")) {
+      user_location = intent.getExtras().getString("POSITION");
+    }
+
     // use this setting to improve performance if you know that changes
     // in content do not change the layout size of the RecyclerView
     binding.activityMainRvWeatherSlot.setHasFixedSize(true);
@@ -74,7 +82,8 @@ public class MainActivity extends SampleActivity implements API_weatherReport_re
 
     launchIsFirstThread();
 
-    new API_weatherReport(getApplication(),this, this::processFinish, "TRENTO").execute();
+
+    new API_weatherReport(getApplication(),this, this::processFinish, user_location).execute();
 
     binding.activityMainBtnBollettino.setOnClickListener(new View.OnClickListener() {
       @Override
@@ -193,5 +202,10 @@ public class MainActivity extends SampleActivity implements API_weatherReport_re
       binding.activityMainRvWeatherSlot.setAdapter(adapter);            // Fasce
 
     });
+  }
+
+  @Override
+  public void onBackPressed() {
+    // do noting
   }
 }
