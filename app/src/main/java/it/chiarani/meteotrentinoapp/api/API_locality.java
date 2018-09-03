@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -30,6 +31,7 @@ public class API_locality extends AsyncTask<String, Integer, Integer>{
   private final static String URL_API = "https://www.meteotrentino.it/protcivtn-meteo/api/front/localitaOpenData";
   Context mContext;
   AlertDialog builder;
+  AlertDialog.Builder alert;
   Application _app;
   public API_locality_response delegate = null;
   // #END REGION
@@ -51,7 +53,7 @@ public class API_locality extends AsyncTask<String, Integer, Integer>{
   @Override
   protected void onPreExecute() {
     super.onPreExecute();
-    AlertDialog.Builder alert = new AlertDialog.Builder(mContext);
+    alert = new AlertDialog.Builder(mContext);
     alert.setMessage(mContext.getResources().getString(R.string.API_locality_alert)).create();
     alert.setCancelable(false);
     builder = alert.show();
@@ -74,12 +76,11 @@ public class API_locality extends AsyncTask<String, Integer, Integer>{
   @Override
   protected Integer doInBackground(String... s) {
     LocalityRepository repository = new LocalityRepository(_app);
-
     HttpURLConnection connection = null;
     BufferedReader reader = null;
 
     try {
-      Thread.sleep(2000);
+
       URL url = new URL(URL_API);
       connection = (HttpURLConnection) url.openConnection();
       connection.connect();
@@ -90,7 +91,7 @@ public class API_locality extends AsyncTask<String, Integer, Integer>{
 
       StringBuffer buffer = new StringBuffer();
       String line = "";
-
+      publishProgress(20);
       while ((line = reader.readLine()) != null) {
         buffer.append(line + "\n");
       }
@@ -100,6 +101,7 @@ public class API_locality extends AsyncTask<String, Integer, Integer>{
       JSONArray arr = ob.getJSONArray("localita");
 
       for (int i = 0; i < arr.length(); i++) {
+        publishProgress(i);
         String locality = arr.getJSONObject(i).getString("localita");
         String place = arr.getJSONObject(i).getString("comune");
         int quota = Integer.parseInt(arr.getJSONObject(i).getString("quota"));
@@ -135,4 +137,9 @@ public class API_locality extends AsyncTask<String, Integer, Integer>{
     return 1;
   }
 
+  @Override
+  protected void onProgressUpdate(Integer... values) {
+    TextView messageView = (TextView)builder.findViewById(android.R.id.message);
+    messageView.setText("Ottengo le località.. "+ values[0] +"/539");
+  }
 }

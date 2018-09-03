@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -41,6 +42,7 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
   AlertDialog builder;
   public WeatherReportEntity tmp_report;
   private Application _app;
+  AlertDialog.Builder alert;
   public API_weatherReport_response delegate = null;
   // #END REGION
 
@@ -57,8 +59,8 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
   @Override
   protected void onPreExecute() {
     super.onPreExecute();
-    AlertDialog.Builder alert = new AlertDialog.Builder(mContext);
-    alert.setMessage(mContext.getResources().getString(R.string.API_weather_alert)).create();
+    alert = new AlertDialog.Builder(mContext);
+    alert.setMessage("Ottengo i dati meteo.. 0%").create();
     alert.setCancelable(false);
     builder = alert.show();
   }
@@ -80,6 +82,7 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
   @Override
   protected Integer doInBackground(String... s) {
     WeatherReportRepository reportRepository = new WeatherReportRepository(_app);
+    publishProgress(1);
     tmp_report = new WeatherReportEntity();
     WeatherForWeekEntity wfw = new WeatherForWeekEntity();
 
@@ -87,7 +90,7 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
     BufferedReader reader = null;
 
     try {
-      Thread.sleep(2000);
+      publishProgress(2);
       URL url = new URL(URL_API);
       connection = (HttpURLConnection) url.openConnection();
       connection.connect();
@@ -124,6 +127,7 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
 
       // ciclo i giorni ( max 7 )
       for(int i = 0; i < arr_giorni.length(); i++) {
+        publishProgress(i*10);
         WeatherForDayEntity wfd = new WeatherForDayEntity();
 
         wfd.setIdPrevisioneGiorno(arr_giorni.getJSONObject(i).optInt("idPrevisioneGiorno"));          // idPrevisioneGiorno
@@ -218,5 +222,11 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
     }
     Log.d(API_LOCALITY_TAG, "DATI locality Correttamente scaricati");
     return -1;
+  }
+
+  @Override
+  protected void onProgressUpdate(Integer... values) {
+    TextView messageView = (TextView)builder.findViewById(android.R.id.message);
+    messageView.setText("Ottengo i dati meteo.. "+ values[0] +"%");
   }
 }

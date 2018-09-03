@@ -84,7 +84,7 @@ public class WeatherReportAdapter extends RecyclerView.Adapter<WeatherReportAdap
     holder.txt_vento_valle.setText("Intensità vento in valle: " +wfs.getDescVentoIntValle() + "");
     holder.txt_vento_quota_dir.setText("Direzione vento in quota: " +wfs.getDescVentoIntQuota() + "");
     holder.txt_vento_valle_dir.setText("Direzione vento in valle: " +wfs.getDescVentoIntValle() + "");
-    holder.txt_zero_termico.setText("Zero termico :" +wfs.getZeroTermico() + "");
+    holder.txt_zero_termico.setText("Zero termico: " +wfs.getZeroTermico() + "m");
   }
 
   @Override

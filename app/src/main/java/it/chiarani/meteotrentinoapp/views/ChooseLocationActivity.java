@@ -57,7 +57,8 @@ public class ChooseLocationActivity extends SampleActivity implements API_locali
 
         if(binding.chooseLocationAutoCompleteTxt.getText().toString().isEmpty()
             || binding.chooseLocationAutoCompleteTxt.getText().toString() == null) {
-          Toast.makeText(v.getContext(), "Inserire una località!", Toast.LENGTH_LONG);
+
+          Toast.makeText(v.getContext(), "Inserire una località per continuare!", Toast.LENGTH_LONG).show();
           return;
         }
 

@@ -64,13 +64,18 @@ public class MainActivity extends SampleActivity implements API_weatherReport_re
 
     // log start activity
     Log.d( MAINACTIVITY_TAG, "Start mainactivity");
+    launchIsFirstThread();
 
     Intent intent = getIntent();
-
     String user_location = "TRENTO";
 
     if(intent.hasExtra("POSITION")) {
       user_location = intent.getExtras().getString("POSITION");
+    }
+    else
+    {
+      Intent myIntent = new Intent(MainActivity.this, ChooseLocationActivity.class);
+      startActivity(myIntent);
     }
 
     // use this setting to improve performance if you know that changes
@@ -80,7 +85,7 @@ public class MainActivity extends SampleActivity implements API_weatherReport_re
     LinearLayoutManager horizontalLayoutManagaer = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
     binding.activityMainRvWeatherSlot.setLayoutManager(horizontalLayoutManagaer);
 
-    launchIsFirstThread();
+
 
 
     new API_weatherReport(getApplication(),this, this::processFinish, user_location).execute();
