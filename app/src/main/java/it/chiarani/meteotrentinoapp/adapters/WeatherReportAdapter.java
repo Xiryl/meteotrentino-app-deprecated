@@ -73,18 +73,18 @@ public class WeatherReportAdapter extends RecyclerView.Adapter<WeatherReportAdap
     WeatherForSlotEntity wfs = _report.getPrevisione().getGiorni().get(0).getFasce().get(position);
 
     holder.txt_time_slot.setText(wfs.getFasciaPer() + ": " + wfs.getFasciaOre());
-    holder.txt_tmin.setText("Temperatura minima:" + _report.getPrevisione().getGiorni().get(0).gettMinGiorno() + "°");
-    holder.txt_tmax.setText("Temperatura massima:" + _report.getPrevisione().getGiorni().get(0).gettMaxGiorno() + "°");
-    holder.txt_humidity.setText("Umidità:" + "99 %");
-    holder.txt_pressure.setText("Pressione:" +"99 hPa");
-    holder.txt_prob_prec.setText("Probabilità precipitazioni:" +wfs.getDescPrecProb() + "");
-    holder.txt_intensita_prec.setText("Intensità precipitazioni:" +wfs.getDescPrecInten() + "");
-    holder.txt_prob_temp.setText("Probabilità Temporali:" +wfs.getDescTempProb() + "");
-    holder.txt_vento_quota.setText("Intensità vento in quota:" +wfs.getDescVentoIntQuota() + "");
-    holder.txt_vento_valle.setText("Intensità vento in valle:" +wfs.getDescVentoIntValle() + "");
-    holder.txt_vento_quota_dir.setText("Direzione vento in quota:" +wfs.getDescVentoIntQuota() + "");
-    holder.txt_vento_valle_dir.setText("Direzione vento in valle:" +wfs.getDescVentoIntValle() + "");
-    holder.txt_zero_termico.setText("Zero termico:" +wfs.getZeroTermico() + "");
+    holder.txt_tmin.setText("Temperatura minima: " + _report.getPrevisione().getGiorni().get(0).gettMinGiorno() + "°");
+    holder.txt_tmax.setText("Temperatura massima: " + _report.getPrevisione().getGiorni().get(0).gettMaxGiorno() + "°");
+    holder.txt_humidity.setText("Umidità: " + "99 %");
+    holder.txt_pressure.setText("Pressione: " +"99 hPa");
+    holder.txt_prob_prec.setText("Probabilità precipitazioni: " +wfs.getDescPrecProb() + "");
+    holder.txt_intensita_prec.setText("Intensità precipitazioni: " +wfs.getDescPrecInten() + "");
+    holder.txt_prob_temp.setText("Probabilità Temporali: " +wfs.getDescTempProb() + "");
+    holder.txt_vento_quota.setText("Intensità vento in quota: " +wfs.getDescVentoIntQuota() + "");
+    holder.txt_vento_valle.setText("Intensità vento in valle: " +wfs.getDescVentoIntValle() + "");
+    holder.txt_vento_quota_dir.setText("Direzione vento in quota: " +wfs.getDescVentoIntQuota() + "");
+    holder.txt_vento_valle_dir.setText("Direzione vento in valle: " +wfs.getDescVentoIntValle() + "");
+    holder.txt_zero_termico.setText("Zero termico :" +wfs.getZeroTermico() + "");
   }
 
   @Override
