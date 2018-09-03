@@ -65,3 +65,5 @@ fastlane/test_output
 fastlane/readme.md
 
 UI/\.DS_Store
+
+UI/ICONS/\.DS_Store
