@@ -2,157 +2,155 @@
 <layout>
   <data/>
 
-  <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+  <android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light"
+    android:fitsSystemWindows="true"
+    >
+    <android.support.design.widget.AppBarLayout
+      android:id="@+id/main_appbar"
+      android:layout_width="match_parent"
+      android:layout_height="250dp"
+      android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+      android:fitsSystemWindows="true"
+      >
 
-        <RelativeLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent">
-          <LinearLayout
-            android:layout_width="match_parent"
+      <android.support.design.widget.CollapsingToolbarLayout
+        android:id="@+id/main_collapsing"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed"
+        android:fitsSystemWindows="true"
+        app:contentScrim="?attr/colorPrimary"
+        app:expandedTitleMarginStart="48dp"
+        app:expandedTitleMarginEnd="64dp"
+        android:background="#303A54"
+        >
+
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Bollettino Metereologico"
+          android:textColor="@color/white"
+          android:layout_marginTop="80dp"
+          android:textStyle="bold"
+          android:layout_gravity="center_horizontal"
+          android:textSize="20dp"/>
+
+        <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_horizontal"
+          android:layout_marginTop="110dp"
+          android:orientation="horizontal">
+
+          <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_position"
+            />
+
+          <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="#303A54"
-            android:scrollbars="vertical">
+            android:layout_marginLeft="10dp"
+            android:text="Arco"
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
+            android:textStyle="italic"
+            android:layout_gravity="center_horizontal"
+            android:textSize="15dp"/>
+
+        </LinearLayout>
+
+        <me.biubiubiu.justifytext.library.JustifyTextView
+          android:layout_width="wrap_content"
+          android:gravity="center_horizontal"
+          android:layout_marginTop="145dp"
+          android:layout_marginLeft="15dp"
+          android:layout_marginRight="15dp"
+          android:layout_height="wrap_content"
+          android:textColor="#F7F7F7"
+          android:text="Previsione: parzialmente soleggiato con temporanei annuvolamenti localmente associati a rovesci e temporali anche intensi; temperature minime stazionarie, massime in lieve calo. Venti deboli o moderati a regime di brezza con locali rinforzi"
+          />
+
+        <android.support.v7.widget.Toolbar
+          android:id="@+id/main_toolbar"
+          android:layout_width="match_parent"
+          android:layout_height="?attr/actionBarSize"
+          app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+          app:layout_collapseMode="pin"
+          >
+          <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:orientation="horizontal">
+
+            <ImageView
+              android:layout_width="25dp"
+              android:layout_height="25dp"
+              android:src="@drawable/ic_thermo_white"
+              />
 
             <TextView
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:text="Bollettino Metereologico"
+              android:text="Temperature tra 14° e 40°"
               android:textColor="@color/white"
-              android:layout_marginTop="30dp"
               android:textStyle="bold"
+              android:layout_marginLeft="10dp"
+              android:layout_marginTop="10dp"
               android:layout_gravity="center_horizontal"
-              android:textSize="20dp"/>
-
-            <LinearLayout
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_gravity="center"
-              android:layout_marginTop="15dp"
-              android:orientation="horizontal">
-
-              <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_position"
-                />
-
-              <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Arco"
-                android:textColor="@color/white"
-                android:layout_marginTop="10dp"
-                android:textStyle="italic"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"/>
-
-            </LinearLayout>
-
-            <me.biubiubiu.justifytext.library.JustifyTextView
-              android:layout_width="wrap_content"
-              android:gravity="center"
-              android:layout_margin="41dp"
-              android:layout_height="wrap_content"
-              android:textColor="#F7F7F7"
-              android:text="Previsione: parzialmente soleggiato con temporanei annuvolamenti localmente associati a rovesci e temporali anche intensi; temperature minime stazionarie, massime in lieve calo. Venti deboli o moderati a regime di brezza con locali rinforzi"
-              />
+              android:textSize="15dp"/>
 
           </LinearLayout>
 
           <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_marginTop="270dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="#ffffff"
-            android:scrollbars="vertical">
-            <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="horizontal">
+
+            <ImageView
+              android:layout_width="25dp"
+              android:layout_height="25dp"
+              android:src="@drawable/ic_warning"
+              />
+
+            <TextView
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:layout_marginTop="20dp"
-              android:layout_marginLeft="20dp"
-              android:orientation="horizontal">
-
-              <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/ic_today"
-                />
-
-              <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cielo: Nuvoloso"
-                android:textColor="#4E5569"
-                android:textStyle="bold"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
+              android:text="Attenzione: caldo intenso"
+              android:textColor="#EC3323"
+              android:textStyle="bold"
+              android:layout_marginLeft="10dp"
               android:layout_marginTop="10dp"
-              android:layout_marginLeft="20dp"
-              android:orientation="horizontal">
+              android:layout_gravity="center_horizontal"
+              android:textSize="15dp"/>
 
-              <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/ic_thermo"
-                />
-
-              <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Temperature tra 14° e 40°"
-                android:textColor="#4E5569"
-                android:textStyle="bold"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_marginTop="10dp"
-              android:layout_marginLeft="20dp"
-              android:orientation="horizontal">
-
-              <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/ic_warning"
-                />
-
-              <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Attenzione: caldo intenso"
-                android:textColor="#EC3323"
-                android:textStyle="bold"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"/>
-
-            </LinearLayout>
-
-            <android.support.v7.widget.RecyclerView
-              android:id="@+id/weather_report_rv_weather"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"/>
           </LinearLayout>
-        </RelativeLayout>
-  </RelativeLayout>
+        </android.support.v7.widget.Toolbar>
+      </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      app:layout_behavior="@string/appbar_scrolling_view_behavior"
+      >
+
+      <android.support.v7.widget.RecyclerView
+        android:id="@+id/weather_report_rv_weather"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    </android.support.v4.widget.NestedScrollView>
+
+  </android.support.design.widget.CoordinatorLayout>
 </layout>
