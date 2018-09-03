@@ -1,5 +1,15 @@
 package it.chiarani.meteotrentinoapp.helper;
 
-public class WeatherTypes {
-  public static final String CLOUDY = "CLOUDY";
+public enum WeatherTypes {
+  SOLEGGIATO_CON_PIOGGIA,
+  SOLEGGIATO_CON_PIOGGIA_E_NEVE,
+  NEVICATA,
+  SOLE,
+  SOLEGGIATO,
+  COPERTO,
+  COPERTO_CON_PIOGGIA,
+  COPERTO_CON_PIOGGIA_ABBONDANTE,
+  COPERTO_CON_PIOGGIA_E_NEVE,
+  TEMPORALE,
+  UNDEFINED
 }
