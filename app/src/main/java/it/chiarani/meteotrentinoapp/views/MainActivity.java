@@ -135,6 +135,9 @@ public class MainActivity extends SampleActivity implements API_weatherReport_re
     t.start();
   }
 
+  /**
+   * Called after API termination
+   */
   @Override
   public void processFinish() {
     WeatherReportRepository repository = new WeatherReportRepository(getApplication());

@@ -70,9 +70,11 @@ public class ChooseLocationActivity extends SampleActivity implements API_locali
     });
   }
 
+  /**
+   * Called after API termination
+   */
   @Override
   public void processFinish() {
-
     LocalityRepository repository = new LocalityRepository(this.getApplication());
 
     repository.getAll().observe(this, entries -> {

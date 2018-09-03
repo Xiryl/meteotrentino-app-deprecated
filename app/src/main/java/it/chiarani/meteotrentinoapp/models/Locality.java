@@ -1,12 +1,7 @@
 package it.chiarani.meteotrentinoapp.models;
 
 /**
- * Locality class:
-     "localita": "ALA",
-     "comune": "ALA",
-     "quota": 177,
-     "latitudine": "45.757142",
-     "longitudine": "11.004772"
+ * Describe the locality
  */
 
 public interface Locality {

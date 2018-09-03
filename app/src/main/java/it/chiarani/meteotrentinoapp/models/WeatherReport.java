@@ -2,6 +2,10 @@ package it.chiarani.meteotrentinoapp.models;
 
 import it.chiarani.meteotrentinoapp.database.entity.WeatherForWeekEntity;
 
+/**
+ * Describe the weather report
+ */
+
 public interface WeatherReport {
 
   int getIdWeatherReport();

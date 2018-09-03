@@ -2,6 +2,9 @@ package it.chiarani.meteotrentinoapp.models;
 import java.util.List;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherForSlotEntity;
 
+/**
+ * Describe the weather report for the single day
+ */
 public interface WeatherForDay {
 
   int getIdPrevisioneGiorno();

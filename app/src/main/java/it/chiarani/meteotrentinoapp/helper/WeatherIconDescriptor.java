@@ -4,9 +4,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Create general description for the weather icon id
+ */
+
 public class WeatherIconDescriptor {
   public  WeatherIconDescriptor() {}
 
+  /**
+   * Possibile id icons grouped by types
+   */
   private static List<Integer> soleggiatoConPioggia      = new ArrayList<Integer>(Arrays.asList(112, 21, 121));
   private static List<Integer> soleggiatoConPioggiaNeve  = new ArrayList<Integer>(Arrays.asList(14, 114, 117, 17, 20, 120, 122, 22, 23, 123, 124, 24));
   private static List<Integer> nevicata      			       = new ArrayList<Integer>(Arrays.asList(15, 115, 166, 16, 6, 106, 107, 7, 108, 8));
@@ -18,6 +25,9 @@ public class WeatherIconDescriptor {
   private static List<Integer> copertoPioggiaNeve        = new ArrayList<Integer>(Arrays.asList(5, 105, 109, 9, 110, 10));
   private static List<Integer> temporale				         = new ArrayList<Integer>(Arrays.asList(821));
 
+  /**
+   * Return enum description for the param id iconid
+   */
   public static WeatherTypes getWeatherType(int idIcon) {
     if(soleggiatoConPioggia.contains(idIcon))
       return WeatherTypes.SOLEGGIATO_CON_PIOGGIA;

@@ -1,5 +1,9 @@
 package it.chiarani.meteotrentinoapp.models;
 
+/**
+ * Describe the weather report for the single time-slot
+ */
+
 public interface WeatherForSlot {
 
   int getIdPrevisioneFascia();

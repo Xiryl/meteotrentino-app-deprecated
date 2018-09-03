@@ -2,6 +2,10 @@ package it.chiarani.meteotrentinoapp.models;
 import java.util.List;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherForDayEntity;
 
+/**
+ * Describe the weather report for the single week
+ */
+
 public interface WeatherForWeek {
 
   String getLocalita();

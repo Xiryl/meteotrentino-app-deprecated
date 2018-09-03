@@ -15,6 +15,9 @@ public class Converter {
 
   }
 
+  /**
+   * Get icon id from url
+   */
   public static int convertIconUriToInt(String uri) {
     int icon = -1;
 

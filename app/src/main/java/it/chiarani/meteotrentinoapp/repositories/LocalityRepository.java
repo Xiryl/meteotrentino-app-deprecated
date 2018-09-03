@@ -24,7 +24,6 @@ public class LocalityRepository {
   /**
    * Constructor
    */
-
   public LocalityRepository(Application app) {
     AppDatabase db = Room.databaseBuilder(app.getApplicationContext(), AppDatabase.class, "appDatabase").build();
     localityDao    = db.localityDao();
