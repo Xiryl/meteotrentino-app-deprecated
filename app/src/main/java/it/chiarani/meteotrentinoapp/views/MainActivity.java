@@ -27,11 +27,18 @@ import it.chiarani.meteotrentinoapp.api.API_locality_response;
 import it.chiarani.meteotrentinoapp.api.API_weatherReport;
 import it.chiarani.meteotrentinoapp.api.API_weatherReport_response;
 import it.chiarani.meteotrentinoapp.database.entity.LocalityEntity;
+import it.chiarani.meteotrentinoapp.database.entity.WeatherForDayEntity;
+import it.chiarani.meteotrentinoapp.database.entity.WeatherForWeekEntity;
+import it.chiarani.meteotrentinoapp.database.entity.WeatherReportEntity;
 import it.chiarani.meteotrentinoapp.databinding.ActivityMainBinding;
 import it.chiarani.meteotrentinoapp.helper.Converter;
+import it.chiarani.meteotrentinoapp.helper.WeatherIconDescriptor;
+import it.chiarani.meteotrentinoapp.helper.WeatherTypes;
 import it.chiarani.meteotrentinoapp.models.Locality;
+import it.chiarani.meteotrentinoapp.models.WeatherForDay;
 import it.chiarani.meteotrentinoapp.models.WeatherReport;
 import it.chiarani.meteotrentinoapp.repositories.LocalityRepository;
+import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
 
 public class MainActivity extends SampleActivity implements API_weatherReport_response{
 
@@ -65,10 +72,6 @@ public class MainActivity extends SampleActivity implements API_weatherReport_re
     LinearLayoutManager horizontalLayoutManagaer = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
     binding.activityMainRvWeatherSlot.setLayoutManager(horizontalLayoutManagaer);
 
-    // specify an adapter (see also next example)
-    // String[] tmp = {" Fascia oraria: 0-6 ", " Fascia oraria: 6-12 ", " Fascia oraria: 12-18 ", " Fascia oraria: 8-24 "};
-
-
     launchIsFirstThread();
 
     new API_weatherReport(getApplication(),this, this::processFinish, "TRENTO").execute();
@@ -80,7 +83,6 @@ public class MainActivity extends SampleActivity implements API_weatherReport_re
         startActivity(myIntent);
       }
     });
-
   }
 
   private void launchIsFirstThread() {
@@ -120,24 +122,75 @@ public class MainActivity extends SampleActivity implements API_weatherReport_re
   }
 
   @Override
-  public void processFinish(WeatherReport report) {
-    _report = report;
+  public void processFinish() {
+    WeatherReportRepository repository = new WeatherReportRepository(getApplication());
 
-    WeatherSlotAdapter adapter = new WeatherSlotAdapter(report);
-    binding.activityMainRvWeatherSlot.setAdapter(adapter);
-    //binding.activityMainTxtPosition.setText(report.getPrevisione().getLocalita());
-    binding.activityMainTxtTemperature.setText(report.getPrevisione().getGiorni().get(0).gettMaxGiorno() + "°");
-    binding.activityMainTxtPrev.setText(report.getPrevisione().getGiorni().get(0).getDescIcona());
-    binding.activityMainTxtAllerta.setText(report.getPrevisione().getGiorni().get(0).getDescIconaAllerte());
-   // binding.activityMainTxtAllerta.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_wind, 0, 0, 0);
-
-
-    LocalityRepository repository = new LocalityRepository(getApplication());
-
-    List<Locality> x = new ArrayList<>();
     repository.getAll().observe(this, entries -> {
-      binding.activityMainTxtPosition.setText(entries.get(0).getLoc());
-      Toast.makeText(this, entries.get(0).getLoc(), Toast.LENGTH_SHORT).show();
+
+      WeatherReportEntity wfr  = entries.get(entries.size()-1);
+      WeatherForWeekEntity wfw = wfr.getPrevisione();
+      WeatherForDayEntity wfd  = wfw.getGiorni().get(0);
+
+      binding.activityMainTxtPosition.setText(wfw.getLocalita());            // Locality
+      binding.activityMainTxtTemperature.setText(wfd.gettMaxGiorno() + "°");  // Actual temperature
+      binding.activityMainTxtPrev.setText(wfd.getDescIcona());               // Previsione
+
+      if( wfd.getDescIconaAllerte().isEmpty() || wfd.getDescIconaAllerte() == null ) {
+        binding.activityMainTxtAllerta.setText(" ");                    // Allerta
+      }
+      else
+      {
+        binding.activityMainTxtAllerta.setText(wfd.getDescIconaAllerte());
+        //binding.activityMainTxtAllerta.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_wind, 0, 0, 0);
+      }
+
+      if(WeatherIconDescriptor.getWeatherType(wfd.getIcona()).equals(WeatherTypes.COPERTO)) {
+        binding.activityMainRl.setBackgroundResource(R.drawable.bg_day);
+        binding.activityMainImgWeather.setImageResource(R.drawable.ic_w_cloud);
+      }
+      else if(WeatherIconDescriptor.getWeatherType(wfd.getIcona()).equals(WeatherTypes.COPERTO_CON_PIOGGIA)) {
+        binding.activityMainRl.setBackgroundResource(R.drawable.bg_day_cloud);
+        binding.activityMainImgWeather.setImageResource(R.drawable.ic_w_light_rain);
+      }
+      else if(WeatherIconDescriptor.getWeatherType(wfd.getIcona()).equals(WeatherTypes.COPERTO_CON_PIOGGIA_ABBONDANTE)) {
+        binding.activityMainRl.setBackgroundResource(R.drawable.bg_day_cloud);
+        binding.activityMainImgWeather.setImageResource(R.drawable.ic_w_rain);
+      }
+      else if(WeatherIconDescriptor.getWeatherType(wfd.getIcona()).equals(WeatherTypes.COPERTO_CON_PIOGGIA_E_NEVE)) {
+        binding.activityMainRl.setBackgroundResource(R.drawable.bg_day_cloud);
+        binding.activityMainImgWeather.setImageResource(R.drawable.ic_w_snow_rain);
+      }
+      else if(WeatherIconDescriptor.getWeatherType(wfd.getIcona()).equals(WeatherTypes.NEVICATA)) {
+        binding.activityMainRl.setBackgroundResource(R.drawable.bg_day_cloud);
+        binding.activityMainImgWeather.setImageResource(R.drawable.ic_w_sun);
+      }
+      else if(WeatherIconDescriptor.getWeatherType(wfd.getIcona()).equals(WeatherTypes.SOLE)) {
+        binding.activityMainRl.setBackgroundResource(R.drawable.bg_day);
+        binding.activityMainImgWeather.setImageResource(R.drawable.ic_w_sun);
+      }
+      else if(WeatherIconDescriptor.getWeatherType(wfd.getIcona()).equals(WeatherTypes.SOLEGGIATO)) {
+        binding.activityMainRl.setBackgroundResource(R.drawable.bg_day);
+        binding.activityMainImgWeather.setImageResource(R.drawable.ic_w_sun_cloud);
+      }
+      else if(WeatherIconDescriptor.getWeatherType(wfd.getIcona()).equals(WeatherTypes.SOLEGGIATO_CON_PIOGGIA)) {
+        binding.activityMainRl.setBackgroundResource(R.drawable.bg_day_cloud);
+        binding.activityMainImgWeather.setImageResource(R.drawable.ic_w_sun_cloud_rain);
+      }
+      else if(WeatherIconDescriptor.getWeatherType(wfd.getIcona()).equals(WeatherTypes.SOLEGGIATO_CON_PIOGGIA_E_NEVE)) {
+        binding.activityMainRl.setBackgroundResource(R.drawable.bg_day_cloud);
+        binding.activityMainImgWeather.setImageResource(R.drawable.ic_w_sun_cloud_rain_snow);
+      }
+      else if(WeatherIconDescriptor.getWeatherType(wfd.getIcona()).equals(WeatherTypes.TEMPORALE)) {
+        binding.activityMainRl.setBackgroundResource(R.drawable.bg_day_cloud);
+        binding.activityMainImgWeather.setImageResource(R.drawable.ic_w_thunderstorm);
+      }
+      else if(WeatherIconDescriptor.getWeatherType(wfd.getIcona()).equals(WeatherTypes.UNDEFINED)) {
+        binding.activityMainRl.setBackgroundResource(R.drawable.bg_day);
+        binding.activityMainImgWeather.setImageResource(R.drawable.ic_w_sun_cloud);
+      }
+
+      WeatherSlotAdapter adapter = new WeatherSlotAdapter(wfr);
+      binding.activityMainRvWeatherSlot.setAdapter(adapter);            // Fasce
 
     });
   }
