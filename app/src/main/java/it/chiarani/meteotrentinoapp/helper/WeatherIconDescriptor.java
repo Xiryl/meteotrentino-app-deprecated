@@ -18,10 +18,28 @@ public class WeatherIconDescriptor {
   private static List<Integer> copertoPioggiaNeve        = new ArrayList<Integer>(Arrays.asList(5, 105, 109, 9, 110, 10));
   private static List<Integer> temporale				         = new ArrayList<Integer>(Arrays.asList(821));
 
-  public static String getWeatherType(int idIcon) {
-    if(copertoPioggia.contains(idIcon))
-      return WeatherTypes.CLOUDY;
+  public static WeatherTypes getWeatherType(int idIcon) {
+    if(soleggiatoConPioggia.contains(idIcon))
+      return WeatherTypes.SOLEGGIATO_CON_PIOGGIA;
+    else if(soleggiatoConPioggiaNeve.contains(idIcon))
+      return WeatherTypes.SOLEGGIATO_CON_PIOGGIA_E_NEVE;
+    else if(nevicata.contains(idIcon))
+      return WeatherTypes.NEVICATA;
+    else if(sole.contains(idIcon))
+      return WeatherTypes.SOLE;
+    else if(soleggiato.contains(idIcon))
+      return WeatherTypes.SOLEGGIATO;
+    else if(coperto.contains(idIcon))
+      return WeatherTypes.COPERTO;
+    else if(copertoPioggia.contains(idIcon))
+      return WeatherTypes.COPERTO_CON_PIOGGIA;
+    else if(copertoPioggiaAbbondante.contains(idIcon))
+      return WeatherTypes.COPERTO_CON_PIOGGIA_ABBONDANTE;
+    else if(copertoPioggiaNeve.contains(idIcon))
+      return WeatherTypes.SOLEGGIATO_CON_PIOGGIA_E_NEVE;
+    else if(temporale.contains(idIcon))
+      return WeatherTypes.TEMPORALE;
     else
-      return "";
+      return WeatherTypes.UNDEFINED;
   }
 }
