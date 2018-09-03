@@ -54,6 +54,7 @@
             />
 
           <TextView
+            android:id="@+id/activity_weather_report_txt_position"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -67,6 +68,7 @@
         </LinearLayout>
 
         <me.biubiubiu.justifytext.library.JustifyTextView
+          android:id="@+id/activity_weather_report_txt_previsione"
           android:layout_width="wrap_content"
           android:gravity="center_horizontal"
           android:layout_marginTop="145dp"
@@ -98,6 +100,7 @@
               />
 
             <TextView
+              android:id="@+id/activity_weather_report_txt_temperature"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:text="Temperature tra 14° e 40°"
@@ -125,6 +128,7 @@
               />
 
             <TextView
+              android:id="@+id/activity_weather_report_txt_allerta"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:text="Attenzione: caldo intenso"
