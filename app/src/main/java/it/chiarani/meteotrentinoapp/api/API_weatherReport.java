@@ -70,7 +70,7 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
   @Override
   protected void onPostExecute(Integer integer) {
     builder.dismiss();
-    delegate.processFinish(tmp_report);
+    delegate.processFinish();
   }
 
   /**

@@ -7,13 +7,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import it.chiarani.meteotrentinoapp.R;
+import it.chiarani.meteotrentinoapp.database.entity.WeatherReportEntity;
 import it.chiarani.meteotrentinoapp.models.WeatherReport;
 
 public class WeatherSlotAdapter extends RecyclerView.Adapter<WeatherSlotAdapter.ViewHolder> {
 
-  WeatherReport _report;
+  WeatherReportEntity _report;
 
-  public WeatherSlotAdapter(WeatherReport report) {
+  public WeatherSlotAdapter(WeatherReportEntity report) {
     _report = report;
   }
 
