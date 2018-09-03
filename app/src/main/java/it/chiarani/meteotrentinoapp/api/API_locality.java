@@ -64,6 +64,7 @@ public class API_locality extends AsyncTask<String, Integer, Integer>{
   @Override
   protected void onPostExecute(Integer integer) {
     builder.dismiss();
+    delegate.processFinish();
   }
 
   /**
@@ -107,7 +108,6 @@ public class API_locality extends AsyncTask<String, Integer, Integer>{
 
         repository.insert(new LocalityEntity(locality, place, quota, latitudine, longitudine));
       }
-
     } catch (MalformedURLException e) {
       e.printStackTrace();
       Log.e(API_LOCALITY_TAG, "Errore MalformedURLException: "+  e.toString());

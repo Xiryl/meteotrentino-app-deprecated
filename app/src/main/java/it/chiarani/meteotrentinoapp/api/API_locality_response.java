@@ -9,5 +9,5 @@ import it.chiarani.meteotrentinoapp.models.Locality;
  */
 
 public interface API_locality_response {
-  void processFinish(ArrayList<Locality> output);
+  void processFinish();
 }

@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.api.API_locality;
@@ -22,7 +23,7 @@ public class ChooseLocationActivity extends SampleActivity implements API_locali
 
   private static final String CHOOSELOCATIONACTIVITY_TAG = "CHOOSELOCATIONACTIVITY";
   ActivityChooseLocationBinding binding;
-  public ArrayList<Locality> mylocs;
+  public ArrayList<LocalityEntity> mylocs;
 
   @Override
   protected int getLayoutID() {
@@ -40,40 +41,54 @@ public class ChooseLocationActivity extends SampleActivity implements API_locali
 
     Log.d( CHOOSELOCATIONACTIVITY_TAG, "Start choose location actiity");
 
-    // Launch async task for get locality
-    new API_locality(getApplication(), this, this::processFinish).execute();
+    LocalityRepository repository = new LocalityRepository(this.getApplication());
+
+    repository.getAll().observe(this, entries -> {
+      if(entries.size() == 0) {
+        // Launch async task for get locality
+        new API_locality(getApplication(), this, this::processFinish).execute();
+      }
+    });
 
     // set next button handler
     binding.chooseLocationBtnNext.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
 
+        if(binding.chooseLocationAutoCompleteTxt.getText().toString().isEmpty()
+            || binding.chooseLocationAutoCompleteTxt.getText().toString() == null) {
+          Toast.makeText(v.getContext(), "Inserire una località!", Toast.LENGTH_LONG);
+          return;
+        }
+
         // launch main activity
         Intent myIntent = new Intent(ChooseLocationActivity.this, MainActivity.class);
+        myIntent.putExtra("POSITION", binding.chooseLocationAutoCompleteTxt.getText().toString());
         startActivity(myIntent);
       }
     });
   }
 
   @Override
-  public void processFinish(ArrayList<Locality> output) {
-    mylocs = output;
+  public void processFinish() {
 
-    String[] all_locs = listTostring(output);
+    LocalityRepository repository = new LocalityRepository(this.getApplication());
 
-    if(all_locs == null) {
-      // TODO: place in @String
-      Toast.makeText(this, "Impossibile scaricare le località. riprova.", Toast.LENGTH_LONG).show();
-      return;
-    }
+    repository.getAll().observe(this, entries -> {
+      String[] all_locs = listTostring(entries);
 
-    // create adapter with all localities
-    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, all_locs);
+      if(all_locs == null) {
+        // TODO: place in @String
+        Toast.makeText(this, "Impossibile scaricare le località. riprova.", Toast.LENGTH_LONG).show();
+        return;
+      }
 
-    // set adapter to autocomplete text
-    binding.chooseLocationAutoCompleteTxt.setAdapter(adapter);
+      // create adapter with all localities
+      ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, all_locs);
 
-
+      // set adapter to autocomplete text
+      binding.chooseLocationAutoCompleteTxt.setAdapter(adapter);
+    });
   }
 
   /**
@@ -81,7 +96,7 @@ public class ChooseLocationActivity extends SampleActivity implements API_locali
    * @param data ArrayList to convert
    * @return String[] with locality
    */
-  private String[] listTostring(ArrayList<Locality> data) {
+  private String[] listTostring(List<LocalityEntity> data) {
     if(data.isEmpty())
       return null;
 
