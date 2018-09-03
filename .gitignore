@@ -67,3 +67,5 @@ fastlane/readme.md
 UI/\.DS_Store
 
 UI/ICONS/\.DS_Store
+
+app/src/main/java/it/chiarani/meteotrentinoapp/configuration/config\.java
