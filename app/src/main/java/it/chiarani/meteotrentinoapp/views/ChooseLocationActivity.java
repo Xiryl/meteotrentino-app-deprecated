@@ -1,21 +1,30 @@
 package it.chiarani.meteotrentinoapp.views;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.api.API_locality;
 import it.chiarani.meteotrentinoapp.api.API_locality_response;
 import it.chiarani.meteotrentinoapp.database.entity.LocalityEntity;
 import it.chiarani.meteotrentinoapp.databinding.ActivityChooseLocationBinding;
+
+import it.chiarani.meteotrentinoapp.helper.GpsTracker;
 import it.chiarani.meteotrentinoapp.models.Locality;
 import it.chiarani.meteotrentinoapp.repositories.LocalityRepository;
 
@@ -55,14 +64,44 @@ public class ChooseLocationActivity extends SampleActivity implements API_locali
       @Override
       public void onClick(View v) {
 
-        if(binding.chooseLocationAutoCompleteTxt.getText().toString().isEmpty()
-            || binding.chooseLocationAutoCompleteTxt.getText().toString() == null) {
+        String user_location = binding.chooseLocationAutoCompleteTxt.getText().toString();
 
+        if(user_location.isEmpty() || user_location == null) {
           Toast.makeText(v.getContext(), "Inserire una località per continuare!", Toast.LENGTH_LONG).show();
           return;
         }
 
-        // launch main activity
+        repository.getAll().observeForever( entries -> {
+          if(entries.size() == 0) {
+            // error
+            Toast.makeText(v.getContext(), "Località non valida!", Toast.LENGTH_LONG).show();
+            return;
+          }
+
+          for(LocalityEntity l : entries){
+
+            if(l.getLoc().equals(user_location))
+            {
+              // launch main activity
+              Intent myIntent = new Intent(ChooseLocationActivity.this, MainActivity.class);
+              myIntent.putExtra("POSITION", binding.chooseLocationAutoCompleteTxt.getText().toString());
+              startActivity(myIntent);
+            }
+            else
+            {
+              Toast.makeText(v.getContext(), "Località non valida!", Toast.LENGTH_LONG).show();
+            }
+          }
+        });
+      }
+    });
+
+    /**
+     * Skip activity after choose the item
+     */
+    binding.chooseLocationAutoCompleteTxt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+      @Override
+      public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
         Intent myIntent = new Intent(ChooseLocationActivity.this, MainActivity.class);
         myIntent.putExtra("POSITION", binding.chooseLocationAutoCompleteTxt.getText().toString());
         startActivity(myIntent);
@@ -116,5 +155,10 @@ public class ChooseLocationActivity extends SampleActivity implements API_locali
   @Override
   public void onBackPressed() {
     // do nothing
+  }
+
+  public void getLocation(View view){
+
+
   }
 }
