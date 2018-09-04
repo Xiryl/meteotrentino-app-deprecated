@@ -16,8 +16,6 @@
     android:background="#fff"
     android:orientation="vertical">
 
-
-
     <TextView
       android:id="@+id/item_weather_report_txt_fascia"
       android:layout_width="wrap_content"
@@ -25,8 +23,10 @@
       android:layout_marginTop="40dp"
       android:layout_marginBottom="20dp"
       android:layout_height="wrap_content"
+      android:textSize="15sp"
       android:text=" Mattina (06-12) "
-      android:padding="@dimen/offset_5"
+      android:textStyle="bold"
+      android:padding="10dp"
       android:textColor="@color/white_gray"
       android:background="@drawable/rounded_corner_red"
       />
@@ -49,11 +49,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Temperatura minima: 5°"
-        android:textColor="#5098D8"
+        android:textColor="#303A54"
+        android:textSize="18dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
-        android:textSize="15dp"/>
+        />
 
     </LinearLayout>
 
@@ -75,11 +76,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Temperatura massima: 5°"
-        android:textColor="#5098D8"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
-        android:textSize="15dp"/>
+        android:textColor="#303A54"
+        android:textSize="18dp"/>
 
     </LinearLayout>
 
@@ -101,11 +102,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Umidità: 87%"
-        android:textColor="#5098D8"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
-        android:textSize="15dp"/>
+        android:textColor="#303A54"
+        android:textSize="18dp"/>
 
     </LinearLayout>
 
@@ -127,11 +128,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Pressione: 1023 hPa"
-        android:textColor="#5098D8"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
-        android:textSize="15dp"/>
+        android:textColor="#303A54"
+        android:textSize="18dp"/>
 
     </LinearLayout>
 
@@ -153,11 +154,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Probabilità precipitazioni: molto bassa"
-        android:textColor="#5098D8"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
-        android:textSize="15dp"/>
+        android:textColor="#303A54"
+        android:textSize="18dp"/>
 
     </LinearLayout>
 
@@ -179,11 +180,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Intensità precipitazioni: debole"
-        android:textColor="#5098D8"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
-        android:textSize="15dp"/>
+        android:textColor="#303A54"
+        android:textSize="18dp"/>
 
     </LinearLayout>
 
@@ -207,11 +208,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Probabilità temporali: bassa"
-        android:textColor="#5098D8"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
-        android:textSize="15dp"/>
+        android:textColor="#303A54"
+        android:textSize="18dp"/>
 
     </LinearLayout>
 
@@ -234,11 +235,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Vento in quota: debole"
-        android:textColor="#5098D8"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
-        android:textSize="15dp"/>
+        android:textColor="#303A54"
+        android:textSize="18dp"/>
 
     </LinearLayout>
 
@@ -260,11 +261,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Vento in valle: debole"
-        android:textColor="#5098D8"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
-        android:textSize="15dp"/>
+        android:textColor="#303A54"
+        android:textSize="18dp"/>
 
     </LinearLayout>
 
@@ -287,11 +288,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Direzione vento in quota: O"
-        android:textColor="#5098D8"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
-        android:textSize="15dp"/>
+        android:textColor="#303A54"
+        android:textSize="18dp"/>
 
     </LinearLayout>
 
@@ -314,11 +315,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Direzione vento in valle: Brezza"
-        android:textColor="#5098D8"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
-        android:textSize="15dp"/>
+        android:textColor="#303A54"
+        android:textSize="18dp"/>
 
     </LinearLayout>
 
@@ -341,11 +342,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Zero Termico: 323"
-        android:textColor="#5098D8"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
-        android:textSize="15dp"/>
+        android:textColor="#303A54"
+        android:textSize="18dp"/>
 
     </LinearLayout>
 

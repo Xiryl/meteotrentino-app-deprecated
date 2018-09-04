@@ -35,7 +35,7 @@
           android:layout_height="wrap_content"
           android:text="Bollettino Metereologico"
           android:textColor="@color/white"
-          android:layout_marginTop="80dp"
+          android:layout_marginTop="90dp"
           android:textStyle="bold"
           android:layout_gravity="center_horizontal"
           android:textSize="20dp"/>
@@ -44,7 +44,7 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_gravity="center_horizontal"
-          android:layout_marginTop="110dp"
+          android:layout_marginTop="120dp"
           android:orientation="horizontal">
 
           <ImageView
@@ -71,7 +71,7 @@
           android:id="@+id/activity_weather_report_txt_previsione"
           android:layout_width="wrap_content"
           android:gravity="center_horizontal"
-          android:layout_marginTop="145dp"
+          android:layout_marginTop="160dp"
           android:layout_marginLeft="15dp"
           android:layout_marginRight="15dp"
           android:layout_height="wrap_content"
@@ -86,32 +86,6 @@
           app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
           app:layout_collapseMode="pin"
           >
-          <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
-            android:orientation="horizontal">
-
-            <ImageView
-              android:layout_width="25dp"
-              android:layout_height="25dp"
-              android:src="@drawable/ic_thermo_white"
-              />
-
-            <TextView
-              android:id="@+id/activity_weather_report_txt_temperature"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="Temperature tra 14° e 40°"
-              android:textColor="@color/white"
-              android:textStyle="bold"
-              android:layout_marginLeft="10dp"
-              android:layout_marginTop="10dp"
-              android:layout_gravity="center_horizontal"
-              android:textSize="15dp"/>
-
-          </LinearLayout>
 
           <LinearLayout
             android:layout_width="wrap_content"
