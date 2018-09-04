@@ -11,8 +11,8 @@ public interface OpenWeatherData {
   String getPressure();
   void setPressure(String pressure);
 
-  String getSunsire();
-  void setSunsire(String sunsire);
+  String getSunrise();
+  void setSunrise(String sunrise);
 
   String getSunset();
   void setSunset(String sunset);
