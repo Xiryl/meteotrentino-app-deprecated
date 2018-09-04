@@ -3,11 +3,16 @@ package it.chiarani.meteotrentinoapp.views;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -18,6 +23,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.Executors;
 
 import it.chiarani.meteotrentinoapp.R;
@@ -32,6 +38,7 @@ import it.chiarani.meteotrentinoapp.database.entity.WeatherForWeekEntity;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherReportEntity;
 import it.chiarani.meteotrentinoapp.databinding.ActivityMainBinding;
 import it.chiarani.meteotrentinoapp.helper.Converter;
+import it.chiarani.meteotrentinoapp.helper.GpsTracker;
 import it.chiarani.meteotrentinoapp.helper.WeatherIconDescriptor;
 import it.chiarani.meteotrentinoapp.helper.WeatherTypes;
 import it.chiarani.meteotrentinoapp.models.Locality;
@@ -46,6 +53,7 @@ public class MainActivity extends SampleActivity implements API_weatherReport_re
   private final static String MAINACTIVITY_TAG = "MAINACTIVITY";
   ActivityMainBinding binding;
   private WeatherReport _report;
+  GpsTracker gpsTracker;
   // #ENDREGION
 
   @Override
@@ -74,8 +82,30 @@ public class MainActivity extends SampleActivity implements API_weatherReport_re
     }
     else
     {
-      Intent myIntent = new Intent(MainActivity.this, ChooseLocationActivity.class);
-      startActivity(myIntent);
+      try {
+        if (ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
+          ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 101);
+        }
+
+        gpsTracker = new GpsTracker(this);
+        if(gpsTracker.canGetLocation()){
+          double latitude = gpsTracker.getLatitude();
+          double longitude = gpsTracker.getLongitude();
+          Geocoder geocoder;
+          List<Address> addresses;
+          geocoder = new Geocoder(this, Locale.getDefault());
+
+          addresses = geocoder.getFromLocation(latitude, longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+
+          user_location = addresses.get(0).getLocality();
+
+        }else{
+          gpsTracker.showSettingsAlert();
+        }
+
+      } catch (Exception e){
+        e.printStackTrace();
+      }
     }
 
     // use this setting to improve performance if you know that changes
