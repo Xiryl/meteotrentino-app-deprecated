@@ -57,8 +57,15 @@ public class WeatherReportActivity extends SampleActivity {
       binding.activityWeatherReportTxtPrevisione.setText(report.getPrevisione().getGiorni().get(0).getTestoGiorno());
       binding.activityWeatherReportTxtPosition.setText(report.getPrevisione().getLocalita());
 
-      if(!report.getPrevisione().getGiorni().get(0).getDescIconaAllerte().isEmpty() || report.getPrevisione().getGiorni().get(0).getDescIconaAllerte() != null)
+      if(!report.getPrevisione().getGiorni().get(0).getDescIconaAllerte().isEmpty())
+      {
         binding.activityWeatherReportTxtAllerta.setText("Attenzione: " + report.getPrevisione().getGiorni().get(0).getDescIconaAllerte());
+      }
+      else
+      {
+        binding.activityWeatherReportTxtAllerta.setText("Nessuna allerta segnalata.");
+      }
+
     });
 
   }
