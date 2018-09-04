@@ -155,11 +155,26 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
           wfs.setIcona(Converter.convertIconUriToInt(arr_fasce.getJSONObject(j).optString("icona"))); // icona
           wfs.setDescIcona(arr_fasce.getJSONObject(j).optString("descIcona"));                        // descIcona
           wfs.setIdPrecProb(Integer.parseInt(arr_fasce.getJSONObject(j).optString("idPrecProb")));    // idPrecProb
-          wfs.setDescPrecProb(arr_fasce.getJSONObject(j).optString("descPrecProb"));                  // descPrecProb
+
+          if(arr_fasce.getJSONObject(j).optString("descPrecProb").equals("--"))
+            wfs.setDescPrecProb("zero");                  // descPrecProb
+          else
+            wfs.setDescPrecProb(arr_fasce.getJSONObject(j).optString("descPrecProb"));
+
           wfs.setIdPrecInten(Integer.parseInt(arr_fasce.getJSONObject(j).optString("idPrecInten")));  // idPrecInten
-          wfs.setDescPrecInten(arr_fasce.getJSONObject(j).optString("descPrecInten"));                // descPrecInten
+
+          if(arr_fasce.getJSONObject(j).optString("descPrecInten").equals("--"))
+            wfs.setDescPrecInten("zero");
+          else
+            wfs.setDescPrecInten(arr_fasce.getJSONObject(j).optString("descPrecInten"));                // descPrecInten
+
           wfs.setIdTempProb(Integer.parseInt(arr_fasce.getJSONObject(j).optString("idTempProb")));    // idTempProb
-          wfs.setDescTempProb(arr_fasce.getJSONObject(j).optString("descTempProb"));                  // descTempProb
+
+          if(arr_fasce.getJSONObject(j).optString("descTempProb").equals("--"))
+            wfs.setDescTempProb("zero");
+          else
+            wfs.setDescTempProb(arr_fasce.getJSONObject(j).optString("descTempProb"));
+
           wfs.setIdVentoIntQuota(Integer.parseInt(arr_fasce.getJSONObject(j).optString("idVentoIntQuota"))); // idVentoIntQuota
           wfs.setDescVentoIntQuota(arr_fasce.getJSONObject(j).optString("descVentoIntQuota"));        // descVentoIntQuota
           wfs.setIdVentoDirQuota(Integer.parseInt(arr_fasce.getJSONObject(j).optString("idVentoDirQuota")));  // idVentoDirQuota
