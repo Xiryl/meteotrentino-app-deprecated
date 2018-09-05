@@ -16,4 +16,7 @@ public interface OpenWeatherData {
 
   String getSunset();
   void setSunset(String sunset);
+
+  String getActualTemperature();
+  void setActualTemperature(String actualTemperature);
 }

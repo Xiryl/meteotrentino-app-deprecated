@@ -14,12 +14,14 @@ public class OpenWeatherDataEntity implements OpenWeatherData {
   private String pressure;
   private String sunrise;
   private String sunset;
+  private String actualTemperature;
 
-  public OpenWeatherDataEntity(String humidity, String pressure, String sunrise, String sunset) {
+  public OpenWeatherDataEntity(String humidity, String pressure, String sunrise, String sunset, String actualTemperature) {
     this.humidity = humidity;
     this.pressure = pressure;
     this.sunset = sunset;
     this.sunrise = sunrise;
+    this.actualTemperature = actualTemperature;
   }
 
   @Override
@@ -70,5 +72,13 @@ public class OpenWeatherDataEntity implements OpenWeatherData {
   @Override
   public void setSunset(String sunset) {
     this.sunset = sunset;
+  }
+
+  public String getActualTemperature() {
+    return actualTemperature;
+  }
+
+  public void setActualTemperature(String actualTemperature) {
+    this.actualTemperature = actualTemperature;
   }
 }
