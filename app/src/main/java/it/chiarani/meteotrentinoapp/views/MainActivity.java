@@ -45,6 +45,7 @@ import it.chiarani.meteotrentinoapp.models.Locality;
 import it.chiarani.meteotrentinoapp.models.WeatherForDay;
 import it.chiarani.meteotrentinoapp.models.WeatherReport;
 import it.chiarani.meteotrentinoapp.repositories.LocalityRepository;
+import it.chiarani.meteotrentinoapp.repositories.OpenWeatherDataRepository;
 import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
 
 public class MainActivity extends SampleActivity implements API_weatherReport_response{
@@ -174,12 +175,14 @@ public class MainActivity extends SampleActivity implements API_weatherReport_re
 
     repository.getAll().observe(this, entries -> {
 
+      if(entries.size() == 0)
+        return;
+
       WeatherReportEntity wfr  = entries.get(entries.size()-1);
       WeatherForWeekEntity wfw = wfr.getPrevisione();
       WeatherForDayEntity wfd  = wfw.getGiorni().get(0);
 
       binding.activityMainTxtPosition.setText(wfw.getLocalita());            // Locality
-      binding.activityMainTxtTemperature.setText(wfd.gettMaxGiorno() + "°");  // Actual temperature
       binding.activityMainTxtPrev.setText(wfd.getDescIcona());               // Previsione
 
       if( wfd.getDescIconaAllerte().isEmpty() || wfd.getDescIconaAllerte() == null ) {
@@ -239,6 +242,15 @@ public class MainActivity extends SampleActivity implements API_weatherReport_re
       WeatherSlotAdapter adapter = new WeatherSlotAdapter(wfr);
       binding.activityMainRvWeatherSlot.setAdapter(adapter);            // Fasce
 
+    });
+
+
+    OpenWeatherDataRepository repository_op = new OpenWeatherDataRepository(getApplication());
+    repository_op.getAll().observe(this, entries -> {
+      if(entries.size() == 0)
+        return;
+
+      binding.activityMainTxtTemperature.setText(entries.get(0).getActualTemperature() +"°");  // Actual temperature
     });
   }
 
