@@ -102,11 +102,11 @@ public class API_locality extends AsyncTask<String, Integer, Integer>{
 
       for (int i = 0; i < arr.length(); i++) {
         publishProgress(i);
-        String locality = arr.getJSONObject(i).getString("localita");
-        String place = arr.getJSONObject(i).getString("comune");
-        int quota = Integer.parseInt(arr.getJSONObject(i).getString("quota"));
-        String latitudine = arr.getJSONObject(i).getString("latitudine");
-        String longitudine = arr.getJSONObject(i).getString("longitudine");
+        String locality = arr.getJSONObject(i).optString("localita");
+        String place = arr.getJSONObject(i).optString("comune");
+        int quota = Integer.parseInt(arr.getJSONObject(i).optString("quota"));
+        String latitudine = arr.getJSONObject(i).optString("latitudine");
+        String longitudine = arr.getJSONObject(i).optString("longitudine");
 
         repository.insert(new LocalityEntity(locality, place, quota, latitudine, longitudine));
       }
