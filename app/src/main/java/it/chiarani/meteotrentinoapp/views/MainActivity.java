@@ -10,10 +10,13 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.MenuItem;
 
@@ -54,8 +57,21 @@ public class MainActivity extends SampleActivity{
     Log.d( MAINACTIVITY_TAG, "Start mainactivity");
     launchIsFirstThread();
 
-    // bottom navbar
+    binding.mainActivityNavView.setNavigationItemSelectedListener(
+        new NavigationView.OnNavigationItemSelectedListener() {
+          @Override
+          public boolean onNavigationItemSelected(MenuItem menuItem) {
+            // set item as selected to persist highlight
+            menuItem.setChecked(true);
+            // close drawer when item is tapped
+            //mDrawerLayout.closeDrawers();
 
+            // Add code here to update the UI based on the item selected
+            // For example, swap UI fragments here
+
+            return true;
+          }
+        });
 
 
     Intent intent = getIntent();
