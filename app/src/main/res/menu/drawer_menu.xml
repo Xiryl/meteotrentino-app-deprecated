@@ -3,11 +3,49 @@
   <group android:checkableBehavior="single">
     <item
       android:id="@+id/drawer_view_pref_1"
-      android:icon="@drawable/ic_radar"
-      android:title="Preferito2" />
+      android:icon="@drawable/ic_star"
+      android:title="+ Aggiungi Preferito" />
     <item
       android:id="@+id/drawer_view_pref_2"
-      android:icon="@drawable/ic_radar"
-      android:title="Preferito2" />
+      android:icon="@drawable/ic_star"
+      android:title="+ Aggiungi Preferito" />
   </group>
+  <group android:checkableBehavior="single">
+    <item
+      android:id="@+id/drawer_view_search"
+      android:icon="@drawable/ic_search"
+      android:title="Cambia Luogo" />
+    <item
+      android:id="@+id/drawer_view_today"
+      android:icon="@drawable/ic_today"
+      android:title="Meteo Oggi" />
+    <item
+      android:id="@+id/drawer_view_seven_day"
+      android:icon="@drawable/ic_7days"
+      android:title="Meteo 7 Giorni" />
+    <item
+      android:id="@+id/drawer_view_radar"
+      android:icon="@drawable/ic_radar"
+      android:title="Radar e Satellite" />
+    <item
+      android:id="@+id/drawer_view_bollettini"
+      android:icon="@drawable/ic_report"
+      android:title="Bollettini" />
+    <item
+      android:id="@+id/drawer_view_allerte"
+      android:icon="@drawable/ic_warning"
+      android:title="Allerte" />
+
+  </group>
+  <group android:checkableBehavior="single">
+    <item
+      android:id="@+id/drawer_view_settings"
+      android:icon="@drawable/ic_settings"
+      android:title="Impostazioni" />
+    <item
+      android:id="@+id/drawer_view_info"
+      android:icon="@drawable/ic_info"
+      android:title="info" />
+  </group>
+
 </menu>
