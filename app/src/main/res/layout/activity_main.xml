@@ -7,96 +7,11 @@
   <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <RelativeLayout
-      android:id="@+id/activity_main_rl"
+
+    <FrameLayout
+      android:id="@+id/activity_main_framelayout"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginBottom="300dp"
-      android:background="@drawable/bg_day"
-      android:paddingBottom="@dimen/offset_5">
-
-      <TextView
-        android:id="@+id/activity_main_txt_position"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:text="Arco"
-        android:layout_marginTop="@dimen/offset_50"
-        android:layout_marginStart="@dimen/offset_15"
-        android:textSize="@dimen/position_text_size"/>
-
-
-      <TextView
-        android:id="@+id/activity_main_txt_prev"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:text="Previsione"
-        android:textStyle="bold|italic"
-        android:layout_marginTop="100dp"
-        android:layout_marginStart="@dimen/offset_15"
-        android:textSize="@dimen/day_text_size"/>
-      <TextView
-        android:id="@+id/activity_main_txt_allerta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#932327"
-        android:text="Allerta"
-        android:textStyle="bold"
-        android:layout_marginTop="120dp"
-        android:layout_marginStart="@dimen/offset_15"
-        android:textSize="@dimen/day_text_size"/>
-
-      <ImageView
-        android:id="@+id/activity_main_img_weather"
-        android:layout_width="@dimen/offset_100"
-        android:layout_height="@dimen/offset_100"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="30dp"
-        android:src="@drawable/ic_w_light_rain"
-        android:layout_marginStart="@dimen/offset_10"
-        android:layout_marginTop="45dp"/>
-
-      <TextView
-        android:id="@+id/activity_main_txt_temperature"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:text="35°"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/offset_40"
-        android:paddingBottom="@dimen/offset_40"
-        android:layout_marginStart="@dimen/offset_15"
-        android:textSize="@dimen/temperature_text_size"/>
-
-      <android.support.v7.widget.AppCompatButton
-        android:id="@+id/activity_main_btn_bollettino"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:text="   Vedi Bollettino   "
-        android:textColor="@color/blue_azure"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:background="@drawable/rounded_button"/>
-
-    </RelativeLayout>
-
-    <LinearLayout
-      android:id="@+id/llRcv"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:background="@color/white_gray"
-      android:layout_marginBottom="@dimen/rv_margin_bottom"
-      android:layout_alignParentBottom="true"
-      android:orientation="vertical">
-
-      <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="horizontal"
-        android:id="@+id/activity_main_rv_weather_slot"
-        android:orientation="horizontal"/>
-    </LinearLayout>
+      android:layout_height="match_parent" />
 
     <android.support.design.widget.BottomNavigationView
       android:id="@+id/main_activity_bottom_nav"

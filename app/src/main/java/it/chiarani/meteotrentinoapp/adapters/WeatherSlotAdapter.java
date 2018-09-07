@@ -7,15 +7,20 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import it.chiarani.meteotrentinoapp.R;
+import it.chiarani.meteotrentinoapp.database.entity.OpenWeatherDataEntity;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherReportEntity;
-import it.chiarani.meteotrentinoapp.models.WeatherReport;
 
 public class WeatherSlotAdapter extends RecyclerView.Adapter<WeatherSlotAdapter.ViewHolder> {
 
-  WeatherReportEntity _report;
+  /**
+   * entities for get weather data
+   */
+  private WeatherReportEntity weather_report;
+  private OpenWeatherDataEntity open_weather_report;
 
-  public WeatherSlotAdapter(WeatherReportEntity report) {
-    _report = report;
+  public WeatherSlotAdapter(WeatherReportEntity weather_report, OpenWeatherDataEntity open_weather_report) {
+    this.weather_report = weather_report;
+    this.open_weather_report = open_weather_report;
   }
 
   public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -50,17 +55,16 @@ public class WeatherSlotAdapter extends RecyclerView.Adapter<WeatherSlotAdapter.
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
     //Set data to the individual list item
-    holder.txt_time_slot.setText("Fascia Oraria: " + _report.getPrevisione().getGiorni().get(0).getFasce().get(position).getFasciaOre());
-    holder.txt_prob_prec.setText(_report.getPrevisione().getGiorni().get(0).getFasce().get(position).getDescPrecProb());
-    holder.txt_humidity.setText("75%");
-    holder.txt_prob_temp.setText(_report.getPrevisione().getGiorni().get(0).getFasce().get(position).getDescTempProb());
-    holder.txt_vento.setText(_report.getPrevisione().getGiorni().get(0).getFasce().get(position).getDescVentoIntValle());
+    holder.txt_time_slot.setText("Fascia Oraria: " + weather_report.getPrevisione().getGiorni().get(0).getFasce().get(position).getFasciaOre()); // Fascia oraria
+    holder.txt_prob_prec.setText(weather_report.getPrevisione().getGiorni().get(0).getFasce().get(position).getDescPrecProb());                  // Probabilità Precipitazioni
+    holder.txt_humidity.setText(open_weather_report.getHumidity() + "%");                                                                     // Umidità
+    holder.txt_prob_temp.setText(weather_report.getPrevisione().getGiorni().get(0).getFasce().get(position).getDescTempProb());                  // Probabilità Temporali
+    holder.txt_vento.setText(weather_report.getPrevisione().getGiorni().get(0).getFasce().get(position).getDescVentoIntValle());                 // Intensità Vento
   }
 
   @Override
   public int getItemCount() {
     //Return the number of items in your list
-    return _report.getPrevisione().getGiorni().get(0).getFasce().size();
+    return weather_report.getPrevisione().getGiorni().get(0).getFasce().size();
   }
-
 }

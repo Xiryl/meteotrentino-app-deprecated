@@ -12,7 +12,7 @@
     <ImageView
       android:id="@+id/chooseLocationIcon"
       android:layout_width="wrap_content"
-      android:layout_height="120dp"
+      android:layout_height="40dp"
       android:layout_marginTop="@dimen/offset_40"
       android:src="@drawable/ic_map_picker"/>
 

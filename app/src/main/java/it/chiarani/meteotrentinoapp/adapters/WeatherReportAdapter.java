@@ -6,21 +6,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import it.chiarani.meteotrentinoapp.R;
+import it.chiarani.meteotrentinoapp.database.entity.OpenWeatherDataEntity;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherForSlotEntity;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherReportEntity;
-import it.chiarani.meteotrentinoapp.models.WeatherForSlot;
-import it.chiarani.meteotrentinoapp.models.WeatherReport;
 
 public class WeatherReportAdapter extends RecyclerView.Adapter<WeatherReportAdapter.ViewHolder> {
 
-  WeatherReportEntity _report;
+  WeatherReportEntity weather_report;
+  OpenWeatherDataEntity open_weather_report;
 
-  public WeatherReportAdapter(WeatherReportEntity report) {
-    _report = report;
+  public WeatherReportAdapter(WeatherReportEntity weather_report, OpenWeatherDataEntity open_weather_report) {
+    this.weather_report = weather_report;
+    this.open_weather_report = open_weather_report;
   }
+
 
   public static class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -70,13 +70,13 @@ public class WeatherReportAdapter extends RecyclerView.Adapter<WeatherReportAdap
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
     //Set data to the individual list item
-    WeatherForSlotEntity wfs = _report.getPrevisione().getGiorni().get(0).getFasce().get(position);
+    WeatherForSlotEntity wfs = weather_report.getPrevisione().getGiorni().get(0).getFasce().get(position);
 
     holder.txt_time_slot.setText(wfs.getFasciaPer() + ": " + wfs.getFasciaOre());
-    holder.txt_tmin.setText("Temperatura minima: " + _report.getPrevisione().getGiorni().get(0).gettMinGiorno() + "°");
-    holder.txt_tmax.setText("Temperatura massima: " + _report.getPrevisione().getGiorni().get(0).gettMaxGiorno() + "°");
-    holder.txt_humidity.setText("Umidità: " + "99 %");
-    holder.txt_pressure.setText("Pressione: " +"99 hPa");
+    holder.txt_tmin.setText("Temperatura minima: " + weather_report.getPrevisione().getGiorni().get(0).gettMinGiorno() + "°");
+    holder.txt_tmax.setText("Temperatura massima: " + weather_report.getPrevisione().getGiorni().get(0).gettMaxGiorno() + "°");
+    holder.txt_humidity.setText("Umidità: " + open_weather_report.getHumidity() + "%");
+    holder.txt_pressure.setText("Pressione: " + open_weather_report.getPressure()+ " hPa");
     holder.txt_prob_prec.setText("Probabilità precipitazioni: " +wfs.getDescPrecProb() + "");
     holder.txt_intensita_prec.setText("Intensità precipitazioni: " +wfs.getDescPrecInten() + "");
     holder.txt_prob_temp.setText("Probabilità Temporali: " +wfs.getDescTempProb() + "");
@@ -90,7 +90,7 @@ public class WeatherReportAdapter extends RecyclerView.Adapter<WeatherReportAdap
   @Override
   public int getItemCount() {
     //Return the number of items in your list
-    return _report.getPrevisione().getGiorni().get(0).getFasce().size();
+    return weather_report.getPrevisione().getGiorni().get(0).getFasce().size();
   }
 
 }

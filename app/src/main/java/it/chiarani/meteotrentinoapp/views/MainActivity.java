@@ -1,60 +1,39 @@
 package it.chiarani.meteotrentinoapp.views;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.Toast;
+import android.view.MenuItem;
 
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.Executors;
 
 import it.chiarani.meteotrentinoapp.R;
-import it.chiarani.meteotrentinoapp.adapters.WeatherSlotAdapter;
-import it.chiarani.meteotrentinoapp.api.API_locality;
-import it.chiarani.meteotrentinoapp.api.API_locality_response;
-import it.chiarani.meteotrentinoapp.api.API_weatherReport;
-import it.chiarani.meteotrentinoapp.api.API_weatherReport_response;
-import it.chiarani.meteotrentinoapp.database.entity.LocalityEntity;
-import it.chiarani.meteotrentinoapp.database.entity.WeatherForDayEntity;
-import it.chiarani.meteotrentinoapp.database.entity.WeatherForWeekEntity;
-import it.chiarani.meteotrentinoapp.database.entity.WeatherReportEntity;
 import it.chiarani.meteotrentinoapp.databinding.ActivityMainBinding;
-import it.chiarani.meteotrentinoapp.helper.Converter;
+import it.chiarani.meteotrentinoapp.fragments.MainFragment;
 import it.chiarani.meteotrentinoapp.helper.GpsTracker;
-import it.chiarani.meteotrentinoapp.helper.WeatherIconDescriptor;
-import it.chiarani.meteotrentinoapp.helper.WeatherTypes;
-import it.chiarani.meteotrentinoapp.models.Locality;
-import it.chiarani.meteotrentinoapp.models.WeatherForDay;
 import it.chiarani.meteotrentinoapp.models.WeatherReport;
-import it.chiarani.meteotrentinoapp.repositories.LocalityRepository;
-import it.chiarani.meteotrentinoapp.repositories.OpenWeatherDataRepository;
-import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
 
-public class MainActivity extends SampleActivity implements API_weatherReport_response{
+public class MainActivity extends SampleActivity{
 
   // #REGION PRIVATE FIELDS
   private final static String MAINACTIVITY_TAG = "MAINACTIVITY";
   ActivityMainBinding binding;
   private WeatherReport _report;
   GpsTracker gpsTracker;
+  BottomNavigationView bottomNavigationView;
   // #ENDREGION
 
   @Override
@@ -74,6 +53,10 @@ public class MainActivity extends SampleActivity implements API_weatherReport_re
     // log start activity
     Log.d( MAINACTIVITY_TAG, "Start mainactivity");
     launchIsFirstThread();
+
+    // bottom navbar
+
+
 
     Intent intent = getIntent();
     String user_location = "TRENTO";
@@ -109,25 +92,36 @@ public class MainActivity extends SampleActivity implements API_weatherReport_re
       }
     }
 
-    // use this setting to improve performance if you know that changes
-    // in content do not change the layout size of the RecyclerView
-    binding.activityMainRvWeatherSlot.setHasFixedSize(true);
+    final String tmp = user_location;
 
-    LinearLayoutManager horizontalLayoutManagaer = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
-    binding.activityMainRvWeatherSlot.setLayoutManager(horizontalLayoutManagaer);
+    // set bottom navbar
+    bottomNavigationView = binding.mainActivityBottomNav;
 
+    // set scanqr as checked item
 
+    bottomNavigationView.setOnNavigationItemSelectedListener(
+        item -> {
+          switch (item.getItemId()) {
+            case R.id.bottombaritem_today:
+              Bundle bundle = new Bundle();
+              bundle.putString("user_location", tmp);
+              MainFragment frag = new MainFragment();
+              frag.setArguments(bundle);
+              getSupportFragmentManager()
+                  .beginTransaction()
+                  .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                  .replace(R.id.activity_main_framelayout, frag, "MainFragment")
+                  .commit();
+              return true;
+            case R.id.bottombaritem_sevenday:
+              return true;
+            case R.id.bottombaritem_radar:
+              return true;
+          }
+          return false;
+        });
+    bottomNavigationView.setSelectedItemId(R.id.bottombaritem_today);
 
-
-    new API_weatherReport(getApplication(),this, this::processFinish, user_location).execute();
-
-    binding.activityMainBtnBollettino.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent myIntent = new Intent(MainActivity.this, WeatherReportActivity.class);
-        startActivity(myIntent);
-      }
-    });
   }
 
   private void launchIsFirstThread() {
@@ -166,96 +160,18 @@ public class MainActivity extends SampleActivity implements API_weatherReport_re
     t.start();
   }
 
-  /**
-   * Called after API termination
-   */
-  @Override
-  public void processFinish() {
-    WeatherReportRepository repository = new WeatherReportRepository(getApplication());
-
-    repository.getAll().observe(this, entries -> {
-
-      if(entries.size() == 0)
-        return;
-
-      WeatherReportEntity wfr  = entries.get(entries.size()-1);
-      WeatherForWeekEntity wfw = wfr.getPrevisione();
-      WeatherForDayEntity wfd  = wfw.getGiorni().get(0);
-
-      binding.activityMainTxtPosition.setText(wfw.getLocalita());            // Locality
-      binding.activityMainTxtPrev.setText(wfd.getDescIcona());               // Previsione
-
-      if( wfd.getDescIconaAllerte().isEmpty() || wfd.getDescIconaAllerte() == null ) {
-        binding.activityMainTxtAllerta.setText(" ");                    // Allerta
-      }
-      else
-      {
-        binding.activityMainTxtAllerta.setText(wfd.getDescIconaAllerte());
-        //binding.activityMainTxtAllerta.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_wind, 0, 0, 0);
-      }
-
-      if(WeatherIconDescriptor.getWeatherType(wfd.getIcona()).equals(WeatherTypes.COPERTO)) {
-        binding.activityMainRl.setBackgroundResource(R.drawable.bg_day);
-        binding.activityMainImgWeather.setImageResource(R.drawable.ic_w_cloud);
-      }
-      else if(WeatherIconDescriptor.getWeatherType(wfd.getIcona()).equals(WeatherTypes.COPERTO_CON_PIOGGIA)) {
-        binding.activityMainRl.setBackgroundResource(R.drawable.bg_day_cloud);
-        binding.activityMainImgWeather.setImageResource(R.drawable.ic_w_light_rain);
-      }
-      else if(WeatherIconDescriptor.getWeatherType(wfd.getIcona()).equals(WeatherTypes.COPERTO_CON_PIOGGIA_ABBONDANTE)) {
-        binding.activityMainRl.setBackgroundResource(R.drawable.bg_day_cloud);
-        binding.activityMainImgWeather.setImageResource(R.drawable.ic_w_rain);
-      }
-      else if(WeatherIconDescriptor.getWeatherType(wfd.getIcona()).equals(WeatherTypes.COPERTO_CON_PIOGGIA_E_NEVE)) {
-        binding.activityMainRl.setBackgroundResource(R.drawable.bg_day_cloud);
-        binding.activityMainImgWeather.setImageResource(R.drawable.ic_w_snow_rain);
-      }
-      else if(WeatherIconDescriptor.getWeatherType(wfd.getIcona()).equals(WeatherTypes.NEVICATA)) {
-        binding.activityMainRl.setBackgroundResource(R.drawable.bg_day_cloud);
-        binding.activityMainImgWeather.setImageResource(R.drawable.ic_w_sun);
-      }
-      else if(WeatherIconDescriptor.getWeatherType(wfd.getIcona()).equals(WeatherTypes.SOLE)) {
-        binding.activityMainRl.setBackgroundResource(R.drawable.bg_day);
-        binding.activityMainImgWeather.setImageResource(R.drawable.ic_w_sun);
-      }
-      else if(WeatherIconDescriptor.getWeatherType(wfd.getIcona()).equals(WeatherTypes.SOLEGGIATO)) {
-        binding.activityMainRl.setBackgroundResource(R.drawable.bg_day);
-        binding.activityMainImgWeather.setImageResource(R.drawable.ic_w_sun_cloud);
-      }
-      else if(WeatherIconDescriptor.getWeatherType(wfd.getIcona()).equals(WeatherTypes.SOLEGGIATO_CON_PIOGGIA)) {
-        binding.activityMainRl.setBackgroundResource(R.drawable.bg_day_cloud);
-        binding.activityMainImgWeather.setImageResource(R.drawable.ic_w_sun_cloud_rain);
-      }
-      else if(WeatherIconDescriptor.getWeatherType(wfd.getIcona()).equals(WeatherTypes.SOLEGGIATO_CON_PIOGGIA_E_NEVE)) {
-        binding.activityMainRl.setBackgroundResource(R.drawable.bg_day_cloud);
-        binding.activityMainImgWeather.setImageResource(R.drawable.ic_w_sun_cloud_rain_snow);
-      }
-      else if(WeatherIconDescriptor.getWeatherType(wfd.getIcona()).equals(WeatherTypes.TEMPORALE)) {
-        binding.activityMainRl.setBackgroundResource(R.drawable.bg_day_cloud);
-        binding.activityMainImgWeather.setImageResource(R.drawable.ic_w_thunderstorm);
-      }
-      else if(WeatherIconDescriptor.getWeatherType(wfd.getIcona()).equals(WeatherTypes.UNDEFINED)) {
-        binding.activityMainRl.setBackgroundResource(R.drawable.bg_day);
-        binding.activityMainImgWeather.setImageResource(R.drawable.ic_w_sun_cloud);
-      }
-
-      WeatherSlotAdapter adapter = new WeatherSlotAdapter(wfr);
-      binding.activityMainRvWeatherSlot.setAdapter(adapter);            // Fasce
-
-    });
-
-
-    OpenWeatherDataRepository repository_op = new OpenWeatherDataRepository(getApplication());
-    repository_op.getAll().observe(this, entries -> {
-      if(entries.size() == 0)
-        return;
-
-      binding.activityMainTxtTemperature.setText(entries.get(0).getActualTemperature() +"°");  // Actual temperature
-    });
-  }
 
   @Override
   public void onBackPressed() {
     // do noting
   }
+
+
+    private void loadFragment(Fragment fragment) {
+      // load fragment
+      FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+      transaction.replace(R.id.activity_main_framelayout, fragment);
+      transaction.addToBackStack(null);
+      transaction.commit();
+    }
 }

@@ -33,6 +33,7 @@ public class ChooseLocationActivity extends SampleActivity implements API_locali
   private static final String CHOOSELOCATIONACTIVITY_TAG = "CHOOSELOCATIONACTIVITY";
   ActivityChooseLocationBinding binding;
   public ArrayList<LocalityEntity> mylocs;
+  String[] all_locs;
 
   @Override
   protected int getLayoutID() {
@@ -66,33 +67,21 @@ public class ChooseLocationActivity extends SampleActivity implements API_locali
 
         String user_location = binding.chooseLocationAutoCompleteTxt.getText().toString();
 
-        if(user_location.isEmpty() || user_location == null) {
+        if(user_location.isEmpty() || user_location == null || all_locs == null || all_locs.length == 0) {
           Toast.makeText(v.getContext(), "Inserire una località per continuare!", Toast.LENGTH_LONG).show();
           return;
         }
 
-        repository.getAll().observeForever( entries -> {
-          if(entries.size() == 0) {
-            // error
-            Toast.makeText(v.getContext(), "Località non valida!", Toast.LENGTH_LONG).show();
-            return;
+        for(String l : all_locs){
+          if(l.toLowerCase().equals(user_location.toLowerCase()))
+          {
+            // launch main activity
+            Intent myIntent = new Intent(ChooseLocationActivity.this, MainActivity.class);
+            myIntent.putExtra("POSITION", binding.chooseLocationAutoCompleteTxt.getText().toString());
+            startActivity(myIntent);
           }
-
-          for(LocalityEntity l : entries){
-
-            if(l.getLoc().equals(user_location))
-            {
-              // launch main activity
-              Intent myIntent = new Intent(ChooseLocationActivity.this, MainActivity.class);
-              myIntent.putExtra("POSITION", binding.chooseLocationAutoCompleteTxt.getText().toString());
-              startActivity(myIntent);
-            }
-            else
-            {
-              Toast.makeText(v.getContext(), "Località non valida!", Toast.LENGTH_LONG).show();
-            }
-          }
-        });
+        }
+        Toast.makeText(v.getContext(), "Località non valida!", Toast.LENGTH_LONG).show();
       }
     });
 
@@ -117,7 +106,7 @@ public class ChooseLocationActivity extends SampleActivity implements API_locali
     LocalityRepository repository = new LocalityRepository(this.getApplication());
 
     repository.getAll().observe(this, entries -> {
-      String[] all_locs = listTostring(entries);
+      all_locs = listTostring(entries);
 
       if(all_locs == null) {
         // TODO: place in @String

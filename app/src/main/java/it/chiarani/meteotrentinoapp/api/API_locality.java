@@ -103,6 +103,9 @@ public class API_locality extends AsyncTask<String, Integer, Integer>{
       for (int i = 0; i < arr.length(); i++) {
         publishProgress(i);
         String locality = arr.getJSONObject(i).optString("localita");
+        if(locality.toLowerCase().equals("rovereto")) {
+          int x = 1;
+        }
         String place = arr.getJSONObject(i).optString("comune");
         int quota = Integer.parseInt(arr.getJSONObject(i).optString("quota"));
         String latitudine = arr.getJSONObject(i).optString("latitudine");

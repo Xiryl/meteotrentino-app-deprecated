@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.chiarani.meteotrentinoapp.R;
+import it.chiarani.meteotrentinoapp.configuration.AppConfiguration;
+import it.chiarani.meteotrentinoapp.database.entity.OpenWeatherDataEntity;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherForDayEntity;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherForSlotEntity;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherForWeekEntity;
@@ -31,6 +33,7 @@ import it.chiarani.meteotrentinoapp.models.WeatherForDay;
 import it.chiarani.meteotrentinoapp.models.WeatherForSlot;
 import it.chiarani.meteotrentinoapp.models.WeatherForWeek;
 import it.chiarani.meteotrentinoapp.models.WeatherReport;
+import it.chiarani.meteotrentinoapp.repositories.OpenWeatherDataRepository;
 import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
 
 public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
@@ -38,6 +41,7 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
   // #REGION PRIVATE FIELDS
   private final static String API_LOCALITY_TAG = "API_WEATHERREPORT";
   private String URL_API = "https://www.meteotrentino.it/protcivtn-meteo/api/front/previsioneOpenDataLocalita?localita=";
+  private String URL_API_OP = "https://api.openweathermap.org/data/2.5/weather?q=";
   Context mContext;
   AlertDialog builder;
   public WeatherReportEntity tmp_report;
@@ -51,6 +55,9 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
     this._app = app;
     this.delegate = res;
     URL_API += location;
+    URL_API_OP += location;
+    URL_API_OP += "&APPID=";
+    URL_API_OP += AppConfiguration.openWeatherMapKey;
   }
 
   /**
@@ -221,21 +228,66 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
       e.printStackTrace();
       Log.e(API_LOCALITY_TAG, "Errore Exception: "+  e.toString());
       tmp_report = null;
-    } finally {
-      if (connection != null) {
-        connection.disconnect();
-      }
-      try {
-        if (reader != null) {
-          reader.close();
-        }
-      } catch (IOException e) {
-        e.printStackTrace();
-        Log.e(API_LOCALITY_TAG, "Errore IOException1: "+  e.toString());
-
-      }
     }
+
     Log.d(API_LOCALITY_TAG, "DATI locality Correttamente scaricati");
+
+
+    OpenWeatherDataRepository repository_op= new OpenWeatherDataRepository(_app);
+    try {
+
+      URL url = new URL(URL_API_OP);
+      connection = (HttpURLConnection) url.openConnection();
+      connection.connect();
+
+      InputStream stream = connection.getInputStream();
+
+      reader = new BufferedReader(new InputStreamReader(stream));
+
+      StringBuffer buffer = new StringBuffer();
+      String line = "";
+      publishProgress(20);
+      while ((line = reader.readLine()) != null) {
+        buffer.append(line + "\n");
+      }
+
+      String data = buffer.toString();
+      JSONObject ob = new JSONObject(data);
+      JSONObject main_data = ob.getJSONObject("main");
+
+      int act_temp = main_data.optInt("temp") - 273;
+      int humidity = main_data.optInt("humidity");
+      int pressure = main_data.optInt("pressure");
+
+      repository_op.insert(new OpenWeatherDataEntity(humidity + "", pressure + "", "", "", act_temp + ""));
+  } catch (MalformedURLException e) {
+    e.printStackTrace();
+    Log.e(API_LOCALITY_TAG, "Errore MalformedURLException: "+  e.toString());
+    tmp_report = null;
+  } catch (IOException e) {
+    e.printStackTrace();
+    Log.e(API_LOCALITY_TAG, "Errore IOException: "+  e.toString());
+    tmp_report = null;
+  } catch (Exception e) {
+    e.printStackTrace();
+    Log.e(API_LOCALITY_TAG, "Errore Exception: "+  e.toString());
+    tmp_report = null;
+  } finally {
+    if (connection != null) {
+      connection.disconnect();
+    }
+    try {
+      if (reader != null) {
+        reader.close();
+      }
+    } catch (IOException e) {
+      e.printStackTrace();
+      Log.e(API_LOCALITY_TAG, "Errore IOException1: "+  e.toString());
+
+    }
+  }
+
+
     return -1;
   }
 

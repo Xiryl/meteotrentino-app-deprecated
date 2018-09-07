@@ -18,6 +18,7 @@ import it.chiarani.meteotrentinoapp.models.WeatherForDay;
 import it.chiarani.meteotrentinoapp.models.WeatherForSlot;
 import it.chiarani.meteotrentinoapp.models.WeatherForWeek;
 import it.chiarani.meteotrentinoapp.models.WeatherReport;
+import it.chiarani.meteotrentinoapp.repositories.OpenWeatherDataRepository;
 import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
 
 public class WeatherReportActivity extends SampleActivity {
@@ -51,20 +52,25 @@ public class WeatherReportActivity extends SampleActivity {
       linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
       binding.weatherReportRvWeather.setLayoutManager(linearLayoutManager);
 
-      WeatherReportAdapter adapter = new WeatherReportAdapter(report);
-      binding.weatherReportRvWeather.setAdapter(adapter);
 
-      binding.activityWeatherReportTxtPrevisione.setText(report.getPrevisione().getGiorni().get(0).getTestoGiorno());
-      binding.activityWeatherReportTxtPosition.setText(report.getPrevisione().getLocalita());
+      OpenWeatherDataRepository repository_op = new OpenWeatherDataRepository(getApplication());
+      repository_op.getAll().observe(this, entries_op -> {
+        WeatherReportAdapter adapter = new WeatherReportAdapter(report, entries_op.get(entries_op.size()-1));
+        binding.weatherReportRvWeather.setAdapter(adapter);
 
-      if(!report.getPrevisione().getGiorni().get(0).getDescIconaAllerte().isEmpty())
-      {
-        binding.activityWeatherReportTxtAllerta.setText("Attenzione: " + report.getPrevisione().getGiorni().get(0).getDescIconaAllerte());
-      }
-      else
-      {
-        binding.activityWeatherReportTxtAllerta.setText("Nessuna allerta segnalata.");
-      }
+        binding.activityWeatherReportTxtPrevisione.setText(report.getPrevisione().getGiorni().get(0).getTestoGiorno());
+        binding.activityWeatherReportTxtPosition.setText(report.getPrevisione().getLocalita());
+
+        if(!report.getPrevisione().getGiorni().get(0).getDescIconaAllerte().isEmpty())
+        {
+          binding.activityWeatherReportTxtAllerta.setText("Attenzione: " + report.getPrevisione().getGiorni().get(0).getDescIconaAllerte());
+        }
+        else
+        {
+          binding.activityWeatherReportTxtAllerta.setText("Nessuna allerta segnalata.");
+        }
+
+      });
 
     });
 

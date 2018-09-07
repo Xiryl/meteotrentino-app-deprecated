@@ -34,9 +34,9 @@ public class LocalityRepository {
     /**
      * Execute insert on a new thread
      */
-    Executors.newSingleThreadExecutor().execute(() -> {
+   // Executors.newSingleThreadExecutor().execute(() -> {
       localityDao.insert(entity);
-    });
+    //});
   }
 
   public LiveData<List<LocalityEntity>> getAll() {
