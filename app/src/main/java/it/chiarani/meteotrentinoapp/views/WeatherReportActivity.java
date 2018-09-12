@@ -25,7 +25,7 @@ public class WeatherReportActivity extends SampleActivity {
 
   // #REGION PRIVATE FIELDS
   ActivityWeatherReportBinding binding;
-
+  int report_day = 0;
   // #ENDREGION
 
   @Override
@@ -42,6 +42,11 @@ public class WeatherReportActivity extends SampleActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
+    Intent intent = getIntent();
+    if(intent.hasExtra("DAY")) {
+      report_day = intent.getExtras().getInt("DAY");
+    }
+
     WeatherReportRepository repository = new WeatherReportRepository(getApplication());
     repository.getAll().observe(this, entries -> {
       WeatherReportEntity report = entries.get(entries.size()-1);
@@ -55,15 +60,16 @@ public class WeatherReportActivity extends SampleActivity {
 
       OpenWeatherDataRepository repository_op = new OpenWeatherDataRepository(getApplication());
       repository_op.getAll().observe(this, entries_op -> {
-        WeatherReportAdapter adapter = new WeatherReportAdapter(report, entries_op.get(entries_op.size()-1));
+        WeatherReportAdapter adapter = new WeatherReportAdapter(report, entries_op.get(entries_op.size()-1), report_day);
         binding.weatherReportRvWeather.setAdapter(adapter);
 
-        binding.activityWeatherReportTxtPrevisione.setText(report.getPrevisione().getGiorni().get(0).getTestoGiorno());
+
+        binding.activityWeatherReportTxtPrevisione.setText(report.getPrevisione().getGiorni().get(report_day).getTestoGiorno());
         binding.activityWeatherReportTxtPosition.setText(report.getPrevisione().getLocalita());
 
         if(!report.getPrevisione().getGiorni().get(0).getDescIconaAllerte().isEmpty())
         {
-          binding.activityWeatherReportTxtAllerta.setText("Attenzione: " + report.getPrevisione().getGiorni().get(0).getDescIconaAllerte());
+          binding.activityWeatherReportTxtAllerta.setText("Attenzione: " + report.getPrevisione().getGiorni().get(report_day).getDescIconaAllerte());
         }
         else
         {
