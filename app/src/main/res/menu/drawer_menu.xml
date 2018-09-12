@@ -28,6 +28,10 @@
       android:icon="@drawable/ic_radar"
       android:title="Radar e Satellite" />
     <item
+      android:id="@+id/drawer_view_webcam"
+      android:icon="@drawable/ic_webcam"
+      android:title="Webcam" />
+    <item
       android:id="@+id/drawer_view_bollettini"
       android:icon="@drawable/ic_report"
       android:title="Bollettini" />
@@ -35,6 +39,11 @@
       android:id="@+id/drawer_view_allerte"
       android:icon="@drawable/ic_warning"
       android:title="Allerte" />
+
+    <item
+      android:id="@+id/drawer_view_telegram"
+      android:icon="@drawable/ic_telegram"
+      android:title="Telegram Bot" />
 
   </group>
   <group android:checkableBehavior="single">
