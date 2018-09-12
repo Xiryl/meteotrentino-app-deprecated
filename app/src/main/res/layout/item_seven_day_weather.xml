@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+  <data>
+  </data>
+
+
+    <android.support.v7.widget.CardView
+
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="10dp"
+      android:layout_marginRight="10dp"
+      android:layout_marginTop="10dp"
+      app:cardElevation="15dp">
+
+      <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff">
+
+        <ImageView
+          android:id="@+id/item_seven_day_img"
+          android:layout_width="50dp"
+          android:layout_height="50dp"
+          android:layout_marginTop="15dp"
+          android:layout_marginLeft="10dp"
+          android:layout_marginBottom="15dp"
+          android:src="@drawable/ic_w_sun_cloud_rain"
+          android:padding="5dp"
+          android:background="@drawable/rounded_corner"/>
+
+        <TextView
+          android:id="@+id/item_seven_day_txt_day"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Lunedi 10"
+          android:textStyle="bold"
+          android:layout_marginLeft="90dp"
+          android:textSize="19sp"
+          android:layout_marginTop="17dp"/>
+
+        <TextView
+          android:id="@+id/item_seven_day_txt_report"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Pioggie Deboli"
+          android:layout_marginLeft="90dp"
+          android:textSize="17dp"
+          android:layout_marginTop="45dp"/>
+
+        <TextView
+          android:id="@+id/item_seven_day_txt_temperature"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="17° / 23°"
+          android:layout_marginEnd="40dp"
+          android:layout_alignParentRight="true"
+          android:textSize="18sp"
+          android:layout_centerVertical="true"/>
+
+        <ImageView
+
+          android:layout_width="60dp"
+          android:layout_height="60dp"
+          android:layout_marginTop="20dp"
+          android:padding="20dp"
+          android:layout_marginLeft="10dp"
+          android:layout_alignParentRight="true"
+          android:layout_centerVertical="true"
+          android:src="@drawable/ic_arrow_right"
+          android:background="#00000000"/>
+      </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+</layout>
