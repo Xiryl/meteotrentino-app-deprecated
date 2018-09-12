@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+  <data/>
+  <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.MainFragment">
+
+    <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:background="#303A54">
+
+        <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textSize="21sp"
+          android:textColor="@color/white"
+          android:layout_gravity="center_vertical"
+          android:gravity="center"
+          android:text="Immagini \n Radar e Satellite"/>
+
+
+      </LinearLayout>
+
+      <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:id="@+id/fragment_radar_day_btn_menu"
+        android:background="#00000000"
+        android:src="@drawable/ic_menu_left"
+        />
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="110dp"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+      <android.support.v7.widget.CardView
+
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_margin="@dimen/offset_15"
+        android:padding="15dp"
+        app:cardElevation="15dp">
+
+        <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textSize="21sp"
+          android:textColor="@color/blue_main"
+          android:layout_gravity="center_horizontal"
+          android:gravity="center"
+          android:text="Radar Precipitazioni"/>
+
+
+        <ImageView
+          android:layout_width="match_parent"
+          android:layout_marginTop="40dp"
+          android:layout_marginBottom="30dp"
+          android:layout_height="match_parent"
+          android:src="@drawable/bg_day_thunderstorm"
+          android:id="@+id/fragment_radar_img_radar_nord_italy"/>
+
+      </android.support.v7.widget.CardView>
+
+      </LinearLayout>
+
+    </RelativeLayout>
+  </FrameLayout>
+</layout>
