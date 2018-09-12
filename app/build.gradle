@@ -69,4 +69,10 @@ dependencies {
     // https://thetechguru.in/storing-java-objects-primitive-types-room-database/
     // https://github.com/google/gson
     implementation 'com.google.code.gson:gson:2.8.5'
+
+    // gif loader - gilde
+    // https://github.com/bumptech/glide
+    // https://stackoverflow.com/questions/48013012/load-gif-from-url?rq=1
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
 }
