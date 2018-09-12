@@ -4,11 +4,12 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
   <item>
     <shape android:shape="rectangle">
-      <solid android:color="@color/azure_slot"/>
+      <solid android:color="#E16437
+"/>
       <corners android:radius="@dimen/offset_10" />
       <stroke
         android:width="@dimen/offset_2"
-        android:color="@color/azure_slot"
+        android:color="#E16437"
         />
     </shape>
   </item>
