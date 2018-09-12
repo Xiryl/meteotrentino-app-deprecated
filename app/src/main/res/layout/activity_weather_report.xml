@@ -13,7 +13,7 @@
     <android.support.design.widget.AppBarLayout
       android:id="@+id/main_appbar"
       android:layout_width="match_parent"
-      android:layout_height="250dp"
+      android:layout_height="wrap_content"
       android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
       android:fitsSystemWindows="true"
       >
@@ -71,12 +71,13 @@
           android:id="@+id/activity_weather_report_txt_previsione"
           android:layout_width="wrap_content"
           android:gravity="center_horizontal"
-          android:layout_marginTop="160dp"
+          android:layout_marginTop="180dp"
           android:layout_marginLeft="15dp"
           android:layout_marginRight="15dp"
           android:layout_height="wrap_content"
           android:textColor="#F7F7F7"
-          android:text="Previsione: parzialmente soleggiato con temporanei annuvolamenti localmente associati a rovesci e temporali anche intensi; temperature minime stazionarie, massime in lieve calo. Venti deboli o moderati a regime di brezza con locali rinforzi"
+          android:layout_marginBottom="20dp"
+          android:text=" "
           />
 
         <android.support.v7.widget.Toolbar
