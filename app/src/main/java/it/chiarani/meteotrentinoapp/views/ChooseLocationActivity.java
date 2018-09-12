@@ -35,6 +35,7 @@ public class ChooseLocationActivity extends SampleActivity implements API_locali
   public ArrayList<LocalityEntity> mylocs;
   String[] all_locs;
 
+
   @Override
   protected int getLayoutID() {
     return R.layout.activity_choose_location;
@@ -49,6 +50,7 @@ public class ChooseLocationActivity extends SampleActivity implements API_locali
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
+
     Log.d( CHOOSELOCATIONACTIVITY_TAG, "Start choose location actiity");
 
     LocalityRepository repository = new LocalityRepository(this.getApplication());
@@ -57,6 +59,22 @@ public class ChooseLocationActivity extends SampleActivity implements API_locali
       if(entries.size() == 0) {
         // Launch async task for get locality
         new API_locality(getApplication(), this, this::processFinish).execute();
+      }
+      else
+      {
+        all_locs = listTostring(entries);
+
+        if(all_locs == null) {
+          // TODO: place in @String
+          Toast.makeText(this, "Impossibile scaricare le località. riprova.", Toast.LENGTH_LONG).show();
+          return;
+        }
+
+        // create adapter with all localities
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, all_locs);
+
+        // set adapter to autocomplete text
+        binding.chooseLocationAutoCompleteTxt.setAdapter(adapter);
       }
     });
 
