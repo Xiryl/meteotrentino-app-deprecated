@@ -10,6 +10,9 @@
 <RelativeLayout
   android:layout_width="match_parent"
   android:layout_height="match_parent">
+
+
+
   <RelativeLayout
     android:id="@+id/fragment_main_rl"
     android:layout_width="match_parent"
@@ -17,6 +20,13 @@
     android:layout_marginBottom="300dp"
     android:background="@drawable/bg_day"
     android:paddingBottom="@dimen/offset_5">
+    <ImageButton
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="10dp"
+      android:id="@+id/main_act_btn_menu"
+      android:background="#00000000"
+      android:src="@drawable/ic_menu_left"/>
 
     <TextView
       android:id="@+id/fragment_main_txt_position"

@@ -9,10 +9,13 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.adapters.WeatherSlotAdapter;
@@ -21,6 +24,7 @@ import it.chiarani.meteotrentinoapp.api.API_weatherReport_response;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherForDayEntity;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherForWeekEntity;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherReportEntity;
+import it.chiarani.meteotrentinoapp.databinding.ActivityMainBinding;
 import it.chiarani.meteotrentinoapp.databinding.FragmentMainBinding;
 import it.chiarani.meteotrentinoapp.helper.WeatherIconDescriptor;
 import it.chiarani.meteotrentinoapp.helper.WeatherTypes;
@@ -31,6 +35,7 @@ import it.chiarani.meteotrentinoapp.views.WeatherReportActivity;
 public class MainFragment extends Fragment implements API_weatherReport_response {
 
   FragmentMainBinding binding;
+  ActivityMainBinding binging_act;
   String user_location;
 
   public MainFragment() {
@@ -45,6 +50,7 @@ public class MainFragment extends Fragment implements API_weatherReport_response
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false);
+    binging_act  = DataBindingUtil.inflate(inflater, R.layout.activity_main, container, false);
 
     user_location = getArguments().getString("user_location");
 
@@ -70,12 +76,24 @@ public class MainFragment extends Fragment implements API_weatherReport_response
       @Override
       public void onClick(View v) {
         Intent myIntent = new Intent(getActivity(), WeatherReportActivity.class);
+        myIntent.putExtra("DAY", 0);
         startActivity(myIntent);
+      }
+    });
+
+
+    ImageButton btn = view.findViewById(R.id.main_act_btn_menu);
+
+    btn.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        DrawerLayout mDrawerLayout = (DrawerLayout) getActivity().findViewById(R.id.main_activity_drawer_layout);
+        mDrawerLayout.openDrawer(Gravity.LEFT);
       }
     });
   }
 
-  /*
+
 
   /**
    * Called after API termination
@@ -160,9 +178,11 @@ public class MainFragment extends Fragment implements API_weatherReport_response
         WeatherSlotAdapter adapter = new WeatherSlotAdapter(wfr, od_entries.get(od_entries.size()-1));
         binding.fragmentMainRvWeatherSlot.setAdapter(adapter);            // Fasce
 
+
       });
     });
 
   }
+
 
 }

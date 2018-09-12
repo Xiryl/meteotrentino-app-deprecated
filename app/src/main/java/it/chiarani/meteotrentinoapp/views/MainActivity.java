@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
 import android.location.Address;
 import android.location.Geocoder;
+import android.media.Image;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
@@ -18,7 +19,11 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import java.util.List;
 import java.util.Locale;
@@ -26,6 +31,8 @@ import java.util.Locale;
 import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.databinding.ActivityMainBinding;
 import it.chiarani.meteotrentinoapp.fragments.MainFragment;
+import it.chiarani.meteotrentinoapp.fragments.RadarFragment;
+import it.chiarani.meteotrentinoapp.fragments.SevenDayFragment;
 import it.chiarani.meteotrentinoapp.helper.GpsTracker;
 import it.chiarani.meteotrentinoapp.models.WeatherReport;
 
@@ -63,16 +70,16 @@ public class MainActivity extends SampleActivity{
           public boolean onNavigationItemSelected(MenuItem menuItem) {
             // set item as selected to persist highlight
             menuItem.setChecked(true);
-            // close drawer when item is tapped
-            //mDrawerLayout.closeDrawers();
 
-            // Add code here to update the UI based on the item selected
-            // For example, swap UI fragments here
-
+            switch (menuItem.getItemId()) {
+              case R.id.drawer_view_search :
+                Intent myIntent = new Intent(MainActivity.this, ChooseLocationActivity.class);
+                startActivity(myIntent);
+                return true;
+            }
             return true;
           }
         });
-
 
     Intent intent = getIntent();
     String user_location = "TRENTO";
@@ -130,8 +137,23 @@ public class MainActivity extends SampleActivity{
                   .commit();
               return true;
             case R.id.bottombaritem_sevenday:
+              Bundle bundle1 = new Bundle();
+              bundle1.putString("user_location", tmp);
+              SevenDayFragment frag1 = new SevenDayFragment();
+              frag1.setArguments(bundle1);
+              getSupportFragmentManager()
+                  .beginTransaction()
+                  .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                  .replace(R.id.activity_main_framelayout, frag1, "MainFragment")
+                  .commit();
               return true;
             case R.id.bottombaritem_radar:
+              RadarFragment frag2 = new RadarFragment();
+              getSupportFragmentManager()
+                  .beginTransaction()
+                  .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                  .replace(R.id.activity_main_framelayout, frag2, "MainFragment")
+                  .commit();
               return true;
           }
           return false;
