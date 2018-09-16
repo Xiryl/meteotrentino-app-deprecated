@@ -28,7 +28,6 @@ public class WeatherReportAdapter extends RecyclerView.Adapter<WeatherReportAdap
 
     TextView txt_time_slot;
     TextView txt_tmin;
-    TextView txt_tmax;
     TextView txt_humidity;
     TextView txt_pressure;
     TextView txt_prob_prec;
@@ -44,7 +43,6 @@ public class WeatherReportAdapter extends RecyclerView.Adapter<WeatherReportAdap
       super(v);
       txt_time_slot         = v.findViewById(R.id.item_weather_report_txt_fascia);
       txt_tmin              = v.findViewById(R.id.item_weather_report_txt_t_min);
-      txt_tmax              = v.findViewById(R.id.item_weather_report_txt_t_max);
       txt_humidity          = v.findViewById(R.id.item_weather_report_txt_humidity);
       txt_pressure          = v.findViewById(R.id.item_weather_report_txt_pressure);
       txt_prob_prec         = v.findViewById(R.id.item_weather_report_txt_prob_prec);
@@ -75,8 +73,8 @@ public class WeatherReportAdapter extends RecyclerView.Adapter<WeatherReportAdap
     WeatherForSlotEntity wfs = weather_report.getPrevisione().getGiorni().get(weather_day).getFasce().get(position);
 
     holder.txt_time_slot.setText(wfs.getFasciaPer() + ": " + wfs.getFasciaOre());
-    holder.txt_tmin.setText("Temperatura min: " + weather_report.getPrevisione().getGiorni().get(weather_day).gettMinGiorno() + "°");
-    holder.txt_tmax.setText("Temperatura max: " + weather_report.getPrevisione().getGiorni().get(weather_day).gettMaxGiorno() + "°");
+    holder.txt_tmin.setText("Temperature: " + weather_report.getPrevisione().getGiorni().get(weather_day).gettMinGiorno() + "° / " +
+        weather_report.getPrevisione().getGiorni().get(weather_day).gettMaxGiorno() + "°");
     holder.txt_humidity.setText("Umidità: " + open_weather_report.getHumidity() + "%");
     holder.txt_pressure.setText("Pressione: " + open_weather_report.getPressure()+ " hPa");
     holder.txt_prob_prec.setText("Prob. precipitazioni: " +wfs.getDescPrecProb() + "");

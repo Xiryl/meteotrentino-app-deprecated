@@ -14,6 +14,7 @@ import java.util.Date;
 
 import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.database.entity.OpenWeatherDataEntity;
+import it.chiarani.meteotrentinoapp.database.entity.WeatherForDayEntity;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherReportEntity;
 import it.chiarani.meteotrentinoapp.helper.WeatherIconDescriptor;
 import it.chiarani.meteotrentinoapp.helper.WeatherTypes;
@@ -34,7 +35,9 @@ public class WeatherSevenDayAdapter extends RecyclerView.Adapter<WeatherSevenDay
 
     TextView txt_day;
     TextView txt_report;
-    TextView txt_temperature;
+    TextView txt_temperature_max;
+    TextView txt_temperature_min;
+    TextView txt_probprec;
     ImageView img_weather;
 
     public ViewHolder(View v) {
@@ -43,7 +46,9 @@ public class WeatherSevenDayAdapter extends RecyclerView.Adapter<WeatherSevenDay
       img_weather = (ImageView) v.findViewById(R.id.item_seven_day_img);
       txt_day = v.findViewById(R.id.item_seven_day_txt_day);
       txt_report = v.findViewById(R.id.item_seven_day_txt_report);
-      txt_temperature = v.findViewById(R.id.item_seven_day_txt_temperature);
+      txt_temperature_max = v.findViewById(R.id.item_seven_day_txt_tmax);
+      txt_temperature_min = v.findViewById(R.id.item_seven_day_txt_tmin);
+      txt_probprec = v.findViewById(R.id.item_seven_day_txt_probprec);
 
       v.setOnClickListener(this);
     }
@@ -81,52 +86,38 @@ public class WeatherSevenDayAdapter extends RecyclerView.Adapter<WeatherSevenDay
 
     switch (data.get(Calendar.DAY_OF_WEEK)) {
       //case 0: holder.txt_day.setText("Lunedì " + data.get(Calendar.DAY_OF_MONTH)); break;
-      case 1: holder.txt_day.setText("Domenica " + data.get(Calendar.DAY_OF_MONTH));break;
-      case 2: holder.txt_day.setText("Lunedì " + data.get(Calendar.DAY_OF_MONTH));break;
-      case 3: holder.txt_day.setText("Martedì " + data.get(Calendar.DAY_OF_MONTH));break;
-      case 4: holder.txt_day.setText("Mercoledì " + data.get(Calendar.DAY_OF_MONTH));break;
-      case 5: holder.txt_day.setText("Giovedì " + data.get(Calendar.DAY_OF_MONTH));break;
-      case 6: holder.txt_day.setText("Venerdì " + data.get(Calendar.DAY_OF_MONTH));break;
-      default: holder.txt_day.setText("Sabato " + data.get(Calendar.DAY_OF_MONTH));break;
+      case 1: holder.txt_day.setText("Dom " + data.get(Calendar.DAY_OF_MONTH));break;
+      case 2: holder.txt_day.setText("Lun " + data.get(Calendar.DAY_OF_MONTH));break;
+      case 3: holder.txt_day.setText("Mar " + data.get(Calendar.DAY_OF_MONTH));break;
+      case 4: holder.txt_day.setText("Mer " + data.get(Calendar.DAY_OF_MONTH));break;
+      case 5: holder.txt_day.setText("Gio " + data.get(Calendar.DAY_OF_MONTH));break;
+      case 6: holder.txt_day.setText("Ven " + data.get(Calendar.DAY_OF_MONTH));break;
+      default: holder.txt_day.setText("Sab " + data.get(Calendar.DAY_OF_MONTH));break;
     }
 
-    holder.txt_report.setText(weather_report.getPrevisione().getGiorni().get(position).getDescIcona());
-    holder.txt_temperature.setText(weather_report.getPrevisione().getGiorni().get(position).gettMinGiorno() + "° / " +
-        weather_report.getPrevisione().getGiorni().get(position).gettMaxGiorno() + "°");
+    WeatherForDayEntity wfd = weather_report.getPrevisione().getGiorni().get(position);
 
+    holder.txt_report.setText(wfd.getDescIcona());
 
-    if(WeatherIconDescriptor.getWeatherType(weather_report.getPrevisione().getGiorni().get(position).getIcona()).equals(WeatherTypes.COPERTO)){
-      holder.img_weather.setImageResource(R.drawable.ic_w_cloud);
-    }
-      else if(WeatherIconDescriptor.getWeatherType(weather_report.getPrevisione().getGiorni().get(position).getIcona()).equals(WeatherTypes.COPERTO_CON_PIOGGIA)) {
-      holder.img_weather.setImageResource(R.drawable.ic_w_light_rain);
-    }
-    else if(WeatherIconDescriptor.getWeatherType(weather_report.getPrevisione().getGiorni().get(position).getIcona()).equals(WeatherTypes.COPERTO_CON_PIOGGIA_ABBONDANTE)) {
-      holder.img_weather.setImageResource(R.drawable.ic_w_rain);
-    }
-    else if(WeatherIconDescriptor.getWeatherType(weather_report.getPrevisione().getGiorni().get(position).getIcona()).equals(WeatherTypes.COPERTO_CON_PIOGGIA_E_NEVE)) {
-      holder.img_weather.setImageResource(R.drawable.ic_w_snow_rain);
-    }
-    else if(WeatherIconDescriptor.getWeatherType(weather_report.getPrevisione().getGiorni().get(position).getIcona()).equals(WeatherTypes.NEVICATA)) {
-      holder.img_weather.setImageResource(R.drawable.ic_w_sun);
-    }
-    else if(WeatherIconDescriptor.getWeatherType(weather_report.getPrevisione().getGiorni().get(position).getIcona()).equals(WeatherTypes.SOLE)) {
-      holder.img_weather.setImageResource(R.drawable.ic_w_sun);
-    }
-    else if(WeatherIconDescriptor.getWeatherType(weather_report.getPrevisione().getGiorni().get(position).getIcona()).equals(WeatherTypes.SOLEGGIATO)) {
-      holder.img_weather.setImageResource(R.drawable.ic_w_sun_cloud);
-    }
-    else if(WeatherIconDescriptor.getWeatherType(weather_report.getPrevisione().getGiorni().get(position).getIcona()).equals(WeatherTypes.SOLEGGIATO_CON_PIOGGIA)) {
-      holder.img_weather.setImageResource(R.drawable.ic_w_sun_cloud_rain);
-    }
-    else if(WeatherIconDescriptor.getWeatherType(weather_report.getPrevisione().getGiorni().get(position).getIcona()).equals(WeatherTypes.SOLEGGIATO_CON_PIOGGIA_E_NEVE)) {
-      holder.img_weather.setImageResource(R.drawable.ic_w_sun_cloud_rain_snow);
-    }
-    else if(WeatherIconDescriptor.getWeatherType(weather_report.getPrevisione().getGiorni().get(position).getIcona()).equals(WeatherTypes.TEMPORALE)) {
-      holder.img_weather.setImageResource(R.drawable.ic_w_thunderstorm);
-    }
-    else if(WeatherIconDescriptor.getWeatherType(weather_report.getPrevisione().getGiorni().get(position).getIcona()).equals(WeatherTypes.UNDEFINED)) {
-      holder.img_weather.setImageResource(R.drawable.ic_w_sun_cloud);
+    holder.txt_temperature_max.setText(wfd.gettMaxGiorno() + " °");
+    holder.txt_temperature_min.setText(wfd.gettMinGiorno() + " °");
+
+    holder.txt_probprec.setText(wfd.getFasce().get(0).getDescPrecProb() + "");
+
+    WeatherTypes wtype = WeatherIconDescriptor.getWeatherType(wfd.getIcona());
+
+    switch (wtype){
+      case COPERTO: holder.img_weather.setImageResource(R.drawable.ic_w_cloud_g); break;
+      case COPERTO_CON_PIOGGIA:   holder.img_weather.setImageResource(R.drawable.ic_w_light_rain_g); break;
+      case COPERTO_CON_PIOGGIA_ABBONDANTE :   holder.img_weather.setImageResource(R.drawable.ic_w_rain_g); break;
+      case COPERTO_CON_PIOGGIA_E_NEVE:  holder.img_weather.setImageResource(R.drawable.ic_w_snow_rain_g); break;
+      case NEVICATA:  holder.img_weather.setImageResource(R.drawable.ic_w_snow); break;
+      case SOLE:  holder.img_weather.setImageResource(R.drawable.ic_w_sun_g); break;
+      case SOLEGGIATO:  holder.img_weather.setImageResource(R.drawable.ic_w_sun_cloud_g); break;
+      case SOLEGGIATO_CON_PIOGGIA:       holder.img_weather.setImageResource(R.drawable.ic_w_sun_cloud_rain_g); break;
+      case SOLEGGIATO_CON_PIOGGIA_E_NEVE:   holder.img_weather.setImageResource(R.drawable.ic_w_sun_cloud_rain_snow_g); break;
+      case TEMPORALE:    holder.img_weather.setImageResource(R.drawable.ic_w_thunderstorm_g); break;
+      case UNDEFINED:  holder.img_weather.setImageResource(R.drawable.ic_w_sun_cloud_g); break;
     }
    }
 
