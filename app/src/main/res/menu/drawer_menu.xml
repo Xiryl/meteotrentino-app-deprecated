@@ -28,9 +28,9 @@
       android:icon="@drawable/ic_radar"
       android:title="Radar e Satellite" />
     <item
-      android:id="@+id/drawer_view_webcam"
+      android:id="@+id/drawer_view_staz_meteorologiche"
       android:icon="@drawable/ic_webcam"
-      android:title="Webcam" />
+      android:title="Dati Stazioni" />
     <item
       android:id="@+id/drawer_view_bollettini"
       android:icon="@drawable/ic_report"

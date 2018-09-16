@@ -5,63 +5,61 @@
   <data>
   </data>
 
-
-    <android.support.v7.widget.CardView
-
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginLeft="10dp"
-      android:layout_marginRight="10dp"
-      android:layout_marginTop="10dp"
-      app:cardElevation="15dp">
-
       <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#fff">
+        android:background="#00000000"
+
+        android:layout_marginBottom="0dp">
+        <android.support.v7.widget.CardView
+          android:layout_marginTop="2dp"
+          android:layout_marginBottom="2dp"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="14dp"
+          android:layout_marginRight="14dp"
+          app:cardCornerRadius="7dp">
+
+
+        <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+        <TextView
+          android:id="@+id/item_seven_day_txt_day"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Mer 10"
+          android:textStyle="bold"
+          android:layout_marginLeft="70dp"
+          android:textSize="19sp"
+          android:textColor="@color/blue_main"
+          android:layout_marginTop="17dp"/>
 
         <ImageView
           android:id="@+id/item_seven_day_img"
           android:layout_width="50dp"
           android:layout_height="50dp"
-          android:layout_marginTop="15dp"
+          android:layout_centerVertical="true"
           android:layout_marginLeft="10dp"
-          android:layout_marginBottom="15dp"
-          android:src="@drawable/ic_w_sun_cloud_rain"
-          android:padding="5dp"
-          android:background="@drawable/rounded_corner"/>
 
-        <TextView
-          android:id="@+id/item_seven_day_txt_day"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="Lunedi 10"
-          android:textStyle="bold"
-          android:layout_marginLeft="90dp"
-          android:textSize="19sp"
-          android:layout_marginTop="17dp"/>
+          android:src="@drawable/ic_w_sun_g"
+          android:padding="5dp"
+          />
 
         <TextView
           android:id="@+id/item_seven_day_txt_report"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="Pioggie Deboli"
-          android:layout_marginLeft="90dp"
-          android:textSize="17dp"
-          android:layout_marginTop="45dp"/>
+          android:textColor="@color/blue_main"
+          android:layout_marginLeft="150dp"
+          android:textSize="16dp"
+          android:textStyle="italic"
+          android:layout_marginTop="19dp"/>
 
-        <TextView
-          android:id="@+id/item_seven_day_txt_temperature"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="17° / 23°"
-          android:layout_marginEnd="40dp"
-          android:layout_alignParentRight="true"
-          android:textSize="18sp"
-          android:layout_centerVertical="true"/>
+
 
         <ImageView
-
           android:layout_width="60dp"
           android:layout_height="60dp"
           android:layout_marginTop="20dp"
@@ -71,7 +69,77 @@
           android:layout_centerVertical="true"
           android:src="@drawable/ic_arrow_right"
           android:background="#00000000"/>
+        </RelativeLayout>
+
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="60dp"
+            android:background="#F5F9FE">
+            <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Min"
+              android:gravity="center"
+              android:layout_margin="5dp"
+              android:layout_weight="1"
+              android:textSize="16dp"/>
+            <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Max"
+              android:layout_margin="5dp"
+              android:gravity="center"
+              android:layout_weight="1"
+              android:textSize="16dp"/>
+            <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_margin="5dp"
+              android:text="Prob. Prec"
+              android:gravity="center"
+              android:layout_weight="1"
+              android:textSize="16dp"/>
+          </LinearLayout>
+
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="90dp">
+            <TextView
+              android:id="@+id/item_seven_day_txt_tmin"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Min"
+              android:gravity="center"
+              android:layout_margin="5dp"
+              android:layout_weight="1"
+              android:textSize="16dp"/>
+            <TextView
+              android:id="@+id/item_seven_day_txt_tmax"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Max"
+              android:layout_margin="5dp"
+              android:gravity="center"
+              android:layout_weight="1"
+              android:textSize="16dp"/>
+            <TextView
+              android:id="@+id/item_seven_day_txt_probprec"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_margin="5dp"
+              android:text="Molto bassa"
+              android:maxWidth="75dp"
+              android:gravity="center"
+              android:layout_weight="1"
+              android:textSize="16dp"/>
+          </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
       </RelativeLayout>
 
-    </android.support.v7.widget.CardView>
 </layout>

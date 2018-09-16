@@ -33,7 +33,6 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:textColor="@color/white"
-      android:text="Arco"
       android:layout_marginTop="@dimen/offset_50"
       android:layout_marginStart="@dimen/offset_15"
       android:textSize="@dimen/position_text_size"/>
@@ -44,7 +43,6 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:textColor="@color/white"
-      android:text="Previsione"
       android:textStyle="bold|italic"
       android:layout_marginTop="100dp"
       android:layout_marginStart="@dimen/offset_15"
@@ -54,7 +52,6 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:textColor="#932327"
-      android:text="Allerta"
       android:textStyle="bold"
       android:layout_marginTop="120dp"
       android:layout_marginStart="@dimen/offset_15"
@@ -66,7 +63,6 @@
       android:layout_height="@dimen/offset_100"
       android:layout_alignParentEnd="true"
       android:layout_marginEnd="30dp"
-      android:src="@drawable/ic_w_light_rain"
       android:layout_marginStart="@dimen/offset_10"
       android:layout_marginTop="45dp"/>
 
@@ -75,7 +71,6 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:textColor="@color/white"
-      android:text="35°"
       android:layout_alignParentBottom="true"
       android:layout_marginBottom="@dimen/offset_40"
       android:paddingBottom="@dimen/offset_40"

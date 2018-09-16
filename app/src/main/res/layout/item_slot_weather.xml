@@ -46,9 +46,11 @@
             android:layout_margin="7dp"
             android:layout_height="wrap_content">
             <ImageView
+              android:id="@+id/item_slot_weather_img"
               android:layout_width="40dp"
               android:layout_height="40dp"
-              android:src="@drawable/ic_humidity"
+              android:src="@drawable/ic_wind"
+             android:layout_marginTop="4dp"
               android:layout_marginLeft="10dp"
               android:gravity="center"/>
             <LinearLayout
@@ -63,20 +65,23 @@
                 android:textColor="#9A9A9B"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:text="Umidità"/>
+                android:text="Cielo"/>
               <TextView
-                android:id="@+id/item_slot_weather_txt_humidity"
+                android:id="@+id/item_slot_weather_txt_vento"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#313335"
-                android:gravity="center"
+                android:gravity="left"
                 android:textStyle="bold"
+                android:maxWidth="140dp"
                 android:layout_weight="1"
                 android:layout_marginTop="5dp"
-                android:text="75%"
+                android:text="Nuvoloso con puioggie deboli"
                 />
             </LinearLayout>
           </LinearLayout>
+
+
 
           <LinearLayout
             android:layout_alignParentEnd="true"
@@ -122,36 +127,37 @@
             android:layout_width="wrap_content"
             android:layout_margin="7dp"
             android:layout_height="wrap_content">
-            <ImageView
-              android:layout_width="40dp"
-              android:layout_height="40dp"
-              android:src="@drawable/ic_wind"
-              android:layout_marginLeft="10dp"
-              android:gravity="center"/>
-            <LinearLayout
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_gravity="center"
-              android:layout_marginLeft="10dp"
-              android:orientation="vertical">
-              <TextView
+
+              <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_humidity"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"/>
+              <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#9A9A9B"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:text="Vento"/>
-              <TextView
-                android:id="@+id/item_slot_weather_txt_vento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#313335"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:layout_weight="1"
-                android:layout_marginTop="5dp"
-                android:text="Basso"
-                />
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical">
+                <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:textColor="#9A9A9B"
+                  android:gravity="center"
+                  android:layout_weight="1"
+                  android:text="Umidità"/>
+                <TextView
+                  android:id="@+id/item_slot_weather_txt_humidity"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:textColor="#313335"
+                  android:gravity="center"
+                  android:textStyle="bold"
+                  android:layout_weight="1"
+                  android:layout_marginTop="5dp"
+                  android:text="75%"
+                  />
             </LinearLayout>
           </LinearLayout>
 
