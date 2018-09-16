@@ -56,8 +56,18 @@ public class RadarFragment extends Fragment {
 
     Glide.with(this)
         .load("https://content.meteotrentino.it/dati-meteo/radar/home/lastRadar4mobile.aspx")
-                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE))
-                .into(binding.fragmentRadarImgRadarNordItaly);
+        .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE))
+        .into(binding.fragmentRadarImgRadarNordItaly);
+
+    Glide.with(this)
+        .load("http://api.sat24.com/animated/ALPS/infraPolair/1/Central%20European%20Standard%20Time/493234")
+        .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE))
+        .into(binding.fragmentRadarImgInfrarossoAlpi);
+
+
   }
+
+
+
 
 }
