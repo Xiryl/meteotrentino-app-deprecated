@@ -1,5 +1,6 @@
 package it.chiarani.meteotrentinoapp.views;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -24,6 +25,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import java.util.List;
 import java.util.Locale;
@@ -35,6 +37,7 @@ import it.chiarani.meteotrentinoapp.fragments.RadarFragment;
 import it.chiarani.meteotrentinoapp.fragments.SevenDayFragment;
 import it.chiarani.meteotrentinoapp.helper.GpsTracker;
 import it.chiarani.meteotrentinoapp.models.WeatherReport;
+import it.chiarani.meteotrentinoapp.servicies.AlarmManagerBroadcastReceiver;
 
 public class MainActivity extends SampleActivity{
 
@@ -44,6 +47,8 @@ public class MainActivity extends SampleActivity{
   private WeatherReport _report;
   GpsTracker gpsTracker;
   BottomNavigationView bottomNavigationView;
+  private AlarmManagerBroadcastReceiver alarm;
+
   // #ENDREGION
 
   @Override
@@ -60,26 +65,15 @@ public class MainActivity extends SampleActivity{
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
+
     // log start activity
     Log.d( MAINACTIVITY_TAG, "Start mainactivity");
+
+   // alarm = new AlarmManagerBroadcastReceiver();
+ // alarm.SetAlarm(this);
+
+
     launchIsFirstThread();
-
-    binding.mainActivityNavView.setNavigationItemSelectedListener(
-        new NavigationView.OnNavigationItemSelectedListener() {
-          @Override
-          public boolean onNavigationItemSelected(MenuItem menuItem) {
-            // set item as selected to persist highlight
-            menuItem.setChecked(true);
-
-            switch (menuItem.getItemId()) {
-              case R.id.drawer_view_search :
-                Intent myIntent = new Intent(MainActivity.this, ChooseLocationActivity.class);
-                startActivity(myIntent);
-                return true;
-            }
-            return true;
-          }
-        });
 
     Intent intent = getIntent();
     String user_location = "TRENTO";
@@ -159,6 +153,64 @@ public class MainActivity extends SampleActivity{
           return false;
         });
     bottomNavigationView.setSelectedItemId(R.id.bottombaritem_today);
+
+    binding.mainActivityNavView.setNavigationItemSelectedListener(
+        new NavigationView.OnNavigationItemSelectedListener() {
+          @Override
+          public boolean onNavigationItemSelected(MenuItem menuItem) {
+            // set item as selected to persist highlight
+            menuItem.setChecked(true);
+
+            switch (menuItem.getItemId()) {
+              case R.id.drawer_view_search :
+                Intent myIntent = new Intent(MainActivity.this, ChooseLocationActivity.class);
+                startActivity(myIntent);
+                return true;
+
+              case R.id.drawer_view_today:
+                Bundle bundle = new Bundle();
+                bundle.putString("user_location", tmp);
+                MainFragment frag = new MainFragment();
+                frag.setArguments(bundle);
+                getSupportFragmentManager()
+                    .beginTransaction()
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .replace(R.id.activity_main_framelayout, frag, "MainFragment")
+                    .commit();
+                binding.mainActivityDrawerLayout.closeDrawer(Gravity.LEFT);
+                return true;
+
+              case R.id.drawer_view_seven_day:
+                Bundle bundle1 = new Bundle();
+                bundle1.putString("user_location", tmp);
+                SevenDayFragment frag1 = new SevenDayFragment();
+                frag1.setArguments(bundle1);
+                getSupportFragmentManager()
+                    .beginTransaction()
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .replace(R.id.activity_main_framelayout, frag1, "MainFragment")
+                    .commit();
+                binding.mainActivityDrawerLayout.closeDrawer(Gravity.LEFT);
+                return true;
+
+              case R.id.drawer_view_radar:
+                RadarFragment frag2 = new RadarFragment();
+                getSupportFragmentManager()
+                    .beginTransaction()
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .replace(R.id.activity_main_framelayout, frag2, "MainFragment")
+                    .commit();
+                binding.mainActivityDrawerLayout.closeDrawer(Gravity.LEFT);
+                return true;
+
+              case R.id.drawer_view_staz_meteorologiche:
+                Intent myIntent1 = new Intent(MainActivity.this, WeatherStationActivity.class);
+                startActivity(myIntent1);
+                return true;
+            }
+            return true;
+          }
+        });
 
   }
 
