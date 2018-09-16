@@ -28,6 +28,7 @@ public class SevenDayFragment extends Fragment implements API_weatherReport_resp
   FragmentSevenDayBinding binding;
   ActivityMainBinding binging_act;
   String user_location;
+  WeatherReportRepository repository;
 
   public SevenDayFragment() {
     // Required empty public constructor
@@ -36,6 +37,7 @@ public class SevenDayFragment extends Fragment implements API_weatherReport_resp
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    repository = new WeatherReportRepository(getActivity().getApplication());
   }
 
   @Override
@@ -44,6 +46,17 @@ public class SevenDayFragment extends Fragment implements API_weatherReport_resp
     binging_act  = DataBindingUtil.inflate(inflater, R.layout.activity_main, container, false);
 
     user_location = getArguments().getString("user_location");
+
+    repository.getAll().observe(this, entries -> {
+      if(entries.size() == 0 || entries == null) {
+        // call api
+        new API_weatherReport(getActivity().getApplication(),getContext(), this::processFinish, user_location).execute();
+      }
+      else
+      {
+        DisplayToUi();
+      }
+    });
 
     return binding.getRoot();
   }
@@ -59,9 +72,6 @@ public class SevenDayFragment extends Fragment implements API_weatherReport_resp
 
     LinearLayoutManager horizontalLayoutManagaer = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
     binding.fragmentSevenDayRv.setLayoutManager(horizontalLayoutManagaer);
-
-    // call api
-    new API_weatherReport(getActivity().getApplication(),getContext(), this::processFinish, user_location).execute();
 
 
     ImageButton btn = view.findViewById(R.id.fragment_seven_day_btn_menu);
@@ -82,13 +92,15 @@ public class SevenDayFragment extends Fragment implements API_weatherReport_resp
    */
   @Override
   public void processFinish() {
-    WeatherReportRepository repository = new WeatherReportRepository(getActivity().getApplication());
+    DisplayToUi();
+  }
 
+  private void DisplayToUi() {
     repository.getAll().observe(this, entries -> {
       WeatherReportEntity report = entries.get(entries.size() -1);
       WeatherSevenDayAdapter adapter = new WeatherSevenDayAdapter(report);
       binding.fragmentSevenDayRv.setAdapter(adapter);
-      });
+    });
   }
 
 }
