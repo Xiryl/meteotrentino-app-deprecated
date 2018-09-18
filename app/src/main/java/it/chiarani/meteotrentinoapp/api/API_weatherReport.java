@@ -40,22 +40,29 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
 
   // #REGION PRIVATE FIELDS
   private final static String API_LOCALITY_TAG = "API_WEATHERREPORT";
-  private String URL_API = "https://www.meteotrentino.it/protcivtn-meteo/api/front/previsioneOpenDataLocalita?localita=";
-  private String URL_API_OP = "https://api.openweathermap.org/data/2.5/weather?q=";
-  Context mContext;
-  AlertDialog builder;
-  public WeatherReportEntity tmp_report;
+  private String URL_API;
+  private String URL_API_OP;
+  private Context mContext;
+  private AlertDialog builder;
+  private WeatherReportEntity tmp_report;
   private Application _app;
-  AlertDialog.Builder alert;
-  public API_weatherReport_response delegate = null;
+  private AlertDialog.Builder alert;
+  private API_weatherReport_response delegate = null;
   // #END REGION
 
+  /**
+   * Constructor
+   * @param app Application
+   * @param mContext Context
+   * @param res response callback
+   * @param location locality
+   */
   public API_weatherReport(Application app, Context mContext, API_weatherReport_response res, String location) {
     this.mContext = mContext;
     this._app = app;
     this.delegate = res;
-    URL_API += location;
-    URL_API_OP += location;
+    URL_API = API_endpoint.ENDPOINT_TODAY_WEATHER + location;
+    URL_API_OP = API_endpoint.ENDPOINT_OPENWEATHER_DATA + location;
     URL_API_OP += "&APPID=";
     URL_API_OP += AppConfiguration.openWeatherMapKey;
   }
@@ -67,7 +74,7 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
   protected void onPreExecute() {
     super.onPreExecute();
     alert = new AlertDialog.Builder(mContext);
-    alert.setMessage("Ottengo i dati meteo.. 0%").create();
+    alert.setMessage(mContext.getResources().getText(R.string.API_weatherReport_zero_data)).create();
     alert.setCancelable(false);
     builder = alert.show();
   }
@@ -88,14 +95,13 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
    */
   @Override
   protected Integer doInBackground(String... s) {
+
     WeatherReportRepository reportRepository = new WeatherReportRepository(_app);
     publishProgress(1);
     tmp_report = new WeatherReportEntity();
     WeatherForWeekEntity wfw = new WeatherForWeekEntity();
-
     HttpURLConnection connection = null;
     BufferedReader reader = null;
-
     try {
       publishProgress(2);
       URL url = new URL(URL_API);
@@ -122,7 +128,6 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
       tmp_report.setEvoluzioneBreve(ob.optString("evoluzioneBreve"));                       // evoluzioneBreve
 
       JSONArray allerte = ob.getJSONArray("AllerteList");                                   // allerteList
-
       JSONArray arr_previsione = ob.getJSONArray("previsione");                             // previsione
 
       wfw.setLocalita(arr_previsione.getJSONObject(0).optString("localita"));         // localita
@@ -212,25 +217,21 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
       tmp_report.setPrevisione(wfw);
 
       reportRepository.insert(tmp_report);
+
       // --------------
       //      DONE
       // --------------
 
-    } catch (MalformedURLException e) {
-      e.printStackTrace();
-      Log.e(API_LOCALITY_TAG, "Errore MalformedURLException: "+  e.toString());
-      tmp_report = null;
-    } catch (IOException e) {
-      e.printStackTrace();
-      Log.e(API_LOCALITY_TAG, "Errore IOException: "+  e.toString());
-      tmp_report = null;
     } catch (Exception e) {
       e.printStackTrace();
       Log.e(API_LOCALITY_TAG, "Errore Exception: "+  e.toString());
       tmp_report = null;
     }
 
-    Log.d(API_LOCALITY_TAG, "DATI locality Correttamente scaricati");
+
+
+    // ----- OPENWEATHER DOWNLOAD -----
+
 
 
     OpenWeatherDataRepository repository_op= new OpenWeatherDataRepository(_app);
@@ -260,14 +261,6 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
       int pressure = main_data.optInt("pressure");
 
       repository_op.insert(new OpenWeatherDataEntity(humidity + "", pressure + "", "", "", act_temp + ""));
-  } catch (MalformedURLException e) {
-    e.printStackTrace();
-    Log.e(API_LOCALITY_TAG, "Errore MalformedURLException: "+  e.toString());
-    tmp_report = null;
-  } catch (IOException e) {
-    e.printStackTrace();
-    Log.e(API_LOCALITY_TAG, "Errore IOException: "+  e.toString());
-    tmp_report = null;
   } catch (Exception e) {
     e.printStackTrace();
     Log.e(API_LOCALITY_TAG, "Errore Exception: "+  e.toString());
@@ -286,8 +279,6 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
 
     }
   }
-
-
     return -1;
   }
 

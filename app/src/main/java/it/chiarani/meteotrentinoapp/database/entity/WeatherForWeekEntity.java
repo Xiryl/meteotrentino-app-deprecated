@@ -3,7 +3,7 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 
 import java.util.List;
-import it.chiarani.meteotrentinoapp.models.WeatherForDay;
+
 import it.chiarani.meteotrentinoapp.models.WeatherForWeek;
 
 /**
@@ -13,29 +13,26 @@ import it.chiarani.meteotrentinoapp.models.WeatherForWeek;
 @Entity(tableName = "weatherForWeek")
 public class WeatherForWeekEntity implements WeatherForWeek {
 
-  // #REGION PRIVATE FIELDS
-  private String localita;
-  private int quota;
+  // #region private fields
+  private String                    localita;
+  private int                       quota;
   private List<WeatherForDayEntity> giorni;
-  // #ENDREGION
+  // #endregion
 
-  /**
-   * def. constructor
-   */
   @Ignore
-  public WeatherForWeekEntity() {
-
-  }
+  public WeatherForWeekEntity() {}
 
   /**
    * full constructor
    */
   public WeatherForWeekEntity(String localita, int quota, List<WeatherForDayEntity> giorni) {
     this.localita = localita;
-    this.quota = quota;
-    this.giorni = giorni;
+    this.quota    = quota;
+    this.giorni   = giorni;
   }
 
+
+  // #region GETTER & SETTER
   @Override
   public String getLocalita() {
     return localita;
@@ -60,4 +57,6 @@ public class WeatherForWeekEntity implements WeatherForWeek {
   public void setGiorni(List<WeatherForDayEntity> giorni) {
     this.giorni = giorni;
   }
+
+  // #endregion
 }

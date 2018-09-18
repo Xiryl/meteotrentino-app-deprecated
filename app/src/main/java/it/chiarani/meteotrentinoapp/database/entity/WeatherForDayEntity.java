@@ -13,49 +13,48 @@ import java.util.List;
 @Entity(tableName = "weatherForDay")
 public class WeatherForDayEntity implements WeatherForDay {
 
-  // #REGION PRIVATE FIELDS
-  private int idPrevisioneGiorno;
-  private String giorno;
-  private int idIcona;
-  private int icona;
-  private String descIcona;
-  private String icoAllerte;
-  private String coloreAllerte;
-  private String descIconaAllerte;
-  private String testoGiorno;
-  private int tMinGiorno;
-  private int tMaxGiorno;
+  // #region private fields
+  private int     idPrevisioneGiorno;
+  private String  giorno;
+  private int     idIcona;
+  private int     icona;
+  private String  descIcona;
+  private String  icoAllerte;
+  private String  coloreAllerte;
+  private String  descIconaAllerte;
+  private String  testoGiorno;
+  private int     tMinGiorno;
+  private int     tMaxGiorno;
   private List<WeatherForSlotEntity> fasce;
-  // #ENDREGION
+  // #endregion
 
-  /**
-   * def. constructor
-   */
   @Ignore
-  public WeatherForDayEntity () {
-
-  }
+  public WeatherForDayEntity() {}
 
   /**
    * full constructor
    */
-  public  WeatherForDayEntity(int idPrevisioneGiorno, String giorno, int idIcona, int icona, String descIcona, String icoAllerte, String coloreAllerte, String descIconaAllerte, String testoGiorno, int tMinGiorno, int tMaxGiorno, List<WeatherForSlotEntity> fasce) {
+  public  WeatherForDayEntity(int idPrevisioneGiorno, String giorno, int idIcona, int icona,
+                              String descIcona, String icoAllerte, String coloreAllerte,
+                              String descIconaAllerte, String testoGiorno, int tMinGiorno, int tMaxGiorno,
+                              List<WeatherForSlotEntity> fasce) {
 
     this.idPrevisioneGiorno = idPrevisioneGiorno;
-    this.giorno = giorno;
-    this.idIcona = idIcona;
-    this.icona = icona;
-    this.descIcona = descIcona;
-    this.icoAllerte = icoAllerte;
-    this.coloreAllerte = coloreAllerte;
+    this.giorno           = giorno;
+    this.idIcona          = idIcona;
+    this.icona            = icona;
+    this.descIcona        = descIcona;
+    this.icoAllerte       = icoAllerte;
+    this.coloreAllerte    = coloreAllerte;
     this.descIconaAllerte = descIconaAllerte;
-    this.testoGiorno = testoGiorno;
-    this.tMinGiorno = tMinGiorno;
-    this.tMaxGiorno = tMaxGiorno;
-    this.fasce = fasce;
+    this.testoGiorno      = testoGiorno;
+    this.tMinGiorno       = tMinGiorno;
+    this.tMaxGiorno       = tMaxGiorno;
+    this.fasce            = fasce;
   }
 
-  // #REGION GETTER & SETTER
+  // #region GETTER & SETTER
+
   @Override
   public int getIdPrevisioneGiorno() {
     return idPrevisioneGiorno;
@@ -153,5 +152,5 @@ public class WeatherForDayEntity implements WeatherForDay {
     this.fasce = fasce;
   }
 
-  // #ENDREGION
+  // #endregion
 }

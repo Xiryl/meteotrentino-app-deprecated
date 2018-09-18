@@ -17,24 +17,21 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 
 import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.database.entity.LocalityEntity;
-import it.chiarani.meteotrentinoapp.models.Locality;
 import it.chiarani.meteotrentinoapp.repositories.LocalityRepository;
 
 public class API_locality extends AsyncTask<String, Integer, Integer>{
 
-  // #REGION PRIVATE FIELDS
+  // #region private fields
   private final static String API_LOCALITY_TAG = "API_LOCALITY";
-  private final static String URL_API = "https://www.meteotrentino.it/protcivtn-meteo/api/front/localitaOpenData";
-  Context mContext;
-  AlertDialog builder;
-  AlertDialog.Builder alert;
-  Application _app;
-  public API_locality_response delegate = null;
-  // #END REGION
+  private final static String URL_API = API_endpoint.ENDPOINT_LOCALITY;
+  private Context mContext;
+  private AlertDialog builder;
+  private Application _app;
+  private API_locality_response delegate = null;
+  // #endregion
 
   /**
    * Main constructor
@@ -42,7 +39,7 @@ public class API_locality extends AsyncTask<String, Integer, Integer>{
    * @param res callback interface for get content async
    */
   public API_locality(Application app, Context mContext, API_locality_response res) {
-    this._app = app;
+    this._app     = app;
     this.mContext = mContext;
     this.delegate = res;
   }
@@ -53,7 +50,8 @@ public class API_locality extends AsyncTask<String, Integer, Integer>{
   @Override
   protected void onPreExecute() {
     super.onPreExecute();
-    alert = new AlertDialog.Builder(mContext);
+
+    AlertDialog.Builder alert = new AlertDialog.Builder(mContext);
     alert.setMessage(mContext.getResources().getString(R.string.API_locality_alert)).create();
     alert.setCancelable(false);
     builder = alert.show();
@@ -103,22 +101,14 @@ public class API_locality extends AsyncTask<String, Integer, Integer>{
       for (int i = 0; i < arr.length(); i++) {
         publishProgress(i);
         String locality = arr.getJSONObject(i).optString("localita");
-        if(locality.toLowerCase().equals("rovereto")) {
-          int x = 1;
-        }
         String place = arr.getJSONObject(i).optString("comune");
         int quota = Integer.parseInt(arr.getJSONObject(i).optString("quota"));
         String latitudine = arr.getJSONObject(i).optString("latitudine");
         String longitudine = arr.getJSONObject(i).optString("longitudine");
 
+        // insert to db new locality
         repository.insert(new LocalityEntity(locality, place, quota, latitudine, longitudine));
       }
-    } catch (MalformedURLException e) {
-      e.printStackTrace();
-      Log.e(API_LOCALITY_TAG, "Errore MalformedURLException: "+  e.toString());
-    } catch (IOException e) {
-      e.printStackTrace();
-      Log.e(API_LOCALITY_TAG, "Errore IOException: "+  e.toString());
     } catch (Exception e) {
       e.printStackTrace();
       Log.e(API_LOCALITY_TAG, "Errore Exception: "+  e.toString());
@@ -135,14 +125,12 @@ public class API_locality extends AsyncTask<String, Integer, Integer>{
         Log.e(API_LOCALITY_TAG, "Errore IOException1: "+  e.toString());
       }
     }
-    Log.d(API_LOCALITY_TAG, "DATI locality Correttamente scaricati");
-
     return 1;
   }
 
   @Override
   protected void onProgressUpdate(Integer... values) {
     TextView messageView = (TextView)builder.findViewById(android.R.id.message);
-    messageView.setText("Ottengo le località.. "+ values[0] +"/539");
+    messageView.setText(mContext.getResources().getText(R.string.API_locality_alert) +" "+ values[0] +"/539");
   }
 }

@@ -11,12 +11,24 @@ import it.chiarani.meteotrentinoapp.database.entity.OpenWeatherDataEntity;
 
 @Dao
 public interface OpenWeatherDataDao {
+
+  /**
+   * Get all openweathermap data from database
+   * @return list of weatherdata
+   */
   @Query("SELECT * FROM openWeatherData")
   LiveData<List<OpenWeatherDataEntity>> getAll();
 
+  /**
+   * Delete all data from database
+   */
   @Query("DELETE FROM openWeatherData")
   void deleteAll();
 
+  /**
+   * Insert new item on database
+   * @param entity
+   */
   @Insert
   void insert(OpenWeatherDataEntity entity);
 }

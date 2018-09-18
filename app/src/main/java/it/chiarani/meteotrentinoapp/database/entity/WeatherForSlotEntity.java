@@ -12,38 +12,34 @@ import it.chiarani.meteotrentinoapp.models.WeatherForSlot;
 @Entity(tableName = "weatherForSlot")
 public class WeatherForSlotEntity implements WeatherForSlot {
 
-  // #REGION PRIVATE FIELDS
-  private int idPrevisioneFascia;
-  private String fascia;
-  private String fasciaPer;
-  private String fasciaOre;
-  private int icona;
-  private String descIcona;
-  private int idPrecProb;
-  private String descPrecProb;
-  private int idPrecInten;
-  private String descPrecInten;
-  private int idTempProb;
-  private String descTempProb;
-  private int idVentoIntQuota;
-  private String descVentoIntQuota;
-  private int idVentoDirQuota;
-  private String descVentoDirQuota;
-  private int idVentoIntValle;
-  private String descVentoIntValle;
-  private int idVentoDirValle;
-  private String descVentoDirValle;
-  private int iconaVentoQuota;
-  private int zeroTermico;
-  private int limiteNevicate;
-  // #ENDREGION*/
+  // #region private fields
+  private int     idPrevisioneFascia;
+  private String  fascia;
+  private String  fasciaPer;
+  private String  fasciaOre;
+  private int     icona;
+  private String  descIcona;
+  private int     idPrecProb;
+  private String  descPrecProb;
+  private int     idPrecInten;
+  private String  descPrecInten;
+  private int     idTempProb;
+  private String  descTempProb;
+  private int     idVentoIntQuota;
+  private String  descVentoIntQuota;
+  private int     idVentoDirQuota;
+  private String  descVentoDirQuota;
+  private int     idVentoIntValle;
+  private String  descVentoIntValle;
+  private int     idVentoDirValle;
+  private String  descVentoDirValle;
+  private int     iconaVentoQuota;
+  private int     zeroTermico;
+  private int     limiteNevicate;
+  // #endregion
 
-  /**
-   * def. constructor
-   */
   @Ignore
-  public WeatherForSlotEntity() {
-  }
+  public WeatherForSlotEntity() {}
 
   /**
    * full constructor
@@ -51,31 +47,31 @@ public class WeatherForSlotEntity implements WeatherForSlot {
   public WeatherForSlotEntity(int idPrevisioneFascia, String fascia, String fasciaPer, String fasciaOre, int icona, String descIcona, int idPrecProb, String descPrecProb, int idPrecInten, String descPrecInten, int idTempProb, String descTempProb, int idVentoIntQuota, String descVentoIntQuota, int idVentoDirQuota, String descVentoDirQuota, int idVentoIntValle, String descVentoIntValle, int idVentoDirValle, String descVentoDirValle, int iconaVentoQuota, int zeroTermico, int limiteNevicate) {
 
     this.idPrevisioneFascia = idPrevisioneFascia;
-    this.fascia    = fascia;
-    this.fasciaPer = fasciaPer;
-    this.fasciaOre = fasciaOre;
-    this.icona     = icona;
-    this.descIcona = descIcona;
-    this.idPrecProb = idPrecProb;
-    this.descPrecProb = descPrecProb;
-    this.idPrecInten = idPrecInten;
-    this.descPrecInten = descPrecInten;
-    this.idTempProb = idTempProb;
-    this.descTempProb = descTempProb;
-    this.idVentoIntQuota = idVentoIntQuota;
-    this.descVentoIntQuota = descVentoIntQuota;
-    this.idVentoDirQuota = idVentoDirQuota;
-    this.descVentoDirQuota = descVentoDirQuota;
-    this.idVentoIntValle = idVentoIntValle;
-    this.descVentoIntValle = descVentoIntValle;
-    this.idVentoDirValle = idVentoDirValle;
-    this.descVentoDirValle = descVentoDirValle;
-    this.iconaVentoQuota = iconaVentoQuota;
-    this.zeroTermico = zeroTermico;
-    this.limiteNevicate = limiteNevicate;
+    this.fascia             = fascia;
+    this.fasciaPer          = fasciaPer;
+    this.fasciaOre          = fasciaOre;
+    this.icona              = icona;
+    this.descIcona          = descIcona;
+    this.idPrecProb         = idPrecProb;
+    this.descPrecProb       = descPrecProb;
+    this.idPrecInten        = idPrecInten;
+    this.descPrecInten      = descPrecInten;
+    this.idTempProb         = idTempProb;
+    this.descTempProb       = descTempProb;
+    this.idVentoIntQuota    = idVentoIntQuota;
+    this.descVentoIntQuota  = descVentoIntQuota;
+    this.idVentoDirQuota    = idVentoDirQuota;
+    this.descVentoDirQuota  = descVentoDirQuota;
+    this.idVentoIntValle    = idVentoIntValle;
+    this.descVentoIntValle  = descVentoIntValle;
+    this.idVentoDirValle    = idVentoDirValle;
+    this.descVentoDirValle  = descVentoDirValle;
+    this.iconaVentoQuota    = iconaVentoQuota;
+    this.zeroTermico        = zeroTermico;
+    this.limiteNevicate     = limiteNevicate;
   }
 
-  // #REGION GETTER & SETTER
+  // #region GETTER & SETTER
 
   @Override
   public int getIdPrevisioneFascia() {
@@ -262,5 +258,5 @@ public class WeatherForSlotEntity implements WeatherForSlot {
     this.limiteNevicate = limiteNevicate;
   }
 
-  // #ENDREGION
+  // #endregion
 }

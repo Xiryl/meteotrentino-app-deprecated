@@ -12,7 +12,7 @@ import it.chiarani.meteotrentinoapp.models.Locality;
 @Entity(tableName = "locality")
 public class LocalityEntity implements Locality {
 
-  // #REGION PRIVATE FIELDS
+  // #region private fields
   @PrimaryKey (autoGenerate = true)
   private int idLocality;
 
@@ -21,16 +21,10 @@ public class LocalityEntity implements Locality {
   private int    height;
   private String latitude;
   private String longitude;
-  // #ENDREGION
+  // #endregion
 
-
-  /**
-   * def. constructor
-   */
   @Ignore
-  public LocalityEntity() {
-
-  }
+  public LocalityEntity() {}
 
   /**
    * full constructor
@@ -43,7 +37,7 @@ public class LocalityEntity implements Locality {
     this.longitude    = longitude;
   }
 
-  // #REGION GETTER & SETTER
+  // #region GETTER & SETTER
 
   @Override
   public String getLoc() {
@@ -105,5 +99,5 @@ public class LocalityEntity implements Locality {
     this.idLocality = idLocality;
   }
 
-  // #ENDREGION
+  // #endregion
 }

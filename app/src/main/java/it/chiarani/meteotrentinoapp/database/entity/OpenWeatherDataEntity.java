@@ -1,28 +1,46 @@
 package it.chiarani.meteotrentinoapp.database.entity;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 import it.chiarani.meteotrentinoapp.models.OpenWeatherData;
 
+/**
+ * Guide: https://developer.android.com/training/data-storage/room/
+ */
+
 @Entity(tableName = "openWeatherData")
 public class OpenWeatherDataEntity implements OpenWeatherData {
 
+  // #region private fields
   @PrimaryKey(autoGenerate = true)
   private int idOpenWeatherData;
+
   private String humidity;
   private String pressure;
   private String sunrise;
   private String sunset;
   private String actualTemperature;
+  // #endregion
 
+  @Ignore
+  public OpenWeatherDataEntity() {
+
+  }
+
+  /**
+   * Full constructor
+   */
   public OpenWeatherDataEntity(String humidity, String pressure, String sunrise, String sunset, String actualTemperature) {
     this.humidity = humidity;
     this.pressure = pressure;
-    this.sunset = sunset;
-    this.sunrise = sunrise;
+    this.sunset   = sunset;
+    this.sunrise  = sunrise;
     this.actualTemperature = actualTemperature;
   }
+
+  // #region GETTER & SETTER
 
   @Override
   public int getIdOpenWeatherData() {
@@ -81,4 +99,6 @@ public class OpenWeatherDataEntity implements OpenWeatherData {
   public void setActualTemperature(String actualTemperature) {
     this.actualTemperature = actualTemperature;
   }
+
+  // #endregion
 }

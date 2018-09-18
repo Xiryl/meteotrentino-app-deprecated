@@ -11,12 +11,23 @@ import it.chiarani.meteotrentinoapp.database.entity.OpenWeatherDataEntity;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherForSlotEntity;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherReportEntity;
 
+/**
+ * Adapter for weather dayly detail Recyclerview
+ */
 public class WeatherReportAdapter extends RecyclerView.Adapter<WeatherReportAdapter.ViewHolder> {
 
-  WeatherReportEntity weather_report;
-  OpenWeatherDataEntity open_weather_report;
-  int weather_day;
+  // #region private fields
+  private WeatherReportEntity weather_report;
+  private OpenWeatherDataEntity open_weather_report;
+  private int weather_day;
+  // #endregion
 
+  /**
+   * Adapter constructor
+   * @param weather_report report data
+   * @param open_weather_report openweather report data
+   * @param weather_day day number (1-7)
+   */
   public WeatherReportAdapter(WeatherReportEntity weather_report, OpenWeatherDataEntity open_weather_report, int weather_day) {
     this.weather_report = weather_report;
     this.open_weather_report = open_weather_report;
@@ -58,17 +69,13 @@ public class WeatherReportAdapter extends RecyclerView.Adapter<WeatherReportAdap
 
   @Override
   public WeatherReportAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-    Boolean attachViewImmediatelyToParent = false;
-
-    View singleItemLayout = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_weather_report, parent, attachViewImmediatelyToParent);
-    ViewHolder myViewHolder = new ViewHolder(singleItemLayout);
-
-    return myViewHolder;
+    View singleItemLayout = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_weather_report, parent, false);
+    return new ViewHolder(singleItemLayout);
   }
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
+
     //Set data to the individual list item
     WeatherForSlotEntity wfs = weather_report.getPrevisione().getGiorni().get(weather_day).getFasce().get(position);
 

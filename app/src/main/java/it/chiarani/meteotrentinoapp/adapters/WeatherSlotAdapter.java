@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.database.entity.OpenWeatherDataEntity;
+import it.chiarani.meteotrentinoapp.database.entity.WeatherForDayEntity;
+import it.chiarani.meteotrentinoapp.database.entity.WeatherForSlotEntity;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherReportEntity;
 import it.chiarani.meteotrentinoapp.helper.WeatherIconDescriptor;
 import it.chiarani.meteotrentinoapp.helper.WeatherTypes;
@@ -16,12 +18,16 @@ import it.chiarani.meteotrentinoapp.models.WeatherForDay;
 
 public class WeatherSlotAdapter extends RecyclerView.Adapter<WeatherSlotAdapter.ViewHolder> {
 
-  /**
-   * entities for get weather data
-   */
+  // #region private fields
   private WeatherReportEntity weather_report;
   private OpenWeatherDataEntity open_weather_report;
+  // #endregion
 
+  /**
+   * Constructor
+   * @param weather_report weather report data
+   * @param open_weather_report openweather report data
+   */
   public WeatherSlotAdapter(WeatherReportEntity weather_report, OpenWeatherDataEntity open_weather_report) {
     this.weather_report = weather_report;
     this.open_weather_report = open_weather_report;
@@ -38,51 +44,79 @@ public class WeatherSlotAdapter extends RecyclerView.Adapter<WeatherSlotAdapter.
 
     public ViewHolder(View v) {
       super(v);
-      txt_time_slot = v.findViewById(R.id.item_slot_weather_txt_fascia);
-      txt_humidity = v.findViewById(R.id.item_slot_weather_txt_humidity);
-      txt_prob_prec = v.findViewById(R.id.item_slot_weather_txt_prob_prec);
-      txt_prob_temp = v.findViewById(R.id.item_slot_weather_txt_prob_temp);
-      txt_cielo = v.findViewById(R.id.item_slot_weather_txt_vento);
+      txt_time_slot   = v.findViewById(R.id.item_slot_weather_txt_fascia);
+      txt_humidity    = v.findViewById(R.id.item_slot_weather_txt_humidity);
+      txt_prob_prec   = v.findViewById(R.id.item_slot_weather_txt_prob_prec);
+      txt_prob_temp   = v.findViewById(R.id.item_slot_weather_txt_prob_temp);
+      txt_cielo       = v.findViewById(R.id.item_slot_weather_txt_vento);
       img_ico_weather = v.findViewById(R.id.item_slot_weather_img);
     }
   }
 
   @Override
   public WeatherSlotAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-    Boolean attachViewImmediatelyToParent = false;
-
-    View singleItemLayout = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_slot_weather, parent, attachViewImmediatelyToParent);
-    ViewHolder myViewHolder = new ViewHolder(singleItemLayout);
-
-    return myViewHolder;
+    View singleItemLayout = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_slot_weather, parent, false);
+    return new ViewHolder(singleItemLayout);
   }
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
     //Set data to the individual list item
-    holder.txt_time_slot.setText("Fascia Oraria: " + weather_report.getPrevisione().getGiorni().get(0).getFasce().get(position).getFasciaOre()); // Fascia oraria
-    holder.txt_prob_prec.setText(weather_report.getPrevisione().getGiorni().get(0).getFasce().get(position).getDescPrecProb());                  // Probabilità Precipitazioni
-    holder.txt_humidity.setText(open_weather_report.getHumidity() + "%");                                                                     // Umidità
-    holder.txt_prob_temp.setText(weather_report.getPrevisione().getGiorni().get(0).getFasce().get(position).getDescTempProb());                  // Probabilità Temporali
-    holder.txt_cielo.setText(weather_report.getPrevisione().getGiorni().get(0).getFasce().get(position).getDescIcona());                 // Intensità Vento
 
+    WeatherForSlotEntity wfs = weather_report.getPrevisione().getGiorni().get(0).getFasce().get(position);
+    // Fascia oraria
+    holder.txt_time_slot.setText(R.string.weather_slot_adapter_fascia_oraria + weather_report.getPrevisione().getGiorni().get(0).getFasce().get(position).getFasciaOre());
+
+    // Probabilità Precipitazioni
+    holder.txt_prob_prec.setText(wfs.getDescPrecProb());
+
+    // Umidità
+    holder.txt_humidity.setText(open_weather_report.getHumidity() + "%");
+
+    // Probabilità Temporali
+    holder.txt_prob_temp.setText(wfs.getDescTempProb());
+
+    // Intensità Vento
+    holder.txt_cielo.setText(wfs.getDescIcona());
 
     WeatherForDay wfd = weather_report.getPrevisione().getGiorni().get(0);
+
     WeatherTypes wtype = WeatherIconDescriptor.getWeatherType(wfd.getFasce().get(position).getIcona());
 
     switch (wtype){
-      case COPERTO: holder.img_ico_weather.setImageResource(R.drawable.ic_w_cloud_g); break;
-      case COPERTO_CON_PIOGGIA:   holder.img_ico_weather.setImageResource(R.drawable.ic_w_light_rain_g); break;
-      case COPERTO_CON_PIOGGIA_ABBONDANTE :   holder.img_ico_weather.setImageResource(R.drawable.ic_w_rain_g); break;
-      case COPERTO_CON_PIOGGIA_E_NEVE:  holder.img_ico_weather.setImageResource(R.drawable.ic_w_snow_rain_g); break;
-      case NEVICATA:  holder.img_ico_weather.setImageResource(R.drawable.ic_w_snow); break;
-      case SOLE:  holder.img_ico_weather.setImageResource(R.drawable.ic_w_sun_g); break;
-      case SOLEGGIATO:  holder.img_ico_weather.setImageResource(R.drawable.ic_w_sun_cloud_g); break;
-      case SOLEGGIATO_CON_PIOGGIA:       holder.img_ico_weather.setImageResource(R.drawable.ic_w_sun_cloud_rain_g); break;
-      case SOLEGGIATO_CON_PIOGGIA_E_NEVE:   holder.img_ico_weather.setImageResource(R.drawable.ic_w_sun_cloud_rain_snow_g); break;
-      case TEMPORALE:    holder.img_ico_weather.setImageResource(R.drawable.ic_w_thunderstorm_g); break;
-      case UNDEFINED:  holder.img_ico_weather.setImageResource(R.drawable.ic_w_sun_cloud_g); break;
+      case COPERTO:
+        holder.img_ico_weather.setImageResource(R.drawable.ic_w_cloud_g);
+        break;
+      case COPERTO_CON_PIOGGIA:
+        holder.img_ico_weather.setImageResource(R.drawable.ic_w_light_rain_g);
+        break;
+      case COPERTO_CON_PIOGGIA_ABBONDANTE :
+        holder.img_ico_weather.setImageResource(R.drawable.ic_w_rain_g);
+        break;
+      case COPERTO_CON_PIOGGIA_E_NEVE:
+        holder.img_ico_weather.setImageResource(R.drawable.ic_w_snow_rain_g);
+        break;
+      case NEVICATA:
+        holder.img_ico_weather.setImageResource(R.drawable.ic_w_snow);
+        break;
+      case SOLE:
+        holder.img_ico_weather.setImageResource(R.drawable.ic_w_sun_g);
+        break;
+      case SOLEGGIATO:
+        holder.img_ico_weather.setImageResource(R.drawable.ic_w_sun_cloud_g);
+        break;
+      case SOLEGGIATO_CON_PIOGGIA:
+        holder.img_ico_weather.setImageResource(R.drawable.ic_w_sun_cloud_rain_g);
+        break;
+      case SOLEGGIATO_CON_PIOGGIA_E_NEVE:
+        holder.img_ico_weather.setImageResource(R.drawable.ic_w_sun_cloud_rain_snow_g);
+        break;
+      case TEMPORALE:
+        holder.img_ico_weather.setImageResource(R.drawable.ic_w_thunderstorm_g);
+        break;
+      case UNDEFINED:
+        holder.img_ico_weather.setImageResource(R.drawable.ic_w_sun_cloud_g);
+        break;
     }
   }
 

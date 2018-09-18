@@ -3,12 +3,14 @@
 
   <!-- CODE STRINGS -->
 
-  <!-- API_locality -->
+  <!-- API -->
   <string name="API_locality_alert">Ottengo le località..</string>
-
-  <!-- API_weatherReport -->
   <string name="API_weather_alert">Ottengo i dati meteo..</string>
+  <string name="API_weatherReport_zero_data">Ottengo i dati meteo.. 0%</string>
 
   <!-- TODO: Remove or change this placeholder text -->
   <string name="hello_blank_fragment">Hello blank fragment</string>
+
+  <!-- WeatherSlotAdapter -->
+  <string name="weather_slot_adapter_fascia_oraria">Fascia Oraria: </string>
 </resources>

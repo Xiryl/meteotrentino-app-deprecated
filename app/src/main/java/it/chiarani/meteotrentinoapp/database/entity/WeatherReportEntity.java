@@ -15,37 +15,34 @@ import it.chiarani.meteotrentinoapp.models.WeatherReport;
 @Entity(tableName = "weatherReport")
 public class WeatherReportEntity implements WeatherReport {
 
-  // #REGION PRIVATE FIELDS
+  // #region private fields
   @PrimaryKey(autoGenerate = true)
-  private int idWeatherReport;
-  private String dataPubblicazione;
-  private int idPrevisione;
-  private String evoluzione;
-  private String evoluzioneBreve;
-  private String allerteList;
+
+  private int                  idWeatherReport;
+  private String               dataPubblicazione;
+  private int                  idPrevisione;
+  private String               evoluzione;
+  private String               evoluzioneBreve;
+  private String               allerteList;
   private WeatherForWeekEntity previsione;
-  // #ENDREGION
+  // #endregion
 
-  /**
-   * def. constructor
-   */
   @Ignore
-  public WeatherReportEntity() {
-
-  }
+  public WeatherReportEntity() {}
 
   /**
    * full constructor
    */
   public WeatherReportEntity(String dataPubblicazione, int idPrevisione, String evoluzione, String evoluzioneBreve, String allerteList, WeatherForWeekEntity previsione) {
     this.dataPubblicazione = dataPubblicazione;
-    this.idPrevisione = idPrevisione;
-    this.evoluzione = evoluzione;
-    this.evoluzioneBreve = evoluzioneBreve;
-    this.allerteList = allerteList;
-    this.previsione = previsione;
+    this.idPrevisione     = idPrevisione;
+    this.evoluzione       = evoluzione;
+    this.evoluzioneBreve  = evoluzioneBreve;
+    this.allerteList      = allerteList;
+    this.previsione       = previsione;
   }
 
+  // #region GETTER & SETTER
   @Override
   public String getDataPubblicazione() {
     return dataPubblicazione;
@@ -102,4 +99,6 @@ public class WeatherReportEntity implements WeatherReport {
   public void setIdWeatherReport(int idWeatherReport) {
     this.idWeatherReport = idWeatherReport;
   }
+
+  // #endregion
 }

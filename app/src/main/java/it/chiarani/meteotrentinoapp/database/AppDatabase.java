@@ -12,10 +12,41 @@ import it.chiarani.meteotrentinoapp.database.entity.LocalityEntity;
 import it.chiarani.meteotrentinoapp.database.entity.OpenWeatherDataEntity;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherReportEntity;
 
-@Database(entities = {LocalityEntity.class, WeatherReportEntity.class, OpenWeatherDataEntity.class}, version = 1, exportSchema = false)
+/**
+ * Link entities
+ */
+@Database(entities = {
+    LocalityEntity.class,
+    WeatherReportEntity.class,
+    OpenWeatherDataEntity.class},
+    version = 1,
+    exportSchema = false)
+
+/**
+ * Link Type converter
+ */
 @TypeConverters({WeatherForWeekConverter.class})
+
+/**
+ * App database
+ */
 public abstract class AppDatabase extends RoomDatabase {
+
+  /**
+   * Locality DAO
+   * @return locality table
+   */
   public abstract LocalityDao localityDao();
+
+  /**
+   * WeatherReport DAO
+   * @return weather data table
+   */
   public abstract WeatherReportDao weatherReportDao();
+
+  /**
+   * OpenWeatherData DAO
+   * @return openweathermap data table
+   */
   public abstract OpenWeatherDataDao openWeatherDataDao();
 }
