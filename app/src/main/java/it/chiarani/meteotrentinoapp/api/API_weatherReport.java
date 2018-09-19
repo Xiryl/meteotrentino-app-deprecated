@@ -17,7 +17,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import it.chiarani.meteotrentinoapp.R;
@@ -215,6 +217,11 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
 
       // aggiungo la lista di settimana alla previsione
       tmp_report.setPrevisione(wfw);
+
+      Date now = new Date();
+      SimpleDateFormat sdf = new SimpleDateFormat("HH");
+      int formattedTime = Integer.parseInt(sdf.format(now));
+      tmp_report.setDataInserimentoDb(formattedTime);
 
       reportRepository.insert(tmp_report);
 

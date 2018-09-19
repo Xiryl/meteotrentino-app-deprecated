@@ -65,7 +65,7 @@ public class WeatherSlotAdapter extends RecyclerView.Adapter<WeatherSlotAdapter.
 
     WeatherForSlotEntity wfs = weather_report.getPrevisione().getGiorni().get(0).getFasce().get(position);
     // Fascia oraria
-    holder.txt_time_slot.setText(R.string.weather_slot_adapter_fascia_oraria + weather_report.getPrevisione().getGiorni().get(0).getFasce().get(position).getFasciaOre());
+    holder.txt_time_slot.setText("Fascia Oraria: " + weather_report.getPrevisione().getGiorni().get(0).getFasce().get(position).getFasciaOre());
 
     // Probabilità Precipitazioni
     holder.txt_prob_prec.setText(wfs.getDescPrecProb());

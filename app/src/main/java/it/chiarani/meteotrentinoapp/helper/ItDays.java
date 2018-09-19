@@ -3,6 +3,7 @@ package it.chiarani.meteotrentinoapp.helper;
 /**
  * Use in seven day weather recyclerview
  */
+
 public class ItDays {
   public static final String LUN = "Lun ";
   public static final String MAR = "Mar ";
