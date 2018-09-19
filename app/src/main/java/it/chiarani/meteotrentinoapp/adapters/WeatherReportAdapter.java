@@ -80,10 +80,10 @@ public class WeatherReportAdapter extends RecyclerView.Adapter<WeatherReportAdap
     WeatherForSlotEntity wfs = weather_report.getPrevisione().getGiorni().get(weather_day).getFasce().get(position);
 
     holder.txt_time_slot.setText(wfs.getFasciaPer() + ": " + wfs.getFasciaOre());
-    holder.txt_tmin.setText("Temperature: " + weather_report.getPrevisione().getGiorni().get(weather_day).gettMinGiorno() + "° / " +
+    holder.txt_tmin.setText( weather_report.getPrevisione().getGiorni().get(weather_day).gettMinGiorno() + "°/" +
         weather_report.getPrevisione().getGiorni().get(weather_day).gettMaxGiorno() + "°");
-    holder.txt_humidity.setText("Umidità: " + open_weather_report.getHumidity() + "%");
-    holder.txt_pressure.setText("Pressione: " + open_weather_report.getPressure()+ " hPa");
+    holder.txt_humidity.setText(open_weather_report.getHumidity() + "%");
+    holder.txt_pressure.setText(open_weather_report.getPressure()+ " hPa");
     holder.txt_prob_prec.setText("Prob. precipitazioni: " +wfs.getDescPrecProb() + "");
     holder.txt_intensita_prec.setText("Intensità precipitazioni: " +wfs.getDescPrecInten() + "");
     holder.txt_prob_temp.setText("Prob. Temporali: " +wfs.getDescTempProb() + "");
@@ -91,7 +91,7 @@ public class WeatherReportAdapter extends RecyclerView.Adapter<WeatherReportAdap
     holder.txt_vento_valle.setText("Intensità vento in valle: " +wfs.getDescVentoIntValle() + "");
     holder.txt_vento_quota_dir.setText("Direzione vento in quota: " +wfs.getDescVentoIntQuota() + "");
     holder.txt_vento_valle_dir.setText("Direzione vento in valle: " +wfs.getDescVentoIntValle() + "");
-    holder.txt_zero_termico.setText("Zero termico: " +wfs.getZeroTermico() + "m");
+    holder.txt_zero_termico.setText(wfs.getZeroTermico() + "m");
   }
 
   @Override

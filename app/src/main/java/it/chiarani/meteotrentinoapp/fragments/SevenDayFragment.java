@@ -1,6 +1,7 @@
 package it.chiarani.meteotrentinoapp.fragments;
 
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,6 +12,8 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 
 import it.chiarani.meteotrentinoapp.R;
@@ -18,18 +21,21 @@ import it.chiarani.meteotrentinoapp.adapters.WeatherSevenDayAdapter;
 import it.chiarani.meteotrentinoapp.api.API_weatherReport;
 import it.chiarani.meteotrentinoapp.api.API_weatherReport_response;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherReportEntity;
-import it.chiarani.meteotrentinoapp.databinding.ActivityMainBinding;
 import it.chiarani.meteotrentinoapp.databinding.FragmentSevenDayBinding;
 import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
 
 public class SevenDayFragment extends Fragment implements API_weatherReport_response {
 
+  // #region private fields
+  private FragmentSevenDayBinding binding;
+  private String user_location;
+  private WeatherReportRepository repository;
+  private final static String INTENT_USER_LOCATION_TAG = "user_location";
+  // #region private fields
 
-  FragmentSevenDayBinding binding;
-  ActivityMainBinding binging_act;
-  String user_location;
-  WeatherReportRepository repository;
-
+  /**
+   * Empty constructor
+   */
   public SevenDayFragment() {
     // Required empty public constructor
   }
@@ -42,10 +48,14 @@ public class SevenDayFragment extends Fragment implements API_weatherReport_resp
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    binding = DataBindingUtil.inflate(inflater, R.layout.fragment_seven_day, container, false);
-    binging_act  = DataBindingUtil.inflate(inflater, R.layout.activity_main, container, false);
 
-    user_location = getArguments().getString("user_location");
+    Window window = getActivity().getWindow();
+    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+    window.setStatusBarColor(Color.parseColor("#5D96CC"));
+
+    binding = DataBindingUtil.inflate(inflater, R.layout.fragment_seven_day, container, false);
+
+    user_location = getArguments().getString(INTENT_USER_LOCATION_TAG);
 
     repository.getAll().observe(this, entries -> {
       if(entries.size() == 0 || entries == null) {
@@ -65,14 +75,12 @@ public class SevenDayFragment extends Fragment implements API_weatherReport_resp
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-
     // use this setting to improve performance if you know that changes
     // in content do not change the layout size of the RecyclerView
     binding.fragmentSevenDayRv.setHasFixedSize(true);
 
     LinearLayoutManager horizontalLayoutManagaer = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
     binding.fragmentSevenDayRv.setLayoutManager(horizontalLayoutManagaer);
-
 
     ImageButton btn = view.findViewById(R.id.fragment_seven_day_btn_menu);
 
@@ -86,7 +94,6 @@ public class SevenDayFragment extends Fragment implements API_weatherReport_resp
   }
 
 
-
   /**
    * Called after API termination
    */
@@ -95,6 +102,9 @@ public class SevenDayFragment extends Fragment implements API_weatherReport_resp
     DisplayToUi();
   }
 
+  /**
+   * Display data to UI
+   */
   private void DisplayToUi() {
     repository.getAll().observe(this, entries -> {
       WeatherReportEntity report = entries.get(entries.size() -1);

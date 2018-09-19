@@ -14,7 +14,7 @@
       <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#5ABDE1">
+        android:background="#5D96CC">
 
         <TextView
           android:layout_width="match_parent"
@@ -41,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="60dp"
-        android:background="#5ABDE1"
+        android:background="#5D96CC"
         android:layout_marginBottom="@dimen/rv_margin_bottom"
         android:orientation="vertical">
       <android.support.v7.widget.RecyclerView

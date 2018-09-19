@@ -1,5 +1,8 @@
 package it.chiarani.meteotrentinoapp.models;
 
+/**
+ * Describe the openweather data
+ */
 public interface OpenWeatherData {
 
   int getIdOpenWeatherData();

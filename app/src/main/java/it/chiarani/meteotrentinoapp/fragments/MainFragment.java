@@ -1,14 +1,12 @@
 package it.chiarani.meteotrentinoapp.fragments;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
@@ -16,10 +14,13 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -30,22 +31,24 @@ import it.chiarani.meteotrentinoapp.api.API_weatherReport_response;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherForDayEntity;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherForWeekEntity;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherReportEntity;
-import it.chiarani.meteotrentinoapp.databinding.ActivityMainBinding;
 import it.chiarani.meteotrentinoapp.databinding.FragmentMainBinding;
 import it.chiarani.meteotrentinoapp.helper.WeatherIconDescriptor;
-import it.chiarani.meteotrentinoapp.helper.WeatherTypes;
 import it.chiarani.meteotrentinoapp.repositories.OpenWeatherDataRepository;
 import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
 import it.chiarani.meteotrentinoapp.views.WeatherReportActivity;
 
 public class MainFragment extends Fragment implements API_weatherReport_response {
 
-  FragmentMainBinding binding;
-  ActivityMainBinding binging_act;
-  String user_location;
-  //WeatherReportRepository repository;
-  OpenWeatherDataRepository repository_op;
+  // #region private fields
+  private FragmentMainBinding binding;
+  private String user_location;
+  private OpenWeatherDataRepository repository_op;
+  private final String INTENT_DAY_TAG = "DAY";
+  // #endregion
 
+  /**
+   * Constructor
+   */
   public MainFragment() {
     // Required empty public constructor
   }
@@ -53,28 +56,49 @@ public class MainFragment extends Fragment implements API_weatherReport_response
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    //repository = new WeatherReportRepository(getActivity().getApplication());
+
+    // init repository
     repository_op = new OpenWeatherDataRepository(getActivity().getApplication());
   }
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false);
-    binging_act  = DataBindingUtil.inflate(inflater, R.layout.activity_main, container, false);
+
+    // get repository
     WeatherReportRepository repository = new WeatherReportRepository(getActivity().getApplication());
+
     user_location = getArguments().getString("user_location");
 
+    // observe db data
     repository.getAll().observe(this, entries -> {
+
       if(entries.size() == 0 || entries == null) {
-        // call api
-          new API_weatherReport(getActivity().getApplication(),getContext(), this::processFinish, user_location).execute();
+        // if table is empty call api to get data
+        new API_weatherReport(getActivity().getApplication(),getContext(), this::processFinish, user_location).execute();
       }
       else
       {
-        int last_report_time_h = Integer.parseInt(entries.get(entries.size()-1).getDataPubblicazione().split("T")[1].substring(0,2));
+        Date now = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("HH");
+        int formattedTime = Integer.parseInt(sdf.format(now));
+
+        int dbTime = entries.get(entries.size()-1).getDataInserimentoDb();
+
+        // TODO: NEED TO CHECK THE DAY WITH HOUR!!
+        if(formattedTime-dbTime >= 2 || formattedTime-dbTime <= -1 || !entries.get(entries.size()-1).getPrevisione().getLocalita().equals(user_location)) {
+          new API_weatherReport(getActivity().getApplication(),getContext(), this::processFinish, user_location).execute();
+        }
+        else {
+          DisplayToUI();
+        }
+       /* int last_report_time_h = Integer.parseInt(entries.get(entries.size()-1).getDataPubblicazione().split("T")[1].substring(0,2));
         Date d = new Date();
         Calendar rightNow = Calendar.getInstance();
         int hour = rightNow.get(Calendar.HOUR_OF_DAY);
+
+
+
         if((hour - last_report_time_h) >= 4 || (hour - last_report_time_h)  < 0 || !entries.get(entries.size()-1).getPrevisione().getLocalita().equals(user_location)) {
           // TODO: find a way to clean database when download another report
           //entries.clear();
@@ -83,18 +107,16 @@ public class MainFragment extends Fragment implements API_weatherReport_response
         else
         {
           DisplayToUI();
-        }
+        }*/
       }
     });
 
-    Log.d("Instance ID", FirebaseInstanceId.getInstance().getId());
     return binding.getRoot();
   }
 
   @Override
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-
 
     // use this setting to improve performance if you know that changes
     // in content do not change the layout size of the RecyclerView
@@ -107,14 +129,13 @@ public class MainFragment extends Fragment implements API_weatherReport_response
       @Override
       public void onClick(View v) {
         Intent myIntent = new Intent(getActivity(), WeatherReportActivity.class);
-        myIntent.putExtra("DAY", 0);
+        myIntent.putExtra(INTENT_DAY_TAG, 0);
         startActivity(myIntent);
       }
     });
 
 
     ImageButton btn = view.findViewById(R.id.main_act_btn_menu);
-
     btn.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -124,16 +145,17 @@ public class MainFragment extends Fragment implements API_weatherReport_response
     });
   }
 
-
-
   /**
-   * Called after API termination
+   * CALLBACK called after API termination
    */
   @Override
   public void processFinish() {
     DisplayToUI();
   }
 
+  /**
+   * Display data to UI
+   */
   private void DisplayToUI() {
     WeatherReportRepository repository = new WeatherReportRepository(getActivity().getApplication());
     repository.getAll().observe(this, entries -> {
@@ -156,6 +178,11 @@ public class MainFragment extends Fragment implements API_weatherReport_response
         binding.fragmentMainTxtAllerta.setText(wfd.getDescIconaAllerte());
         //binding.activityMainTxtAllerta.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_wind, 0, 0, 0);
       }
+
+      Date now = new Date();
+      SimpleDateFormat sdf = new SimpleDateFormat("HH");
+      int formattedTime = Integer.parseInt(sdf.format(now));
+
 
       switch (WeatherIconDescriptor.getWeatherType(wfd.getIcona())) {
         case COPERTO:
@@ -214,6 +241,18 @@ public class MainFragment extends Fragment implements API_weatherReport_response
           break;
       }
 
+      Window window = getActivity().getWindow();
+      window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+      // check time
+      if(formattedTime > 17){
+        binding.fragmentMainRl.setBackgroundResource(R.drawable.bg_day_sunset);
+        window.setStatusBarColor(Color.parseColor("#ECA364"));
+      }
+      if(formattedTime >= 19) {
+        binding.fragmentMainRl.setBackgroundResource(R.drawable.bg_night);
+        window.setStatusBarColor(Color.parseColor("#A4C8DD"));
+      }
 
       repository_op.getAll().observe(this, od_entries -> {
         if(od_entries.size() == 0)

@@ -1,13 +1,8 @@
 package it.chiarani.meteotrentinoapp.views;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
-import android.location.Address;
-import android.location.Geocoder;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,25 +11,22 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.api.API_locality;
 import it.chiarani.meteotrentinoapp.api.API_locality_response;
 import it.chiarani.meteotrentinoapp.database.entity.LocalityEntity;
 import it.chiarani.meteotrentinoapp.databinding.ActivityChooseLocationBinding;
-
-import it.chiarani.meteotrentinoapp.helper.GpsTracker;
 import it.chiarani.meteotrentinoapp.models.Locality;
 import it.chiarani.meteotrentinoapp.repositories.LocalityRepository;
 
 public class ChooseLocationActivity extends SampleActivity implements API_locality_response {
 
+  // #region private fields
   private static final String CHOOSELOCATIONACTIVITY_TAG = "CHOOSELOCATIONACTIVITY";
-  ActivityChooseLocationBinding binding;
-  public ArrayList<LocalityEntity> mylocs;
-  String[] all_locs;
-
+  private ActivityChooseLocationBinding binding;
+  private String[] all_locs;
+  // #endregion
 
   @Override
   protected int getLayoutID() {
@@ -49,7 +41,6 @@ public class ChooseLocationActivity extends SampleActivity implements API_locali
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-
 
     Log.d( CHOOSELOCATIONACTIVITY_TAG, "Start choose location actiity");
 
@@ -162,10 +153,5 @@ public class ChooseLocationActivity extends SampleActivity implements API_locali
   @Override
   public void onBackPressed() {
     // do nothing
-  }
-
-  public void getLocation(View view){
-
-
   }
 }

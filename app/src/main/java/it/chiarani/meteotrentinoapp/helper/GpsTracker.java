@@ -20,6 +20,7 @@ import android.util.Log;
 /**
  * Doc: http://velmm.com/how-to-get-current-latitude-and/
  */
+
 public class GpsTracker extends Service implements LocationListener  {
 
   private final Context mContext;

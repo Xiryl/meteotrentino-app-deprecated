@@ -17,14 +17,15 @@ public class WeatherReportEntity implements WeatherReport {
 
   // #region private fields
   @PrimaryKey(autoGenerate = true)
-
   private int                  idWeatherReport;
+
   private String               dataPubblicazione;
   private int                  idPrevisione;
   private String               evoluzione;
   private String               evoluzioneBreve;
   private String               allerteList;
   private WeatherForWeekEntity previsione;
+  private int                  dataInserimentoDb;
   // #endregion
 
   @Ignore
@@ -33,13 +34,14 @@ public class WeatherReportEntity implements WeatherReport {
   /**
    * full constructor
    */
-  public WeatherReportEntity(String dataPubblicazione, int idPrevisione, String evoluzione, String evoluzioneBreve, String allerteList, WeatherForWeekEntity previsione) {
+  public WeatherReportEntity(String dataPubblicazione, int idPrevisione, String evoluzione, String evoluzioneBreve, String allerteList, WeatherForWeekEntity previsione, int dataInserimentoDb) {
     this.dataPubblicazione = dataPubblicazione;
     this.idPrevisione     = idPrevisione;
     this.evoluzione       = evoluzione;
     this.evoluzioneBreve  = evoluzioneBreve;
     this.allerteList      = allerteList;
     this.previsione       = previsione;
+    this.dataInserimentoDb= dataInserimentoDb;
   }
 
   // #region GETTER & SETTER
@@ -98,6 +100,14 @@ public class WeatherReportEntity implements WeatherReport {
   @Override
   public void setIdWeatherReport(int idWeatherReport) {
     this.idWeatherReport = idWeatherReport;
+  }
+  @Override
+  public int getDataInserimentoDb() {
+    return dataInserimentoDb;
+  }
+  @Override
+  public void setDataInserimentoDb(int dataInserimentoDb) {
+    this.dataInserimentoDb = dataInserimentoDb;
   }
 
   // #endregion

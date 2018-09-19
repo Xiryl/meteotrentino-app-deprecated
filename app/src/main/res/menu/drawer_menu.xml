@@ -29,8 +29,12 @@
       android:title="Radar e Satellite" />
     <item
       android:id="@+id/drawer_view_staz_meteorologiche"
-      android:icon="@drawable/ic_webcam"
+      android:icon="@drawable/ic_station"
       android:title="Dati Stazioni" />
+    <item
+      android:id="@+id/drawer_view_staz_neve"
+      android:icon="@drawable/ic_valanghe"
+      android:title="Neve e Valanghe" />
     <item
       android:id="@+id/drawer_view_bollettini"
       android:icon="@drawable/ic_report"

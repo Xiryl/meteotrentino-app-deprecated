@@ -1,31 +1,22 @@
 package it.chiarani.meteotrentinoapp.views;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
 import android.location.Address;
 import android.location.Geocoder;
-import android.media.Image;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.Toast;
 
 import java.util.List;
 import java.util.Locale;
@@ -41,15 +32,13 @@ import it.chiarani.meteotrentinoapp.servicies.AlarmManagerBroadcastReceiver;
 
 public class MainActivity extends SampleActivity{
 
-  // #REGION PRIVATE FIELDS
+  // #region private fields
   private final static String MAINACTIVITY_TAG = "MAINACTIVITY";
-  ActivityMainBinding binding;
+  private ActivityMainBinding binding;
   private WeatherReport _report;
-  GpsTracker gpsTracker;
-  BottomNavigationView bottomNavigationView;
+  private final static String INTENT_USER_LOCATION_TAG = "user_location";
   private AlarmManagerBroadcastReceiver alarm;
-
-  // #ENDREGION
+  // #endregion
 
   @Override
   protected int getLayoutID() {
@@ -65,14 +54,16 @@ public class MainActivity extends SampleActivity{
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-
     // log start activity
     Log.d( MAINACTIVITY_TAG, "Start mainactivity");
 
-   // alarm = new AlarmManagerBroadcastReceiver();
- // alarm.SetAlarm(this);
+    // alarm = new AlarmManagerBroadcastReceiver();
+    // alarm.SetAlarm(this);
 
-
+    /**
+     * Call Chooselocationactivity if is first running
+     */
+    // TODO: IF GPS IS ALREADY ENABLE SKIP THIS
     launchIsFirstThread();
 
     Intent intent = getIntent();
@@ -87,8 +78,7 @@ public class MainActivity extends SampleActivity{
         if (ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
           ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 101);
         }
-
-        gpsTracker = new GpsTracker(this);
+        GpsTracker gpsTracker = new GpsTracker(this);
         if(gpsTracker.canGetLocation()){
           double latitude = gpsTracker.getLatitude();
           double longitude = gpsTracker.getLongitude();
@@ -96,14 +86,12 @@ public class MainActivity extends SampleActivity{
           List<Address> addresses;
           geocoder = new Geocoder(this, Locale.getDefault());
 
-          addresses = geocoder.getFromLocation(latitude, longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+          addresses = geocoder.getFromLocation(latitude, longitude, 1);
 
           user_location = addresses.get(0).getLocality();
-
         }else{
           gpsTracker.showSettingsAlert();
         }
-
       } catch (Exception e){
         e.printStackTrace();
       }
@@ -112,16 +100,16 @@ public class MainActivity extends SampleActivity{
     final String tmp = user_location;
 
     // set bottom navbar
-    bottomNavigationView = binding.mainActivityBottomNav;
+    BottomNavigationView bottomNavigationView = binding.mainActivityBottomNav;
+    Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.activity_main_framelayout);
 
-    // set scanqr as checked item
-
+    // https://github.com/roughike/BottomBar/issues/385
     bottomNavigationView.setOnNavigationItemSelectedListener(
         item -> {
           switch (item.getItemId()) {
             case R.id.bottombaritem_today:
               Bundle bundle = new Bundle();
-              bundle.putString("user_location", tmp);
+              bundle.putString(INTENT_USER_LOCATION_TAG, tmp);
               MainFragment frag = new MainFragment();
               frag.setArguments(bundle);
               getSupportFragmentManager()
@@ -132,7 +120,7 @@ public class MainActivity extends SampleActivity{
               return true;
             case R.id.bottombaritem_sevenday:
               Bundle bundle1 = new Bundle();
-              bundle1.putString("user_location", tmp);
+              bundle1.putString(INTENT_USER_LOCATION_TAG, tmp);
               SevenDayFragment frag1 = new SevenDayFragment();
               frag1.setArguments(bundle1);
               getSupportFragmentManager()
@@ -169,7 +157,7 @@ public class MainActivity extends SampleActivity{
 
               case R.id.drawer_view_today:
                 Bundle bundle = new Bundle();
-                bundle.putString("user_location", tmp);
+                bundle.putString(INTENT_USER_LOCATION_TAG, tmp);
                 MainFragment frag = new MainFragment();
                 frag.setArguments(bundle);
                 getSupportFragmentManager()
@@ -182,7 +170,7 @@ public class MainActivity extends SampleActivity{
 
               case R.id.drawer_view_seven_day:
                 Bundle bundle1 = new Bundle();
-                bundle1.putString("user_location", tmp);
+                bundle1.putString(INTENT_USER_LOCATION_TAG, tmp);
                 SevenDayFragment frag1 = new SevenDayFragment();
                 frag1.setArguments(bundle1);
                 getSupportFragmentManager()
@@ -250,18 +238,8 @@ public class MainActivity extends SampleActivity{
     t.start();
   }
 
-
   @Override
   public void onBackPressed() {
     // do noting
   }
-
-
-    private void loadFragment(Fragment fragment) {
-      // load fragment
-      FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-      transaction.replace(R.id.activity_main_framelayout, fragment);
-      transaction.addToBackStack(null);
-      transaction.commit();
-    }
 }

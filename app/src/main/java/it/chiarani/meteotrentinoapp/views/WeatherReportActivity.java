@@ -23,10 +23,11 @@ import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
 
 public class WeatherReportActivity extends SampleActivity {
 
-  // #REGION PRIVATE FIELDS
-  ActivityWeatherReportBinding binding;
-  int report_day = 0;
-  // #ENDREGION
+  // #region private fields
+  private ActivityWeatherReportBinding binding;
+  private int report_day = 0;
+  private final String INTENT_DAY_TAG = "DAY";
+  // #endregion
 
   @Override
   protected int getLayoutID() {
@@ -43,8 +44,8 @@ public class WeatherReportActivity extends SampleActivity {
     super.onCreate(savedInstanceState);
 
     Intent intent = getIntent();
-    if(intent.hasExtra("DAY")) {
-      report_day = intent.getExtras().getInt("DAY");
+    if(intent.hasExtra(INTENT_DAY_TAG)) {
+      report_day = intent.getExtras().getInt(INTENT_DAY_TAG);
     }
 
     WeatherReportRepository repository = new WeatherReportRepository(getApplication());
@@ -67,14 +68,14 @@ public class WeatherReportActivity extends SampleActivity {
         binding.activityWeatherReportTxtPrevisione.setText(report.getPrevisione().getGiorni().get(report_day).getTestoGiorno());
         binding.activityWeatherReportTxtPosition.setText(report.getPrevisione().getLocalita());
 
-        if(!report.getPrevisione().getGiorni().get(0).getDescIconaAllerte().isEmpty())
+      /*  if(!report.getPrevisione().getGiorni().get(0).getDescIconaAllerte().isEmpty())
         {
-          binding.activityWeatherReportTxtAllerta.setText("Attenzione: " + report.getPrevisione().getGiorni().get(report_day).getDescIconaAllerte());
+       //   binding.activityWeatherReportTxtAllerta.setText("Attenzione: " + report.getPrevisione().getGiorni().get(report_day).getDescIconaAllerte());
         }
         else
         {
-          binding.activityWeatherReportTxtAllerta.setText("Nessuna allerta segnalata.");
-        }
+          binding.activityWeatherReportTxtAllerta.setText("Nessuna allerta da segnalare.");
+        }*/
 
       });
 

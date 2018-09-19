@@ -2,8 +2,6 @@ package it.chiarani.meteotrentinoapp.helper;
 
 import android.util.Log;
 
-import java.util.regex.Pattern;
-
 public class Converter {
 
   private static final String TAG_CONVERTER = "CONVERTER";

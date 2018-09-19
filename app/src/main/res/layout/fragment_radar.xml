@@ -21,17 +21,17 @@
 
       <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="110dp"
-        android:background="#303A54">
+        android:layout_height="60dp"
+        android:background="#5D96CC">
 
         <TextView
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:textSize="21sp"
+          android:textSize="19sp"
           android:textColor="@color/white"
           android:layout_gravity="center_vertical"
           android:gravity="center"
-          android:text="Immagini \n Radar e Satellite"/>
+          android:text="Immagini Radar e Satellite"/>
 
 
       </LinearLayout>
@@ -48,7 +48,7 @@
 
       <LinearLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="60dp"
         android:layout_height="match_parent"
         android:background="@color/white"
         android:orientation="vertical">
@@ -59,6 +59,7 @@
         android:layout_height="350dp"
         android:layout_margin="@dimen/offset_15"
         android:padding="15dp"
+        android:backgroundTint="#ECECEC"
         app:cardElevation="15dp">
 
         <TextView
@@ -68,7 +69,8 @@
           android:textColor="@color/blue_main"
           android:layout_gravity="center_horizontal"
           android:gravity="center"
-          android:text="Radar Precipitazioni"/>
+          android:layout_margin="4dp"
+          android:text="RADAR PRECIPITAZIONI"/>
 
 
         <ImageView
@@ -76,13 +78,12 @@
           android:layout_marginTop="40dp"
           android:layout_marginBottom="30dp"
           android:layout_height="match_parent"
-          android:src="@drawable/bg_day_thunderstorm"
           android:id="@+id/fragment_radar_img_radar_nord_italy"/>
 
       </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-
+          android:backgroundTint="#ECECEC"
           android:layout_width="match_parent"
           android:layout_height="350dp"
           android:layout_margin="@dimen/offset_15"
@@ -96,7 +97,8 @@
             android:textColor="@color/blue_main"
             android:layout_gravity="center_horizontal"
             android:gravity="center"
-            android:text="Infrarosso Alpi"/>
+            android:layout_margin="4dp"
+            android:text="INFRAROSSO ALPI"/>
 
 
           <ImageView
@@ -104,7 +106,6 @@
             android:layout_marginTop="40dp"
             android:layout_marginBottom="30dp"
             android:layout_height="match_parent"
-            android:src="@drawable/bg_day_thunderstorm"
             android:id="@+id/fragment_radar_img_infrarosso_alpi"/>
 
         </android.support.v7.widget.CardView>

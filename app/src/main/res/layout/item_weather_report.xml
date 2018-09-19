@@ -5,7 +5,6 @@
   <data>
   </data>
   <android.support.v7.widget.CardView
-
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/offset_15"
@@ -27,150 +26,132 @@
       android:text=" Mattina (06-12) "
       android:textStyle="bold"
       android:padding="10dp"
-      android:textColor="@color/white_gray"
       android:background="@drawable/rounded_corner_red"
       />
 
     <LinearLayout
-      android:layout_width="wrap_content"
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_marginTop="10dp"
-      android:layout_marginLeft="@dimen/offset_15"
+      android:layout_gravity="center"
       android:orientation="horizontal">
-
-
-      <ImageView
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:src="@drawable/ic_report"
-        />
-
-      <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Dati Atmosferici "
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center_horizontal"
-        android:textColor="#303A54"
-        android:textSize="16sp"/>
-
-      <View
-        android:layout_width="wrap_content"
-        android:layout_height="2dp"
-        android:layout_margin="7dp"
-        android:background="#7F7F7F"
-        android:layout_gravity="center_vertical"
-        ></View>
-
-    </LinearLayout>
 
     <LinearLayout
-      android:layout_width="wrap_content"
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginLeft="30dp"
+      android:layout_weight="1"
+      android:gravity="center"
       android:orientation="horizontal">
 
       <ImageView
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:src="@drawable/ic_thermo"
         />
 
       <TextView
         android:id="@+id/item_weather_report_txt_t_min"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Temperature: 5° / 18 °"
+        android:layout_height="match_parent"
+        android:text="5°/18 °"
         android:textColor="#303A54"
         android:textSize="16sp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="5dp"
+        android:gravity="center"
         />
 
     </LinearLayout>
 
-    <LinearLayout
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginLeft="30dp"
-      android:orientation="horizontal">
-
-      <ImageView
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:src="@drawable/ic_humidity"
-        />
-
-      <TextView
-        android:id="@+id/item_weather_report_txt_humidity"
-        android:layout_width="wrap_content"
+      <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Umidità: 87%"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center_horizontal"
-        android:textColor="#303A54"
-        android:textSize="16sp"/>
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+          android:layout_width="35dp"
+          android:layout_height="35dp"
+          android:src="@drawable/ic_humidity"
+          />
+
+        <TextView
+          android:id="@+id/item_weather_report_txt_humidity"
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+          android:text="87%"
+          android:layout_marginLeft="5dp"
+          android:gravity="center"
+          android:textColor="#303A54"
+          android:textSize="16sp"/>
+
+      </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="30dp"
+      android:layout_weight="1"
+      android:layout_gravity="center"
+      android:orientation="horizontal">
+
+    <LinearLayout
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginLeft="30dp"
+      android:gravity="center"
+    android:layout_weight="1"
       android:orientation="horizontal">
 
       <ImageView
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:src="@drawable/ic_pressure"
         />
 
       <TextView
         android:id="@+id/item_weather_report_txt_pressure"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pressione: 1023 hPa"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_height="match_parent"
+        android:text="1023 hPa"
+        android:layout_marginLeft="5dp"
+        android:gravity="center"
         android:textColor="#303A54"
         android:textSize="16sp"/>
 
     </LinearLayout>
 
-
     <LinearLayout
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginLeft="30dp"
+      android:gravity="center"
+      android:layout_weight="1"
       android:orientation="horizontal">
 
       <ImageView
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:src="@drawable/ic_thermo"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_zero_thermo"
         />
 
       <TextView
         android:id="@+id/item_weather_report_txt_zero_termico"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Zero Termico: 323"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_height="match_parent"
+        android:text="323"
+        android:layout_marginLeft="5dp"
+        android:gravity="center"
         android:textColor="#303A54"
         android:textSize="16sp"/>
 
     </LinearLayout>
+  </LinearLayout>
 
     <LinearLayout
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginTop="10dp"
+      android:layout_marginTop="30dp"
       android:layout_marginLeft="@dimen/offset_15"
       android:orientation="horizontal">
 
@@ -214,10 +195,10 @@
         android:layout_height="wrap_content"
         android:text="Prob. precipitazioni: molto bassa"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_gravity="center_horizontal"
         android:textColor="#303A54"
-        android:textSize="16sp"/>
+        android:textSize="14sp"/>
 
     </LinearLayout>
 
@@ -234,10 +215,10 @@
         android:layout_height="wrap_content"
         android:text="Int. precipitazioni: debole"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_gravity="center_horizontal"
         android:textColor="#303A54"
-        android:textSize="16sp"/>
+        android:textSize="14sp"/>
 
     </LinearLayout>
 
@@ -256,17 +237,17 @@
         android:layout_height="wrap_content"
         android:text="Prob. temporali: bassa"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_gravity="center_horizontal"
         android:textColor="#303A54"
-        android:textSize="16sp"/>
+        android:textSize="14sp"/>
 
     </LinearLayout>
 
     <LinearLayout
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginTop="10dp"
+      android:layout_marginTop="30dp"
       android:layout_marginLeft="@dimen/offset_15"
       android:orientation="horizontal">
 
@@ -282,10 +263,10 @@
         android:layout_height="wrap_content"
         android:text="Venti "
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_gravity="center_horizontal"
         android:textColor="#303A54"
-        android:textSize="16sp"/>
+        android:textSize="14sp"/>
 
       <View
         android:layout_width="wrap_content"
@@ -308,10 +289,10 @@
         android:layout_height="wrap_content"
         android:text="In quota: debole"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_gravity="center_horizontal"
         android:textColor="#303A54"
-        android:textSize="16sp"/>
+        android:textSize="14sp"/>
 
     </LinearLayout>
 
@@ -331,7 +312,7 @@
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
         android:textColor="#303A54"
-        android:textSize="16sp"/>
+        android:textSize="14sp"/>
 
     </LinearLayout>
 
@@ -348,10 +329,10 @@
         android:layout_height="wrap_content"
         android:text="Dir. vento in quota: O"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_gravity="center_horizontal"
         android:textColor="#303A54"
-        android:textSize="16sp"/>
+        android:textSize="14sp"/>
 
     </LinearLayout>
 
@@ -368,10 +349,10 @@
         android:layout_height="wrap_content"
         android:text="Dir. vento in valle: Brezza"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_gravity="center_horizontal"
         android:textColor="#303A54"
-        android:textSize="16sp"/>
+        android:textSize="14sp"/>
 
     </LinearLayout>
 

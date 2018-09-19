@@ -14,6 +14,11 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            // kSOAP library
+            repositories {
+                maven { url 'https://oss.sonatype.org/content/repositories/ksoap2-android-releases' }
+            }
         }
     }
     dataBinding {
@@ -23,7 +28,6 @@ android {
         targetCompatibility 1.8
         sourceCompatibility 1.8
     }
-
 }
 
 dependencies {
@@ -83,6 +87,17 @@ dependencies {
     // play servicies
     implementation 'com.google.android.gms:play-services-location:15.0.1'
     implementation 'com.google.android.gms:play-services-places:15.0.1'
+
+    // Xstream
+    // https://www.baeldung.com/xstream-deserialize-xml-to-object
+    implementation('com.thoughtworks.xstream:xstream:1.4.7') {
+        exclude module: 'xpp3_min'
+        exclude module: 'xmlpull'
+    }
+
+    // GraphView
+    // https://github.com/jjoe64/GraphView
+    implementation 'com.jjoe64:graphview:4.2.2'
 }
 
 
