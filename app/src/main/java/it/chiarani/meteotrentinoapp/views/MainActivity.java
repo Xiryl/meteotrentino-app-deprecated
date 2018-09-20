@@ -53,7 +53,7 @@ public class MainActivity extends SampleActivity{
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-
+/*
     // log start activity
     Log.d( MAINACTIVITY_TAG, "Start mainactivity");
 
@@ -63,6 +63,8 @@ public class MainActivity extends SampleActivity{
     /**
      * Call Chooselocationactivity if is first running
      */
+
+/*
     // TODO: IF GPS IS ALREADY ENABLE SKIP THIS
     launchIsFirstThread();
 
@@ -140,8 +142,8 @@ public class MainActivity extends SampleActivity{
           }
           return false;
         });
-    bottomNavigationView.setSelectedItemId(R.id.bottombaritem_today);
-
+    bottomNavigationView.setSelectedItemId(R.id.bottombaritem_today);*/
+/*
     binding.mainActivityNavView.setNavigationItemSelectedListener(
         new NavigationView.OnNavigationItemSelectedListener() {
           @Override
@@ -199,7 +201,7 @@ public class MainActivity extends SampleActivity{
             return true;
           }
         });
-
+*/
   }
 
   private void launchIsFirstThread() {
