@@ -98,6 +98,10 @@ dependencies {
     // GraphView
     // https://github.com/jjoe64/GraphView
     implementation 'com.jjoe64:graphview:4.2.2'
+
+    // Sliding up panel
+    // https://github.com/umano/AndroidSlidingUpPanel
+    implementation 'com.sothree.slidinguppanel:library:3.4.0'
 }
 
 

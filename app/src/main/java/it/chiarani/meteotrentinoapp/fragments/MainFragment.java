@@ -139,8 +139,8 @@ public class MainFragment extends Fragment implements API_weatherReport_response
     btn.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        DrawerLayout mDrawerLayout = (DrawerLayout) getActivity().findViewById(R.id.main_activity_drawer_layout);
-        mDrawerLayout.openDrawer(Gravity.LEFT);
+//        DrawerLayout mDrawerLayout = (DrawerLayout) getActivity().findViewById(R.id.main_activity_drawer_layout);
+    //    mDrawerLayout.openDrawer(Gravity.LEFT);
       }
     });
   }
