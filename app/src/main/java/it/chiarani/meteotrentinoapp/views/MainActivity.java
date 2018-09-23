@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
@@ -14,20 +15,32 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 import it.chiarani.meteotrentinoapp.R;
+import it.chiarani.meteotrentinoapp.adapters.WeatherSlotAdapter;
+import it.chiarani.meteotrentinoapp.database.entity.WeatherForDayEntity;
+import it.chiarani.meteotrentinoapp.database.entity.WeatherForWeekEntity;
+import it.chiarani.meteotrentinoapp.database.entity.WeatherReportEntity;
 import it.chiarani.meteotrentinoapp.databinding.ActivityMainBinding;
 import it.chiarani.meteotrentinoapp.fragments.MainFragment;
 import it.chiarani.meteotrentinoapp.fragments.RadarFragment;
 import it.chiarani.meteotrentinoapp.fragments.SevenDayFragment;
 import it.chiarani.meteotrentinoapp.helper.GpsTracker;
+import it.chiarani.meteotrentinoapp.helper.WeatherIconDescriptor;
 import it.chiarani.meteotrentinoapp.models.WeatherReport;
+import it.chiarani.meteotrentinoapp.repositories.OpenWeatherDataRepository;
+import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
 import it.chiarani.meteotrentinoapp.servicies.AlarmManagerBroadcastReceiver;
 
 public class MainActivity extends SampleActivity{
@@ -202,6 +215,30 @@ public class MainActivity extends SampleActivity{
           }
         });
 */
+    // in content do not change the layout size of the RecyclerView
+    binding.fragmentMainRvWeatherSlot.setHasFixedSize(true);
+    LinearLayoutManager horizontalLayoutManagaer = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+    binding.fragmentMainRvWeatherSlot.setLayoutManager(horizontalLayoutManagaer);
+
+    WeatherReportRepository repository = new WeatherReportRepository(getApplication());
+    repository.getAll().observe(this, entries -> {
+
+      if(entries.size() == 0)
+        return;
+
+      WeatherReportEntity wfr  = entries.get(entries.size()-1);
+      WeatherForWeekEntity wfw = wfr.getPrevisione();
+      WeatherForDayEntity wfd  = wfw.getGiorni().get(0);
+      OpenWeatherDataRepository repository_op = new OpenWeatherDataRepository(getApplication());
+      repository_op.getAll().observe(this, od_entries -> {
+        if(od_entries.size() == 0)
+          return;
+
+        WeatherSlotAdapter adapter = new WeatherSlotAdapter(wfr, od_entries.get(od_entries.size()-1));
+        binding.fragmentMainRvWeatherSlot.setAdapter(adapter);            // Fasce
+      });
+    });
+
   }
 
   private void launchIsFirstThread() {

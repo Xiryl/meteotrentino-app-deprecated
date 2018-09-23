@@ -16,24 +16,22 @@
     sothree:umanoDragView="@+id/dragView"
     sothree:umanoFadeColor="@android:color/transparent"
     sothree:umanoClipPanel="false"
-    sothree:umanoOverlay="true">
+    sothree:umanoOverlay="false">
+
 
     <!-- MAIN CONTENT -->
     <FrameLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
+      android:background="@drawable/bg_day"
       android:orientation="vertical">
-      <TextView
-        android:id="@+id/main"
+      <FrameLayout
+        android:id="@+id/activity_main_framelayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Main Content"
-        android:clickable="true"
-        android:focusable="false"
-        android:focusableInTouchMode="true"
-        android:textSize="16sp" />
+        />
     </FrameLayout>
+
 
     <!-- SLIDING LAYOUT -->
     <LinearLayout
@@ -47,7 +45,7 @@
 
       <LinearLayout
         android:layout_width="match_parent"
-        android:background="#00000000"
+        android:background="@android:color/transparent"
         android:layout_height="68dp"
         android:orientation="horizontal">
 
@@ -57,26 +55,30 @@
           android:layout_height="match_parent"
           android:layout_weight="1"
           android:textSize="14sp"
+          android:text="Drag me up"
           android:gravity="center_vertical"
           android:paddingLeft="10dp"/>
 
-        <Button
-          android:id="@+id/follow"
-          android:layout_width="wrap_content"
-          android:layout_height="match_parent"
-          android:textSize="14sp"
-          android:gravity="center_vertical|right"
-          android:paddingRight="10dp"
-          android:paddingLeft="10dp"/>
 
       </LinearLayout>
 
-      <ListView
-        android:id="@+id/list"
+      <LinearLayout
+        android:id="@+id/llRcv"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-      </ListView>
+        android:layout_height="wrap_content"
+        android:background="@color/white_gray"
+        android:layout_marginBottom="@dimen/rv_margin_bottom"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:scrollbars="horizontal"
+          android:id="@+id/fragment_main_rv_weather_slot"
+          android:orientation="horizontal"/>
+      </LinearLayout>
+
     </LinearLayout>
   </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 </layout>
