@@ -17,7 +17,9 @@ android {
 
             // kSOAP library
             repositories {
-                maven { url 'https://oss.sonatype.org/content/repositories/ksoap2-android-releases' }
+                maven {
+                    url 'https://oss.sonatype.org/content/repositories/ksoap2-android-releases'
+                }
             }
         }
     }
@@ -95,13 +97,14 @@ dependencies {
         exclude module: 'xmlpull'
     }
 
-    // GraphView
-    // https://github.com/jjoe64/GraphView
-    implementation 'com.jjoe64:graphview:4.2.2'
-
     // Sliding up panel
     // https://github.com/umano/AndroidSlidingUpPanel
     implementation 'com.sothree.slidinguppanel:library:3.4.0'
+
+    // lottiefiles
+    implementation 'com.airbnb.android:lottie:2.5.1'
+
+
 }
 
 

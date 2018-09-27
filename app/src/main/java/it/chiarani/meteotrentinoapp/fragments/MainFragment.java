@@ -83,7 +83,7 @@ public class MainFragment extends Fragment implements API_weatherReport_response
         SimpleDateFormat sdf = new SimpleDateFormat("HH");
         int formattedTime = Integer.parseInt(sdf.format(now));
 
-        int dbTime = entries.get(entries.size()-1).getDataInserimentoDb();
+        int dbTime = 0;
 
         // TODO: NEED TO CHECK THE DAY WITH HOUR!!
         if(formattedTime-dbTime >= 2 || formattedTime-dbTime <= -1 || !entries.get(entries.size()-1).getPrevisione().getLocalita().equals(user_location)) {

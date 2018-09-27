@@ -48,9 +48,10 @@ public class WeatherStationAdapter extends RecyclerView.Adapter<WeatherStationAd
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
     //Set data to the individual list item
-
-    holder.txt_data.setText(report.getTemperature().get(0).getTemperature().get(position).getData() + "");
-    holder.txt_temp.setText(report.getTemperature().get(0).getTemperature().get(position).getTemperatura() + " °");
+    String data = report.getTemperature().get(0).getTemperature().get(position).getData().split("T")[0];
+    String ora = report.getTemperature().get(0).getTemperature().get(position).getData().split("T")[1];
+    holder.txt_data.setText( data+ " " + ora);
+    holder.txt_temp.setText(report.getTemperature().get(0).getTemperature().get(position).getTemperatura() + " °C");
   }
 
   @Override

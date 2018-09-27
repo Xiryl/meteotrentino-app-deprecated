@@ -75,10 +75,6 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
   @Override
   protected void onPreExecute() {
     super.onPreExecute();
-    alert = new AlertDialog.Builder(mContext);
-    alert.setMessage(mContext.getResources().getText(R.string.API_weatherReport_zero_data)).create();
-    alert.setCancelable(false);
-    builder = alert.show();
   }
 
   /**
@@ -87,7 +83,6 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
    */
   @Override
   protected void onPostExecute(Integer integer) {
-    builder.dismiss();
     delegate.processFinish();
   }
 
@@ -97,15 +92,15 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
    */
   @Override
   protected Integer doInBackground(String... s) {
-
     WeatherReportRepository reportRepository = new WeatherReportRepository(_app);
-    publishProgress(1);
+
     tmp_report = new WeatherReportEntity();
     WeatherForWeekEntity wfw = new WeatherForWeekEntity();
     HttpURLConnection connection = null;
     BufferedReader reader = null;
+
     try {
-      publishProgress(2);
+
       URL url = new URL(URL_API);
       connection = (HttpURLConnection) url.openConnection();
       connection.connect();
@@ -141,7 +136,7 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
 
       // ciclo i giorni ( max 7 )
       for(int i = 0; i < arr_giorni.length(); i++) {
-        publishProgress(i*10);
+
         WeatherForDayEntity wfd = new WeatherForDayEntity();
 
         wfd.setIdPrevisioneGiorno(arr_giorni.getJSONObject(i).optInt("idPrevisioneGiorno"));          // idPrevisioneGiorno
@@ -171,21 +166,21 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
           wfs.setIdPrecProb(Integer.parseInt(arr_fasce.getJSONObject(j).optString("idPrecProb")));    // idPrecProb
 
           if(arr_fasce.getJSONObject(j).optString("descPrecProb").equals("--"))
-            wfs.setDescPrecProb("zero");                  // descPrecProb
+            wfs.setDescPrecProb("0");                  // descPrecProb
           else
             wfs.setDescPrecProb(arr_fasce.getJSONObject(j).optString("descPrecProb"));
 
           wfs.setIdPrecInten(Integer.parseInt(arr_fasce.getJSONObject(j).optString("idPrecInten")));  // idPrecInten
 
           if(arr_fasce.getJSONObject(j).optString("descPrecInten").equals("--"))
-            wfs.setDescPrecInten("zero");
+            wfs.setDescPrecInten("0");
           else
             wfs.setDescPrecInten(arr_fasce.getJSONObject(j).optString("descPrecInten"));                // descPrecInten
 
           wfs.setIdTempProb(Integer.parseInt(arr_fasce.getJSONObject(j).optString("idTempProb")));    // idTempProb
 
           if(arr_fasce.getJSONObject(j).optString("descTempProb").equals("--"))
-            wfs.setDescTempProb("zero");
+            wfs.setDescTempProb("0");
           else
             wfs.setDescTempProb(arr_fasce.getJSONObject(j).optString("descTempProb"));
 
@@ -218,10 +213,7 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
       // aggiungo la lista di settimana alla previsione
       tmp_report.setPrevisione(wfw);
 
-      Date now = new Date();
-      SimpleDateFormat sdf = new SimpleDateFormat("HH");
-      int formattedTime = Integer.parseInt(sdf.format(now));
-      tmp_report.setDataInserimentoDb(formattedTime);
+      tmp_report.setDataInserimentoDb(System.currentTimeMillis());
 
       reportRepository.insert(tmp_report);
 
@@ -262,12 +254,15 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
       String data = buffer.toString();
       JSONObject ob = new JSONObject(data);
       JSONObject main_data = ob.getJSONObject("main");
+      JSONObject wind_data = ob.getJSONObject("wind");
+
 
       int act_temp = main_data.optInt("temp") - 273;
       int humidity = main_data.optInt("humidity");
       int pressure = main_data.optInt("pressure");
+      int wind     = wind_data.optInt("speed");
 
-      repository_op.insert(new OpenWeatherDataEntity(humidity + "", pressure + "", "", "", act_temp + ""));
+      repository_op.insert(new OpenWeatherDataEntity(humidity + "", pressure + "", "", "", act_temp + "", wind + ""));
   } catch (Exception e) {
     e.printStackTrace();
     Log.e(API_LOCALITY_TAG, "Errore Exception: "+  e.toString());
@@ -291,7 +286,5 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
 
   @Override
   protected void onProgressUpdate(Integer... values) {
-    TextView messageView = (TextView)builder.findViewById(android.R.id.message);
-    messageView.setText("Ottengo i dati meteo.. "+ values[0] +"%");
   }
 }

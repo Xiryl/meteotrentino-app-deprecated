@@ -37,21 +37,19 @@ public class WeatherSevenDayAdapter extends RecyclerView.Adapter<WeatherSevenDay
   public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     TextView txt_day;
-    TextView txt_report;
     TextView txt_temperature_max;
     TextView txt_temperature_min;
-    TextView txt_probprec;
     ImageView img_weather;
+    ImageView img_warning;
 
     public ViewHolder(View v) {
       super(v);
 
-      img_weather         = (ImageView) v.findViewById(R.id.item_seven_day_img);
-      txt_day             = v.findViewById(R.id.item_seven_day_txt_day);
-      txt_report          = v.findViewById(R.id.item_seven_day_txt_report);
-      txt_temperature_max = v.findViewById(R.id.item_seven_day_txt_tmax);
-      txt_temperature_min = v.findViewById(R.id.item_seven_day_txt_tmin);
-      txt_probprec        = v.findViewById(R.id.item_seven_day_txt_probprec);
+      img_weather         = (ImageView) v.findViewById(R.id.item_sevenday_weather_ico);
+      txt_day             = v.findViewById(R.id.item_sevenday_weather_txt_data);
+      txt_temperature_max = v.findViewById(R.id.item_sevenday_weather_txt_tmax);
+      txt_temperature_min = v.findViewById(R.id.item_sevenday_weather_txt_tmin);
+      img_warning         = v.findViewById(R.id.item_sevenday_weather_img_warning);
 
       v.setOnClickListener(this);
     }
@@ -83,26 +81,24 @@ public class WeatherSevenDayAdapter extends RecyclerView.Adapter<WeatherSevenDay
     data.add(Calendar.DAY_OF_MONTH, position);
 
     switch (data.get(Calendar.DAY_OF_WEEK)) {
-      case 1: holder.txt_day.setText(ItDays.DOM + data.get(Calendar.DAY_OF_MONTH));break;
-      case 2: holder.txt_day.setText(ItDays.LUN + data.get(Calendar.DAY_OF_MONTH));break;
-      case 3: holder.txt_day.setText(ItDays.MAR + data.get(Calendar.DAY_OF_MONTH));break;
-      case 4: holder.txt_day.setText(ItDays.MER + data.get(Calendar.DAY_OF_MONTH));break;
-      case 5: holder.txt_day.setText(ItDays.GIO+ data.get(Calendar.DAY_OF_MONTH));break;
-      case 6: holder.txt_day.setText(ItDays.VEN + data.get(Calendar.DAY_OF_MONTH));break;
-      default: holder.txt_day.setText(ItDays.SAB + data.get(Calendar.DAY_OF_MONTH));break;
+      case 1: holder.txt_day.setText(ItDays.DOM +"\n"+ data.get(Calendar.DAY_OF_MONTH));break;
+      case 2: holder.txt_day.setText(ItDays.LUN +"\n"+ data.get(Calendar.DAY_OF_MONTH));break;
+      case 3: holder.txt_day.setText(ItDays.MAR +"\n"+ data.get(Calendar.DAY_OF_MONTH));break;
+      case 4: holder.txt_day.setText(ItDays.MER +"\n"+ data.get(Calendar.DAY_OF_MONTH));break;
+      case 5: holder.txt_day.setText(ItDays.GIO+"\n"+ data.get(Calendar.DAY_OF_MONTH));break;
+      case 6: holder.txt_day.setText(ItDays.VEN +"\n"+ data.get(Calendar.DAY_OF_MONTH));break;
+      default: holder.txt_day.setText(ItDays.SAB +"\n"+ data.get(Calendar.DAY_OF_MONTH));break;
     }
 
     WeatherForDayEntity wfd = weather_report.getPrevisione().getGiorni().get(position);
-
-    // Previsione
-    holder.txt_report.setText(wfd.getDescIcona());
 
     // Temp. massima e minima
     holder.txt_temperature_max.setText(wfd.gettMaxGiorno() + " °");
     holder.txt_temperature_min.setText(wfd.gettMinGiorno() + " °");
 
-    // Probabilità precipitazioni
-    holder.txt_probprec.setText(wfd.getFasce().get(0).getDescPrecProb() + "");
+    if(!wfd.getIcoAllerte().equals("")) {
+      holder.img_warning.setImageResource(R.drawable.ic_warning);
+    }
 
     WeatherTypes wtype = WeatherIconDescriptor.getWeatherType(wfd.getIcona());
 

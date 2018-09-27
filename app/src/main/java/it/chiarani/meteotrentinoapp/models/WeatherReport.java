@@ -36,8 +36,8 @@ public interface WeatherReport {
 
   void setPrevisione(WeatherForWeekEntity previsione);
 
-  int getDataInserimentoDb();
+  long getDataInserimentoDb();
 
-  void setDataInserimentoDb(int dataInserimentoDb);
+  void setDataInserimentoDb(long dataInserimentoDb);
 
 }

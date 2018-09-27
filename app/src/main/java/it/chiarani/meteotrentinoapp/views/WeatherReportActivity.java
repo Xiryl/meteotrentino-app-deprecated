@@ -2,22 +2,19 @@ package it.chiarani.meteotrentinoapp.views;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
-
-
-import java.util.ArrayList;
-import java.util.List;
+import android.view.Gravity;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.adapters.WeatherReportAdapter;
-import it.chiarani.meteotrentinoapp.adapters.WeatherSlotAdapter;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherReportEntity;
 import it.chiarani.meteotrentinoapp.databinding.ActivityWeatherReportBinding;
-import it.chiarani.meteotrentinoapp.models.WeatherForDay;
-import it.chiarani.meteotrentinoapp.models.WeatherForSlot;
-import it.chiarani.meteotrentinoapp.models.WeatherForWeek;
-import it.chiarani.meteotrentinoapp.models.WeatherReport;
 import it.chiarani.meteotrentinoapp.repositories.OpenWeatherDataRepository;
 import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
 
@@ -48,6 +45,12 @@ public class WeatherReportActivity extends SampleActivity {
       report_day = intent.getExtras().getInt(INTENT_DAY_TAG);
     }
 
+    // set toolbar color
+    Window window = this.getWindow();
+    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+    window.setStatusBarColor(Color.parseColor("#65A8D9"));
+
+
     WeatherReportRepository repository = new WeatherReportRepository(getApplication());
     repository.getAll().observe(this, entries -> {
       WeatherReportEntity report = entries.get(entries.size()-1);
@@ -67,15 +70,6 @@ public class WeatherReportActivity extends SampleActivity {
 
         binding.activityWeatherReportTxtPrevisione.setText(report.getPrevisione().getGiorni().get(report_day).getTestoGiorno());
         binding.activityWeatherReportTxtPosition.setText(report.getPrevisione().getLocalita());
-
-      /*  if(!report.getPrevisione().getGiorni().get(0).getDescIconaAllerte().isEmpty())
-        {
-       //   binding.activityWeatherReportTxtAllerta.setText("Attenzione: " + report.getPrevisione().getGiorni().get(report_day).getDescIconaAllerte());
-        }
-        else
-        {
-          binding.activityWeatherReportTxtAllerta.setText("Nessuna allerta da segnalare.");
-        }*/
 
       });
 

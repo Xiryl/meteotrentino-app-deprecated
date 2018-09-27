@@ -1,84 +1,268 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
   <data>
   </data>
-  <com.sothree.slidinguppanel.SlidingUpPanelLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+  <android.support.v4.widget.DrawerLayout
     xmlns:sothree="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/sliding_layout"
+    android:id="@+id/main_activity_drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="bottom"
-    sothree:umanoPanelHeight="68dp"
-    sothree:umanoShadowHeight="3dp"
-    sothree:umanoParallaxOffset="100dp"
-    sothree:umanoDragView="@+id/dragView"
-    sothree:umanoFadeColor="@android:color/transparent"
-    sothree:umanoClipPanel="false"
-    sothree:umanoOverlay="false">
-
-
-    <!-- MAIN CONTENT -->
-    <FrameLayout
+    android:fitsSystemWindows="true">
+    <RelativeLayout
       android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:background="@drawable/bg_day"
-      android:orientation="vertical">
-      <FrameLayout
-        android:id="@+id/activity_main_framelayout"
+      android:layout_height="match_parent">
+      <com.sothree.slidinguppanel.SlidingUpPanelLayout
+        android:id="@+id/sliding_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        />
-    </FrameLayout>
+        android:gravity="bottom"
+        sothree:umanoPanelHeight="53dp"
+        sothree:umanoShadowHeight="3dp"
+        sothree:umanoParallaxOffset="100dp"
+        sothree:umanoDragView="@+id/dragView"
+        sothree:umanoFadeColor="@android:color/transparent"
+        sothree:umanoClipPanel="false"
+        sothree:umanoOverlay="false">
 
-
-    <!-- SLIDING LAYOUT -->
-    <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="350dp"
-      android:background="#ffffff"
-      android:orientation="vertical"
-      android:clickable="true"
-      android:focusable="false"
-      android:id="@+id/dragView">
-
-      <LinearLayout
-        android:layout_width="match_parent"
-        android:background="@android:color/transparent"
-        android:layout_height="68dp"
-        android:orientation="horizontal">
-
-        <TextView
-          android:id="@+id/name"
-          android:layout_width="0dp"
-          android:layout_height="match_parent"
-          android:layout_weight="1"
-          android:textSize="14sp"
-          android:text="Drag me up"
-          android:gravity="center_vertical"
-          android:paddingLeft="10dp"/>
-
-
-      </LinearLayout>
-
-      <LinearLayout
-        android:id="@+id/llRcv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white_gray"
-        android:layout_marginBottom="@dimen/rv_margin_bottom"
-        android:layout_alignParentBottom="true"
-        android:orientation="vertical">
-
-        <android.support.v7.widget.RecyclerView
+        <!-- MAIN CONTENT -->
+        <FrameLayout
           android:layout_width="match_parent"
           android:layout_height="match_parent"
-          android:scrollbars="horizontal"
-          android:id="@+id/fragment_main_rv_weather_slot"
-          android:orientation="horizontal"/>
-      </LinearLayout>
+          android:background="@drawable/ic_bg_day_new"
+          android:layout_marginBottom="53dp"
+          android:orientation="vertical"
+          >
+          <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/main_act_btn_menu"
+            android:background="#00000000"
+            android:src="@drawable/ic_menu_left"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="10dp"/>
 
-    </LinearLayout>
-  </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+              android:layout_marginLeft="20dp"
+              android:layout_width="30dp"
+              android:layout_height="30dp"
+              android:src="@drawable/ic_rain"/>
+
+            <TextView
+              android:id="@+id/activity_main_txt_rain"
+              android:layout_width="wrap_content"
+              android:layout_marginLeft="10dp"
+              android:layout_height="wrap_content"
+              android:fontFamily="@font/os_regular"
+              android:textColor="#ffffff"
+              android:textSize="18sp" />
+
+            <ImageView
+              android:layout_width="33dp"
+              android:layout_marginLeft="32dp"
+              android:layout_height="33dp"
+              android:src="@drawable/ic_wind"/>
+            <TextView
+              android:id="@+id/activity_main_txt_wind"
+              android:layout_width="wrap_content"
+              android:layout_marginLeft="10dp"
+              android:layout_height="wrap_content"
+              android:fontFamily="@font/os_regular"
+              android:textColor="#ffffff"
+              android:textSize="18sp" />
+            <ImageView
+              android:layout_width="30dp"
+              android:layout_height="30dp"
+              android:layout_marginLeft="32dp"
+              android:src="@drawable/ic_humidity"/>
+            <TextView
+              android:id="@+id/activity_main_txt_humidity"
+              android:layout_width="wrap_content"
+              android:layout_marginLeft="10dp"
+              android:layout_height="wrap_content"
+              android:fontFamily="@font/os_regular"
+              android:textColor="#ffffff"
+              android:textSize="18sp"/>
+          </LinearLayout>
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="130dp"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal">
+            <ImageView
+              android:layout_width="20dp"
+              android:layout_height="20dp"
+              android:src="@drawable/ic_position"/>
+            <TextView
+              android:id="@+id/activity_main_txt_position"
+              android:layout_width="wrap_content"
+              android:fontFamily="@font/os_regular"
+              android:layout_gravity="center_vertical"
+              android:layout_height="wrap_content"
+              android:textSize="15sp"
+              android:textColor="@color/white" />
+          </LinearLayout>
+          <TextView
+            android:id="@+id/activity_main_txt_weather_description"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:layout_marginTop="150dp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/os_regular"
+            android:textStyle="italic" />
+          <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="170dp"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+            <TextView
+              android:id="@+id/activity_main_txt_act_temperature"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textColor="@color/white_gray"
+              android:fontFamily="@font/os_regular"
+              android:textSize="130sp"/>
+            <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="15dp"
+              android:layout_gravity="center_vertical"
+              android:orientation="vertical">
+              <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white_gray"
+                android:text="°C"
+                android:fontFamily="@font/os_bold"
+                android:textSize="40sp"
+                android:textStyle="bold"/>
+              <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:maxWidth="25dp"
+                  android:maxHeight="30dp"
+                  android:padding="4dp"
+                  android:scaleType="fitCenter"
+                  android:adjustViewBounds="true"
+                  android:src="@drawable/ic_arrow_up"
+                  android:layout_gravity="center" />
+                <TextView
+                  android:id="@+id/activity_main_txt_max_temperature"
+                  android:layout_width="wrap_content"
+                  android:layout_gravity="center"
+                  android:fontFamily="@font/os_regular"
+                  android:layout_height="wrap_content"
+                  android:textSize="23sp"
+                  android:textColor="@color/white" />
+              </LinearLayout>
+              <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:maxWidth="25dp"
+                  android:maxHeight="30dp"
+                  android:padding="4dp"
+                  android:scaleType="fitCenter"
+                  android:adjustViewBounds="true"
+                  android:src="@drawable/ic_arrow_down"
+                  android:layout_gravity="center" />
+                <TextView
+                  android:id="@+id/activity_main_txt_min_temperature"
+                  android:layout_width="wrap_content"
+                  android:fontFamily="@font/os_regular"
+                  android:layout_gravity="center"
+                  android:layout_height="wrap_content"
+                  android:textSize="23sp"
+                  android:textColor="@color/white" />
+              </LinearLayout>
+            </LinearLayout>
+          </LinearLayout>
+          <ImageView
+            android:layout_marginTop="80dp"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_gravity="center"
+            android:id="@+id/activity_main_ic_weather_icon"/>
+        </FrameLayout>
+        <!-- SLIDING LAYOUT -->
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="350dp"
+          android:background="#fff"
+          android:orientation="vertical"
+          android:clickable="true"
+          android:focusable="false"
+          android:id="@+id/dragView">
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@color/white_gray"
+            android:layout_height="53dp"
+            android:orientation="vertical">
+            <ImageView
+              android:layout_marginTop="3dp"
+              android:layout_marginBottom="0dp"
+              android:layout_width="match_parent"
+              android:layout_height="20dp"
+              android:src="@drawable/ic_arrow_up_flat"/>
+            <TextView
+              android:id="@+id/name"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_weight="1"
+              android:textSize="16sp"
+              android:layout_gravity="center"
+              android:text="Meteo Settimanale"
+              android:gravity="center"
+              android:textColor="#33495F"
+              android:textStyle="bold"
+              android:paddingLeft="10dp"/>
+          </LinearLayout>
+          <LinearLayout
+            android:id="@+id/llRcv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#33495F"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+            <android.support.v7.widget.RecyclerView
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:scrollbars="horizontal"
+              android:id="@+id/fragment_main_rv_weather_slot"
+              android:orientation="horizontal"/>
+          </LinearLayout>
+        </LinearLayout>
+      </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+    </RelativeLayout>
+
+    <android.support.design.widget.NavigationView
+      android:id="@+id/main_activity_nav_view"
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:layout_gravity="start"
+      android:fitsSystemWindows="true"
+      app:menu="@menu/drawer_menu"/>
+  </android.support.v4.widget.DrawerLayout>
+
 </layout>

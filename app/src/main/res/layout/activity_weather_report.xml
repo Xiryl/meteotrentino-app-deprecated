@@ -2,81 +2,76 @@
 <layout>
   <data/>
 
-  <RelativeLayout
+  <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"    >
-
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <LinearLayout
       android:layout_width="match_parent"
-      android:layout_height="200dp"
-      android:background="#5D96CC">
-
-
+      android:layout_height="wrap_content"
+      android:background="#65A8D9"
+      android:orientation="vertical">
       <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="Bollettino Metereologico"
+        android:fontFamily="@font/os_bold"
         android:textColor="@color/white"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="10dp"
         android:textStyle="bold"
         android:layout_gravity="center_horizontal"
-        android:textSize="20dp"/>
+        android:textSize="23dp"/>
 
       <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="120dp"
-        android:orientation="horizontal">
-
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
         <ImageView
           android:layout_width="20dp"
           android:layout_height="20dp"
-          android:src="@drawable/ic_position"
-          />
-
+          android:src="@drawable/ic_position"/>
         <TextView
           android:id="@+id/activity_weather_report_txt_position"
           android:layout_width="wrap_content"
+          android:fontFamily="@font/os_regular"
+          android:layout_gravity="center_vertical"
           android:layout_height="wrap_content"
-          android:layout_marginLeft="10dp"
-          android:text="Arco"
-          android:textColor="@color/white"
-          android:layout_marginTop="10dp"
-          android:textStyle="italic"
-          android:layout_gravity="center_horizontal"
-          android:textSize="14sp"/>
-
+          android:textSize="15sp"
+          android:textColor="@color/white" />
       </LinearLayout>
 
       <me.biubiubiu.justifytext.library.JustifyTextView
         android:id="@+id/activity_weather_report_txt_previsione"
         android:layout_width="wrap_content"
         android:gravity="center_horizontal"
-        android:layout_marginTop="180dp"
+        android:layout_marginBottom="25dp"
+        android:layout_marginTop="25dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_height="wrap_content"
-        android:textColor="#F7F7F7"
-        android:layout_marginBottom="20dp"
-        android:text=" "
+        android:fontFamily="@font/os_regular"
+        android:textColor="@color/white_gray"
+        android:text="dsanjdnjasnfdjsfndjasfa"
         />
     </LinearLayout>
 
-    <android.support.v4.widget.NestedScrollView
+    <LinearLayout
       android:layout_width="match_parent"
-      android:layout_marginTop="200dp"
-      android:layout_height="match_parent"
-      app:layout_behavior="@string/appbar_scrolling_view_behavior"
-      >
+      android:layout_height="match_parent" >
 
       <android.support.v7.widget.RecyclerView
         android:id="@+id/weather_report_rv_weather"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-    </android.support.v4.widget.NestedScrollView>
+    </LinearLayout>
 
-  </RelativeLayout>
+  </LinearLayout>
+
+
+
 </layout>

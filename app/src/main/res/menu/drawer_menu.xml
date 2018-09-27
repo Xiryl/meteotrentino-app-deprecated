@@ -2,27 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
   <group android:checkableBehavior="single">
     <item
-      android:id="@+id/drawer_view_pref_1"
-      android:icon="@drawable/ic_star"
-      android:title="+ Aggiungi Preferito" />
-    <item
-      android:id="@+id/drawer_view_pref_2"
-      android:icon="@drawable/ic_star"
-      android:title="+ Aggiungi Preferito" />
-  </group>
-  <group android:checkableBehavior="single">
-    <item
       android:id="@+id/drawer_view_search"
       android:icon="@drawable/ic_search"
       android:title="Cambia Luogo" />
     <item
       android:id="@+id/drawer_view_today"
       android:icon="@drawable/ic_today"
-      android:title="Meteo Oggi" />
-    <item
-      android:id="@+id/drawer_view_seven_day"
-      android:icon="@drawable/ic_7days"
-      android:title="Meteo 7 Giorni" />
+      android:title="Meteo" />
     <item
       android:id="@+id/drawer_view_radar"
       android:icon="@drawable/ic_radar"

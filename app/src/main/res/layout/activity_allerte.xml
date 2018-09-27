@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+  <data/>
+  <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.MainFragment">
+
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="60dp"
+      android:background="#65A8D9">
+
+      <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fontFamily="@font/os_bold"
+        android:textSize="19sp"
+        android:textColor="@color/white"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:text="Avvisi e Allerte"/>
+
+
+    </LinearLayout>
+    <ImageButton
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="20dp"
+      android:id="@+id/fragment_radar_day_btn_menu"
+      android:background="#00000000"
+      android:src="@drawable/ic_arrow_back"
+      />
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_marginTop="60dp"
+      android:layout_height="match_parent"
+      android:background="@color/white"
+      android:orientation="vertical">
+    <TextView
+      android:id="@+id/activity_allerte_txt_allerta"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:textSize="19sp"
+      android:textColor="@color/white_gray"
+      android:background="#A6C466"
+      android:layout_gravity="center_horizontal"
+      android:fontFamily="@font/os_bold"
+      android:gravity="center"
+      android:layout_marginTop="20dp"
+      android:text="Nessuna allerta da segnalare"
+      android:layout_marginBottom="@dimen/offset_40"/>
+
+
+
+
+      <android.support.v7.widget.CardView
+        android:id="@+id/activity_allerte_crdw_provincia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/offset_15"
+        android:backgroundTint="@color/white_gray"
+        app:cardElevation="15dp">
+
+        <RelativeLayout
+          android:layout_width="wrap_content"
+          android:padding="10dp"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal">
+          <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="19sp"
+            android:textColor="@color/blue_main"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/os_bold"
+            android:gravity="center"
+            android:layout_margin="5dp"
+            android:text="Allerte Provincia"/>
+          <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_link"/>
+        </RelativeLayout>
+
+      </android.support.v7.widget.CardView>
+
+      <android.support.v7.widget.CardView
+        android:id="@+id/activity_allerte_crdw_meteot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/offset_15"
+        android:backgroundTint="@color/white_gray"
+        app:cardElevation="15dp">
+
+        <RelativeLayout
+          android:layout_width="wrap_content"
+          android:padding="10dp"
+          android:layout_height="wrap_content"
+          android:orientation="vertical">
+          <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="19sp"
+            android:textColor="@color/blue_main"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/os_bold"
+            android:gravity="center"
+            android:layout_margin="5dp"
+            android:text="Allerte meteotrentino.it"/>
+          <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_link"/>
+        </RelativeLayout>
+
+      </android.support.v7.widget.CardView>
+    </LinearLayout>
+  </RelativeLayout>
+</layout>

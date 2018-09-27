@@ -22,6 +22,7 @@ public class OpenWeatherDataEntity implements OpenWeatherData {
   private String sunrise;
   private String sunset;
   private String actualTemperature;
+  private String windSpeed;
   // #endregion
 
   @Ignore
@@ -32,12 +33,13 @@ public class OpenWeatherDataEntity implements OpenWeatherData {
   /**
    * Full constructor
    */
-  public OpenWeatherDataEntity(String humidity, String pressure, String sunrise, String sunset, String actualTemperature) {
+  public OpenWeatherDataEntity(String humidity, String pressure, String sunrise, String sunset, String actualTemperature, String windSpeed) {
     this.humidity = humidity;
     this.pressure = pressure;
     this.sunset   = sunset;
     this.sunrise  = sunrise;
     this.actualTemperature = actualTemperature;
+    this.windSpeed = windSpeed;
   }
 
   // #region GETTER & SETTER
@@ -98,6 +100,16 @@ public class OpenWeatherDataEntity implements OpenWeatherData {
 
   public void setActualTemperature(String actualTemperature) {
     this.actualTemperature = actualTemperature;
+  }
+
+  @Override
+  public String getWindSpeed() {
+    return windSpeed;
+  }
+
+  @Override
+  public void setWindSpeed(String windSpeed) {
+    this.windSpeed = windSpeed;
   }
 
   // #endregion

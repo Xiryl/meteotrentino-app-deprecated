@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
   <data/>
-  <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.MainFragment"
-    android:layout_marginBottom="50dp">
+    tools:context=".fragments.MainFragment">
 
     <ScrollView
       xmlns:android="http://schemas.android.com/apk/res/android"
@@ -22,11 +21,12 @@
       <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#5D96CC">
+        android:background="#65A8D9">
 
         <TextView
           android:layout_width="match_parent"
-          android:layout_height="wrap_content"
+          android:layout_height="match_parent"
+          android:fontFamily="@font/os_bold"
           android:textSize="19sp"
           android:textColor="@color/white"
           android:layout_gravity="center_vertical"
@@ -35,15 +35,15 @@
 
 
       </LinearLayout>
-
       <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="20dp"
         android:id="@+id/fragment_radar_day_btn_menu"
         android:background="#00000000"
-        android:src="@drawable/ic_menu_left"
+        android:src="@drawable/ic_arrow_back"
         />
+
 
 
       <LinearLayout
@@ -59,18 +59,19 @@
         android:layout_height="350dp"
         android:layout_margin="@dimen/offset_15"
         android:padding="15dp"
-        android:backgroundTint="#ECECEC"
+        android:backgroundTint="@color/white_gray"
         app:cardElevation="15dp">
 
         <TextView
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:textSize="21sp"
+          android:textSize="19sp"
           android:textColor="@color/blue_main"
           android:layout_gravity="center_horizontal"
+          android:fontFamily="@font/os_bold"
           android:gravity="center"
-          android:layout_margin="4dp"
-          android:text="RADAR PRECIPITAZIONI"/>
+          android:layout_margin="5dp"
+          android:text="Radar Precipitazioni"/>
 
 
         <ImageView
@@ -83,7 +84,7 @@
       </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-          android:backgroundTint="#ECECEC"
+          android:backgroundTint="@color/white_gray"
           android:layout_width="match_parent"
           android:layout_height="350dp"
           android:layout_margin="@dimen/offset_15"
@@ -93,12 +94,13 @@
           <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="21sp"
+            android:textSize="19sp"
             android:textColor="@color/blue_main"
             android:layout_gravity="center_horizontal"
             android:gravity="center"
-            android:layout_margin="4dp"
-            android:text="INFRAROSSO ALPI"/>
+            android:fontFamily="@font/os_bold"
+            android:layout_margin="5dp"
+            android:text="Infrarosso Alpi"/>
 
 
           <ImageView
@@ -110,11 +112,8 @@
 
         </android.support.v7.widget.CardView>
 
-
       </LinearLayout>
-
-
     </RelativeLayout>
     </ScrollView>
-  </FrameLayout>
+  </RelativeLayout>
 </layout>

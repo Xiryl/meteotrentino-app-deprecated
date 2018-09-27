@@ -5,198 +5,59 @@
   <data>
   </data>
   <RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="250dp"
-    android:background="#fff">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#5D96CC">
 
-    <android.support.v7.widget.CardView
+    <TextView
+      android:id="@+id/item_slot_weather_txt_data"
+      android:layout_width="wrap_content"
+      android:layout_margin="10dp"
+      android:layout_gravity="center"
+      android:gravity="center"
+      android:layout_height="wrap_content"
+      android:text="Lun
+24/11"
+      android:textStyle="bold"
+      android:padding="@dimen/offset_5"
+      android:textColor="@color/white" />
+    
+    <ImageView
+      android:id="@+id/item_slot_weather_ico"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:maxWidth="30dp"
+      android:maxHeight="30dp"
+      android:scaleType="fitCenter"
+      android:adjustViewBounds="true"
+      android:src="@drawable/ic_w_sun"
+      android:layout_marginTop="75dp"
+      android:layout_gravity="center"
+      android:layout_marginLeft="18dp"
+      />
 
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:layout_margin="@dimen/offset_15"
-      app:cardElevation="15dp">
+    <TextView
+      android:id="@+id/item_slot_weather_txt_tmax"
+      android:layout_width="wrap_content"
+      android:layout_marginTop="110dp"
+      android:layout_gravity="center"
+      android:layout_marginLeft="18dp"
+      android:layout_height="wrap_content"
+      android:text="24°"
+      android:textStyle="bold"
+      android:padding="@dimen/offset_5"
+      android:textColor="@color/white" />
 
-      <TextView
-        android:id="@+id/item_slot_weather_txt_fascia"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="@dimen/offset_15"
-        android:layout_gravity="center_horizontal"
-        android:layout_height="wrap_content"
-        android:text=" Fascia oraria: 0 - 6 "
-        android:textStyle="bold"
-        android:padding="@dimen/offset_5"
-        android:textColor="@color/white_gray"
-        android:background="@drawable/rounded_corner"
-        />
-
-      <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-
-        <RelativeLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginTop="60dp">
-
-          <LinearLayout
-            android:id="@+id/llFirstLeft"
-            android:layout_width="wrap_content"
-            android:layout_margin="7dp"
-            android:layout_height="wrap_content">
-            <ImageView
-              android:id="@+id/item_slot_weather_img"
-              android:layout_width="40dp"
-              android:layout_height="40dp"
-              android:src="@drawable/ic_wind"
-             android:layout_marginTop="4dp"
-              android:layout_marginLeft="10dp"
-              android:gravity="center"/>
-            <LinearLayout
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_gravity="center"
-              android:layout_marginLeft="10dp"
-              android:orientation="vertical">
-              <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#9A9A9B"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:text="Cielo"/>
-              <TextView
-                android:id="@+id/item_slot_weather_txt_vento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#313335"
-                android:gravity="left"
-                android:textStyle="bold"
-                android:maxWidth="140dp"
-                android:layout_weight="1"
-                android:layout_marginTop="5dp"
-                android:text="Nuvoloso con puioggie deboli"
-                />
-            </LinearLayout>
-          </LinearLayout>
-
-
-
-          <LinearLayout
-            android:layout_alignParentEnd="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="7dp"
-            >
-            <ImageView
-              android:layout_width="40dp"
-              android:layout_height="40dp"
-              android:src="@drawable/ic_rain"
-              android:gravity="center"/>
-            <LinearLayout
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_marginLeft="10dp"
-              android:orientation="vertical">
-              <TextView
-                android:layout_width="@dimen/prob_precip_w"
-                android:layout_height="wrap_content"
-                android:textColor="#9A9A9B"
-                android:text="Prob. Precipitazioni"/>
-              <TextView
-                android:id="@+id/item_slot_weather_txt_prob_prec"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#313335"
-                android:textStyle="bold"
-                android:layout_marginTop="5dp"
-                android:text="Media"
-                />
-            </LinearLayout>
-          </LinearLayout>
-        </RelativeLayout>
-
-
-        <RelativeLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content">
-
-          <LinearLayout
-            android:id="@+id/llFirstLeft2"
-            android:layout_width="wrap_content"
-            android:layout_margin="7dp"
-            android:layout_height="wrap_content">
-
-              <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_humidity"
-                android:layout_marginLeft="10dp"
-                android:gravity="center"/>
-              <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:orientation="vertical">
-                <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:textColor="#9A9A9B"
-                  android:gravity="center"
-                  android:layout_weight="1"
-                  android:text="Umidità"/>
-                <TextView
-                  android:id="@+id/item_slot_weather_txt_humidity"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:textColor="#313335"
-                  android:gravity="center"
-                  android:textStyle="bold"
-                  android:layout_weight="1"
-                  android:layout_marginTop="5dp"
-                  android:text="75%"
-                  />
-            </LinearLayout>
-          </LinearLayout>
-
-          <LinearLayout
-            android:layout_alignParentEnd="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="7dp"
-            >
-            <ImageView
-              android:layout_width="40dp"
-              android:layout_height="40dp"
-              android:src="@drawable/ic_thunder"
-              android:gravity="center"/>
-            <LinearLayout
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_marginLeft="10dp"
-              android:orientation="vertical">
-              <TextView
-                android:layout_width="@dimen/prob_precip_w"
-                android:layout_height="wrap_content"
-                android:textColor="#9A9A9B"
-                android:text="Prob. Temporali"/>
-              <TextView
-                android:id="@+id/item_slot_weather_txt_prob_temp"
-                android:layout_width="wrap_content"
-                android:textStyle="bold"
-                android:layout_height="wrap_content"
-                android:textColor="#313335"
-                android:layout_marginTop="5dp"
-                android:text="Bassa"
-                />
-            </LinearLayout>
-          </LinearLayout>
-        </RelativeLayout>
-
-      </LinearLayout>
-
-    </android.support.v7.widget.CardView>
+    <TextView
+      android:id="@+id/item_slot_weather_txt_tmin"
+      android:layout_width="wrap_content"
+      android:layout_marginTop="130dp"
+      android:layout_gravity="center"
+      android:layout_marginLeft="18dp"
+      android:layout_height="wrap_content"
+      android:text="14°"
+      android:textStyle="bold"
+      android:padding="@dimen/offset_5"
+      android:textColor="@color/white" />
   </RelativeLayout>
 </layout>

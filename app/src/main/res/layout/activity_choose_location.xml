@@ -7,7 +7,7 @@
   <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#5D96CC">
+    android:background="#65A8D9">
 
     <ImageView
       android:id="@+id/chooseLocationIcon"
@@ -23,6 +23,7 @@
       android:layout_height="wrap_content"
       android:textColor="@color/white"
       android:text="Seleziona Un Luogo"
+      android:fontFamily="@font/os_bold"
       android:layout_marginTop="@dimen/offset_50"
       android:layout_centerHorizontal="true"
       android:textSize="@dimen/offset_30"/>
@@ -33,8 +34,9 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:textColor="@color/white"
+      android:fontFamily="@font/os_regular"
       android:layout_marginStart="@dimen/offset_30"
-      android:text="Tutte le località del trentino sono supportate. Le località supportate sono accquisiti da www.meteotrentino.it"
+      android:text="Tutte le località del trentino sono supportate. Le località supportate sono accquisite dal www.meteotrentino.it"
       android:layout_marginTop="@dimen/offset_15"
       android:layout_centerHorizontal="true"
       android:textSize="@dimen/offset_15"/>

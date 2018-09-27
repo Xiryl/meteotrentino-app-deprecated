@@ -2,9 +2,12 @@ package it.chiarani.meteotrentinoapp.views;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
@@ -43,6 +46,11 @@ public class ChooseLocationActivity extends SampleActivity implements API_locali
     super.onCreate(savedInstanceState);
 
     Log.d( CHOOSELOCATIONACTIVITY_TAG, "Start choose location actiity");
+
+    // set toolbar color
+    Window window = this.getWindow();
+    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+    window.setStatusBarColor(Color.parseColor("#65A8D9"));
 
     LocalityRepository repository = new LocalityRepository(this.getApplication());
 
@@ -85,7 +93,7 @@ public class ChooseLocationActivity extends SampleActivity implements API_locali
           if(l.toLowerCase().equals(user_location.toLowerCase()))
           {
             // launch main activity
-            Intent myIntent = new Intent(ChooseLocationActivity.this, MainActivity.class);
+            Intent myIntent = new Intent(ChooseLocationActivity.this, LoaderActivity.class);
             myIntent.putExtra("POSITION", binding.chooseLocationAutoCompleteTxt.getText().toString());
             startActivity(myIntent);
           }
@@ -100,7 +108,7 @@ public class ChooseLocationActivity extends SampleActivity implements API_locali
     binding.chooseLocationAutoCompleteTxt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
       @Override
       public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-        Intent myIntent = new Intent(ChooseLocationActivity.this, MainActivity.class);
+        Intent myIntent = new Intent(ChooseLocationActivity.this, LoaderActivity.class);
         myIntent.putExtra("POSITION", binding.chooseLocationAutoCompleteTxt.getText().toString());
         startActivity(myIntent);
       }

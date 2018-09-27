@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+  android:shape="rectangle">
+  <gradient
+    android:angle="180"
+    android:startColor="#fff"
+    android:centerColor="@android:color/transparent"
+    android:centerX="0.01" />
+</shape>
+
+  <!--
+  https://stackoverflow.com/questions/9211208/how-to-draw-border-on-just-one-side-of-a-linear-layout
+
+  0 = left
+  90 = bottom
+  180 = right
+  270 = top
+  -->

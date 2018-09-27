@@ -1,49 +1,32 @@
 package it.chiarani.meteotrentinoapp.views;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
-import android.location.Address;
-import android.location.Geocoder;
+import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
+import android.widget.Toast;
 
 import it.chiarani.meteotrentinoapp.R;
-import it.chiarani.meteotrentinoapp.adapters.WeatherSlotAdapter;
+import it.chiarani.meteotrentinoapp.adapters.WeatherSevenDayAdapter;
+import it.chiarani.meteotrentinoapp.database.entity.OpenWeatherDataEntity;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherForDayEntity;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherForWeekEntity;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherReportEntity;
 import it.chiarani.meteotrentinoapp.databinding.ActivityMainBinding;
-import it.chiarani.meteotrentinoapp.fragments.MainFragment;
-import it.chiarani.meteotrentinoapp.fragments.RadarFragment;
-import it.chiarani.meteotrentinoapp.fragments.SevenDayFragment;
-import it.chiarani.meteotrentinoapp.helper.GpsTracker;
 import it.chiarani.meteotrentinoapp.helper.WeatherIconDescriptor;
 import it.chiarani.meteotrentinoapp.models.WeatherReport;
 import it.chiarani.meteotrentinoapp.repositories.OpenWeatherDataRepository;
 import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
 import it.chiarani.meteotrentinoapp.servicies.AlarmManagerBroadcastReceiver;
 
-public class MainActivity extends SampleActivity{
+public class MainActivity extends SampleActivity {
 
   // #region private fields
   private final static String MAINACTIVITY_TAG = "MAINACTIVITY";
@@ -66,219 +49,187 @@ public class MainActivity extends SampleActivity{
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-/*
-    // log start activity
-    Log.d( MAINACTIVITY_TAG, "Start mainactivity");
 
+    Log.d(MAINACTIVITY_TAG, "Start mainactivity");
+
+    // get repository
+    WeatherReportRepository repository = new WeatherReportRepository(this.getApplication());
+
+    /*
     // alarm = new AlarmManagerBroadcastReceiver();
     // alarm.SetAlarm(this);
-
-    /**
-     * Call Chooselocationactivity if is first running
-     */
-
-/*
-    // TODO: IF GPS IS ALREADY ENABLE SKIP THIS
-    launchIsFirstThread();
-
-    Intent intent = getIntent();
-    String user_location = "TRENTO";
-
-    if(intent.hasExtra("POSITION")) {
-      user_location = intent.getExtras().getString("POSITION");
-    }
-    else
-    {
-      try {
-        if (ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
-          ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 101);
-        }
-        GpsTracker gpsTracker = new GpsTracker(this);
-        if(gpsTracker.canGetLocation()){
-          double latitude = gpsTracker.getLatitude();
-          double longitude = gpsTracker.getLongitude();
-          Geocoder geocoder;
-          List<Address> addresses;
-          geocoder = new Geocoder(this, Locale.getDefault());
-
-          addresses = geocoder.getFromLocation(latitude, longitude, 1);
-
-          user_location = addresses.get(0).getLocality();
-        }else{
-          gpsTracker.showSettingsAlert();
-        }
-      } catch (Exception e){
-        e.printStackTrace();
-      }
-    }
-
-    final String tmp = user_location;
-
-    // set bottom navbar
-    BottomNavigationView bottomNavigationView = binding.mainActivityBottomNav;
-    Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.activity_main_framelayout);
-
-    // https://github.com/roughike/BottomBar/issues/385
-    bottomNavigationView.setOnNavigationItemSelectedListener(
-        item -> {
-          switch (item.getItemId()) {
-            case R.id.bottombaritem_today:
-              Bundle bundle = new Bundle();
-              bundle.putString(INTENT_USER_LOCATION_TAG, tmp);
-              MainFragment frag = new MainFragment();
-              frag.setArguments(bundle);
-              getSupportFragmentManager()
-                  .beginTransaction()
-                  .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                  .replace(R.id.activity_main_framelayout, frag, "MainFragment")
-                  .commit();
-              return true;
-            case R.id.bottombaritem_sevenday:
-              Bundle bundle1 = new Bundle();
-              bundle1.putString(INTENT_USER_LOCATION_TAG, tmp);
-              SevenDayFragment frag1 = new SevenDayFragment();
-              frag1.setArguments(bundle1);
-              getSupportFragmentManager()
-                  .beginTransaction()
-                  .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                  .replace(R.id.activity_main_framelayout, frag1, "MainFragment")
-                  .commit();
-              return true;
-            case R.id.bottombaritem_radar:
-              RadarFragment frag2 = new RadarFragment();
-              getSupportFragmentManager()
-                  .beginTransaction()
-                  .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                  .replace(R.id.activity_main_framelayout, frag2, "MainFragment")
-                  .commit();
-              return true;
-          }
-          return false;
-        });
-    bottomNavigationView.setSelectedItemId(R.id.bottombaritem_today);*/
-/*
-    binding.mainActivityNavView.setNavigationItemSelectedListener(
-        new NavigationView.OnNavigationItemSelectedListener() {
-          @Override
-          public boolean onNavigationItemSelected(MenuItem menuItem) {
-            // set item as selected to persist highlight
-            menuItem.setChecked(true);
-
-            switch (menuItem.getItemId()) {
-              case R.id.drawer_view_search :
-                Intent myIntent = new Intent(MainActivity.this, ChooseLocationActivity.class);
-                startActivity(myIntent);
-                return true;
-
-              case R.id.drawer_view_today:
-                Bundle bundle = new Bundle();
-                bundle.putString(INTENT_USER_LOCATION_TAG, tmp);
-                MainFragment frag = new MainFragment();
-                frag.setArguments(bundle);
-                getSupportFragmentManager()
-                    .beginTransaction()
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .replace(R.id.activity_main_framelayout, frag, "MainFragment")
-                    .commit();
-                binding.mainActivityDrawerLayout.closeDrawer(Gravity.LEFT);
-                return true;
-
-              case R.id.drawer_view_seven_day:
-                Bundle bundle1 = new Bundle();
-                bundle1.putString(INTENT_USER_LOCATION_TAG, tmp);
-                SevenDayFragment frag1 = new SevenDayFragment();
-                frag1.setArguments(bundle1);
-                getSupportFragmentManager()
-                    .beginTransaction()
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .replace(R.id.activity_main_framelayout, frag1, "MainFragment")
-                    .commit();
-                binding.mainActivityDrawerLayout.closeDrawer(Gravity.LEFT);
-                return true;
-
-              case R.id.drawer_view_radar:
-                RadarFragment frag2 = new RadarFragment();
-                getSupportFragmentManager()
-                    .beginTransaction()
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .replace(R.id.activity_main_framelayout, frag2, "MainFragment")
-                    .commit();
-                binding.mainActivityDrawerLayout.closeDrawer(Gravity.LEFT);
-                return true;
-
-              case R.id.drawer_view_staz_meteorologiche:
-                Intent myIntent1 = new Intent(MainActivity.this, WeatherStationActivity.class);
-                startActivity(myIntent1);
-                return true;
-            }
-            return true;
-          }
-        });
 */
-    // in content do not change the layout size of the RecyclerView
-    binding.fragmentMainRvWeatherSlot.setHasFixedSize(true);
-    LinearLayoutManager horizontalLayoutManagaer = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-    binding.fragmentMainRvWeatherSlot.setLayoutManager(horizontalLayoutManagaer);
 
-    WeatherReportRepository repository = new WeatherReportRepository(getApplication());
+    binding.mainActBtnMenu.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        binding.mainActivityDrawerLayout.openDrawer(Gravity.LEFT);
+      }
+    });
+
+    // set toolbar color
+    Window window = this.getWindow();
+    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+    window.setStatusBarColor(Color.parseColor("#7FB3D1"));
+
+    binding.mainActivityNavView.setNavigationItemSelectedListener(
+        menuItem -> {
+          // set item as selected to persist highlight
+          menuItem.setChecked(true);
+
+          switch (menuItem.getItemId()){
+
+            case R.id.drawer_view_search:
+              Intent chooseloc_intent = new Intent(MainActivity.this, ChooseLocationActivity.class);
+              startActivity(chooseloc_intent);
+              break;
+
+            case R.id.drawer_view_today:
+              Toast.makeText(this, "Sei già nella pagina richiesta", Toast.LENGTH_LONG).show();
+              break;
+
+            case R.id.drawer_view_radar:
+              Intent radar_intent = new Intent(MainActivity.this, RadarActivity.class);
+              startActivity(radar_intent);
+              break;
+
+            case R.id.drawer_view_staz_meteorologiche:
+              Intent staz_intent = new Intent(MainActivity.this, WeatherStationActivity.class);
+              startActivity(staz_intent);
+              break;
+
+            case R.id.drawer_view_staz_neve:
+              Toast.makeText(this, "Servizio attivo solo nell'inverno", Toast.LENGTH_LONG).show();
+              break;
+
+            case R.id.drawer_view_bollettini:
+              Intent bulletin_intent = new Intent(MainActivity.this, BulletinActivity.class);
+              startActivity(bulletin_intent);
+              break;
+
+            case R.id.drawer_view_allerte:
+              Intent allerte_intent = new Intent(MainActivity.this, AllerteActivity.class);
+              startActivity(allerte_intent);
+              break;
+
+            case R.id.drawer_view_telegram:
+              Intent telegram_intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.t.me/MeteoTrentinoBot"));
+              startActivity(telegram_intent);
+              break;
+          }
+          return true;
+        });
+
     repository.getAll().observe(this, entries -> {
-
-      if(entries.size() == 0)
+      if (entries == null || entries.isEmpty() || entries.size() == 0) {
+        Toast.makeText(this, "Dati meteo non disponibili, riprova più tardi", Toast.LENGTH_LONG).show();
         return;
+      }
 
-      WeatherReportEntity wfr  = entries.get(entries.size()-1);
+      WeatherReportEntity wfr = entries.get(entries.size() - 1);
       WeatherForWeekEntity wfw = wfr.getPrevisione();
-      WeatherForDayEntity wfd  = wfw.getGiorni().get(0);
+      WeatherForDayEntity wfd = wfw.getGiorni().get(0);
+
+      binding.activityMainTxtMaxTemperature.setText(wfd.gettMaxGiorno() + ""); // Temp. MAX
+      binding.activityMainTxtMinTemperature.setText(wfd.gettMinGiorno() + ""); // Temp. MIN
+
+      // Lista Meteo 7 giorni
+      binding.fragmentMainRvWeatherSlot.setHasFixedSize(true);
+      LinearLayoutManager horizontalLayoutManagaer = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+      binding.fragmentMainRvWeatherSlot.setLayoutManager(horizontalLayoutManagaer);
+      WeatherSevenDayAdapter adapter = new WeatherSevenDayAdapter(wfr);
+      binding.fragmentMainRvWeatherSlot.setAdapter(adapter);
+
+      binding.activityMainTxtRain.setText(wfd.getFasce().get(wfd.getFasce().size() - 1).getDescPrecProb() + "%");
+
+      binding.activityMainTxtPosition.setText(wfw.getLocalita());
+      binding.activityMainTxtWeatherDescription.setText(wfd.getDescIcona());
+
       OpenWeatherDataRepository repository_op = new OpenWeatherDataRepository(getApplication());
       repository_op.getAll().observe(this, od_entries -> {
-        if(od_entries.size() == 0)
+        if (od_entries.isEmpty() || od_entries.size() == 0) {
+          Toast.makeText(this, "Dati meteo non disponibili, riprova più tardi", Toast.LENGTH_LONG);
           return;
-
-        WeatherSlotAdapter adapter = new WeatherSlotAdapter(wfr, od_entries.get(od_entries.size()-1));
-        binding.fragmentMainRvWeatherSlot.setAdapter(adapter);            // Fasce
-      });
-    });
-
-  }
-
-  private void launchIsFirstThread() {
-    Thread t = new Thread(new Runnable() {
-      @Override
-      public void run() {
-        // Initialize SharedPreferences
-        SharedPreferences getPrefs = PreferenceManager
-            .getDefaultSharedPreferences(getBaseContext());
-
-        // Create a new boolean and preference and set it to true
-        boolean isFirstStart = getPrefs.getBoolean("firstStart", true);
-
-        // If the activity has never started before...
-        if (isFirstStart) {
-          Intent myIntent = new Intent(MainActivity.this, ChooseLocationActivity.class);
-
-          runOnUiThread(new Runnable() {
-            @Override public void run() {
-              startActivity(myIntent);
-            }
-          });
-
-          // Make a new preferences editor
-          SharedPreferences.Editor e = getPrefs.edit();
-
-          // Edit preference to make it false because we don't want this to run again
-          e.putBoolean("firstStart", false);
-
-          // Apply changes
-          e.apply();
         }
+        OpenWeatherDataEntity opw = od_entries.get(od_entries.size() - 1);
+        binding.activityMainTxtActTemperature.setText(opw.getActualTemperature() + "");
+        binding.activityMainTxtHumidity.setText(opw.getHumidity() + "%");
+        Double w = Double.parseDouble(opw.getWindSpeed()) * 3.6;
+        binding.activityMainTxtWind.setText(w + " km/h");
+      });
+
+      switch (WeatherIconDescriptor.getWeatherType(wfd.getIcona())) {
+        case COPERTO:
+          binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_cloud);
+          break;
+
+        case COPERTO_CON_PIOGGIA:
+          binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_light_rain);
+          break;
+
+        case COPERTO_CON_PIOGGIA_ABBONDANTE:
+          binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_rain);
+          break;
+
+        case COPERTO_CON_PIOGGIA_E_NEVE:
+          binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_snow_rain);
+          break;
+
+        case NEVICATA:
+          binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_sun);
+          break;
+
+        case SOLE:
+          binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_sun);
+          break;
+
+        case SOLEGGIATO:
+          binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_sun_cloud);
+          break;
+
+        case SOLEGGIATO_CON_PIOGGIA:
+          binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_sun_cloud_rain);
+          break;
+
+        case SOLEGGIATO_CON_PIOGGIA_E_NEVE:
+          binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_sun_cloud_rain_snow);
+          break;
+
+        case TEMPORALE:
+          binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_thunderstorm);
+          break;
+
+        case UNDEFINED:
+          binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_sun_cloud);
+          break;
       }
     });
-
-    t.start();
   }
 
   @Override
   public void onBackPressed() {
     // do noting
+  }
+
+  @Override
+  protected void onResume() {
+    super.onResume();
+
+    WeatherReportRepository repository = new WeatherReportRepository(this.getApplication());
+    repository.getAll().observe(this, entries -> {
+      if (entries == null || entries.isEmpty() || entries.size() == 0) {
+        Toast.makeText(this, "Download dei dati fallito.. riprova più tardi!", Toast.LENGTH_LONG).show();
+        return;
+      }
+
+      // check time for reload weather meteo
+      if(System.currentTimeMillis() >= entries.get(entries.size() - 1).getDataInserimentoDb() - (60 * 60 * 2 * 1000)) {
+        // min 2 ore
+      } else {
+        // passate 2 ore
+        Intent i = new Intent(MainActivity.this, LoaderActivity.class);
+        this.startActivity(i);
+      }
+    });
   }
 }

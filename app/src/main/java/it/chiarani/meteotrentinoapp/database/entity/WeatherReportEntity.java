@@ -25,7 +25,7 @@ public class WeatherReportEntity implements WeatherReport {
   private String               evoluzioneBreve;
   private String               allerteList;
   private WeatherForWeekEntity previsione;
-  private int                  dataInserimentoDb;
+  private long                  dataInserimentoDb;
   // #endregion
 
   @Ignore
@@ -34,7 +34,7 @@ public class WeatherReportEntity implements WeatherReport {
   /**
    * full constructor
    */
-  public WeatherReportEntity(String dataPubblicazione, int idPrevisione, String evoluzione, String evoluzioneBreve, String allerteList, WeatherForWeekEntity previsione, int dataInserimentoDb) {
+  public WeatherReportEntity(String dataPubblicazione, int idPrevisione, String evoluzione, String evoluzioneBreve, String allerteList, WeatherForWeekEntity previsione, long dataInserimentoDb) {
     this.dataPubblicazione = dataPubblicazione;
     this.idPrevisione     = idPrevisione;
     this.evoluzione       = evoluzione;
@@ -102,11 +102,11 @@ public class WeatherReportEntity implements WeatherReport {
     this.idWeatherReport = idWeatherReport;
   }
   @Override
-  public int getDataInserimentoDb() {
+  public long getDataInserimentoDb() {
     return dataInserimentoDb;
   }
   @Override
-  public void setDataInserimentoDb(int dataInserimentoDb) {
+  public void setDataInserimentoDb(long dataInserimentoDb) {
     this.dataInserimentoDb = dataInserimentoDb;
   }
 

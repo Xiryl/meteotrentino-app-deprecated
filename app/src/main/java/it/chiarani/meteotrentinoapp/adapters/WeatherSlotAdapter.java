@@ -35,21 +35,17 @@ public class WeatherSlotAdapter extends RecyclerView.Adapter<WeatherSlotAdapter.
 
   public static class ViewHolder extends RecyclerView.ViewHolder {
 
-    TextView txt_time_slot;
-    TextView txt_humidity;
-    TextView txt_prob_prec;
-    TextView txt_prob_temp;
-    TextView txt_cielo;
+    TextView txt_date;
+    TextView txt_tmax;
+    TextView txt_tmin;
     ImageView img_ico_weather;
 
     public ViewHolder(View v) {
       super(v);
-      txt_time_slot   = v.findViewById(R.id.item_slot_weather_txt_fascia);
-      txt_humidity    = v.findViewById(R.id.item_slot_weather_txt_humidity);
-      txt_prob_prec   = v.findViewById(R.id.item_slot_weather_txt_prob_prec);
-      txt_prob_temp   = v.findViewById(R.id.item_slot_weather_txt_prob_temp);
-      txt_cielo       = v.findViewById(R.id.item_slot_weather_txt_vento);
-      img_ico_weather = v.findViewById(R.id.item_slot_weather_img);
+      txt_date   = v.findViewById(R.id.item_slot_weather_txt_data);
+      txt_tmax   = v.findViewById(R.id.item_slot_weather_txt_tmax);
+      txt_tmin   = v.findViewById(R.id.item_slot_weather_txt_tmin);
+      img_ico_weather = v.findViewById(R.id.item_slot_weather_ico);
     }
   }
 
@@ -65,19 +61,9 @@ public class WeatherSlotAdapter extends RecyclerView.Adapter<WeatherSlotAdapter.
 
     WeatherForSlotEntity wfs = weather_report.getPrevisione().getGiorni().get(0).getFasce().get(position);
     // Fascia oraria
-    holder.txt_time_slot.setText("Fascia Oraria: " + weather_report.getPrevisione().getGiorni().get(0).getFasce().get(position).getFasciaOre());
-
-    // Probabilità Precipitazioni
-    holder.txt_prob_prec.setText(wfs.getDescPrecProb());
-
-    // Umidità
-    holder.txt_humidity.setText(open_weather_report.getHumidity() + "%");
-
-    // Probabilità Temporali
-    holder.txt_prob_temp.setText(wfs.getDescTempProb());
-
-    // Intensità Vento
-    holder.txt_cielo.setText(wfs.getDescIcona());
+    holder.txt_date.setText("LUN");
+    holder.txt_tmax.setText("23°");
+    holder.txt_tmin.setText("13°");
 
     WeatherForDay wfd = weather_report.getPrevisione().getGiorni().get(0);
 
