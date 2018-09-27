@@ -116,6 +116,11 @@ public class MainActivity extends SampleActivity {
               Intent telegram_intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.t.me/MeteoTrentinoBot"));
               startActivity(telegram_intent);
               break;
+
+              case R.id.drawer_view_settings:
+                Intent settings_intent =  new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(settings_intent);
+                break;
           }
           return true;
         });

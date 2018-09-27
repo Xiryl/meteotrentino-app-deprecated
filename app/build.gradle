@@ -104,6 +104,11 @@ dependencies {
     // lottiefiles
     implementation 'com.airbnb.android:lottie:2.5.1'
 
+    // settings
+    // https://medium.com/@JakobUlbrich/building-a-settings-screen-for-android-part-1-5959aa49337c
+    // https://developer.android.com/guide/topics/ui/settings
+    implementation 'com.android.support:preference-v7:27.1.1'
+
 
 }
 

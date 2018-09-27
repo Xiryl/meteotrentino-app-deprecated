@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <PreferenceCategory
+    android:title="NOTIFICHE"
+    android:key="pref_key_storage_settings">
+    <CheckBoxPreference
+      android:key="pref_key_notifica_mattina"
+      android:summary="Ricevi una notifica dell'aggiornamento meteo ogni mattina"
+      android:title="Notifiche Mattutine"
+      android:defaultValue="true"/>
+    <CheckBoxPreference
+      android:key="pref_key_notifica_mattina_suono"
+      android:summary="Rendi le notifiche mattutine silenziose"
+      android:title="Silenzia Notifiche Mattutine"
+      android:defaultValue="true"/>
+    <CheckBoxPreference
+      android:key="pref_key_notifica_allerta"
+      android:summary="Ricevi una notifica in pubblicazione di nuove allerte"
+      android:title="Notifiche Allerte"
+      android:defaultValue="true"/>
+    <CheckBoxPreference
+      android:key="pref_key_notifica_allerta_suono"
+      android:summary="Rendi le notifiche delle allerte silenziose"
+      android:title="Silenzia Notifiche Allerte"
+      android:defaultValue="false"/>
+  </PreferenceCategory>
+
+  <PreferenceCategory
+    android:title="GENERALI"
+    android:key="pref_key_storage_settings">
+    <Preference
+      android:key="pref_key_svuota_cache"
+      android:title="Svuota Cache Dati"
+      android:summary="La cache e il database di MeteoTrentinoApp verranno puliti" />
+    <Preference
+      android:key="pref_key_feedback"
+      android:title="Contattami"
+      android:summary="Vuoi proporre una modifica o segnalare un malfunzionamento?" />
+    <Preference
+      android:key="pref_key_privacy"
+      android:title="Privacy Policy"
+      android:summary="Visiona la privacy policy dell'app" />
+    <Preference
+      android:key="pref_key_versione"
+      android:title="Versione App" />
+  </PreferenceCategory>
+</PreferenceScreen>
