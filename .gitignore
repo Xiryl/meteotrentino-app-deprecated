@@ -69,3 +69,5 @@ UI/\.DS_Store
 UI/ICONS/\.DS_Store
 
 app/src/main/java/it/chiarani/meteotrentinoapp/configuration/config\.java
+
+UI/XML/\.DS_Store
