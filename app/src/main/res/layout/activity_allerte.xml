@@ -41,22 +41,6 @@
       android:layout_height="match_parent"
       android:background="@color/white"
       android:orientation="vertical">
-    <TextView
-      android:id="@+id/activity_allerte_txt_allerta"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:textSize="19sp"
-      android:textColor="@color/white_gray"
-      android:background="#A6C466"
-      android:layout_gravity="center_horizontal"
-      android:fontFamily="@font/os_bold"
-      android:gravity="center"
-      android:layout_marginTop="20dp"
-      android:text="Nessuna allerta da segnalare"
-      android:layout_marginBottom="@dimen/offset_40"/>
-
-
-
 
       <android.support.v7.widget.CardView
         android:id="@+id/activity_allerte_crdw_provincia"
@@ -64,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/offset_15"
         android:backgroundTint="@color/white_gray"
-        app:cardElevation="15dp">
+        app:cardElevation="5dp">
 
         <RelativeLayout
           android:layout_width="wrap_content"
@@ -74,7 +58,7 @@
           <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="19sp"
+            android:textSize="15sp"
             android:textColor="@color/blue_main"
             android:layout_gravity="center_horizontal"
             android:fontFamily="@font/os_bold"
@@ -82,10 +66,11 @@
             android:layout_margin="5dp"
             android:text="Allerte Provincia"/>
           <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:gravity="center"
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:src="@drawable/ic_link"/>
         </RelativeLayout>
 
@@ -95,9 +80,10 @@
         android:id="@+id/activity_allerte_crdw_meteot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/offset_15"
+        android:layout_marginLeft="@dimen/offset_15"
+        android:layout_marginRight="@dimen/offset_15"
         android:backgroundTint="@color/white_gray"
-        app:cardElevation="15dp">
+        app:cardElevation="5dp">
 
         <RelativeLayout
           android:layout_width="wrap_content"
@@ -107,7 +93,7 @@
           <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="19sp"
+            android:textSize="15sp"
             android:textColor="@color/blue_main"
             android:layout_gravity="center_horizontal"
             android:fontFamily="@font/os_bold"
@@ -115,14 +101,34 @@
             android:layout_margin="5dp"
             android:text="Allerte meteotrentino.it"/>
           <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:gravity="center"
+            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:src="@drawable/ic_link"/>
         </RelativeLayout>
 
       </android.support.v7.widget.CardView>
+
+      <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="#B95133"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="@font/os_regular"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/offset_30"
+        android:text="Ultime allerte rilevate:"/>
+
+      <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="horizontal"
+        android:id="@+id/activity_allerte_rv"
+        android:orientation="vertical"/>
     </LinearLayout>
   </RelativeLayout>
 </layout>

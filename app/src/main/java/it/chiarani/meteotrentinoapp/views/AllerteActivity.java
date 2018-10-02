@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -16,14 +17,20 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 
+import java.util.ArrayList;
+
 import it.chiarani.meteotrentinoapp.R;
+import it.chiarani.meteotrentinoapp.adapters.AllerteListAdapter;
+import it.chiarani.meteotrentinoapp.adapters.WeatherStationAdapter;
 import it.chiarani.meteotrentinoapp.api.API_endpoint;
+import it.chiarani.meteotrentinoapp.api.API_protezioneCivileAvvisiAllerte;
+import it.chiarani.meteotrentinoapp.api.API_protezioneCivileAvvisiAllerte_response;
 import it.chiarani.meteotrentinoapp.databinding.ActivityAllerteBinding;
 import it.chiarani.meteotrentinoapp.databinding.ActivityBulletinBinding;
 import it.chiarani.meteotrentinoapp.databinding.ActivityRadarBinding;
 import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
 
-public class AllerteActivity extends SampleActivity{
+public class AllerteActivity extends SampleActivity implements API_protezioneCivileAvvisiAllerte_response{
 
   // #region private fields
   private ActivityAllerteBinding binding;
@@ -76,5 +83,19 @@ public class AllerteActivity extends SampleActivity{
         }
       });
     });
+
+    new API_protezioneCivileAvvisiAllerte(getApplication(), this, this::processFinish).execute();
+  }
+
+  @Override
+  public void processFinish(ArrayList<String> data) {
+    // use this setting to improve performance if you know that changes
+    // in content do not change the layout size of the RecyclerView
+    binding.activityAllerteRv.setHasFixedSize(true);
+
+    LinearLayoutManager horizontalLayoutManagaer = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+    binding.activityAllerteRv.setLayoutManager(horizontalLayoutManagaer);
+    AllerteListAdapter adapter1 = new AllerteListAdapter(data);
+    binding.activityAllerteRv.setAdapter(adapter1);
   }
 }
