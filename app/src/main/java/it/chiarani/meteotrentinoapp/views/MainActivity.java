@@ -138,6 +138,11 @@ public class MainActivity extends SampleActivity {
                 Intent settings_intent =  new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(settings_intent);
                 break;
+
+            case R.id.drawer_view_info:
+              Intent info_intent =  new Intent(MainActivity.this, InfoActivity.class);
+              startActivity(info_intent);
+              break;
           }
           return true;
         });

@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/offset_15"
             android:backgroundTint="@color/white_gray"
-            app:cardElevation="15dp">
+            app:cardElevation="5dp">
 
             <RelativeLayout
               android:layout_width="wrap_content"
@@ -60,7 +60,7 @@
               <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="19sp"
+                android:textSize="17sp"
                 android:textColor="@color/blue_main"
                 android:layout_gravity="center_horizontal"
                 android:fontFamily="@font/os_bold"
@@ -68,9 +68,10 @@
                 android:layout_margin="5dp"
                 android:text="Bollettino Probabilistico"/>
               <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:gravity="center"
+                android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
                 android:src="@drawable/ic_link"/>
             </RelativeLayout>
@@ -83,7 +84,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/offset_15"
             android:backgroundTint="@color/white_gray"
-            app:cardElevation="15dp">
+            app:cardElevation="5dp">
 
             <RelativeLayout
               android:layout_width="wrap_content"
@@ -93,7 +94,7 @@
               <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="19sp"
+                android:textSize="17sp"
                 android:textColor="@color/blue_main"
                 android:layout_gravity="center_horizontal"
                 android:fontFamily="@font/os_bold"
@@ -101,8 +102,9 @@
                 android:layout_margin="5dp"
                 android:text="Bollettino Valanghe"/>
               <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
                 android:gravity="center"
                 android:layout_alignParentRight="true"
                 android:src="@drawable/ic_link"/>
@@ -118,7 +120,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/offset_15"
             android:backgroundTint="@color/white_gray"
-            app:cardElevation="15dp">
+            app:cardElevation="5dp">
 
             <RelativeLayout
               android:layout_width="wrap_content"
@@ -128,7 +130,7 @@
               <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="19sp"
+                android:textSize="17sp"
                 android:textColor="@color/blue_main"
                 android:layout_gravity="center_horizontal"
                 android:fontFamily="@font/os_bold"
@@ -136,10 +138,11 @@
                 android:layout_margin="5dp"
                 android:text="Bollettino Montagna"/>
               <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:gravity="center"
                 android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
                 android:src="@drawable/ic_link"/>
             </RelativeLayout>
 

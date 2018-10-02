@@ -65,16 +65,14 @@
 
     <service
       android:name=".servicies.NotificationExtenderExample"
-      android:permission="android.permission.BIND_JOB_SERVICE"
-      android:exported="false">
+      android:exported="false"
+      android:permission="android.permission.BIND_JOB_SERVICE">
       <intent-filter>
         <action android:name="com.onesignal.NotificationExtender" />
       </intent-filter>
     </service>
 
-
+    <activity android:name=".views.InfoActivity"></activity>
   </application>
-
-
 
 </manifest>

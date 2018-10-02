@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+  <data/>
+  <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent">
+
+      <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="60dp"
+          android:background="#65A8D9">
+
+          <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/os_bold"
+            android:textSize="19sp"
+            android:textColor="@color/white"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="Info"/>
+
+
+        </LinearLayout>
+        <ImageButton
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_margin="20dp"
+          android:id="@+id/fragment_radar_day_btn_menu"
+          android:background="#00000000"
+          android:src="@drawable/ic_arrow_back"
+          />
+
+
+
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_marginTop="60dp"
+          android:layout_height="match_parent"
+          android:background="@color/white"
+          android:orientation="vertical">
+
+          <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:textColor="@color/blue_main"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/os_bold"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            android:text="MeteoTrentino-App"/>
+          <me.biubiubiu.justifytext.library.JustifyTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/blue_main"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/os_regular"
+            android:gravity="center"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="@dimen/offset_15"
+            android:text="MeteoTrentino-App non è un applicazione ufficiale di www.meteotrentino.it, ma è un'applicazione nata con l'idea di riportare i dati meteo in sottoforma semplice, veloce e affidabile. MeteoTrentinpo-App permette di ricevere una notifica mattutina per informarti sulle condizioni meteo, nuvolosità, umidità, radar e quant'altro. Inoltre, grazie all'app rimarrai sempre aggiornato sulle allerte meteo e provinciali tramite un sistema di notifiche intelligenti."/>
+
+            <TextView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textSize="19sp"
+              android:textColor="@color/blue_main"
+              android:layout_gravity="center_horizontal"
+              android:fontFamily="@font/os_bold"
+              android:gravity="center"
+              android:layout_marginTop="@dimen/offset_15"
+              android:text="I dati sono raccolti da:
+"/>
+
+
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <ImageButton
+              android:id="@+id/btn_pat"
+              android:background="@android:color/transparent"
+              android:layout_width="70dp"
+              android:scaleType="fitCenter"
+              android:adjustViewBounds="true"
+              android:layout_margin="10dp"
+              android:layout_height="70dp"
+              android:src="@drawable/logo_pat" />
+            <ImageButton
+              android:id="@+id/btn_opendata"
+              android:background="@android:color/transparent"
+              android:layout_width="70dp"
+              android:scaleType="fitCenter"
+              android:adjustViewBounds="true"
+              android:layout_margin="10dp"
+              android:layout_height="70dp"
+              android:src="@drawable/logo_opendata_tn" />
+            <ImageButton
+              android:id="@+id/btn_protezione"
+              android:background="@android:color/transparent"
+              android:layout_width="70dp"
+              android:scaleType="fitCenter"
+              android:adjustViewBounds="true"
+              android:layout_margin="10dp"
+              android:layout_height="70dp"
+              android:src="@drawable/logo_protezione_tn" />
+
+          </LinearLayout>
+          <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          android:gravity="center">
+          <ImageButton
+            android:id="@+id/btn_meteot"
+            android:background="@android:color/transparent"
+            android:layout_width="110dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:layout_margin="10dp"
+            android:layout_height="110dp"
+            android:src="@drawable/logo_meteotrentino" />
+          <ImageButton
+            android:id="@+id/btn_openweather"
+            android:background="@android:color/transparent"
+            android:layout_width="110dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:layout_margin="10dp"
+            android:layout_height="110dp"
+            android:src="@drawable/logo_openweather" />
+
+        </LinearLayout>
+
+          <me.biubiubiu.justifytext.library.JustifyTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/blue_main"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/os_regular"
+            android:gravity="center"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="@dimen/offset_15"
+            android:text="I dati presenti in questa applicazione sono raccolti dai dataset e API messi a disposizione da: www.meteotrentino.it, www.protezionecivile.tn.it e www.openweatherdata.com. L'applicazione può differire dalla reale previsione metereologica percepita all'esterno. Solo le località del Trentino sono supportate."/>
+
+
+          <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:textColor="@color/blue_main"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/os_bold"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/offset_40"
+            android:text="Ti piace l'app? Offri un caffè e sostieni il progeto! "/>
+          <ImageButton
+            android:id="@+id/btn_payp"
+            android:background="@android:color/transparent"
+            android:layout_width="match_parent"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:layout_marginTop="30dp"
+            android:layout_height="50dp"
+            android:src="@drawable/logo_payp" />
+
+          <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:textColor="@color/blue_main"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/os_bold"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            android:text="Sviluppatore:"/>
+          <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/blue_main"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/os_regular"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/offset_15"
+            android:text="Chiarani Fabio\nwww.chiarani.it\nTelegram: @Xiryl"/>
+          <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginBottom="0dp"
+            android:src="@drawable/img_bottom_background"/>
+        </LinearLayout>
+
+
+      </RelativeLayout>
+
+    </ScrollView>
+
+  </RelativeLayout>
+</layout>
