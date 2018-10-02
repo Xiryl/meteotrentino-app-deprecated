@@ -60,7 +60,7 @@
         android:layout_margin="@dimen/offset_15"
         android:padding="15dp"
         android:backgroundTint="@color/white_gray"
-        app:cardElevation="15dp">
+        app:cardElevation="5dp">
 
         <TextView
           android:layout_width="match_parent"
@@ -89,7 +89,7 @@
           android:layout_height="350dp"
           android:layout_margin="@dimen/offset_15"
           android:padding="15dp"
-          app:cardElevation="15dp">
+          app:cardElevation="5dp">
 
           <TextView
             android:layout_width="match_parent"

@@ -38,7 +38,7 @@
     android:layout_height="wrap_content"
     android:gravity="center"
     android:layout_marginTop="65dp"
-    android:text="Seleziona una stazione:"/>
+    android:text="Seleziona una stazione per ottenere le temperature :"/>
   <Spinner
     android:id="@+id/activity_weather_station_spinner"
     android:layout_marginTop="100dp"

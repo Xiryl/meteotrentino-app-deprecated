@@ -6,10 +6,6 @@
       android:icon="@drawable/ic_search"
       android:title="Cambia Luogo" />
     <item
-      android:id="@+id/drawer_view_today"
-      android:icon="@drawable/ic_today"
-      android:title="Meteo" />
-    <item
       android:id="@+id/drawer_view_radar"
       android:icon="@drawable/ic_radar"
       android:title="Radar e Satellite" />

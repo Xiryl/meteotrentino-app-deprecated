@@ -36,6 +36,15 @@
       android:src="@drawable/ic_arrow_down_small"
       />
 
+    <TextView
+      android:id="@+id/item_weather_report_allerta"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:fontFamily="@font/os_bold"
+      android:gravity="center"
+      android:textSize="14sp"
+      android:background="#FFCC33"/>
+
     <LinearLayout
       android:id="@+id/item_weather_report_l_gen"
       android:layout_width="wrap_content"

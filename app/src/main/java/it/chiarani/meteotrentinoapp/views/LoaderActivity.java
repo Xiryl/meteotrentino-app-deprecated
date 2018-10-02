@@ -97,8 +97,10 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
 
           // call API
           new API_weatherReport(getApplication(), this, this::processFinish, user_location).execute();
+
         } else {
           gpsTracker.showSettingsAlert();
+          new API_weatherReport(getApplication(), this, this::processFinish, "TRENTO").execute();
         }
       } catch (Exception e) {
         e.printStackTrace();

@@ -2,10 +2,14 @@ package it.chiarani.meteotrentinoapp.views;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.preference.Preference;
+
+import java.security.PublicKey;
 
 import it.chiarani.meteotrentinoapp.fragment.SettingsFragment;
 
 public class SettingsActivity extends Activity {
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -14,5 +18,6 @@ public class SettingsActivity extends Activity {
     getFragmentManager().beginTransaction()
         .replace(android.R.id.content, new SettingsFragment())
         .commit();
+
   }
 }

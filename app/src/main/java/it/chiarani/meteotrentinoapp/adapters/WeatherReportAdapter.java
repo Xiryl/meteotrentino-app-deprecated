@@ -1,6 +1,7 @@
 package it.chiarani.meteotrentinoapp.adapters;
 
 import android.arch.persistence.room.util.StringUtil;
+import android.graphics.Color;
 import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -55,6 +56,7 @@ public class WeatherReportAdapter extends RecyclerView.Adapter<WeatherReportAdap
     TextView txt_vento_valle_dir;
     TextView txt_zero_termico;
     TextView txt_prev_breve;
+    TextView txt_allerta;
     ImageView exp_arrow;
     LinearLayout ll_gen;
     LinearLayout ll_prec;
@@ -75,10 +77,11 @@ public class WeatherReportAdapter extends RecyclerView.Adapter<WeatherReportAdap
       txt_vento_valle_dir   = v.findViewById(R.id.item_weather_report_txt_vento_valle_dir);
       txt_zero_termico      = v.findViewById(R.id.item_weather_report_txt_zero);
       txt_prev_breve        = v.findViewById(R.id.item_weather_report_txt_prev_breve);
-      ll_gen = v.findViewById(R.id.item_weather_report_l_gen);
-      ll_prec = v.findViewById(R.id.item_weather_report_l_pioggia);
-      ll_vento = v.findViewById(R.id.item_weather_report_l_vento);
-      exp_arrow = v.findViewById(R.id.item_weather_report_img_arrow);
+      txt_allerta           = v.findViewById(R.id.item_weather_report_allerta);
+      ll_gen                = v.findViewById(R.id.item_weather_report_l_gen);
+      ll_prec               = v.findViewById(R.id.item_weather_report_l_pioggia);
+      ll_vento              = v.findViewById(R.id.item_weather_report_l_vento);
+      exp_arrow             = v.findViewById(R.id.item_weather_report_img_arrow);
     }
   }
 
@@ -113,6 +116,20 @@ public class WeatherReportAdapter extends RecyclerView.Adapter<WeatherReportAdap
     holder.ll_prec.setVisibility(isExpanded?View.VISIBLE:View.GONE);
     holder.ll_vento.setVisibility(isExpanded?View.VISIBLE:View.GONE);
     holder.itemView.setActivated(isExpanded);
+
+
+
+    if(weather_report.getPrevisione().getGiorni().get(weather_day).getDescIconaAllerte().isEmpty()) {
+      holder.txt_allerta.setVisibility(View.GONE); // reverse
+    }
+    else
+    {
+      holder.txt_allerta.setVisibility(View.VISIBLE); // reverse
+      holder.txt_allerta.setText(weather_report.getPrevisione().getGiorni().get(weather_day).getDescIconaAllerte());
+      String hex_color = weather_report.getPrevisione().getGiorni().get(weather_day).getColoreAllerte();
+      holder.txt_allerta.setBackgroundColor(Color.parseColor(hex_color));
+
+    }
 
     holder.itemView.setOnClickListener(new View.OnClickListener() {
       @Override

@@ -17,11 +17,11 @@ public interface OpenWeatherData {
   String getWindSpeed();
   void setWindSpeed(String wind);
 
-  String getSunrise();
-  void setSunrise(String sunrise);
+  long getSunrise();
+  void setSunrise(long sunrise);
 
-  String getSunset();
-  void setSunset(String sunset);
+  long getSunset();
+  void setSunset(long sunset);
 
   String getActualTemperature();
   void setActualTemperature(String actualTemperature);

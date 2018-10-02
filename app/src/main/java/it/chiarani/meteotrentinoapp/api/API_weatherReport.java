@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -17,10 +18,13 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.configuration.AppConfiguration;
@@ -146,6 +150,7 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
         wfd.setDescIcona(arr_giorni.getJSONObject(i).optString("descIcona"));                         // descIcona
         wfd.setIcoAllerte(arr_giorni.getJSONObject(i).optString("icoAllerte"));                       // icoAllerte
         wfd.setDescIconaAllerte(arr_giorni.getJSONObject(i).optString("descIconaAllerte"));           // descIconaAllerte
+        wfd.setColoreAllerte(arr_giorni.getJSONObject(i).optString("coloreAllerte"));
         wfd.setTestoGiorno(arr_giorni.getJSONObject(i).optString("testoGiorno"));                     // testoGiorno
         wfd.settMinGiorno(arr_giorni.getJSONObject(i).optInt("tMinGiorno"));                          // tMinGiorno
         wfd.settMaxGiorno(arr_giorni.getJSONObject(i).optInt("tMaxGiorno"));                          // tMaxGiorno
@@ -167,8 +172,14 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
 
           if(arr_fasce.getJSONObject(j).optString("descPrecProb").equals("--"))
             wfs.setDescPrecProb("0");                  // descPrecProb
-          else
-            wfs.setDescPrecProb(arr_fasce.getJSONObject(j).optString("descPrecProb"));
+          else if(arr_fasce.getJSONObject(j).optString("descPrecProb").equals("molto bassa"))
+            wfs.setDescPrecProb("10");
+          else if(arr_fasce.getJSONObject(j).optString("descPrecProb").equals("bassa"))
+            wfs.setDescPrecProb("30");
+          else if(arr_fasce.getJSONObject(j).optString("descPrecProb").equals("media"))
+            wfs.setDescPrecProb("50");
+          else if(arr_fasce.getJSONObject(j).optString("descPrecProb").equals("alta"))
+            wfs.setDescPrecProb("80");
 
           wfs.setIdPrecInten(Integer.parseInt(arr_fasce.getJSONObject(j).optString("idPrecInten")));  // idPrecInten
 
@@ -255,14 +266,21 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
       JSONObject ob = new JSONObject(data);
       JSONObject main_data = ob.getJSONObject("main");
       JSONObject wind_data = ob.getJSONObject("wind");
+      JSONObject sys_data = ob.getJSONObject("sys");
 
 
       int act_temp = main_data.optInt("temp") - 273;
       int humidity = main_data.optInt("humidity");
       int pressure = main_data.optInt("pressure");
-      int wind     = wind_data.optInt("speed");
+      double wind     = wind_data.optDouble("speed");
 
-      repository_op.insert(new OpenWeatherDataEntity(humidity + "", pressure + "", "", "", act_temp + "", wind + ""));
+      int time_sunrise = sys_data.optInt("sunrise");
+      int time_sunset = sys_data.optInt("sunset");
+      long time_ms_sunrise = (long)time_sunrise * 1000;
+      long time_ms_sunset = (long)time_sunset * 1000;
+
+
+      repository_op.insert(new OpenWeatherDataEntity(humidity + "", pressure + "", time_ms_sunrise, time_ms_sunset, act_temp + "", wind + ""));
   } catch (Exception e) {
     e.printStackTrace();
     Log.e(API_LOCALITY_TAG, "Errore Exception: "+  e.toString());

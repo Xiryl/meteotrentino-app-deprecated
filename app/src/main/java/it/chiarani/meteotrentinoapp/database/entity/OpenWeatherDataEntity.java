@@ -19,8 +19,8 @@ public class OpenWeatherDataEntity implements OpenWeatherData {
 
   private String humidity;
   private String pressure;
-  private String sunrise;
-  private String sunset;
+  private long sunrise;
+  private long sunset;
   private String actualTemperature;
   private String windSpeed;
   // #endregion
@@ -33,7 +33,7 @@ public class OpenWeatherDataEntity implements OpenWeatherData {
   /**
    * Full constructor
    */
-  public OpenWeatherDataEntity(String humidity, String pressure, String sunrise, String sunset, String actualTemperature, String windSpeed) {
+  public OpenWeatherDataEntity(String humidity, String pressure, long sunrise, long sunset, String actualTemperature, String windSpeed) {
     this.humidity = humidity;
     this.pressure = pressure;
     this.sunset   = sunset;
@@ -75,22 +75,22 @@ public class OpenWeatherDataEntity implements OpenWeatherData {
   }
 
   @Override
-  public String getSunrise() {
+  public long getSunrise() {
     return sunrise;
   }
 
   @Override
-  public void setSunrise(String sunrise) {
+  public void setSunrise(long sunrise) {
     this.sunrise = sunrise;
   }
 
   @Override
-  public String getSunset() {
+  public long getSunset() {
     return sunset;
   }
 
   @Override
-  public void setSunset(String sunset) {
+  public void setSunset(long sunset) {
     this.sunset = sunset;
   }
 

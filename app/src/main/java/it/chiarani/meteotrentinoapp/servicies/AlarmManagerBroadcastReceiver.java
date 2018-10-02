@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import java.text.Format;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class AlarmManagerBroadcastReceiver extends BroadcastReceiver {
@@ -52,6 +53,7 @@ public class AlarmManagerBroadcastReceiver extends BroadcastReceiver {
     PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, 0);
     //After after 5 seconds
     am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), 1000 * 1 , pi);
+
   }
 
   public void CancelAlarm(Context context)
