@@ -42,5 +42,12 @@ public class InfoActivity extends SampleActivity{
     Window window = this.getWindow();
     window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
     window.setStatusBarColor(Color.parseColor("#65A8D9"));
+
+    binding.fragmentRadarDayBtnMenu.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        onBackPressed();
+      }
+    });
   }
 }

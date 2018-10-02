@@ -29,10 +29,6 @@
     android:title="GENERALI"
     android:key="pref_key_storage_settings">
     <Preference
-      android:key="pref_key_svuota_cache"
-      android:title="Svuota Cache Dati"
-      android:summary="La cache e il database di MeteoTrentinoApp verranno puliti" />
-    <Preference
       android:key="pref_key_feedback"
       android:title="Contattami"
       android:summary="Vuoi proporre una modifica o segnalare un malfunzionamento?" />

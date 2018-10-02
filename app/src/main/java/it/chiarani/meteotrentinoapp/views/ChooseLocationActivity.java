@@ -160,6 +160,6 @@ public class ChooseLocationActivity extends SampleActivity implements API_locali
 
   @Override
   public void onBackPressed() {
-    // do nothing
+    super.onBackPressed();
   }
 }

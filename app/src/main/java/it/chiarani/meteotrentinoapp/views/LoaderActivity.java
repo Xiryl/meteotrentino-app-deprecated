@@ -28,6 +28,7 @@ import java.util.Locale;
 import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.api.API_weatherReport;
 import it.chiarani.meteotrentinoapp.api.API_weatherReport_response;
+import it.chiarani.meteotrentinoapp.database.entity.WeatherReportEntity;
 import it.chiarani.meteotrentinoapp.databinding.ActivityLoaderBinding;
 import it.chiarani.meteotrentinoapp.helper.GpsTracker;
 import it.chiarani.meteotrentinoapp.repositories.OpenWeatherDataRepository;
@@ -65,6 +66,7 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
     else {
       // clean repository
       WeatherReportRepository repository = new WeatherReportRepository(this.getApplication());
+      // TODO CHECK DELETE ALL
       repository.deleteAll();
 
       // set toolbar color
@@ -99,8 +101,9 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
           new API_weatherReport(getApplication(), this, this::processFinish, user_location).execute();
 
         } else {
-          gpsTracker.showSettingsAlert();
-          new API_weatherReport(getApplication(), this, this::processFinish, "TRENTO").execute();
+          Toast.makeText(this, "GPS non attivo", Toast.LENGTH_LONG).show();
+          Intent i = new Intent(LoaderActivity.this, MainActivity.class);
+          this.startActivity(i);
         }
       } catch (Exception e) {
         e.printStackTrace();
@@ -126,13 +129,18 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
         } else {
           isPerpermissionForAllGranted=false;
           Log.e(ACTIVITY_TAG, "Permission GPS not given.");
+          Intent i = new Intent(LoaderActivity.this, MainActivity.class);
+          this.startActivity(i);
         }
 
         if(isPerpermissionForAllGranted){
           Log.e(ACTIVITY_TAG, "Permission GPS ok.");
-
           // call API
           new API_weatherReport(getApplication(),this, this::processFinish, user_location).execute();
+        }
+        else
+        {
+          Toast.makeText(this,"GPS non dato", Toast.LENGTH_SHORT).show();
         }
         break;
     }

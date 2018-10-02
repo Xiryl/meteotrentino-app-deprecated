@@ -278,7 +278,7 @@ public class MainActivity extends SampleActivity {
 
   @Override
   public void onBackPressed() {
-    // do noting
+    super.onBackPressed();
   }
 
   @Override
@@ -290,6 +290,10 @@ public class MainActivity extends SampleActivity {
       if (entries == null || entries.isEmpty() || entries.size() == 0) {
         // Build alert dialog
         DialogShower.ShowDialog(this, "Località non trovata", "Non sono riuscito a rilevare la tua posizione dal GPS.\nProva a ricercala manualmente!", "Ricerca", "Annulla");
+       /* Intent myIntent = new Intent(MainActivity.this, LoaderActivity.class);
+        myIntent.putExtra("POSITION", "TRENTO");
+        startActivity(myIntent);*/
+
         return;
       }
 

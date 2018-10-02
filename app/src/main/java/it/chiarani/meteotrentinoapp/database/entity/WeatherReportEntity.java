@@ -25,7 +25,7 @@ public class WeatherReportEntity implements WeatherReport {
   private String               evoluzioneBreve;
   private String               allerteList;
   private WeatherForWeekEntity previsione;
-  private long                  dataInserimentoDb;
+  private long                 dataInserimentoDb;
   // #endregion
 
   @Ignore
