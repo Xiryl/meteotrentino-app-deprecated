@@ -73,3 +73,5 @@ app/src/main/java/it/chiarani/meteotrentinoapp/configuration/config\.java
 UI/XML/\.DS_Store
 
 app/\.DS_Store
+
+app/debug/
