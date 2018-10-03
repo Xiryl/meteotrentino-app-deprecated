@@ -64,5 +64,6 @@
   <dimen name="activity_weatherreport_title_size">23sp</dimen>
   <dimen name="activity_weatherreport_txt_loc_size">15sp</dimen>
 
-
+  <!-- ITEM : SEVENDAY -->
+  <dimen name="item_sevenday_width">68dp</dimen>
 </resources>

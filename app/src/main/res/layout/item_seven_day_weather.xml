@@ -6,7 +6,7 @@
   </data>
 
       <RelativeLayout
-        android:layout_width="65dp"
+        android:layout_width="@dimen/item_sevenday_width"
         android:layout_height="match_parent"
         android:layout_marginLeft="4dp"
         android:background="@drawable/left_border"
