@@ -7,15 +7,16 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent">
 
+  <!-- TOOLBAR -->
   <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="60dp"
-    android:background="#65A8D9">
+    android:layout_height="@dimen/toolbar_height"
+    android:background="@color/app_azure">
 
     <ImageButton
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_margin="17dp"
+      android:layout_margin="@dimen/toolbar_margin_btn_back"
       android:id="@+id/fragmentRadarDayBtnMenu"
       android:background="#00000000"
       android:src="@drawable/ic_arrow_back"/>
@@ -23,15 +24,14 @@
     <TextView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:textSize="21sp"
+      android:textSize="@dimen/toolbar_text_size"
       android:textColor="@color/white"
       android:layout_gravity="center_vertical"
       android:gravity="center"
       android:fontFamily="@font/os_regular"
       android:text="Dati Stazioni Metereologiche"/>
-
-
   </LinearLayout>
+  <!-- MAIN TOOLBAR -->
 
   <TextView
     android:layout_width="match_parent"
@@ -47,6 +47,7 @@
     android:layout_marginRight="40dp"
     android:layout_height="wrap_content" />
 
+  <!-- LIST -->
   <android.support.v7.widget.RecyclerView
     android:layout_marginTop="150dp"
     android:layout_width="match_parent"

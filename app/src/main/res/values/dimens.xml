@@ -60,5 +60,9 @@
   <dimen name="activity_radar_card_title_size">19sp</dimen>
   <dimen name="activity_radar_card_img_margin">35dp</dimen>
 
+  <!-- ACTIVITY : WEATHERREPORT -->
+  <dimen name="activity_weatherreport_title_size">23sp</dimen>
+  <dimen name="activity_weatherreport_txt_loc_size">15sp</dimen>
+
 
 </resources>

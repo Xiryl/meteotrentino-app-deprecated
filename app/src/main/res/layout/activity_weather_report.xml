@@ -8,10 +8,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
+    <!-- FIXED BAR -->
     <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:background="#65A8D9"
+      android:background="@color/app_azure"
       android:orientation="vertical">
       <TextView
         android:layout_width="match_parent"
@@ -23,7 +25,7 @@
         android:layout_marginTop="10dp"
         android:textStyle="bold"
         android:layout_gravity="center_horizontal"
-        android:textSize="23dp"/>
+        android:textSize="@dimen/activity_weatherreport_title_size"/>
 
       <LinearLayout
         android:layout_width="match_parent"
@@ -41,9 +43,10 @@
           android:fontFamily="@font/os_bold"
           android:layout_gravity="center_vertical"
           android:layout_height="wrap_content"
-          android:textSize="15sp"
+          android:textSize="@dimen/activity_weatherreport_txt_loc_size"
           android:textColor="@color/white" />
       </LinearLayout>
+
 
       <me.biubiubiu.justifytext.library.JustifyTextView
         android:id="@+id/activity_weather_report_txt_previsione"
@@ -56,10 +59,11 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/os_regular"
         android:textColor="@color/white_gray"
-        android:text=""
-        />
+        android:text="" />
     </LinearLayout>
+    <!-- END FIXED BAR -->
 
+    <!-- LIST -->
     <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent" >
@@ -69,9 +73,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
     </LinearLayout>
+    <!-- END LIST -->
 
   </LinearLayout>
-
-
 
 </layout>
