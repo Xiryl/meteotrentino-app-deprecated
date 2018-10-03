@@ -75,3 +75,5 @@ UI/XML/\.DS_Store
 app/\.DS_Store
 
 app/debug/
+
+app/release/
