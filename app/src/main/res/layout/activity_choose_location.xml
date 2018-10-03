@@ -36,7 +36,8 @@
       android:textColor="@color/white"
       android:fontFamily="@font/os_regular"
       android:layout_marginStart="@dimen/offset_30"
-      android:text="Tutte le località del trentino sono supportate. Le località supportate sono accquisite dal www.meteotrentino.it"
+      android:layout_marginEnd="@dimen/offset_30"
+      android:text="Tutte le località del trentino sono supportate. Le località supportate sono accquisite dagli opendata forniti da www.meteotrentino.it"
       android:layout_marginTop="@dimen/offset_15"
       android:layout_centerHorizontal="true"
       android:textSize="@dimen/offset_15"/>

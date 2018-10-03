@@ -9,20 +9,10 @@
       android:title="Notifiche Mattutine"
       android:defaultValue="true"/>
     <CheckBoxPreference
-      android:key="pref_key_notifica_mattina_suono"
-      android:summary="Rendi le notifiche mattutine silenziose"
-      android:title="Silenzia Notifiche Mattutine"
-      android:defaultValue="true"/>
-    <CheckBoxPreference
       android:key="pref_key_notifica_allerta"
       android:summary="Ricevi una notifica in pubblicazione di nuove allerte"
       android:title="Notifiche Allerte"
       android:defaultValue="true"/>
-    <CheckBoxPreference
-      android:key="pref_key_notifica_allerta_suono"
-      android:summary="Rendi le notifiche delle allerte silenziose"
-      android:title="Silenzia Notifiche Allerte"
-      android:defaultValue="false"/>
   </PreferenceCategory>
 
   <PreferenceCategory

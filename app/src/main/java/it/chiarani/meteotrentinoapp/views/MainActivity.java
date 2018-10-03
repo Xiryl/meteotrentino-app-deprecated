@@ -1,19 +1,13 @@
 package it.chiarani.meteotrentinoapp.views;
 
-import android.app.AlarmManager;
-import android.app.AlertDialog;
-import android.app.PendingIntent;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -26,13 +20,11 @@ import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.TimeZone;
 
 import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.adapters.WeatherSevenDayAdapter;
-import it.chiarani.meteotrentinoapp.api.API_weatherReport;
 import it.chiarani.meteotrentinoapp.database.entity.OpenWeatherDataEntity;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherForDayEntity;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherForWeekEntity;
@@ -43,7 +35,6 @@ import it.chiarani.meteotrentinoapp.helper.WeatherIconDescriptor;
 import it.chiarani.meteotrentinoapp.models.WeatherReport;
 import it.chiarani.meteotrentinoapp.repositories.OpenWeatherDataRepository;
 import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
-import it.chiarani.meteotrentinoapp.servicies.AlarmManagerBroadcastReceiver;
 
 public class MainActivity extends SampleActivity {
 
@@ -52,7 +43,6 @@ public class MainActivity extends SampleActivity {
   private ActivityMainBinding binding;
   private WeatherReport _report;
   private final static String INTENT_USER_LOCATION_TAG = "user_location";
-  private AlarmManagerBroadcastReceiver alarm;
   // #endregion
 
   @Override
@@ -289,11 +279,7 @@ public class MainActivity extends SampleActivity {
     repository.getAll().observe(this, entries -> {
       if (entries == null || entries.isEmpty() || entries.size() == 0) {
         // Build alert dialog
-        DialogShower.ShowDialog(this, "Località non trovata", "Non sono riuscito a rilevare la tua posizione dal GPS.\nProva a ricercala manualmente!", "Ricerca", "Annulla");
-       /* Intent myIntent = new Intent(MainActivity.this, LoaderActivity.class);
-        myIntent.putExtra("POSITION", "TRENTO");
-        startActivity(myIntent);*/
-
+        DialogShower.ShowDialog(this,new Intent(getApplicationContext(), ChooseLocationActivity.class),"Località non trovata", "Non sono riuscito a rilevare la tua posizione dal GPS.\nProva a ricercala manualmente!", "Ricerca", "Annulla");
         return;
       }
 

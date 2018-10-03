@@ -58,7 +58,7 @@ public class API_protezioneCivileAvvisiAllerte extends AsyncTask<String, Integer
     super.onPreExecute();
 
     AlertDialog.Builder alert = new AlertDialog.Builder(mContext);
-    alert.setMessage(mContext.getResources().getString(R.string.API_locality_alert)).create();
+    alert.setMessage("Ottengo le allerte..").create();
     alert.setCancelable(false);
     builder = alert.show();
   }
@@ -84,6 +84,7 @@ public class API_protezioneCivileAvvisiAllerte extends AsyncTask<String, Integer
       String title = doc.title();
       Elements links = doc.select("ul li span a");
 
+      int x = 7;
       for (Element link : links) {
         String onclick = link.attr("onclick");
         String sub_onclick = onclick.substring(13);
@@ -91,6 +92,9 @@ public class API_protezioneCivileAvvisiAllerte extends AsyncTask<String, Integer
         String my_l = sub_link.substring(0, sub_link.length()-1);
         String y = "http://avvisi.protezionecivile.tn.it" + my_l;
         data.add(link.text()+ ";" + y);
+        x--;
+        if(x <= 0)
+          return 1;
       }
     } catch (IOException e) {
       Log.d("d", e.getMessage());

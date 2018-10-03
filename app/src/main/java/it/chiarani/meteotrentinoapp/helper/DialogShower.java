@@ -18,15 +18,15 @@ public class DialogShower {
    * @param posButton dialog positive button description
    * @param negButton dialog negative button description
    */
-  public static void ShowDialog(Context context, String title, String description, String posButton, String negButton) {
+  public static void ShowDialog(Context context, Intent intent, String title, String description, String posButton, String negButton) {
     AlertDialog.Builder builder;
     builder = new AlertDialog.Builder(context, android.R.style.Theme_Material_Dialog_Alert);
     builder.setTitle(title)
         .setMessage(description)
         .setPositiveButton(posButton, new DialogInterface.OnClickListener() {
           public void onClick(DialogInterface dialog, int which) {
-            Intent i = new Intent(context, ChooseLocationActivity.class);
-            context.startActivity(i);
+            if(intent != null)
+              context.startActivity(intent);
           }
         })
         .setNegativeButton(negButton, new DialogInterface.OnClickListener() {

@@ -17,7 +17,7 @@
           <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fontFamily="@font/os_bold"
+            android:fontFamily="@font/os_regular"
             android:textSize="19sp"
             android:textColor="@color/white"
             android:layout_gravity="center_vertical"
@@ -60,7 +60,7 @@
               <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="17sp"
+                android:textSize="15sp"
                 android:textColor="@color/blue_main"
                 android:layout_gravity="center_horizontal"
                 android:fontFamily="@font/os_bold"
@@ -68,8 +68,8 @@
                 android:layout_margin="5dp"
                 android:text="Bollettino Probabilistico"/>
               <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:gravity="center"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
@@ -94,7 +94,7 @@
               <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="17sp"
+                android:textSize="15sp"
                 android:textColor="@color/blue_main"
                 android:layout_gravity="center_horizontal"
                 android:fontFamily="@font/os_bold"
@@ -102,8 +102,8 @@
                 android:layout_margin="5dp"
                 android:text="Bollettino Valanghe"/>
               <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_centerVertical="true"
                 android:gravity="center"
                 android:layout_alignParentRight="true"
@@ -130,7 +130,7 @@
               <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="17sp"
+                android:textSize="15sp"
                 android:textColor="@color/blue_main"
                 android:layout_gravity="center_horizontal"
                 android:fontFamily="@font/os_bold"
@@ -138,8 +138,8 @@
                 android:layout_margin="5dp"
                 android:text="Bollettino Montagna"/>
               <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:gravity="center"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"

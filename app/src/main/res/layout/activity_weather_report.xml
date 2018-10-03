@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Bollettino Metereologico"
-        android:fontFamily="@font/os_bold"
+        android:fontFamily="@font/os_regular"
         android:textColor="@color/white"
         android:layout_marginTop="10dp"
         android:textStyle="bold"
@@ -38,7 +38,7 @@
         <TextView
           android:id="@+id/activity_weather_report_txt_position"
           android:layout_width="wrap_content"
-          android:fontFamily="@font/os_regular"
+          android:fontFamily="@font/os_bold"
           android:layout_gravity="center_vertical"
           android:layout_height="wrap_content"
           android:textSize="15sp"
@@ -56,7 +56,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/os_regular"
         android:textColor="@color/white_gray"
-        android:text="dsanjdnjasnfdjsfndjasfa"
+        android:text=""
         />
     </LinearLayout>
 

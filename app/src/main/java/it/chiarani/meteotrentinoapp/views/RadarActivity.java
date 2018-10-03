@@ -1,6 +1,7 @@
 package it.chiarani.meteotrentinoapp.views;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -63,7 +64,7 @@ public class RadarActivity extends SampleActivity{
       }
     });
 
-    DialogShower.ShowDialog(this, "Radar", "Il caricamento del radar può dipendere dalla connessione del tuo telefono", "ok", "");
+    DialogShower.ShowDialog(this, null,  "Radar", "Il caricamento del radar può dipendere dalla connessione del tuo telefono", "ok", "");
 
   }
 }

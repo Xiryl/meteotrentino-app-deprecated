@@ -48,8 +48,6 @@
       </intent-filter>
     </service>
 
-    <receiver android:name=".servicies.AlarmManagerBroadcastReceiver" />
-
     <activity android:name=".views.WeatherStationActivity" />
     <activity android:name=".views.RadarActivity" />
     <activity android:name=".views.LoaderActivity" android:noHistory="true">
