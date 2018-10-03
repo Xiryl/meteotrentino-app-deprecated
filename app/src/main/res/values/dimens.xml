@@ -52,4 +52,13 @@
   <dimen name="activity_info_img_2l_size">100dp</dimen>
   <dimen name="activity_info_img_margin">10dp</dimen>
   <dimen name="activity_info_bottom_img_size">50dp</dimen>
+
+  <!-- ACTIVITY : RADAR -->
+  <dimen name="activity_radar_card_height">350dp</dimen>
+  <dimen name="activity_radar_card_padding">15dp</dimen>
+  <dimen name="activity_radar_card_margin">15dp</dimen>
+  <dimen name="activity_radar_card_title_size">19sp</dimen>
+  <dimen name="activity_radar_card_img_margin">35dp</dimen>
+
+
 </resources>
