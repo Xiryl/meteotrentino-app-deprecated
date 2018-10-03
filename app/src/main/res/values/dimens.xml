@@ -34,6 +34,34 @@
   <dimen name="card_text_margin">5dp</dimen>
   <dimen name="card_img_dimen">20dp</dimen>
 
+  <!-- ACTIVITY : MAIN -->
+  <dimen name="activity_main_panel_height">55dp</dimen>
+  <dimen name="activity_main_btn_menu_mt">33dp</dimen>
+  <dimen name="activity_main_btn_menu_mb">10dp</dimen>
+  <dimen name="activity_main_itembar_mt">30dp</dimen>
+  <dimen name="activity_main_itembar_img_ml">30dp</dimen>
+  <dimen name="activity_main_itembar_img_size">30dp</dimen>
+  <dimen name="activity_main_itembar_txt_size">18sp</dimen>
+  <dimen name="activity_main_posbar_mt">130dp</dimen>
+  <dimen name="activity_main_posbar_img_size">20dp</dimen>
+  <dimen name="activity_main_posbar_txt_size">15sp</dimen>
+  <dimen name="activity_main_posbar_txt_prev_mt">150dp</dimen>
+  <dimen name="activity_main_posbar_txt_allerta_mt">170sp</dimen>
+  <dimen name="activity_main_tempbar_mt">170dp</dimen>
+  <dimen name="activity_main_tempbar_txt_temp_size">130sp</dimen>
+  <dimen name="activity_main_tempbar_right_ml">15dp</dimen>
+  <dimen name="activity_main_tempbar_right_txt_C_size">40sp</dimen>
+  <dimen name="activity_main_tempbar_right_txt_img_arrow_size">25dp</dimen>
+  <dimen name="activity_main_tempbar_right_txt_temp_size">23sp</dimen>
+  <dimen name="activity_main_img_weather_height">140dp</dimen>
+  <dimen name="activity_main_img_weather_mt">80dp</dimen>
+  <dimen name="activity_main_slidel_height">350dp</dimen>
+  <dimen name="activity_main_slidel_txt_slide_size">16sp</dimen>
+
+
+
+
+
   <!-- ACTIVITY : CHOOSELOCATION -->
   <dimen name="activity_chooselocation_img_main_size">40dp</dimen>
   <dimen name="activity_chooselocation_title_margin_top">50dp</dimen>

@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="bottom"
-        sothree:umanoPanelHeight="53dp"
+        sothree:umanoPanelHeight="@dimen/activity_main_panel_height"
         sothree:umanoShadowHeight="3dp"
         sothree:umanoParallaxOffset="100dp"
         sothree:umanoDragView="@+id/dragView"
@@ -33,28 +33,28 @@
           android:layout_height="match_parent"
           android:background="@drawable/bg_main_day"
           android:layout_marginBottom="53dp"
-          android:orientation="vertical"
-          >
+          android:orientation="vertical">
+
           <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/main_act_btn_menu"
             android:background="#00000000"
             android:src="@drawable/ic_menu_left"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginTop="@dimen/activity_main_btn_menu_mt"
+            android:layout_marginLeft="@dimen/activity_main_btn_menu_mb"/>
 
+          <!-- RAIN, HUMIDITY, WIND -->
           <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="@dimen/activity_main_itembar_mt"
             android:orientation="horizontal"
             android:gravity="center">
-
             <ImageView
-              android:layout_marginLeft="20dp"
-              android:layout_width="30dp"
-              android:layout_height="30dp"
+              android:layout_marginLeft="@dimen/activity_main_itembar_img_ml"
+              android:layout_width="@dimen/activity_main_itembar_img_size"
+              android:layout_height="@dimen/activity_main_itembar_img_size"
               android:src="@drawable/ic_rain"/>
 
             <TextView
@@ -64,12 +64,12 @@
               android:layout_height="wrap_content"
               android:fontFamily="@font/os_regular"
               android:textColor="#ffffff"
-              android:textSize="18sp" />
+              android:textSize="@dimen/activity_main_itembar_txt_size" />
 
             <ImageView
-              android:layout_width="33dp"
-              android:layout_marginLeft="32dp"
-              android:layout_height="33dp"
+              android:layout_width="@dimen/activity_main_itembar_img_size"
+              android:layout_marginLeft="@dimen/activity_main_itembar_img_ml"
+              android:layout_height="@dimen/activity_main_itembar_img_size"
               android:src="@drawable/ic_wind"/>
             <TextView
               android:id="@+id/activity_main_txt_wind"
@@ -78,11 +78,11 @@
               android:layout_height="wrap_content"
               android:fontFamily="@font/os_regular"
               android:textColor="#ffffff"
-              android:textSize="18sp" />
+              android:textSize="@dimen/activity_main_itembar_txt_size" />
             <ImageView
-              android:layout_width="30dp"
-              android:layout_height="30dp"
-              android:layout_marginLeft="32dp"
+              android:layout_width="@dimen/activity_main_itembar_img_size"
+              android:layout_height="@dimen/activity_main_itembar_img_size"
+              android:layout_marginLeft="@dimen/activity_main_itembar_img_ml"
               android:src="@drawable/ic_humidity"/>
             <TextView
               android:id="@+id/activity_main_txt_humidity"
@@ -91,17 +91,20 @@
               android:layout_height="wrap_content"
               android:fontFamily="@font/os_regular"
               android:textColor="#ffffff"
-              android:textSize="18sp"/>
+              android:textSize="@dimen/activity_main_itembar_txt_size"/>
           </LinearLayout>
+          <!-- END  RAIN, HUMIDITY, WIND -->
+
+          <!-- LOCATION, WEATHER DESCRIPTION -->
           <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="130dp"
+            android:layout_marginTop="@dimen/activity_main_posbar_mt"
             android:orientation="horizontal"
             android:gravity="center_horizontal">
             <ImageView
-              android:layout_width="20dp"
-              android:layout_height="20dp"
+              android:layout_width="@dimen/activity_main_posbar_img_size"
+              android:layout_height="@dimen/activity_main_posbar_img_size"
               android:src="@drawable/ic_position"/>
             <TextView
               android:id="@+id/activity_main_txt_position"
@@ -109,7 +112,7 @@
               android:fontFamily="@font/os_regular"
               android:layout_gravity="center_vertical"
               android:layout_height="wrap_content"
-              android:textSize="15sp"
+              android:textSize="@dimen/activity_main_posbar_txt_size"
               android:textColor="@color/white" />
           </LinearLayout>
           <TextView
@@ -117,8 +120,8 @@
             android:layout_width="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:layout_marginTop="150dp"
+            android:textSize="@dimen/activity_main_posbar_txt_size"
+            android:layout_marginTop="@dimen/activity_main_posbar_txt_prev_mt"
             android:textColor="@color/white"
             android:fontFamily="@font/os_regular"
             android:textStyle="italic" />
@@ -127,18 +130,20 @@
             android:layout_width="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:layout_marginTop="170dp"
+            android:textSize="@dimen/activity_main_posbar_txt_size"
+            android:layout_marginTop="@dimen/activity_main_posbar_txt_allerta_mt"
             android:textColor="#BB5233"
             android:fontFamily="@font/os_regular"
             android:textStyle="italic" />
+          <!-- END LOCATION, WEATHER DESCRIPTION -->
 
+          <!-- TEMPERATURE -->
           <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:layout_marginTop="170dp"
+            android:layout_marginTop="@dimen/activity_main_tempbar_mt"
             android:layout_gravity="center_horizontal"
             android:orientation="horizontal">
             <TextView
@@ -147,11 +152,11 @@
               android:layout_height="wrap_content"
               android:textColor="@color/white_gray"
               android:fontFamily="@font/os_regular"
-              android:textSize="130sp"/>
+              android:textSize="@dimen/activity_main_tempbar_txt_temp_size"/>
             <LinearLayout
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:layout_marginLeft="15dp"
+              android:layout_marginLeft="@dimen/activity_main_tempbar_right_ml"
               android:layout_gravity="center_vertical"
               android:orientation="vertical">
               <TextView
@@ -160,7 +165,7 @@
                 android:textColor="@color/white_gray"
                 android:text="°C"
                 android:fontFamily="@font/os_bold"
-                android:textSize="40sp"
+                android:textSize="@dimen/activity_main_tempbar_right_txt_C_size"
                 android:textStyle="bold"/>
               <LinearLayout
                 android:layout_width="wrap_content"
@@ -169,8 +174,8 @@
                 <ImageView
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:maxWidth="25dp"
-                  android:maxHeight="30dp"
+                  android:maxWidth="@dimen/activity_main_tempbar_right_txt_img_arrow_size"
+                  android:maxHeight="@dimen/activity_main_tempbar_right_txt_img_arrow_size"
                   android:padding="4dp"
                   android:scaleType="fitCenter"
                   android:adjustViewBounds="true"
@@ -182,7 +187,7 @@
                   android:layout_gravity="center"
                   android:fontFamily="@font/os_regular"
                   android:layout_height="wrap_content"
-                  android:textSize="23sp"
+                  android:textSize="@dimen/activity_main_tempbar_right_txt_temp_size"
                   android:textColor="@color/white" />
               </LinearLayout>
               <LinearLayout
@@ -192,8 +197,8 @@
                 <ImageView
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:maxWidth="25dp"
-                  android:maxHeight="30dp"
+                  android:maxWidth="@dimen/activity_main_tempbar_right_txt_img_arrow_size"
+                  android:maxHeight="@dimen/activity_main_tempbar_right_txt_img_arrow_size"
                   android:padding="4dp"
                   android:scaleType="fitCenter"
                   android:adjustViewBounds="true"
@@ -205,32 +210,39 @@
                   android:fontFamily="@font/os_regular"
                   android:layout_gravity="center"
                   android:layout_height="wrap_content"
-                  android:textSize="23sp"
+                  android:textSize="@dimen/activity_main_tempbar_right_txt_temp_size"
                   android:textColor="@color/white"
                   />
               </LinearLayout>
             </LinearLayout>
           </LinearLayout>
+          <!-- END TEMPERATURE -->
+
+          <!-- WEATHER IMAGE -->
           <ImageView
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="@dimen/activity_main_img_weather_mt"
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:maxHeight="@dimen/activity_main_img_weather_height"
+            android:layout_height="@dimen/activity_main_img_weather_height"
             android:layout_gravity="center"
             android:id="@+id/activity_main_ic_weather_icon"/>
         </FrameLayout>
+
         <!-- SLIDING LAYOUT -->
         <LinearLayout
           android:layout_width="match_parent"
-          android:layout_height="350dp"
+          android:layout_height="@dimen/activity_main_slidel_height"
           android:background="#fff"
           android:orientation="vertical"
           android:clickable="true"
           android:focusable="false"
           android:id="@+id/dragView">
+
+          <!-- SLIDE UP ME -->
           <LinearLayout
             android:layout_width="match_parent"
             android:background="@color/white_gray"
-            android:layout_height="53dp"
+            android:layout_height="@dimen/activity_main_panel_height"
             android:orientation="vertical">
             <ImageView
               android:layout_marginTop="3dp"
@@ -243,7 +255,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:layout_weight="1"
-              android:textSize="16sp"
+              android:textSize="@dimen/activity_main_slidel_txt_slide_size"
               android:layout_gravity="center"
               android:text="Meteo Settimanale"
               android:gravity="center"
@@ -251,6 +263,9 @@
               android:textStyle="bold"
               android:paddingLeft="10dp"/>
           </LinearLayout>
+          <!-- END SLIDE UP ME -->
+
+          <!-- PANEL MAIN CONTENT -->
           <LinearLayout
             android:id="@+id/llRcv"
             android:layout_width="match_parent"
@@ -266,8 +281,12 @@
               android:orientation="horizontal"/>
           </LinearLayout>
         </LinearLayout>
+        <!-- END PANEL MAIN CONTENT -->
+
+
       </com.sothree.slidinguppanel.SlidingUpPanelLayout>
     </RelativeLayout>
+
 
     <android.support.design.widget.NavigationView
       android:id="@+id/main_activity_nav_view"
