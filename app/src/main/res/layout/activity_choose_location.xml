@@ -12,8 +12,8 @@
     <ImageView
       android:id="@+id/chooseLocationIcon"
       android:layout_width="wrap_content"
-      android:layout_height="40dp"
-      android:layout_marginTop="@dimen/offset_40"
+      android:layout_height="@dimen/activity_chooselocation_img_main_size"
+      android:layout_marginTop="@dimen/activity_chooselocation_img_main_size"
       android:src="@drawable/ic_map_picker"/>
 
     <TextView
@@ -24,9 +24,9 @@
       android:textColor="@color/white"
       android:text="Seleziona Un Luogo"
       android:fontFamily="@font/os_bold"
-      android:layout_marginTop="@dimen/offset_50"
+      android:layout_marginTop="@dimen/activity_chooselocation_title_margin_top"
       android:layout_centerHorizontal="true"
-      android:textSize="@dimen/offset_30"/>
+      android:textSize="@dimen/activity_chooselocation_title_size"/>
 
     <me.biubiubiu.justifytext.library.JustifyTextView
       android:id="@+id/chooseLocationtxtSubtitle"
@@ -35,12 +35,12 @@
       android:layout_height="wrap_content"
       android:textColor="@color/white"
       android:fontFamily="@font/os_regular"
-      android:layout_marginStart="@dimen/offset_30"
-      android:layout_marginEnd="@dimen/offset_30"
+      android:layout_marginStart="@dimen/activity_chooselocation_desc_margin"
+      android:layout_marginEnd="@dimen/activity_chooselocation_desc_margin"
       android:text="Tutte le località del trentino sono supportate. Le località supportate sono accquisite dagli opendata forniti da www.meteotrentino.it"
       android:layout_marginTop="@dimen/offset_15"
       android:layout_centerHorizontal="true"
-      android:textSize="@dimen/offset_15"/>
+      android:textSize="@dimen/activity_chooselocation_desc_size"/>
 
       <android.support.v7.widget.AppCompatAutoCompleteTextView
         android:id="@+id/chooseLocationAutoCompleteTxt"
@@ -49,10 +49,10 @@
         android:textColor="@color/white"
         android:layout_below="@id/chooseLocationtxtSubtitle"
         android:layout_centerHorizontal="true"
-        android:dropDownHeight="200dp"
+        android:dropDownHeight="@dimen/activity_chooselocation_autocomp_dropdown_heigth"
         android:inputType="textAutoComplete|textAutoCorrect"
-        android:layout_marginTop="@dimen/offset_100"
-        android:layout_marginStart="@dimen/offset_100"
+        android:layout_marginTop="@dimen/activity_chooselocation_autocomp_margin"
+        android:layout_marginStart="@dimen/activity_chooselocation_autocomp_margin"
         android:hint="Inserisci una località.."/>
 
 
@@ -64,7 +64,7 @@
       android:textColor="@color/blue_azure"
       android:layout_centerHorizontal="true"
       android:layout_alignParentBottom="true"
-      android:layout_marginBottom="@dimen/offset_40"
+      android:layout_marginBottom="@dimen/activity_chooselocation_btn_margin_bottom"
       android:background="@drawable/rounded_button"/>
   </RelativeLayout>
 </layout>

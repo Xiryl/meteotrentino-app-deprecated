@@ -33,4 +33,23 @@
   <dimen name="card_text_size">15sp</dimen>
   <dimen name="card_text_margin">5dp</dimen>
   <dimen name="card_img_dimen">20dp</dimen>
+
+  <!-- ACTIVITY : CHOOSELOCATION -->
+  <dimen name="activity_chooselocation_img_main_size">40dp</dimen>
+  <dimen name="activity_chooselocation_title_margin_top">50dp</dimen>
+  <dimen name="activity_chooselocation_title_size">30sp</dimen>
+  <dimen name="activity_chooselocation_desc_margin">30dp</dimen>
+  <dimen name="activity_chooselocation_desc_size">15sp</dimen>
+  <dimen name="activity_chooselocation_autocomp_margin">100dp</dimen>
+  <dimen name="activity_chooselocation_autocomp_dropdown_heigth">300dp</dimen>
+  <dimen name="activity_chooselocation_btn_margin_bottom">40dp</dimen>
+
+  <!-- ACTIVITY : INFO -->
+  <dimen name="activity_info_title_size">19sp</dimen>
+  <dimen name="activity_info_jtxt_margin">30dp</dimen>
+  <dimen name="activity_info_jtxt_size">15sp</dimen>
+  <dimen name="activity_info_img_size">70dp</dimen>
+  <dimen name="activity_info_img_2l_size">100dp</dimen>
+  <dimen name="activity_info_img_margin">10dp</dimen>
+  <dimen name="activity_info_bottom_img_size">50dp</dimen>
 </resources>
