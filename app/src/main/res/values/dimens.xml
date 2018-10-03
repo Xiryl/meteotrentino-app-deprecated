@@ -21,4 +21,16 @@
 
   <dimen name="prob_precip_w">120dp</dimen>
 
+
+  <!-- GENERAL DIMENS -->
+  <dimen name="toolbar_height">60dp</dimen>
+  <dimen name="toolbar_text_size">19sp</dimen>
+  <dimen name="toolbar_margin_btn_back">20dp</dimen>
+
+  <!-- CARDVIEW LINK DIMENS -->
+  <dimen name="card_elevation">5dp</dimen>
+  <dimen name="card_rl_padding">10dp</dimen>
+  <dimen name="card_text_size">15sp</dimen>
+  <dimen name="card_text_margin">5dp</dimen>
+  <dimen name="card_img_dimen">20dp</dimen>
 </resources>

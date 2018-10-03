@@ -14,4 +14,9 @@
   <color name="aqua">#47A6F8</color>
 
   <color name="blue_main">#303A54</color>
+
+
+
+  <!-- GENERAL COLORS -->
+  <color name="app_azure">#65A8D9</color>
 </resources>
