@@ -67,7 +67,7 @@
             android:layout_marginRight="@dimen/activity_info_jtxt_margin"
             android:layout_marginLeft="@dimen/activity_info_jtxt_margin"
             android:layout_marginTop="@dimen/offset_15"
-            android:text="MeteoTrentino-App non è un applicazione ufficiale di www.meteotrentino.it, ma è un'applicazione nata con l'idea di riportare i dati meteo in sottoforma semplice, veloce e affidabile. MeteoTrentinpo-App permette di ricevere una notifica mattutina per informarti sulle condizioni meteo, nuvolosità, umidità, radar e quant'altro. Inoltre, grazie all'app rimarrai sempre aggiornato sulle allerte meteo e provinciali tramite un sistema di notifiche intelligenti."/>
+            android:text="MeteoTrentino-App non è un applicazione ufficiale di www.meteotrentino.it, ma è un'applicazione nata con l'idea di riportare i dati meteo in sottoforma semplice, veloce e affidabile.\n\nMeteoTrentino-App permette di ricevere una notifica mattutina per informarti sulle condizioni meteo, nuvolosità, umidità, radar e quant'altro. Inoltre, grazie all'app rimarrai sempre aggiornato sulle allerte meteo e provinciali tramite un sistema di notifiche intelligenti."/>
             <TextView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"

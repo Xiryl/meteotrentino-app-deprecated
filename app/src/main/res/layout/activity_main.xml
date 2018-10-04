@@ -30,11 +30,12 @@
           android:id="@+id/activity_main_linear_layout_bg"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
+          android:background="@drawable/bg_main_day"
           android:layout_marginBottom="53dp"
           android:orientation="vertical">
           <RelativeLayout
             android:layout_width="match_parent"
-            android:background="@drawable/bg_main_day"
+
             android:layout_height="match_parent">
           <ImageButton
             android:layout_width="wrap_content"
@@ -65,7 +66,8 @@
               android:layout_height="wrap_content"
               android:fontFamily="@font/os_regular"
               android:textColor="#ffffff"
-              android:textSize="@dimen/activity_main_itembar_txt_size" />
+              android:maxWidth="45dp"
+              android:textSize="18dp" />
 
             <ImageView
               android:layout_width="@dimen/activity_main_itembar_img_size"
@@ -79,7 +81,7 @@
               android:layout_height="wrap_content"
               android:fontFamily="@font/os_regular"
               android:textColor="#ffffff"
-              android:textSize="@dimen/activity_main_itembar_txt_size" />
+              android:textSize="18dp" />
             <ImageView
               android:layout_width="@dimen/activity_main_itembar_img_size"
               android:layout_height="@dimen/activity_main_itembar_img_size"
@@ -89,10 +91,11 @@
               android:id="@+id/activity_main_txt_humidity"
               android:layout_width="wrap_content"
               android:layout_marginLeft="10dp"
+              android:maxWidth="45dp"
               android:layout_height="wrap_content"
               android:fontFamily="@font/os_regular"
               android:textColor="#ffffff"
-              android:textSize="@dimen/activity_main_itembar_txt_size"/>
+              android:textSize="18dp"/>
           </LinearLayout>
           <!-- END  RAIN, HUMIDITY, WIND -->
 
@@ -245,7 +248,7 @@
        android:text="Aggiornato alle:"
        android:gravity="center"
        android:layout_alignParentBottom="true"
-       android:textColor="#33495F"
+       android:textColor="@color/white_gray"
        android:textStyle="bold"
        android:paddingLeft="10dp"/>
      </RelativeLayout>
