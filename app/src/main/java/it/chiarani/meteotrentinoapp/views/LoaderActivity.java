@@ -67,7 +67,7 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
       // clean repository
       WeatherReportRepository repository = new WeatherReportRepository(this.getApplication());
       // TODO CHECK DELETE ALL
-      repository.deleteAll();
+      //repository.deleteAll();
 
       // set toolbar color
       Window window = this.getWindow();
@@ -102,8 +102,18 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
 
         } else {
           Toast.makeText(this, "GPS non attivo", Toast.LENGTH_LONG).show();
-          Intent i = new Intent(LoaderActivity.this, MainActivity.class);
-          this.startActivity(i);
+          repository.getAll().observe(this, entities -> {
+            if(entities.size() <= 0) {
+              Intent i = new Intent(LoaderActivity.this, MainActivity.class);
+              this.startActivity(i);
+            }
+            else
+            {
+              // chiamo le API con l'ultima località assumendo che sia la predefinita
+              String loc = entities.get(entities.size()-1).getPrevisione().getLocalita();
+              new API_weatherReport(getApplication(), this, this::processFinish, loc).execute();
+            }
+          });
         }
       } catch (Exception e) {
         e.printStackTrace();
@@ -114,7 +124,6 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
 
   @Override
   public void onRequestPermissionsResult( int requestCode,String[] permissions,int[] grantResults) {
-
     switch (requestCode) {
       case PERMISSION_REQ_CODE:
         boolean isPerpermissionForAllGranted = false;
@@ -140,7 +149,7 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
         }
         else
         {
-          Toast.makeText(this,"GPS non dato", Toast.LENGTH_SHORT).show();
+          Toast.makeText(this,"Permission GPS not given", Toast.LENGTH_SHORT).show();
         }
         break;
     }

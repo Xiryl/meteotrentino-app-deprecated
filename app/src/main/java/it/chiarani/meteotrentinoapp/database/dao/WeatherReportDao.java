@@ -30,3 +30,5 @@ public interface WeatherReportDao {
   @Query("DELETE FROM weatherReport")
   void deleteAll();
 }
+
+  

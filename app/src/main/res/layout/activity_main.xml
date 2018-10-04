@@ -25,16 +25,17 @@
         sothree:umanoFadeColor="@android:color/transparent"
         sothree:umanoClipPanel="false"
         sothree:umanoOverlay="false">
-
         <!-- MAIN CONTENT -->
         <FrameLayout
           android:id="@+id/activity_main_linear_layout_bg"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
-          android:background="@drawable/bg_main_day"
           android:layout_marginBottom="53dp"
           android:orientation="vertical">
-
+          <RelativeLayout
+            android:layout_width="match_parent"
+            android:background="@drawable/bg_main_day"
+            android:layout_height="match_parent">
           <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -117,7 +118,9 @@
           </LinearLayout>
           <TextView
             android:id="@+id/activity_main_txt_weather_description"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
             android:layout_gravity="center_horizontal"
             android:layout_height="wrap_content"
             android:textSize="@dimen/activity_main_posbar_txt_size"
@@ -127,10 +130,12 @@
             android:textStyle="italic" />
           <TextView
             android:id="@+id/activity_main_txt_allerta"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
             android:layout_height="wrap_content"
             android:textSize="@dimen/activity_main_posbar_txt_size"
+            android:gravity="center_horizontal"
             android:layout_marginTop="@dimen/activity_main_posbar_txt_allerta_mt"
             android:textColor="#BB5233"
             android:fontFamily="@font/os_regular"
@@ -142,7 +147,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:id="@+id/activity_main_ll_temperature"
             android:gravity="center_horizontal"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/activity_main_tempbar_mt"
             android:layout_gravity="center_horizontal"
             android:orientation="horizontal">
@@ -220,15 +227,30 @@
 
           <!-- WEATHER IMAGE -->
           <ImageView
-            android:layout_marginTop="@dimen/activity_main_img_weather_mt"
+
             android:layout_width="match_parent"
             android:maxHeight="@dimen/activity_main_img_weather_height"
             android:layout_height="@dimen/activity_main_img_weather_height"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/activity_main_ll_temperature"
             android:layout_gravity="center"
             android:id="@+id/activity_main_ic_weather_icon"/>
-        </FrameLayout>
 
-        <!-- SLIDING LAYOUT -->
+     <TextView
+       android:id="@+id/main_activity_txt_ultimo_agg"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:textSize="13sp"
+       android:text="Aggiornato alle:"
+       android:gravity="center"
+       android:layout_alignParentBottom="true"
+       android:textColor="#33495F"
+       android:textStyle="bold"
+       android:paddingLeft="10dp"/>
+     </RelativeLayout>
+   </FrameLayout>
+
+   <!-- SLIDING LAYOUT -->
         <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="@dimen/activity_main_slidel_height"

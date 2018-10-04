@@ -185,23 +185,27 @@ public class MainActivity extends SampleActivity {
         Calendar start = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"));
         String actual_date = formatter.format(start.getTime());
 
+        binding.mainActivityTxtUltimoAgg.setText("Aggiornato alle: " + formatter.format(entries.get(entries.size()-1).getDataInserimentoDb()));
+
         // ------ ------ ------
         // SET BACKGROUND IMAGE
         // ------ ------ ------
         binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_day);
         window.setStatusBarColor(Color.parseColor("#7AA9C3"));
 
-        if(start.getTimeInMillis() > opw.getSunset() && (start.getTimeInMillis()+7200000) < start.getTimeInMillis())
+
+        if(start.getTimeInMillis() > opw.getSunset() && (start.getTimeInMillis()+3600000) <= start.getTimeInMillis())
         {
           // sunset
           binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_sunset);
           window.setStatusBarColor(Color.parseColor("#BA725A"));
         }
-        else if( start.getTimeInMillis() > (start.getTimeInMillis()+7200000)) {
+        else if( start.getTimeInMillis() > (start.getTimeInMillis()+3600000) && start.getTimeInMillis() >= (start.getTimeInMillis()+34200000)) {
           // night
           binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_night);
           window.setStatusBarColor(Color.parseColor("#345A7B"));
         }
+
 
         switch (WeatherIconDescriptor.getWeatherType(wfd.getIcona())) {
           case COPERTO:

@@ -60,8 +60,6 @@
 
 
 
-
-
   <!-- ACTIVITY : CHOOSELOCATION -->
   <dimen name="activity_chooselocation_img_main_size">40dp</dimen>
   <dimen name="activity_chooselocation_title_margin_top">50dp</dimen>

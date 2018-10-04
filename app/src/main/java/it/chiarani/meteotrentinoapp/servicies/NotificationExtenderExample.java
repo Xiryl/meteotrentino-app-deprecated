@@ -32,14 +32,12 @@ public class NotificationExtenderExample extends NotificationExtenderService {
       return false;
     }
 
-
     WeatherReportRepository repo = new WeatherReportRepository(getApplication());
     repo.getAll().observeForever(entries -> {
       // TODO: check if is null
       overrideSettings.extender = new NotificationCompat.Extender() {
         @Override
         public NotificationCompat.Builder extend(NotificationCompat.Builder builder) {
-
 
           String x = entries.get(entries.size() - 1).getPrevisione().getGiorni().get(0).getDescIcona();
 
