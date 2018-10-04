@@ -217,6 +217,7 @@
                   android:fontFamily="@font/os_regular"
                   android:layout_gravity="center"
                   android:layout_height="wrap_content"
+                  android:layout_marginBottom="3dp"
                   android:textSize="@dimen/activity_main_tempbar_right_txt_temp_size"
                   android:textColor="@color/white"
                   />
@@ -263,6 +264,7 @@
           <!-- SLIDE UP ME -->
           <LinearLayout
             android:layout_width="match_parent"
+            android:id="@+id/activity_main_ll_slide_up"
             android:background="@color/white_gray"
             android:layout_height="@dimen/activity_main_panel_height"
             android:orientation="vertical">
@@ -305,10 +307,8 @@
         </LinearLayout>
         <!-- END PANEL MAIN CONTENT -->
 
-
       </com.sothree.slidinguppanel.SlidingUpPanelLayout>
     </RelativeLayout>
-
 
     <android.support.design.widget.NavigationView
       android:id="@+id/main_activity_nav_view"

@@ -22,10 +22,11 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:textColor="@color/white"
-      android:text="Seleziona Un Luogo"
+      android:text="Seleziona Una Località Predefinita"
       android:fontFamily="@font/os_bold"
       android:layout_marginTop="@dimen/activity_chooselocation_title_margin_top"
       android:layout_centerHorizontal="true"
+      android:gravity="center"
       android:textSize="@dimen/activity_chooselocation_title_size"/>
 
     <me.biubiubiu.justifytext.library.JustifyTextView
@@ -37,7 +38,7 @@
       android:fontFamily="@font/os_regular"
       android:layout_marginStart="@dimen/activity_chooselocation_desc_margin"
       android:layout_marginEnd="@dimen/activity_chooselocation_desc_margin"
-      android:text="Tutte le località del trentino sono supportate. Le località supportate sono accquisite dagli opendata forniti da www.meteotrentino.it"
+      android:text="La località scelta verra utilizzata dall'applicazione come predefinita.\n\nTutte le località del trentino sono supportate. Le località supportate sono accquisite dagli opendata forniti da www.meteotrentino.it"
       android:layout_marginTop="@dimen/offset_15"
       android:layout_centerHorizontal="true"
       android:textSize="@dimen/activity_chooselocation_desc_size"/>

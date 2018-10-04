@@ -63,7 +63,7 @@
   <!-- ACTIVITY : CHOOSELOCATION -->
   <dimen name="activity_chooselocation_img_main_size">40dp</dimen>
   <dimen name="activity_chooselocation_title_margin_top">50dp</dimen>
-  <dimen name="activity_chooselocation_title_size">30sp</dimen>
+  <dimen name="activity_chooselocation_title_size">25sp</dimen>
   <dimen name="activity_chooselocation_desc_margin">30dp</dimen>
   <dimen name="activity_chooselocation_desc_size">15sp</dimen>
   <dimen name="activity_chooselocation_autocomp_margin">100dp</dimen>

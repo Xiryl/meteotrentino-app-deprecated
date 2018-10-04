@@ -1,19 +1,31 @@
 package it.chiarani.meteotrentinoapp.views;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.Toast;
 
 import com.onesignal.OneSignal;
+import com.takusemba.spotlight.OnSpotlightStateChangedListener;
+import com.takusemba.spotlight.OnTargetStateChangedListener;
+import com.takusemba.spotlight.Spotlight;
+import com.takusemba.spotlight.shape.Circle;
+import com.takusemba.spotlight.target.CustomTarget;
+import com.takusemba.spotlight.target.SimpleTarget;
 
 
 import java.text.DateFormat;
@@ -21,6 +33,7 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.TimeZone;
 
 import it.chiarani.meteotrentinoapp.R;
@@ -167,7 +180,7 @@ public class MainActivity extends SampleActivity {
       }
 
       OpenWeatherDataRepository repository_op = new OpenWeatherDataRepository(getApplication());
-      repository_op.getAll().observe(this, od_entries -> {
+      repository_op.getAll().observe(this, (List<OpenWeatherDataEntity> od_entries) -> {
         if (od_entries.isEmpty() || od_entries.size() == 0) {
           Toast.makeText(this, "Dati meteo non disponibili, riprova più tardi", Toast.LENGTH_SHORT);
           return;
@@ -185,7 +198,7 @@ public class MainActivity extends SampleActivity {
         Calendar start = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"));
         String actual_date = formatter.format(start.getTime());
 
-        binding.mainActivityTxtUltimoAgg.setText("Aggiornato alle: " + formatter.format(entries.get(entries.size()-1).getDataInserimentoDb()));
+        binding.mainActivityTxtUltimoAgg.setText("Alba "+ formatter.format(opw.getSunrise()) +" / Tramonto " + formatter.format(opw.getSunset()) + "\nAggiornato alle: " + formatter.format(entries.get(entries.size()-1).getDataInserimentoDb()));
 
         // ------ ------ ------
         // SET BACKGROUND IMAGE
@@ -266,8 +279,82 @@ public class MainActivity extends SampleActivity {
         }
 
 
-      });
+        // preferences
+        SharedPreferences getPrefs = PreferenceManager
+            .getDefaultSharedPreferences(getBaseContext());
+
+        //  Create a new boolean and preference and set it to true
+        boolean isFirstStart = getPrefs.getBoolean("firstStart", true);
+
+        //  If the activity has never started before...
+        if (isFirstStart) {
+          SimpleTarget simpleTarget = new SimpleTarget.Builder(this)
+              .setPoint(binding.mainActBtnMenu)
+              .setShape(new Circle(200f))
+              .setTitle("Maggiori Funzionalità")
+              .setDescription("Apri il menù laterale per ottenere più funzionalità")
+              .setOnSpotlightStartedListener(new OnTargetStateChangedListener<SimpleTarget>() {
+                @Override
+                public void onStarted(SimpleTarget target) {
+                  // do something
+                }
+
+                @Override
+                public void onEnded(SimpleTarget target) {
+                  // do something
+                }
+              })
+              .build();
+
+          SimpleTarget simpleTarget1 = new SimpleTarget.Builder(this)
+              .setPoint(binding.activityMainLlSlideUp)
+              .setShape(new Circle(200f))
+              .setTitle("Scopri il meteo settimanale")
+              .setDescription("Alza la tendina e premi sul giorno per ottenere il bollettino metereologico")
+              .setOnSpotlightStartedListener(new OnTargetStateChangedListener<SimpleTarget>() {
+                @Override
+                public void onStarted(SimpleTarget target) {
+                  // do something
+                }
+
+                @Override
+                public void onEnded(SimpleTarget target) {
+                  // do something
+                }
+              })
+              .build();
+
+          Spotlight.with(this)
+              .setOverlayColor(R.color.background)
+              .setDuration(10)
+              .setAnimation(new DecelerateInterpolator(1f))
+              .setTargets(simpleTarget, simpleTarget1)
+              .setClosedOnTouchedOutside(true)
+              .setOnSpotlightStateListener(new OnSpotlightStateChangedListener() {
+                @Override
+                public void onStarted() {
+                }
+
+                @Override
+                public void onEnded() {
+                }
+              })
+              .start();
+
+
+          //  Make a new preferences editor
+          SharedPreferences.Editor e = getPrefs.edit();
+
+          //  Edit preference to make it false because we don't want this to run again
+          e.putBoolean("firstStart", false);
+
+          //  Apply changes
+          e.apply();
+
+        }
+        });
     });
+
   }
 
   @Override
@@ -296,5 +383,89 @@ public class MainActivity extends SampleActivity {
         this.startActivity(i);
       }
     });
+  }
+
+  private void onFirstStart(Activity activity) {
+
+    //  Declare a new thread to do a preference check
+    Thread t = new Thread(new Runnable() {
+      @Override
+      public void run() {
+        //  Initialize SharedPreferences
+        SharedPreferences getPrefs = PreferenceManager
+            .getDefaultSharedPreferences(getBaseContext());
+
+        //  Create a new boolean and preference and set it to true
+        boolean isFirstStart = getPrefs.getBoolean("firstStart", true);
+
+        //  If the activity has never started before...
+        if (isFirstStart) {
+          SimpleTarget simpleTarget = new SimpleTarget.Builder(activity)
+              .setPoint(binding.mainActBtnMenu)
+              .setShape(new Circle(200f))
+              .setTitle("Maggiori Funzionalità")
+              .setDescription("Apri il menù laterale per ottenere più funzionalità")
+              .setOnSpotlightStartedListener(new OnTargetStateChangedListener<SimpleTarget>() {
+                @Override
+                public void onStarted(SimpleTarget target) {
+                  // do something
+                }
+                @Override
+                public void onEnded(SimpleTarget target) {
+                  // do something
+                }
+              })
+              .build();
+
+          SimpleTarget simpleTarget1 = new SimpleTarget.Builder(activity)
+              .setPoint(binding.activityMainLlSlideUp)
+              .setShape(new Circle(200f))
+              .setTitle("Scopri il meteo settimanale")
+              .setDescription("Alza la tendina e premi sul giorno per ottenere il bollettino metereologico")
+              .setOnSpotlightStartedListener(new OnTargetStateChangedListener<SimpleTarget>() {
+                @Override
+                public void onStarted(SimpleTarget target) {
+                  // do something
+                }
+                @Override
+                public void onEnded(SimpleTarget target) {
+                  // do something
+                }
+              })
+              .build();
+
+          Spotlight.with(activity)
+              .setOverlayColor(R.color.background)
+              .setDuration(10)
+              .setAnimation(new DecelerateInterpolator(1f))
+              .setTargets(simpleTarget, simpleTarget1)
+              .setClosedOnTouchedOutside(true)
+              .setOnSpotlightStateListener(new OnSpotlightStateChangedListener() {
+                @Override
+                public void onStarted() {
+                }
+
+                @Override
+                public void onEnded() {
+                }
+              })
+              .start();
+
+
+          //  Make a new preferences editor
+          SharedPreferences.Editor e = getPrefs.edit();
+
+          //  Edit preference to make it false because we don't want this to run again
+          e.putBoolean("firstStart", false);
+
+          //  Apply changes
+          e.apply();
+        }
+      }
+    });
+
+    // Start the thread
+    t.start();
+
   }
 }

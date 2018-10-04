@@ -101,7 +101,7 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
           new API_weatherReport(getApplication(), this, this::processFinish, user_location).execute();
 
         } else {
-          Toast.makeText(this, "GPS non attivo", Toast.LENGTH_LONG).show();
+          Toast.makeText(this, "GPS non attivo, ottengo la località predefinita..", Toast.LENGTH_SHORT).show();
           repository.getAll().observe(this, entities -> {
             if(entities.size() <= 0) {
               Intent i = new Intent(LoaderActivity.this, MainActivity.class);
