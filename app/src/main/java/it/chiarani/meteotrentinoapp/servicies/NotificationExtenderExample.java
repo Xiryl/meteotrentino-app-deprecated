@@ -38,13 +38,12 @@ public class NotificationExtenderExample extends NotificationExtenderService {
       overrideSettings.extender = new NotificationCompat.Extender() {
         @Override
         public NotificationCompat.Builder extend(NotificationCompat.Builder builder) {
-
-          String x = entries.get(entries.size() - 1).getPrevisione().getGiorni().get(0).getDescIcona();
+          String x = entries.get(entries.size() - 1).getPrevisione().getGiorni().get(1).getDescIcona();
 
           builder.setContentTitle("Buongiorno!")
               .setColor(getResources().getColor(R.color.colorAccent))
               .setContentText("Il cielo oggi sarà " +
-                  entries.get(entries.size() - 1).getPrevisione().getGiorni().get(0).getDescIcona())
+                  entries.get(entries.size() - 1).getPrevisione().getGiorni().get(1).getDescIcona())
               .setGroup("meteotrentinoapp")
               .setAutoCancel(true)
               .setStyle(new NotificationCompat.BigTextStyle().bigText("Il cielo oggi sarà " +
