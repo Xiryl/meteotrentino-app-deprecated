@@ -14,8 +14,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Toast;
 
@@ -24,9 +22,7 @@ import com.takusemba.spotlight.OnSpotlightStateChangedListener;
 import com.takusemba.spotlight.OnTargetStateChangedListener;
 import com.takusemba.spotlight.Spotlight;
 import com.takusemba.spotlight.shape.Circle;
-import com.takusemba.spotlight.target.CustomTarget;
 import com.takusemba.spotlight.target.SimpleTarget;
-
 
 import java.text.DateFormat;
 import java.text.DecimalFormat;
@@ -38,6 +34,7 @@ import java.util.TimeZone;
 
 import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.adapters.WeatherSevenDayAdapter;
+import it.chiarani.meteotrentinoapp.database.entity.CustomAlertEntity;
 import it.chiarani.meteotrentinoapp.database.entity.OpenWeatherDataEntity;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherForDayEntity;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherForWeekEntity;
@@ -46,8 +43,10 @@ import it.chiarani.meteotrentinoapp.databinding.ActivityMainBinding;
 import it.chiarani.meteotrentinoapp.helper.DialogShower;
 import it.chiarani.meteotrentinoapp.helper.WeatherIconDescriptor;
 import it.chiarani.meteotrentinoapp.models.WeatherReport;
+import it.chiarani.meteotrentinoapp.repositories.CustomAlertRepository;
 import it.chiarani.meteotrentinoapp.repositories.OpenWeatherDataRepository;
 import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
+import it.chiarani.meteotrentinoapp.servicies.NotificationOpenedHandler;
 
 public class MainActivity extends SampleActivity {
 
@@ -72,7 +71,6 @@ public class MainActivity extends SampleActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-
     Log.d(MAINACTIVITY_TAG, "Start mainactivity");
 
     // get repository
@@ -82,6 +80,9 @@ public class MainActivity extends SampleActivity {
     OneSignal.startInit(this)
         .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
         .unsubscribeWhenNotificationsAreDisabled(true)
+        .setNotificationOpenedHandler(new NotificationOpenedHandler(getApplication()))
+        .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+        .autoPromptLocation(true)
         .init();
 
     binding.mainActBtnMenu.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +95,6 @@ public class MainActivity extends SampleActivity {
     // set toolbar color
     Window window = this.getWindow();
     window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-
 
     binding.mainActivityNavView.setNavigationItemSelectedListener(
         menuItem -> {
@@ -155,6 +155,22 @@ public class MainActivity extends SampleActivity {
         Toast.makeText(this, "Dati meteo non disponibili, riprova più tardi", Toast.LENGTH_SHORT).show();
         return;
       }
+
+      CustomAlertRepository alertRepository = new CustomAlertRepository(getApplication());
+      alertRepository.getAll().observe(this, alertEntities -> {
+        if(alertEntities.size() > 0 ) {
+          Calendar start = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"));
+          long now = start.getTimeInMillis();
+
+          CustomAlertEntity last_alert = alertEntities.get(alertEntities.size() -1);
+          if(last_alert.getAlertTime() <= (now + 3600000)) {
+            Intent message_alert_i = new Intent(this, MessageActivity.class);
+            message_alert_i.putExtra("payload", last_alert.getAlertDescription());
+            startActivity(message_alert_i);
+            this.finish();
+          }
+        }
+      });
 
       WeatherReportEntity wfr = entries.get(entries.size() - 1);
       WeatherForWeekEntity wfw = wfr.getPrevisione();

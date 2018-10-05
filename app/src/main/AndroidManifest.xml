@@ -50,7 +50,9 @@
 
     <activity android:name=".views.WeatherStationActivity" />
     <activity android:name=".views.RadarActivity" />
-    <activity android:name=".views.LoaderActivity" android:noHistory="true">
+    <activity
+      android:name=".views.LoaderActivity"
+      android:noHistory="true">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 
@@ -70,7 +72,8 @@
       </intent-filter>
     </service>
 
-    <activity android:name=".views.InfoActivity"></activity>
+    <activity android:name=".views.InfoActivity" />
+    <activity android:name=".views.MessageActivity"></activity>
   </application>
 
 </manifest>
