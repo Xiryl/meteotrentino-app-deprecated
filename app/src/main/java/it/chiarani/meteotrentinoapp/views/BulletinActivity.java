@@ -84,5 +84,7 @@ public class BulletinActivity extends SampleActivity{
         onBackPressed();
       }
     });
+
+
   }
 }

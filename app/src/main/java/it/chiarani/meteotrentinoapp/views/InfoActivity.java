@@ -1,7 +1,9 @@
 package it.chiarani.meteotrentinoapp.views;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -47,6 +49,15 @@ public class InfoActivity extends SampleActivity{
       @Override
       public void onClick(View v) {
         onBackPressed();
+      }
+    });
+
+    binding.btnPayp.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.paypal.me/fabChiarani/3"));
+        startActivity(browserIntent);
+
       }
     });
   }
