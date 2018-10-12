@@ -64,7 +64,7 @@ public class RadarActivity extends SampleActivity{
       }
     });
 
-    DialogShower.ShowDialog(this, null,  "Radar", "Il caricamento del radar può dipendere dalla connessione del tuo telefono", "ok", "");
+    DialogShower.ShowDialog(this, null,  "Radar", "Il caricamento delle immagini satellitari dipende dalla velocità della tua connessione dati", "ok", "");
 
   }
 }
