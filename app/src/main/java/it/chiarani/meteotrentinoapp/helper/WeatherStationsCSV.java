@@ -1,7 +1,7 @@
 package it.chiarani.meteotrentinoapp.helper;
 
 public class WeatherStationsCSV {
-  public final static String WeatherStationsCSV = "code,name,shortname,elevation,latitude,longitude,east,north,startdate,enddate\n" +
+  public final static String WeatherStationsCSV = "code,seleziona una stazione,shortname,elevation,latitude,longitude,east,north,startdate,enddate\n" +
       "T0154,Ala (Convento),Ala Convento,165,45.757117,10.999871,655530,5069007,1921-01-01,2005-06-22\n" +
       "T0405,Ala (Maso Le Pozze),SM Ala Maso Le Pozze,170,45.786137,11.023828,657311.5,5072278,2012-05-17,\n" +
       "T0153,Ala (Ronchi),SM Ala Ronchi,692,45.73919,11.06545,660681.5,5067145,1927-08-01,\n" +

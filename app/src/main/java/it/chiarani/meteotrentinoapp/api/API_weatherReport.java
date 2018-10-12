@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -28,6 +29,7 @@ import java.util.TimeZone;
 
 import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.configuration.AppConfiguration;
+import it.chiarani.meteotrentinoapp.database.entity.LocalityEntity;
 import it.chiarani.meteotrentinoapp.database.entity.OpenWeatherDataEntity;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherForDayEntity;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherForSlotEntity;
@@ -39,6 +41,7 @@ import it.chiarani.meteotrentinoapp.models.WeatherForDay;
 import it.chiarani.meteotrentinoapp.models.WeatherForSlot;
 import it.chiarani.meteotrentinoapp.models.WeatherForWeek;
 import it.chiarani.meteotrentinoapp.models.WeatherReport;
+import it.chiarani.meteotrentinoapp.repositories.LocalityRepository;
 import it.chiarani.meteotrentinoapp.repositories.OpenWeatherDataRepository;
 import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
 
@@ -54,6 +57,7 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
   private Application _app;
   private AlertDialog.Builder alert;
   private API_weatherReport_response delegate = null;
+  private int response = 1;
   // #END REGION
 
   /**
@@ -63,14 +67,27 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
    * @param res response callback
    * @param location locality
    */
-  public API_weatherReport(Application app, Context mContext, API_weatherReport_response res, String location) {
+  public API_weatherReport(Application app, Context mContext, API_weatherReport_response res, String location, String lat, String lon) {
+
     this.mContext = mContext;
     this._app = app;
     this.delegate = res;
-    URL_API = API_endpoint.ENDPOINT_TODAY_WEATHER + location;
-    URL_API_OP = API_endpoint.ENDPOINT_OPENWEATHER_DATA + location;
-    URL_API_OP += "&APPID=";
-    URL_API_OP += AppConfiguration.openWeatherMapKey;
+    if(lat == null || lat.isEmpty()) {
+      URL_API = API_endpoint.ENDPOINT_TODAY_WEATHER + location;
+      URL_API_OP = API_endpoint.ENDPOINT_OPENWEATHER_DATA + location +", IT";
+      URL_API_OP += "&APPID=";
+      URL_API_OP += AppConfiguration.openWeatherMapKey;
+    }
+    else
+    {
+      URL_API = API_endpoint.ENDPOINT_TODAY_WEATHER + location;
+      URL_API_OP = API_endpoint.ENDPOINT_OPENWEATHER_DATA + location +", IT";
+      URL_API_OP += "&APPID=";
+      URL_API_OP += AppConfiguration.openWeatherMapKey;
+      URL_API_OP += "&lat=" + lat;
+      URL_API_OP += "&lon=" + lon;
+    }
+
   }
 
   /**
@@ -87,7 +104,7 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
    */
   @Override
   protected void onPostExecute(Integer integer) {
-    delegate.processFinish();
+    delegate.processFinish(response);
   }
 
   /**
@@ -96,6 +113,7 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
    */
   @Override
   protected Integer doInBackground(String... s) {
+
     WeatherReportRepository reportRepository = new WeatherReportRepository(_app);
 
     tmp_report = new WeatherReportEntity();
@@ -228,23 +246,30 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
 
       reportRepository.insert(tmp_report);
 
+      response = 1;
       // --------------
       //      DONE
       // --------------
 
-    } catch (Exception e) {
+    }
+    catch (JSONException jex) {
+      jex.printStackTrace();
+      Log.e(API_LOCALITY_TAG, "Json Exception: "+  jex.toString());
+      tmp_report = null;
+      response = -2;
+      return -1;
+    }
+    catch (Exception e) {
       e.printStackTrace();
       Log.e(API_LOCALITY_TAG, "Errore Exception: "+  e.toString());
       tmp_report = null;
+      response = -1;
+      return -1;
     }
-
-
 
     // ----- OPENWEATHER DOWNLOAD -----
 
-
-
-    OpenWeatherDataRepository repository_op= new OpenWeatherDataRepository(_app);
+    OpenWeatherDataRepository repository_op = new OpenWeatherDataRepository(_app);
     try {
 
       URL url = new URL(URL_API_OP);
@@ -281,24 +306,34 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
 
 
       repository_op.insert(new OpenWeatherDataEntity(humidity + "", pressure + "", time_ms_sunrise, time_ms_sunset, act_temp + "", wind + ""));
-  } catch (Exception e) {
+      response = 1;
+    } catch (Exception e) {
     e.printStackTrace();
     Log.e(API_LOCALITY_TAG, "Errore Exception: "+  e.toString());
     tmp_report = null;
+      response = -1;
   } finally {
     if (connection != null) {
       connection.disconnect();
+      if(response == -1)
+        response = -1;
+      else if(response == -2)
+        response = -2;
+      else
+        response = 1;
     }
     try {
       if (reader != null) {
         reader.close();
+
       }
     } catch (IOException e) {
       e.printStackTrace();
       Log.e(API_LOCALITY_TAG, "Errore IOException1: "+  e.toString());
-
+      response = -1;
     }
   }
+
     return -1;
   }
 

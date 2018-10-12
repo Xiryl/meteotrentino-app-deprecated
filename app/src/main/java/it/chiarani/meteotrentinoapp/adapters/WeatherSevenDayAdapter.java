@@ -1,11 +1,13 @@
 package it.chiarani.meteotrentinoapp.adapters;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.Calendar;
@@ -41,6 +43,7 @@ public class WeatherSevenDayAdapter extends RecyclerView.Adapter<WeatherSevenDay
     TextView txt_temperature_min;
     ImageView img_weather;
     ImageView img_warning;
+    RelativeLayout main_rl;
 
     public ViewHolder(View v) {
       super(v);
@@ -50,6 +53,7 @@ public class WeatherSevenDayAdapter extends RecyclerView.Adapter<WeatherSevenDay
       txt_temperature_max = v.findViewById(R.id.item_sevenday_weather_txt_tmax);
       txt_temperature_min = v.findViewById(R.id.item_sevenday_weather_txt_tmin);
       img_warning         = v.findViewById(R.id.item_sevenday_weather_img_warning);
+      main_rl             = v.findViewById(R.id.item_sevenday_weather_rl);
 
       v.setOnClickListener(this);
     }
@@ -74,6 +78,11 @@ public class WeatherSevenDayAdapter extends RecyclerView.Adapter<WeatherSevenDay
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
     //Set data to the individual list item
+
+    if(position == 0) {
+      // set current day as green background
+      holder.main_rl.setBackgroundColor(Color.parseColor("#489E64"));
+    }
 
     Date date = new Date();
     Calendar data = Calendar.getInstance();

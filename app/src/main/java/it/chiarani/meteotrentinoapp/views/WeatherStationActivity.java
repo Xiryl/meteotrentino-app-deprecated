@@ -78,6 +78,10 @@ public class WeatherStationActivity extends SampleActivity implements API_statio
 
     if(data.getTemperature().get(0).getTemperature() == null || data.getTemperature()== null || data == null || data.getTemperature().isEmpty()) {
       Toast.makeText(this, "Stazione non attiva.", Toast.LENGTH_LONG).show();
+      if(binding.activityWeatherStationRv.getAdapter() != null) {
+        WeatherStationAdapter adapter1 = (WeatherStationAdapter) binding.activityWeatherStationRv.getAdapter();
+        adapter1.clear();
+      }
       return;
     }
 

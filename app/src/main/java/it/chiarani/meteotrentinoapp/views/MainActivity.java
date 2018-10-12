@@ -1,6 +1,5 @@
 package it.chiarani.meteotrentinoapp.views;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
@@ -11,19 +10,19 @@ import android.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Toast;
-
 import com.onesignal.OneSignal;
 import com.takusemba.spotlight.OnSpotlightStateChangedListener;
 import com.takusemba.spotlight.OnTargetStateChangedListener;
 import com.takusemba.spotlight.Spotlight;
 import com.takusemba.spotlight.shape.Circle;
 import com.takusemba.spotlight.target.SimpleTarget;
-
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -31,7 +30,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.TimeZone;
-
 import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.adapters.WeatherSevenDayAdapter;
 import it.chiarani.meteotrentinoapp.database.entity.CustomAlertEntity;
@@ -48,13 +46,17 @@ import it.chiarani.meteotrentinoapp.repositories.OpenWeatherDataRepository;
 import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
 import it.chiarani.meteotrentinoapp.servicies.NotificationOpenedHandler;
 
-public class MainActivity extends SampleActivity {
+public class MainActivity extends SampleActivity{
 
   // #region private fields
   private final static String MAINACTIVITY_TAG = "MAINACTIVITY";
   private ActivityMainBinding binding;
   private WeatherReport _report;
   private final static String INTENT_USER_LOCATION_TAG = "user_location";
+  private boolean flocation = false;
+  private boolean slocation = false;
+  String first_pos;
+  String second_pos;
   // #endregion
 
   @Override
@@ -76,6 +78,7 @@ public class MainActivity extends SampleActivity {
     // get repository
     WeatherReportRepository repository = new WeatherReportRepository(this.getApplication());
 
+
     // OneSignal Initialization
     OneSignal.startInit(this)
         .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
@@ -96,12 +99,54 @@ public class MainActivity extends SampleActivity {
     Window window = this.getWindow();
     window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
+    // preferences
+    SharedPreferences getPrefs = PreferenceManager
+        .getDefaultSharedPreferences(getBaseContext());
+
+    // create a new boolean and preference
+    first_pos = getPrefs.getString("first_pos", "Aggiungi 1° Preferito");
+    second_pos = getPrefs.getString("second_pos", "Aggiungi 2° Preferito");
+
+    Menu menu = binding.mainActivityNavView.getMenu();
+    MenuItem first_pref = menu.findItem(R.id.drawer_view_first_pref);
+    MenuItem second_pref = menu.findItem(R.id.drawer_view_second_pref);
+
+    first_pref.setTitle(first_pos);
+    second_pref.setTitle(second_pos);
+
     binding.mainActivityNavView.setNavigationItemSelectedListener(
         menuItem -> {
           // set item as selected to persist highlight
           menuItem.setChecked(true);
 
           switch (menuItem.getItemId()){
+
+            case R.id.drawer_view_first_pref:
+              if(first_pos.isEmpty() || first_pos.equals("Aggiungi 1° Preferito")) {
+                Intent chooseloc_intent = new Intent(MainActivity.this, ChooseLocationActivity.class);
+                chooseloc_intent.putExtra("PREF_NUMBER", 1);
+                startActivity(chooseloc_intent);
+              }
+              else
+              {
+                Intent myIntent = new Intent(this, LoaderActivity.class);
+                myIntent.putExtra("POSITION", first_pos);
+                startActivity(myIntent);
+              }
+              break;
+            case R.id.drawer_view_second_pref:
+              if(second_pos.isEmpty()  || second_pos.equals("Aggiungi 2° Preferito")) {
+                Intent chooseloc_intent = new Intent(MainActivity.this, ChooseLocationActivity.class);
+                chooseloc_intent.putExtra("PREF_NUMBER", 2);
+                startActivity(chooseloc_intent);
+              }
+              else
+              {
+                Intent myIntent = new Intent(this, LoaderActivity.class);
+                myIntent.putExtra("POSITION", second_pos);
+                startActivity(myIntent);
+              }
+              break;
 
             case R.id.drawer_view_search:
               Intent chooseloc_intent = new Intent(MainActivity.this, ChooseLocationActivity.class);
@@ -119,7 +164,7 @@ public class MainActivity extends SampleActivity {
               break;
 
             case R.id.drawer_view_staz_neve:
-              Toast.makeText(this, "Servizio attivo solo nell'inverno", Toast.LENGTH_LONG).show();
+              Toast.makeText(this, "Servizio attivo solo d'inverno", Toast.LENGTH_LONG).show();
               break;
 
             case R.id.drawer_view_bollettini:
@@ -219,24 +264,33 @@ public class MainActivity extends SampleActivity {
         // ------ ------ ------
         // SET BACKGROUND IMAGE
         // ------ ------ ------
-        binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_day);
-        window.setStatusBarColor(Color.parseColor("#7DB3D0"));
 
+
+        Boolean isNight = false;
         long now = start.getTimeInMillis();
-        long now36 = start.getTimeInMillis() + 3600000;
-        long now342 = start.getTimeInMillis()+34200000;
-        if(start.getTimeInMillis() > opw.getSunset() && (start.getTimeInMillis()+3600000) <= start.getTimeInMillis())
-        {
+        long sunset = opw.getSunset();
+        long sunrise = opw.getSunrise();
+
+        if(now >= (sunrise - 900000) ) {
+          // sunrise
+          binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_new_sunsire);
+          window.setStatusBarColor(Color.parseColor("#EF7942"));
+        }
+
+        binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_day);
+        window.setStatusBarColor(Color.parseColor("#7AA9C3"));
+
+        if(now >= sunset){
           // sunset
           binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_sunset);
           window.setStatusBarColor(Color.parseColor("#BA725A"));
         }
-        else if( now > now36 || now <= now342) {
+        if( (now >= sunset + 3600000) && (now <= sunrise + 79200000)) {
           // night
           binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_night);
           window.setStatusBarColor(Color.parseColor("#345A7B"));
+          isNight = true;
         }
-
 
         switch (WeatherIconDescriptor.getWeatherType(wfd.getIcona())) {
           case COPERTO:
@@ -244,6 +298,7 @@ public class MainActivity extends SampleActivity {
             break;
 
           case COPERTO_CON_PIOGGIA:
+
             binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_light_rain);
             binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_cloud);
             window.setStatusBarColor(Color.parseColor("#4B4C4C"));
@@ -262,15 +317,21 @@ public class MainActivity extends SampleActivity {
             break;
 
           case NEVICATA:
-            binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_sun);
+            binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_snow);
             break;
 
           case SOLE:
-            binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_sun);
+            if(isNight)
+              binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_moon);
+            else
+              binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_sun);
             break;
 
           case SOLEGGIATO:
-            binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_sun_cloud);
+            if(isNight)
+              binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_moon);
+            else
+              binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_sun_cloud);
             break;
 
           case SOLEGGIATO_CON_PIOGGIA:
@@ -296,11 +357,6 @@ public class MainActivity extends SampleActivity {
             break;
         }
 
-
-        // preferences
-        SharedPreferences getPrefs = PreferenceManager
-            .getDefaultSharedPreferences(getBaseContext());
-
         //  Create a new boolean and preference and set it to true
         boolean isFirstStart = getPrefs.getBoolean("firstStart", true);
 
@@ -316,7 +372,6 @@ public class MainActivity extends SampleActivity {
                 public void onStarted(SimpleTarget target) {
                   // do something
                 }
-
                 @Override
                 public void onEnded(SimpleTarget target) {
                   // do something
@@ -368,9 +423,8 @@ public class MainActivity extends SampleActivity {
 
           //  Apply changes
           e.apply();
-
         }
-        });
+      });
     });
 
   }
@@ -384,6 +438,21 @@ public class MainActivity extends SampleActivity {
   protected void onResume() {
     super.onResume();
 
+    // preferences
+    SharedPreferences getPrefs = PreferenceManager
+        .getDefaultSharedPreferences(getBaseContext());
+
+    // create a new boolean and preference
+    first_pos = getPrefs.getString("first_pos", "Aggiungi 1° Preferito");
+    second_pos = getPrefs.getString("second_pos", "Aggiungi 2° Preferito");
+
+    Menu menu = binding.mainActivityNavView.getMenu();
+    MenuItem first_pref = menu.findItem(R.id.drawer_view_first_pref);
+    MenuItem second_pref = menu.findItem(R.id.drawer_view_second_pref);
+
+    first_pref.setTitle(first_pos);
+    second_pref.setTitle(second_pos);
+
     WeatherReportRepository repository = new WeatherReportRepository(this.getApplication());
     repository.getAll().observe(this, entries -> {
       if (entries == null || entries.isEmpty() || entries.size() == 0) {
@@ -393,97 +462,12 @@ public class MainActivity extends SampleActivity {
       }
 
       // check time for reload weather meteo
-      if(System.currentTimeMillis() >= entries.get(entries.size() - 1).getDataInserimentoDb() - (60 * 60 * 1 * 1000)) {
-        // min 2 ore
-      } else {
+      if(System.currentTimeMillis() >= (entries.get(entries.size() - 1).getDataInserimentoDb() + (600000) ) ) {
         // passate 2 ore
         Intent i = new Intent(MainActivity.this, LoaderActivity.class);
+        i.putExtra("POSITION", entries.get(entries.size()-1).getPrevisione().getLocalita());
         this.startActivity(i);
       }
     });
-  }
-
-  private void onFirstStart(Activity activity) {
-
-    //  Declare a new thread to do a preference check
-    Thread t = new Thread(new Runnable() {
-      @Override
-      public void run() {
-        //  Initialize SharedPreferences
-        SharedPreferences getPrefs = PreferenceManager
-            .getDefaultSharedPreferences(getBaseContext());
-
-        //  Create a new boolean and preference and set it to true
-        boolean isFirstStart = getPrefs.getBoolean("firstStart", true);
-
-        //  If the activity has never started before...
-        if (isFirstStart) {
-          SimpleTarget simpleTarget = new SimpleTarget.Builder(activity)
-              .setPoint(binding.mainActBtnMenu)
-              .setShape(new Circle(200f))
-              .setTitle("Maggiori Funzionalità")
-              .setDescription("Apri il menù laterale per ottenere più funzionalità")
-              .setOnSpotlightStartedListener(new OnTargetStateChangedListener<SimpleTarget>() {
-                @Override
-                public void onStarted(SimpleTarget target) {
-                  // do something
-                }
-                @Override
-                public void onEnded(SimpleTarget target) {
-                  // do something
-                }
-              })
-              .build();
-
-          SimpleTarget simpleTarget1 = new SimpleTarget.Builder(activity)
-              .setPoint(binding.activityMainLlSlideUp)
-              .setShape(new Circle(200f))
-              .setTitle("Scopri il meteo settimanale")
-              .setDescription("Alza la tendina e premi sul giorno per ottenere il bollettino metereologico")
-              .setOnSpotlightStartedListener(new OnTargetStateChangedListener<SimpleTarget>() {
-                @Override
-                public void onStarted(SimpleTarget target) {
-                  // do something
-                }
-                @Override
-                public void onEnded(SimpleTarget target) {
-                  // do something
-                }
-              })
-              .build();
-
-          Spotlight.with(activity)
-              .setOverlayColor(R.color.background)
-              .setDuration(10)
-              .setAnimation(new DecelerateInterpolator(1f))
-              .setTargets(simpleTarget, simpleTarget1)
-              .setClosedOnTouchedOutside(true)
-              .setOnSpotlightStateListener(new OnSpotlightStateChangedListener() {
-                @Override
-                public void onStarted() {
-                }
-
-                @Override
-                public void onEnded() {
-                }
-              })
-              .start();
-
-
-          //  Make a new preferences editor
-          SharedPreferences.Editor e = getPrefs.edit();
-
-          //  Edit preference to make it false because we don't want this to run again
-          e.putBoolean("firstStart", false);
-
-          //  Apply changes
-          e.apply();
-        }
-      }
-    });
-
-    // Start the thread
-    t.start();
-
   }
 }

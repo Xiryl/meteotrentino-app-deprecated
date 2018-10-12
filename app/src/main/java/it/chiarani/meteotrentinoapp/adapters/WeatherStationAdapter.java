@@ -22,6 +22,12 @@ public class WeatherStationAdapter extends RecyclerView.Adapter<WeatherStationAd
   private XmlDatiOggi report;
   // #endregion
 
+
+  public void clear() {
+    report.getTemperature().get(0).getTemperature().clear();
+    notifyDataSetChanged();
+  }
+
   public WeatherStationAdapter(XmlDatiOggi report) {
     this.report = report;
   }
