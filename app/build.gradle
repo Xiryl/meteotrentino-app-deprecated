@@ -6,9 +6,17 @@ android {
         applicationId "it.chiarani.meteotrentinoapp"
         minSdkVersion 22
         targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        versionCode 9
+        versionName "1.5"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders = [
+
+                onesignal_app_id : 'f1cebbae-a312-49e0-b5d7-2f4afefc36d7',
+                // Project number pulled from dashboard, local value is ignored.
+                onesignal_google_project_number: 'REMOTE'
+        ]
+
     }
     buildTypes {
         release {
@@ -30,6 +38,20 @@ android {
         targetCompatibility 1.8
         sourceCompatibility 1.8
     }
+}
+
+buildscript {
+    repositories {
+        maven { url 'https://plugins.gradle.org/m2/' }
+    }
+    dependencies {
+        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.11.0, 0.99.99]'
+    }
+}
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
+
+repositories {
+    maven { url 'https://maven.google.com' }
 }
 
 dependencies {
@@ -85,6 +107,7 @@ dependencies {
     // firebase
     implementation 'com.google.firebase:firebase-core:16.0.3'
     implementation 'com.google.firebase:firebase-messaging:17.3.1'
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.5'
 
     // play servicies
     implementation 'com.google.android.gms:play-services-location:15.0.1'
@@ -109,8 +132,24 @@ dependencies {
     // https://developer.android.com/guide/topics/ui/settings
     implementation 'com.android.support:preference-v7:27.1.1'
 
+    // oneSignal
+    implementation 'com.onesignal:OneSignal:[3.9.1, 3.99.99]'
 
+    // jsoup
+    implementation 'org.jsoup:jsoup:1.11.3'
+
+    // tutorial spotlight
+    implementation 'com.github.takusemba:spotlight:1.6.1'
+
+    // appintro
+    // https://github.com/apl-devs/AppIntro
+    implementation 'com.github.apl-devs:appintro:v4.2.3'
+
+    // fab  button
+    // https://github.com/wangjiegulu/RapidFloatingActionButton
+    implementation 'com.github.wangjiegulu:rfab:2.0.0'
 }
 
 
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'io.fabric'
