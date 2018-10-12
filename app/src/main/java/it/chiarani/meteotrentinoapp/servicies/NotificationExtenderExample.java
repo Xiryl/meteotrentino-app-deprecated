@@ -31,11 +31,14 @@ import it.chiarani.meteotrentinoapp.views.MessageActivity;
 public class NotificationExtenderExample extends NotificationExtenderService {
 
   private static final String HIGH_PRIORITY_URGENT_ALARM_TAG = "HIGH_PRIORITY_URGENT_ALARM";
+  private static final String ALARM_TAG = "BACKGROUND-DATA";
+  boolean alarm = false;
 
   @Override
   protected boolean onNotificationProcessing(OSNotificationReceivedResult receivedResult) {
     SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
     Boolean pref_notifica_mattina = settings.getBoolean("pref_key_notifica_mattina", true);
+
 
     JSONObject data = receivedResult.payload.additionalData;
     String customKey = data.optString(HIGH_PRIORITY_URGENT_ALARM_TAG);
@@ -51,12 +54,16 @@ public class NotificationExtenderExample extends NotificationExtenderService {
       startActivity(message_alert_i);
     }
 
+    String allerta = data.optString(ALARM_TAG);
+    if(!allerta.isEmpty()) {
+      OverrideSettings overrideSettings = new OverrideSettings();
+      OSNotificationDisplayedResult displayedResult = displayNotification(overrideSettings);
+      return true;
+    }
+
     OverrideSettings overrideSettings = new OverrideSettings();
     if(pref_notifica_mattina == false){
-      OneSignal.clearOneSignalNotifications();
-      OSNotificationDisplayedResult displayedResult = displayNotification(overrideSettings);
-      OneSignal.cancelNotification(displayedResult.androidNotificationId);
-      return false;
+      alarm=true;
     }
 
     WeatherReportRepository repo = new WeatherReportRepository(getApplication());
@@ -65,6 +72,10 @@ public class NotificationExtenderExample extends NotificationExtenderService {
       overrideSettings.extender = new NotificationCompat.Extender() {
         @Override
         public NotificationCompat.Builder extend(NotificationCompat.Builder builder) {
+
+          if(alarm) {
+            return builder;
+          }
 
           Calendar start = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"));
           long now = start.getTimeInMillis();

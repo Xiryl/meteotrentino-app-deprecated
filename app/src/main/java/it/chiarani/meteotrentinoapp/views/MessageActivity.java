@@ -2,8 +2,11 @@ package it.chiarani.meteotrentinoapp.views;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 
 import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.database.entity.CustomAlertEntity;
@@ -37,6 +40,10 @@ public class MessageActivity extends SampleActivity {
 
       CustomAlertRepository repository = new CustomAlertRepository(getApplication());
       repository.deleteAll();
+
+      Window window = this.getWindow();
+      window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+      window.setStatusBarColor(Color.parseColor("#BB5233"));
     }
   }
 }

@@ -83,19 +83,27 @@ public class API_protezioneCivileAvvisiAllerte extends AsyncTask<String, Integer
       Document doc = Jsoup.connect("http://avvisi.protezionecivile.tn.it/elencoavvisi.aspx").get();
       String title = doc.title();
       Elements links = doc.select("ul li span a");
+      Elements dates = doc.select("ul li span span");
+      ArrayList<String> tmp = new ArrayList<>();
 
-      int x = 7;
+      int x = 0;
       for (Element link : links) {
         String onclick = link.attr("onclick");
         String sub_onclick = onclick.substring(13);
         String sub_link = sub_onclick.split(",")[0];
         String my_l = sub_link.substring(0, sub_link.length()-1);
         String y = "http://avvisi.protezionecivile.tn.it" + my_l;
-        data.add(link.text()+ ";" + y);
-        x--;
-        if(x <= 0)
-          return 1;
+        String l =  dates.get(x).text().split(" ")[1];
+        String l1=dates.get(x).text().split(" ")[2];
+        String l2=dates.get(x).text().split(" ")[3];
+        data.add(link.text()+ ";" + l+ " "+ l1+ " "+ l2+";" + y);
+        x++;
+        if(x >= links.size())
+          break;
       }
+
+
+
     } catch (IOException e) {
       Log.d("d", e.getMessage());
     }

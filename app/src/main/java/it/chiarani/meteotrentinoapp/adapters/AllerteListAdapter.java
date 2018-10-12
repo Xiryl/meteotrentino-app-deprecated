@@ -2,17 +2,17 @@ package it.chiarani.meteotrentinoapp.adapters;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import it.chiarani.meteotrentinoapp.R;
-import it.chiarani.meteotrentinoapp.xml_parser.XmlDatiOggi;
 
 public class AllerteListAdapter extends RecyclerView.Adapter<AllerteListAdapter.ViewHolder> {
 
@@ -24,16 +24,27 @@ public class AllerteListAdapter extends RecyclerView.Adapter<AllerteListAdapter.
     this.data = data;
   }
 
-  public static class ViewHolder extends RecyclerView.ViewHolder {
+  public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     TextView txt_name;
-    Button btn_link;
+    ImageButton btn_link;
+    CardView card;
 
 
     public ViewHolder(View v) {
       super(v);
       txt_name = v.findViewById(R.id.item_allerte_txt_name);
       btn_link = v.findViewById(R.id.item_allerte_btn_link);
+      card     = v.findViewById(R.id.item_allerte_cardview);
+
+      v.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+      int pos = this.getLayoutPosition();
+      Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://docs.google.com/gview?embedded=true&url="+data.get(pos).split(";")[2]));
+          v.getContext().startActivity(browserIntent);
     }
   }
 
@@ -46,12 +57,12 @@ public class AllerteListAdapter extends RecyclerView.Adapter<AllerteListAdapter.
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
     //Set data to the individual list item
-    holder.txt_name.setText(data.get(position).split(";")[0]);
+    holder.txt_name.setText(data.get(position).split(";")[1] + "\n" + data.get(position).split(";")[0]);
 
     holder.btn_link.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(data.get(position).split(";")[1]));
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://docs.google.com/gview?embedded=true&url="+data.get(position).split(";")[2]));
         v.getContext().startActivity(browserIntent);
       }
     });
