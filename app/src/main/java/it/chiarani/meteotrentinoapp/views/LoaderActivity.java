@@ -36,9 +36,11 @@ import java.util.Locale;
 import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.api.API_weatherReport;
 import it.chiarani.meteotrentinoapp.api.API_weatherReport_response;
+import it.chiarani.meteotrentinoapp.database.entity.LocalityEntity;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherReportEntity;
 import it.chiarani.meteotrentinoapp.databinding.ActivityLoaderBinding;
 import it.chiarani.meteotrentinoapp.helper.GpsTracker;
+import it.chiarani.meteotrentinoapp.repositories.LocalityRepository;
 import it.chiarani.meteotrentinoapp.repositories.OpenWeatherDataRepository;
 import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
 
@@ -99,11 +101,12 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
       Intent intent = getIntent();
       if(intent.hasExtra("POSITION")) {
         // call API
-        new API_weatherReport(getApplication(),this, this::processFinish, intent.getStringExtra("POSITION")).execute();
+        String pos = intent.getStringExtra("POSITION");
+        callAPI(pos);
       }
       else {
         // clean repository
-        WeatherReportRepository repository = new WeatherReportRepository(this.getApplication());
+        //WeatherReportRepository repository = new WeatherReportRepository(this.getApplication());
         // TODO CHECK DELETE ALL
         //repository.deleteAll();
 
@@ -119,47 +122,57 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
             .into(binding.activityLoaderGifLoading);
 
         // get user location from GPS
-        try {
           if (ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSION_REQ_CODE);
           }
-          GpsTracker gpsTracker = new GpsTracker(this);
-          if (gpsTracker.canGetLocation()) {
-            double latitude = gpsTracker.getLatitude();
-            double longitude = gpsTracker.getLongitude();
-            Geocoder geocoder;
-            List<Address> addresses;
-            geocoder = new Geocoder(this, Locale.getDefault());
 
-            addresses = geocoder.getFromLocation(latitude, longitude, 1);
-
-            user_location = addresses.get(0).getLocality();
-
-            // call API
-            new API_weatherReport(getApplication(), this, this::processFinish, user_location).execute();
-
-          } else {
-            Toast.makeText(getApplicationContext(), "GPS non attivo, ottengo la località predefinita..", Toast.LENGTH_LONG).show();
-            repository.getAll().observe(this, entities -> {
-              if (entities.size() <= 0) {
-                Intent i = new Intent(LoaderActivity.this, MainActivity.class);
-                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                this.startActivity(i);
-                this.finish();
-              }
-              else
-              {
-                // chiamo le API con l'ultima località assumendo che sia la predefinita
-                String loc = entities.get(entities.size()-1).getPrevisione().getLocalita();
-                Toast.makeText(getApplicationContext(), "GPS non attivo, ottengo la località predefinita..", Toast.LENGTH_LONG).show();
-                new API_weatherReport(getApplication(), this, this::processFinish, loc).execute();
-              }
-            });
+          // PERMESSO AL GPS DATO
+        WeatherReportRepository repository = new WeatherReportRepository(this.getApplication());
+        repository.getAll().observe(this, entities -> {
+          if (entities.size() <= 0) {
+            Intent i = new Intent(LoaderActivity.this, ChooseLocationActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            this.startActivity(i);
           }
-        } catch (Exception e) {
-          e.printStackTrace();
-          Toast.makeText(getApplicationContext(), "Errore nel download dei dati..", Toast.LENGTH_LONG).show();
-        }
+          else
+          {
+            try {
+              GpsTracker gpsTracker = new GpsTracker(this);
+              if (gpsTracker.canGetLocation()) {
+                double latitude = gpsTracker.getLatitude();
+                double longitude = gpsTracker.getLongitude();
+                Geocoder geocoder;
+                List<Address> addresses;
+                geocoder = new Geocoder(this, Locale.getDefault());
+
+                addresses = geocoder.getFromLocation(latitude, longitude, 1);
+
+                user_location = addresses.get(0).getLocality();
+
+                // call API
+                callAPI(user_location);
+
+              } else {
+                Toast.makeText(getApplicationContext(), "GPS non attivo.", Toast.LENGTH_SHORT).show();
+                  if (entities.size() <= 0) {
+                    Intent i = new Intent(LoaderActivity.this, ChooseLocationActivity.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    this.startActivity(i);
+                  }
+                  else
+                  {
+                    // chiamo le API con l'ultima località assumendo che sia la predefinita
+                    String loc = entities.get(entities.size()-1).getPrevisione().getLocalita();
+                    Toast.makeText(getApplicationContext(), "GPS non attivo, ottengo l'ultima località ricercata...", Toast.LENGTH_SHORT).show();
+                    callAPI(loc);
+                  }
+              }
+            }
+            catch (Exception e) {
+              Log.d("", e.getMessage());
+            }
+          }
+        });
       }
     }
   }
@@ -167,34 +180,71 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
 
   @Override
   public void onRequestPermissionsResult( int requestCode,String[] permissions,int[] grantResults) {
-    switch (requestCode) {
+    WeatherReportRepository repository = new WeatherReportRepository(this.getApplication());
+    switch (requestCode){
       case PERMISSION_REQ_CODE:
-        boolean isPerpermissionForAllGranted = false;
-        if (grantResults.length > 0 && permissions.length==grantResults.length){
-          for (int i = 0; i < permissions.length; i++) {
-            if (grantResults[i] == PackageManager.PERMISSION_GRANTED){
-              isPerpermissionForAllGranted=true;
-            }else{
-              isPerpermissionForAllGranted=false;
+
+        // If request is cancelled, the result arrays are empty.
+        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+        {
+          Log.e("Permission","Granted");
+
+          try {
+            GpsTracker gpsTracker = new GpsTracker(this);
+            if (gpsTracker.canGetLocation()) {
+              double latitude = gpsTracker.getLatitude();
+              double longitude = gpsTracker.getLongitude();
+              Geocoder geocoder;
+              List<Address> addresses;
+              geocoder = new Geocoder(this, Locale.getDefault());
+
+              addresses = geocoder.getFromLocation(latitude, longitude, 1);
+
+              user_location = addresses.get(0).getLocality();
+
+              // call API
+              callAPI(user_location);
+
+            } else {
+              Toast.makeText(getApplicationContext(), "GPS non attivo.", Toast.LENGTH_SHORT).show();
+              repository.getAll().observe(this, entities -> {
+                if (entities.size() <= 0) {
+                  Intent i = new Intent(LoaderActivity.this, ChooseLocationActivity.class);
+                  i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                  this.startActivity(i);
+                }
+                else
+                {
+                  // chiamo le API con l'ultima località assumendo che sia la predefinita
+                  String loc = entities.get(entities.size()-1).getPrevisione().getLocalita();
+                  Toast.makeText(getApplicationContext(), "GPS non attivo, ottengo l'ultima località ricercata...", Toast.LENGTH_SHORT).show();
+                  callAPI(loc);
+                }
+              });
             }
           }
-        } else {
-          isPerpermissionForAllGranted=false;
-          Log.e(ACTIVITY_TAG, "Permission GPS not given.");
-          Intent i = new Intent(LoaderActivity.this, MainActivity.class);
-          i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-          this.startActivity(i);
-          this.finish();
-        }
-
-        if(isPerpermissionForAllGranted) {
-          Log.e(ACTIVITY_TAG, "Permission GPS ok.");
-          // call API
-          new API_weatherReport(getApplication(),this, this::processFinish, user_location).execute();
+          catch (Exception e) {
+            Log.d("", e.getMessage());
+          }
         }
         else
         {
-          Toast.makeText(this,"Permission GPS not given", Toast.LENGTH_SHORT).show();
+          Log.e("Permission","Not Granted");
+          repository.getAll().observe(this, entities -> {
+            if (entities.size() <= 0) {
+              Toast.makeText(getApplicationContext(), "Permesso al GPS negato", Toast.LENGTH_LONG).show();
+              Intent i = new Intent(LoaderActivity.this, ChooseLocationActivity.class);
+              i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+              this.startActivity(i);
+            }
+            else
+            {
+              // chiamo le API con l'ultima località assumendo che sia la predefinita
+              String loc = entities.get(entities.size()-1).getPrevisione().getLocalita();
+              Toast.makeText(getApplicationContext(), "GPS non attivo, ottengo l'ultima località ricercata...", Toast.LENGTH_SHORT).show();
+              callAPI(loc);
+            }
+          });
         }
         break;
     }
@@ -206,23 +256,40 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
       Intent i = new Intent(LoaderActivity.this, MainActivity.class);
       i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
       this.startActivity(i);
-      this.finish();
     }
-    else if(response == -1)
+    else if(response == -2)
     {
       Toast.makeText(this,"Errore nella localizzazione GPS, raccolgo l'ultima località salvata ... ", Toast.LENGTH_LONG).show();
       Intent i = new Intent(LoaderActivity.this, MainActivity.class);
       i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
       this.startActivity(i);
-      this.finish();
     }
-    else if(response == -2) {
+    else if(response == -1) {
       Toast.makeText(this,"Errore nella connessione al server meteotrentino.it ... ", Toast.LENGTH_LONG).show();
       Intent i = new Intent(LoaderActivity.this, MainActivity.class);
       i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
       this.startActivity(i);
-      this.finish();
     }
+  }
+
+
+  private void callAPI(String location) {
+    LocalityRepository repo = new LocalityRepository(getApplication());
+    repo.getAll().observe(this, localityEntities -> {
+      if(localityEntities == null || localityEntities.isEmpty()) {
+        new API_weatherReport(getApplication(), this, this::processFinish, location, "", "").execute();
+      }
+      else {
+        LocalityEntity tmp = new LocalityEntity();
+        for(LocalityEntity e : localityEntities)
+          if(e.getLoc().equals(location))
+          {
+            tmp = e;
+            break;
+          }
+        new API_weatherReport(getApplication(), this, this::processFinish, location, tmp.getLatitude(), tmp.getLongitude()).execute();
+      }
+    });
 
   }
 }
