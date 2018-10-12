@@ -14,4 +14,19 @@
   <!-- WeatherSlotAdapter -->
   <string name="weather_slot_adapter_fascia_oraria">Fascia Oraria: </string>
   <string name="title_activity_intro">IntroActivity</string>
+
+  <!-- WeatherReportAdapter -->
+  <string name="s_weatherreportadapter_tmin">Temperatura Minima</string>
+  <string name="s_weatherreportadapter_tmax">Temperatura Massima</string>
+  <string name="s_weatherreportadapter_pressure">Pressione Atmosferica:</string>
+  <string name="s_weatherreportadapter_prob_prec">Probabilità Precipitazioni</string>
+  <string name="s_weatherreportadapter_int_prec">Intensità Precipitazioni</string>
+  <string name="s_weatherreportadapter_prob_temporali">Probabilità Temporali</string>
+  <string name="s_weatherreportadapter_int_vento_quota">Intensità Vento Quota</string>
+  <string name="s_weatherreportadapter_int_vento_valle">Intensità Vento Valle</string>
+  <string name="s_weatherreportadapter_dir_vento_valle">Direzione Vento Valle</string>
+  <string name="s_weatherreportadapter_dir_vento_quota">Direzione Vento Quota</string>
+  <string name="s_weatherreportadapter_zero_termico">Zero Termico</string>
+  <string name="s_weatherreportadapter_previsione">Previsione</string>
+  <string name="s_weatherreportadapter_fascia">Fascia Per</string>
 </resources>
