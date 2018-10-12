@@ -13,38 +13,50 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import it.chiarani.meteotrentinoapp.R;
+import it.chiarani.meteotrentinoapp.api.API_endpoint;
+
+/**
+ * Adapter for allerte used in AllerteActivity
+ */
 
 public class AllerteListAdapter extends RecyclerView.Adapter<AllerteListAdapter.ViewHolder> {
 
   // #region private fields
-  private ArrayList<String> data;
+  private ArrayList<String> allerte_list;
   // #endregion
 
   public AllerteListAdapter(ArrayList<String> data) {
-    this.data = data;
+    this.allerte_list = data;
   }
 
+  /**
+   * ViewHolder
+   */
   public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    TextView txt_name;
+    /**
+     * UI elements
+     */
+    TextView    txt_name;
     ImageButton btn_link;
-    CardView card;
-
+    CardView    card;
 
     public ViewHolder(View v) {
       super(v);
       txt_name = v.findViewById(R.id.item_allerte_txt_name);
       btn_link = v.findViewById(R.id.item_allerte_btn_link);
       card     = v.findViewById(R.id.item_allerte_cardview);
-
       v.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
       int pos = this.getLayoutPosition();
-      Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://docs.google.com/gview?embedded=true&url="+data.get(pos).split(";")[2]));
-          v.getContext().startActivity(browserIntent);
+      String link = allerte_list.get(pos).split(";")[2];
+
+      // Open link
+      Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(API_endpoint.GOOGLE_DOCS_BASE + link));
+      v.getContext().startActivity(browserIntent);
     }
   }
 
@@ -54,23 +66,26 @@ public class AllerteListAdapter extends RecyclerView.Adapter<AllerteListAdapter.
     return new ViewHolder(singleItemLayout);
   }
 
+  /**
+   * Single Item
+   */
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    //Set data to the individual list item
-    holder.txt_name.setText(data.get(position).split(";")[1] + "\n" + data.get(position).split(";")[0]);
+    String[] allerta = allerte_list.get(position).split(";");
+    String data   = allerta[1];
+    String titolo = allerta[0];
+    String link   = allerta[2];
+    holder.txt_name.setText(String.format("%s \n %s", data, titolo));
 
-    holder.btn_link.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://docs.google.com/gview?embedded=true&url="+data.get(position).split(";")[2]));
-        v.getContext().startActivity(browserIntent);
-      }
+    holder.btn_link.setOnClickListener(v -> {
+      // open link
+      Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(API_endpoint.GOOGLE_DOCS_BASE + link));
+      v.getContext().startActivity(browserIntent);
     });
   }
 
   @Override
   public int getItemCount() {
-    //Return the number of items in your list
-    return data.size();
+    return allerte_list.size();
   }
 }

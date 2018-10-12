@@ -7,4 +7,5 @@ public class API_endpoint {
   public static final String ENDPOINT_OPENWEATHER_DATA = "https://api.openweathermap.org/data/2.5/weather?q=";
   public static final String ENDPOINT_RADAR = "https://content.meteotrentino.it/dati-meteo/radar/home/lastRadar4mobile.aspx";
   public static final String ENDPOINT_INFRAROSSI = "http://api.sat24.com/animated/ALPS/infraPolair/1/Central%20European%20Standard%20Time/493234";
+  public static final String GOOGLE_DOCS_BASE = "http://docs.google.com/gview?embedded=true&url=";
 }
