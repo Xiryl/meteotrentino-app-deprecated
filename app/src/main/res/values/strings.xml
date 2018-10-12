@@ -1,5 +1,5 @@
 <resources>
-  <string name="app_name">MeteoTrentinoApp</string>
+  <string name="app_name">Meteo Trentino</string>
 
   <!-- CODE STRINGS -->
 
@@ -13,4 +13,5 @@
 
   <!-- WeatherSlotAdapter -->
   <string name="weather_slot_adapter_fascia_oraria">Fascia Oraria: </string>
+  <string name="title_activity_intro">IntroActivity</string>
 </resources>

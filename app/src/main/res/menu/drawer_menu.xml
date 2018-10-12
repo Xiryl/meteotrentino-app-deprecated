@@ -6,6 +6,14 @@
       android:icon="@drawable/ic_search"
       android:title="Cambia Luogo" />
     <item
+      android:id="@+id/drawer_view_first_pref"
+      android:icon="@drawable/ic_star"
+      android:title="Aggiungi Preferito" />
+    <item
+      android:id="@+id/drawer_view_second_pref"
+      android:icon="@drawable/ic_star"
+      android:title="Aggiungi Preferito" />
+    <item
       android:id="@+id/drawer_view_radar"
       android:icon="@drawable/ic_radar"
       android:title="Radar e Satellite" />

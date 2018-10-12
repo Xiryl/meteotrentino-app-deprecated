@@ -9,6 +9,15 @@
     android:layout_height="match_parent"
     android:background="#65A8D9">
 
+    <ImageButton
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/toolbar_margin_btn_back"
+      android:id="@+id/fragment_radar_day_btn_menu"
+      android:background="#00000000"
+      android:src="@drawable/ic_arrow_back"
+      />
+
     <ImageView
       android:id="@+id/chooseLocationIcon"
       android:layout_width="wrap_content"
@@ -50,9 +59,9 @@
         android:textColor="@color/white"
         android:layout_below="@id/chooseLocationtxtSubtitle"
         android:layout_centerHorizontal="true"
-        android:dropDownHeight="@dimen/activity_chooselocation_autocomp_dropdown_heigth"
+        android:dropDownHeight="match_parent"
         android:inputType="textAutoComplete|textAutoCorrect"
-        android:layout_marginTop="@dimen/activity_chooselocation_autocomp_margin"
+        android:layout_marginTop="52dp"
         android:layout_marginStart="@dimen/activity_chooselocation_autocomp_margin"
         android:hint="Inserisci una località.."/>
 

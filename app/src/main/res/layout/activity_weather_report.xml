@@ -15,17 +15,33 @@
       android:layout_height="wrap_content"
       android:background="@color/app_azure"
       android:orientation="vertical">
-      <TextView
+      <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Bollettino Metereologico"
-        android:fontFamily="@font/os_regular"
-        android:textColor="@color/white"
-        android:layout_marginTop="10dp"
-        android:textStyle="bold"
-        android:layout_gravity="center_horizontal"
-        android:textSize="@dimen/activity_weatherreport_title_size"/>
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+        <ImageButton
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="15dp"
+          android:layout_gravity="center"
+          android:layout_marginRight="15dp"
+          android:id="@+id/fragment_radar_day_btn_menu"
+          android:background="#00000000"
+          android:src="@drawable/ic_arrow_back"
+          />
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:gravity="center"
+          android:text="Bollettino Metereologico"
+          android:fontFamily="@font/os_regular"
+          android:textColor="@color/white"
+          android:textStyle="bold"
+          android:layout_gravity="center_horizontal"
+          android:textSize="@dimen/activity_weatherreport_title_size"/>
+      </LinearLayout>
+
 
       <LinearLayout
         android:layout_width="match_parent"

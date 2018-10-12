@@ -15,12 +15,12 @@
       <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fontFamily="@font/os_regular"
+        android:fontFamily="@font/os_bold"
         android:textSize="@dimen/toolbar_text_size"
         android:textColor="@color/white"
         android:layout_gravity="center_vertical"
         android:gravity="center"
-        android:text="Avviso Di Notifica Intelligente"/>
+        android:text="ALLERTA:\nAvviso Di Notifica Intelligente"/>
 
 
     </LinearLayout>
@@ -52,6 +52,14 @@
         android:layout_margin="20dp"
 
         android:text="Avviso Notifica Intelligente"/>
+
     </LinearLayout>
+
+    <ImageView
+      android:layout_width="match_parent"
+      android:layout_height="120dp"
+      android:layout_alignParentBottom="true"
+      android:src="@drawable/ic_launcher_foreground"
+      android:paddingBottom="10dp"/>
   </RelativeLayout>
 </layout>

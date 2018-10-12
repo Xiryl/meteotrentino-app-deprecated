@@ -32,16 +32,9 @@
       android:text="Dati Stazioni Metereologiche"/>
   </LinearLayout>
   <!-- MAIN TOOLBAR -->
-
-  <TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    android:layout_marginTop="65dp"
-    android:text="Seleziona una stazione per ottenere le temperature :"/>
   <Spinner
     android:id="@+id/activity_weather_station_spinner"
-    android:layout_marginTop="100dp"
+    android:layout_marginTop="80dp"
     android:layout_width="fill_parent"
     android:layout_marginLeft="40dp"
     android:layout_marginRight="40dp"

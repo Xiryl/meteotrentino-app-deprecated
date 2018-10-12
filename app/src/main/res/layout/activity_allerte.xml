@@ -3,6 +3,7 @@
   <data/>
   <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:rfal="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -42,93 +43,51 @@
       android:background="@color/white"
       android:orientation="vertical">
 
-      <android.support.v7.widget.CardView
-        android:id="@+id/activity_allerte_crdw_provincia"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/offset_15"
-        android:backgroundTint="@color/white_gray"
-        app:cardElevation="@dimen/card_elevation">
-        <RelativeLayout
-          android:layout_width="wrap_content"
-          android:padding="@dimen/card_rl_padding"
-          android:layout_height="wrap_content"
-          android:orientation="horizontal">
-          <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/card_text_size"
-            android:textColor="@color/blue_main"
-            android:layout_gravity="center_horizontal"
-            android:fontFamily="@font/os_bold"
-            android:gravity="center"
-            android:layout_margin="@dimen/card_text_margin"
-            android:text="Allerte Provincia"/>
-          <ImageView
-            android:layout_width="@dimen/card_img_dimen"
-            android:layout_height="@dimen/card_img_dimen"
-            android:gravity="center"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_link"/>
-        </RelativeLayout>
-
-      </android.support.v7.widget.CardView>
-
-      <android.support.v7.widget.CardView
-        android:id="@+id/activity_allerte_crdw_meteot"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/offset_15"
-        android:layout_marginRight="@dimen/offset_15"
-        android:backgroundTint="@color/white_gray"
-        app:cardElevation="@dimen/card_elevation">
-
-        <RelativeLayout
-          android:layout_width="wrap_content"
-          android:padding="@dimen/card_rl_padding"
-          android:layout_height="wrap_content"
-          android:orientation="vertical">
-          <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/card_text_size"
-            android:textColor="@color/blue_main"
-            android:layout_gravity="center_horizontal"
-            android:fontFamily="@font/os_bold"
-            android:gravity="center"
-            android:layout_margin="@dimen/card_text_margin"
-            android:text="Allerte meteotrentino.it"/>
-          <ImageView
-            android:layout_width="@dimen/card_img_dimen"
-            android:layout_height="@dimen/card_img_dimen"
-            android:gravity="center"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/ic_link"/>
-        </RelativeLayout>
-
-      </android.support.v7.widget.CardView>
-
       <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
+        android:textSize="18sp"
         android:textColor="#B95133"
         android:layout_gravity="center_horizontal"
         android:fontFamily="@font/os_regular"
         android:gravity="center"
         android:layout_marginTop="@dimen/offset_30"
-        android:text="Ultime allerte rilevate:"/>
+        android:text="Storico Allerte:"/>
 
       <android.support.v7.widget.RecyclerView
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clipToPadding="false"
         android:scrollbars="horizontal"
         android:id="@+id/activity_allerte_rv"
+        android:paddingBottom="8dp"
         android:orientation="vertical"/>
     </LinearLayout>
     <!-- END MAIN CONTENT -->
+
+    <com.wangjie.rapidfloatingactionbutton.RapidFloatingActionLayout
+      xmlns:rfal="http://schemas.android.com/apk/res-auto"
+      android:id="@+id/activity_main_rfal"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      rfal:rfal_frame_color="#ffffff"
+      rfal:rfal_frame_alpha="0.7" >
+      <com.wangjie.rapidfloatingactionbutton.RapidFloatingActionButton
+        xmlns:rfab="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/activity_main_rfab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        android:padding="8dp"
+        rfab:rfab_size="normal"
+        rfab:rfab_drawable="@drawable/ic_forward_arrow"
+        rfab:rfab_color_normal="#CE5849"
+        rfab:rfab_color_pressed="#CE5849"
+        rfab:rfab_shadow_color="#999999" />
+    </com.wangjie.rapidfloatingactionbutton.RapidFloatingActionLayout>
   </RelativeLayout>
 </layout>

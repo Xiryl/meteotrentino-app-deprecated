@@ -23,7 +23,7 @@
 
 
   <!-- GENERAL DIMENS -->
-  <dimen name="toolbar_height">30dp</dimen>
+  <dimen name="toolbar_height">60dp</dimen>
   <dimen name="toolbar_text_size">19sp</dimen>
   <dimen name="toolbar_margin_btn_back">20dp</dimen>
 
@@ -36,17 +36,17 @@
 
   <!-- ACTIVITY : MAIN -->
   <dimen name="activity_main_panel_height">55dp</dimen>
-  <dimen name="activity_main_btn_menu_mt">33dp</dimen>
+  <dimen name="activity_main_btn_menu_mt">27dp</dimen>
   <dimen name="activity_main_btn_menu_mb">10dp</dimen>
   <dimen name="activity_main_itembar_mt">30dp</dimen>
   <dimen name="activity_main_itembar_img_ml">30dp</dimen>
-  <dimen name="activity_main_itembar_img_size">30dp</dimen>
+  <dimen name="activity_main_itembar_img_size">25dp</dimen>
   <dimen name="activity_main_itembar_txt_size">18sp</dimen>
-  <dimen name="activity_main_posbar_mt">130dp</dimen>
+  <dimen name="activity_main_posbar_mt">20dp</dimen>
   <dimen name="activity_main_posbar_img_size">20dp</dimen>
   <dimen name="activity_main_posbar_txt_size">15sp</dimen>
-  <dimen name="activity_main_posbar_txt_prev_mt">150dp</dimen>
-  <dimen name="activity_main_posbar_txt_allerta_mt">170sp</dimen>
+  <dimen name="activity_main_posbar_txt_prev_mt">6dp</dimen>
+  <dimen name="activity_main_posbar_txt_allerta_mt">7dp</dimen>
   <dimen name="activity_main_tempbar_mt">170dp</dimen>
   <dimen name="activity_main_tempbar_txt_temp_size">130sp</dimen>
   <dimen name="activity_main_tempbar_right_ml">15dp</dimen>
@@ -57,13 +57,13 @@
   <dimen name="activity_main_img_weather_mt">80dp</dimen>
   <dimen name="activity_main_slidel_height">350dp</dimen>
   <dimen name="activity_main_slidel_txt_slide_size">16sp</dimen>
-
+  <dimen name="activity_main_img_weather_margin_top">15dp</dimen>
 
 
   <!-- ACTIVITY : CHOOSELOCATION -->
   <dimen name="activity_chooselocation_img_main_size">40dp</dimen>
   <dimen name="activity_chooselocation_title_margin_top">50dp</dimen>
-  <dimen name="activity_chooselocation_title_size">30sp</dimen>
+  <dimen name="activity_chooselocation_title_size">25sp</dimen>
   <dimen name="activity_chooselocation_desc_margin">30dp</dimen>
   <dimen name="activity_chooselocation_desc_size">15sp</dimen>
   <dimen name="activity_chooselocation_autocomp_margin">100dp</dimen>
@@ -77,7 +77,7 @@
   <dimen name="activity_info_img_size">70dp</dimen>
   <dimen name="activity_info_img_2l_size">100dp</dimen>
   <dimen name="activity_info_img_margin">10dp</dimen>
-  <dimen name="activity_info_bottom_img_size">50dp</dimen>
+  <dimen name="activity_info_bottom_img_size">45dp</dimen>
 
   <!-- ACTIVITY : RADAR -->
   <dimen name="activity_radar_card_height">350dp</dimen>
@@ -91,5 +91,6 @@
   <dimen name="activity_weatherreport_txt_loc_size">15sp</dimen>
 
   <!-- ITEM : SEVENDAY -->
-  <dimen name="item_sevenday_width">68dp</dimen>
+  <dimen name="item_sevenday_width">72dp</dimen>
+  <dimen name="fab_margin">16dp</dimen>
 </resources>

@@ -47,7 +47,9 @@
         android:id="@+id/activity_bulletin_crdw_prob"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/offset_15"
+        android:layout_marginTop="@dimen/offset_10"
+        android:layout_marginLeft="@dimen/offset_15"
+        android:layout_marginRight="@dimen/offset_15"
         android:backgroundTint="@color/white_gray"
         app:cardElevation="@dimen/card_elevation">
         <RelativeLayout
@@ -71,7 +73,7 @@
             android:gravity="center"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:src="@drawable/ic_link"/>
+            android:src="@drawable/ic_arrow_right"/>
         </RelativeLayout>
       </android.support.v7.widget.CardView>
       <!-- END CARD BOLLETTINO PROB -->
@@ -81,7 +83,9 @@
         android:id="@+id/activity_bulletin_crdw_valanghe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/offset_15"
+        android:layout_marginTop="@dimen/offset_10"
+        android:layout_marginLeft="@dimen/offset_15"
+        android:layout_marginRight="@dimen/offset_15"
         android:backgroundTint="@color/white_gray"
         app:cardElevation="@dimen/card_elevation">
 
@@ -106,7 +110,7 @@
             android:layout_centerVertical="true"
             android:gravity="center"
             android:layout_alignParentRight="true"
-            android:src="@drawable/ic_link"/>
+            android:src="@drawable/ic_arrow_right"/>
         </RelativeLayout>
       </android.support.v7.widget.CardView>
       <!-- END CARD BOLLETTINO VALANGHE -->
@@ -116,7 +120,9 @@
         android:id="@+id/activity_bulletin_crdw_montagna"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/offset_15"
+        android:layout_marginTop="@dimen/offset_10"
+        android:layout_marginLeft="@dimen/offset_15"
+        android:layout_marginRight="@dimen/offset_15"
         android:backgroundTint="@color/white_gray"
         app:cardElevation="@dimen/card_elevation">
 
@@ -141,7 +147,7 @@
             android:gravity="center"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/ic_link"/>
+            android:src="@drawable/ic_arrow_right"/>
         </RelativeLayout>
       </android.support.v7.widget.CardView>
       <!-- END CARD BOLLETTINO MONTAGNA -->
