@@ -6,8 +6,8 @@ android {
         applicationId "it.chiarani.meteotrentinoapp"
         minSdkVersion 22
         targetSdkVersion 27
-        versionCode 9
-        versionName "1.5"
+        versionCode 10
+        versionName "1.6"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         manifestPlaceholders = [
@@ -148,6 +148,8 @@ dependencies {
     // fab  button
     // https://github.com/wangjiegulu/RapidFloatingActionButton
     implementation 'com.github.wangjiegulu:rfab:2.0.0'
+
+    implementation 'com.github.hotchemi:android-rate:1.0.1'
 }
 
 

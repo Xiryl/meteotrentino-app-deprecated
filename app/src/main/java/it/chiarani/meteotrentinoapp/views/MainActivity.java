@@ -30,6 +30,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.TimeZone;
+
+import hotchemi.android.rate.AppRate;
+import hotchemi.android.rate.OnClickButtonListener;
 import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.adapters.WeatherSevenDayAdapter;
 import it.chiarani.meteotrentinoapp.database.entity.CustomAlertEntity;
@@ -74,6 +77,23 @@ public class MainActivity extends SampleActivity{
     super.onCreate(savedInstanceState);
 
     Log.d(MAINACTIVITY_TAG, "Start mainactivity");
+
+    AppRate.with(this)
+        .setInstallDays(4) // default 10, 0 means install day.
+        .setLaunchTimes(10) // default 10
+        .setRemindInterval(2) // default 1
+        .setShowLaterButton(true) // default true
+        .setDebug(false) // default false
+        .setOnClickButtonListener(new OnClickButtonListener() { // callback listener.
+          @Override
+          public void onClickButton(int which) {
+            Log.d(MainActivity.class.getName(), Integer.toString(which));
+          }
+        })
+        .monitor();
+
+    // Show a dialog if meets conditions
+    AppRate.showRateDialogIfMeetsConditions(this);
 
     // get repository
     WeatherReportRepository repository = new WeatherReportRepository(this.getApplication());
