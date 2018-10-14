@@ -84,7 +84,20 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Prefer
         AlertDialog.Builder builder;
         builder = new AlertDialog.Builder(getContext(), android.R.style.Theme_Material_Dialog_Alert);
         builder.setTitle("MeteoTrentino App " + appV)
-            .setMessage("-VERSIONE BETA (1.0)\n-VERSIONE BETA (1.1)")
+            .setMessage("-Versione beta-1.0" +
+                "\n-Versione beta-1.1" +
+                "\n-Versione beta-1.2" +
+                "\n-Versione beta-1.3" +
+                "\n *miglioramento stabilità dell'app" +
+                "\n-Versione beta-1.4"+
+                "\n *tutte le allerte sono visibili" +
+                "\n-Versione beta-1.5" +
+                "\n *aggiunta la possibilità di salvare due preferiti" +
+                "\n *fix bug GPS" +
+                "\n-Versione beta-1.6" +
+                "\n *fix bug animazione iniziale" +
+                "\n *fix bug notifiche (Android < v6.0)" +
+                "\n *miglioramento stabilità dell'app e dei colori")
             .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
               public void onClick(DialogInterface dialog, int which) {
 
