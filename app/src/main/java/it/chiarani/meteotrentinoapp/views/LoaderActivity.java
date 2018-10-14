@@ -68,6 +68,12 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
+    // Set loader gif
+    Glide.with(this)
+        .load(R.drawable.git_weather_loading)
+        .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE))
+        .into(binding.activityLoaderGifLoading);
+
     // preferences
     SharedPreferences getPrefs = PreferenceManager
         .getDefaultSharedPreferences(getBaseContext());
@@ -114,12 +120,6 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
         Window window = this.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(Color.parseColor("#33495F"));
-
-        // Set loader gif
-        Glide.with(this)
-            .load(R.drawable.git_weather_loading)
-            .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE))
-            .into(binding.activityLoaderGifLoading);
 
         // get user location from GPS
           if (ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
