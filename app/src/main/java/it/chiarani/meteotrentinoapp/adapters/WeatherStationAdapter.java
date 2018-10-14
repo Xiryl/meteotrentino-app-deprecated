@@ -4,16 +4,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import it.chiarani.meteotrentinoapp.R;
-import it.chiarani.meteotrentinoapp.database.entity.OpenWeatherDataEntity;
-import it.chiarani.meteotrentinoapp.database.entity.WeatherForSlotEntity;
-import it.chiarani.meteotrentinoapp.database.entity.WeatherReportEntity;
-import it.chiarani.meteotrentinoapp.helper.WeatherIconDescriptor;
-import it.chiarani.meteotrentinoapp.helper.WeatherTypes;
-import it.chiarani.meteotrentinoapp.models.WeatherForDay;
 import it.chiarani.meteotrentinoapp.xml_parser.XmlDatiOggi;
 
 public class WeatherStationAdapter extends RecyclerView.Adapter<WeatherStationAdapter.ViewHolder> {

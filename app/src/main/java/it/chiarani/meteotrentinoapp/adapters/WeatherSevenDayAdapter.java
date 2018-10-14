@@ -38,17 +38,17 @@ public class WeatherSevenDayAdapter extends RecyclerView.Adapter<WeatherSevenDay
 
   public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    TextView txt_day;
-    TextView txt_temperature_max;
-    TextView txt_temperature_min;
-    ImageView img_weather;
-    ImageView img_warning;
+    TextView       txt_day;
+    TextView       txt_temperature_max;
+    TextView       txt_temperature_min;
+    ImageView      img_weather;
+    ImageView      img_warning;
     RelativeLayout main_rl;
 
     public ViewHolder(View v) {
       super(v);
 
-      img_weather         = (ImageView) v.findViewById(R.id.item_sevenday_weather_ico);
+      img_weather         = v.findViewById(R.id.item_sevenday_weather_ico);
       txt_day             = v.findViewById(R.id.item_sevenday_weather_txt_data);
       txt_temperature_max = v.findViewById(R.id.item_sevenday_weather_txt_tmax);
       txt_temperature_min = v.findViewById(R.id.item_sevenday_weather_txt_tmin);

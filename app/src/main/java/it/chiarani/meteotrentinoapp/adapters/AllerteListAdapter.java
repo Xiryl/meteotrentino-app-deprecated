@@ -1,6 +1,7 @@
 package it.chiarani.meteotrentinoapp.adapters;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -40,12 +42,14 @@ public class AllerteListAdapter extends RecyclerView.Adapter<AllerteListAdapter.
     TextView    txt_name;
     ImageButton btn_link;
     CardView    card;
+    LinearLayout ll;
 
     public ViewHolder(View v) {
       super(v);
       txt_name = v.findViewById(R.id.item_allerte_txt_name);
       btn_link = v.findViewById(R.id.item_allerte_btn_link);
       card     = v.findViewById(R.id.item_allerte_cardview);
+      ll       = v.findViewById(R.id.item_allerte_ll);
       v.setOnClickListener(this);
     }
 
