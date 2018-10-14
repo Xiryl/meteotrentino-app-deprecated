@@ -12,9 +12,10 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     android:layout_marginTop="8dp"
-    android:background="@drawable/allerte_item_list_gradient"
+    app:background="@drawable/allerte_item_list_gradient"
     app:cardCornerRadius="10dp">
     <LinearLayout
+      android:id="@+id/item_allerte_ll"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:background="@drawable/allerte_item_list_gradient">

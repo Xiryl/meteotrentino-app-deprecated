@@ -14,6 +14,10 @@
       android:icon="@drawable/ic_star"
       android:title="Aggiungi Preferito" />
     <item
+      android:id="@+id/drawer_view_allerte"
+      android:icon="@drawable/ic_warning"
+      android:title="Allerte" />
+    <item
       android:id="@+id/drawer_view_radar"
       android:icon="@drawable/ic_radar"
       android:title="Radar e Satellite" />
@@ -29,11 +33,6 @@
       android:id="@+id/drawer_view_bollettini"
       android:icon="@drawable/ic_report"
       android:title="Bollettini" />
-    <item
-      android:id="@+id/drawer_view_allerte"
-      android:icon="@drawable/ic_warning"
-      android:title="Allerte" />
-
     <item
       android:id="@+id/drawer_view_telegram"
       android:icon="@drawable/ic_telegram"
