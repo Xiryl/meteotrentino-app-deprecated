@@ -15,7 +15,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 import it.chiarani.meteotrentinoapp.R;
@@ -25,12 +24,12 @@ import it.chiarani.meteotrentinoapp.repositories.LocalityRepository;
 public class API_locality extends AsyncTask<String, Integer, Integer>{
 
   // #region private fields
-  private final static String API_LOCALITY_TAG = "API_LOCALITY";
-  private final static String URL_API = API_endpoint.ENDPOINT_LOCALITY;
-  private Context mContext;
-  private AlertDialog builder;
-  private Application _app;
-  private API_locality_response delegate = null;
+  private final static String   CLASS_TAG        = "API_LOCALITY";
+  private final static String   URL_API          = API_endpoint.ENDPOINT_LOCALITY;
+  private API_locality_response delegate         = null;
+  private Context               mContext;
+  private AlertDialog           builder;
+  private Application           _app;
   // #endregion
 
   /**
@@ -58,7 +57,7 @@ public class API_locality extends AsyncTask<String, Integer, Integer>{
   }
 
   /**
-   * After execute the task we call the interface callback
+   * After execute the task call the interface callback
    * and send the data
    */
   @Override
@@ -74,44 +73,43 @@ public class API_locality extends AsyncTask<String, Integer, Integer>{
   @Override
   protected Integer doInBackground(String... s) {
     LocalityRepository repository = new LocalityRepository(_app);
-    HttpURLConnection connection = null;
-    BufferedReader reader = null;
+    HttpURLConnection  connection = null;
+    BufferedReader     reader     = null;
 
     try {
-
       URL url = new URL(URL_API);
       connection = (HttpURLConnection) url.openConnection();
       connection.connect();
 
       InputStream stream = connection.getInputStream();
-
       reader = new BufferedReader(new InputStreamReader(stream));
 
       StringBuffer buffer = new StringBuffer();
       String line = "";
-      publishProgress(20);
+      publishProgress(1);
       while ((line = reader.readLine()) != null) {
         buffer.append(line + "\n");
       }
+      String data   = buffer.toString();
+      JSONObject jsonObject = new JSONObject(data);
+      JSONArray arr_locality = jsonObject.getJSONArray("localita");
 
-      String data = buffer.toString();
-      JSONObject ob = new JSONObject(data);
-      JSONArray arr = ob.getJSONArray("localita");
+      // Cycle all localities
+      for (int i = 0; i < arr_locality.length(); i++) {
+        publishProgress(i); // Update %
 
-      for (int i = 0; i < arr.length(); i++) {
-        publishProgress(i);
-        String locality = arr.getJSONObject(i).optString("localita");
-        String place = arr.getJSONObject(i).optString("comune");
-        int quota = Integer.parseInt(arr.getJSONObject(i).optString("quota"));
-        String latitudine = arr.getJSONObject(i).optString("latitudine");
-        String longitudine = arr.getJSONObject(i).optString("longitudine");
+        String locality    = arr_locality.getJSONObject(i).optString("localita");
+        String location    = arr_locality.getJSONObject(i).optString("comune");
+        int    altitude    = Integer.parseInt(arr_locality.getJSONObject(i).optString("quota"));
+        String latitudine  = arr_locality.getJSONObject(i).optString("latitudine");
+        String longitudine = arr_locality.getJSONObject(i).optString("longitudine");
 
-        // insert to db new locality
-        repository.insert(new LocalityEntity(locality, place, quota, latitudine, longitudine));
+        // + DB
+        repository.insert(new LocalityEntity(locality, location, altitude, latitudine, longitudine));
       }
     } catch (Exception e) {
       e.printStackTrace();
-      Log.e(API_LOCALITY_TAG, "Errore Exception: "+  e.toString());
+      Log.e(CLASS_TAG, "Errore Exception: "+  e.toString());
     } finally {
       if (connection != null) {
         connection.disconnect();
@@ -122,7 +120,7 @@ public class API_locality extends AsyncTask<String, Integer, Integer>{
         }
       } catch (IOException e) {
         e.printStackTrace();
-        Log.e(API_LOCALITY_TAG, "Errore IOException1: "+  e.toString());
+        Log.e(CLASS_TAG, "Errore IOException: "+  e.toString());
       }
     }
     return 1;
@@ -130,7 +128,7 @@ public class API_locality extends AsyncTask<String, Integer, Integer>{
 
   @Override
   protected void onProgressUpdate(Integer... values) {
-    TextView messageView = (TextView)builder.findViewById(android.R.id.message);
-    messageView.setText(mContext.getResources().getText(R.string.API_locality_alert) +" "+ values[0] +"/539");
+    TextView messageView = builder.findViewById(android.R.id.message);
+    messageView.setText(String.format("%s %s/539",mContext.getResources().getText(R.string.API_locality_alert), values[0] ));
   }
 }
