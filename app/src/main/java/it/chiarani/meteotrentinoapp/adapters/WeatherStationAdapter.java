@@ -15,7 +15,6 @@ public class WeatherStationAdapter extends RecyclerView.Adapter<WeatherStationAd
   private XmlDatiOggi report;
   // #endregion
 
-
   public void clear() {
     report.getTemperature().get(0).getTemperature().clear();
     notifyDataSetChanged();
@@ -29,7 +28,6 @@ public class WeatherStationAdapter extends RecyclerView.Adapter<WeatherStationAd
 
     TextView txt_data;
     TextView txt_temp;
-
 
     public ViewHolder(View v) {
       super(v);
@@ -46,16 +44,16 @@ public class WeatherStationAdapter extends RecyclerView.Adapter<WeatherStationAd
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    //Set data to the individual list item
     String data = report.getTemperature().get(0).getTemperature().get(position).getData().split("T")[0];
-    String ora = report.getTemperature().get(0).getTemperature().get(position).getData().split("T")[1];
-    holder.txt_data.setText( data+ " " + ora);
-    holder.txt_temp.setText(report.getTemperature().get(0).getTemperature().get(position).getTemperatura() + " °C");
+    String ora  = report.getTemperature().get(0).getTemperature().get(position).getData().split("T")[1];
+    String temp = report.getTemperature().get(0).getTemperature().get(position).getTemperatura();
+
+    holder.txt_data.setText(String.format("%s %s", data, ora));
+    holder.txt_temp.setText(String.format("%s °C", temp));
   }
 
   @Override
   public int getItemCount() {
-    //Return the number of items in your list
     return report.getTemperature().get(0).getTemperature().size();
   }
 }

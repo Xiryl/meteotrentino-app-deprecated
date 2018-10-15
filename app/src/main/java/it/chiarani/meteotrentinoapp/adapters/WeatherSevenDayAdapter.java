@@ -62,6 +62,7 @@ public class WeatherSevenDayAdapter extends RecyclerView.Adapter<WeatherSevenDay
     public void onClick(View v) {
       int pos = this.getLayoutPosition();
 
+      // Call weather report activity
       Intent myIntent = new Intent(v.getContext(), WeatherReportActivity.class);
       myIntent.putExtra(INTENT_PARAM_TAG, pos);
       v.getContext().startActivity(myIntent);
@@ -77,10 +78,9 @@ public class WeatherSevenDayAdapter extends RecyclerView.Adapter<WeatherSevenDay
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    //Set data to the individual list item
 
+    // Set current day as green background
     if(position == 0) {
-      // set current day as green background
       holder.main_rl.setBackgroundColor(Color.parseColor("#489E64"));
     }
 
@@ -90,22 +90,23 @@ public class WeatherSevenDayAdapter extends RecyclerView.Adapter<WeatherSevenDay
     data.add(Calendar.DAY_OF_MONTH, position);
 
     switch (data.get(Calendar.DAY_OF_WEEK)) {
-      case 1: holder.txt_day.setText(ItDays.DOM +"\n"+ data.get(Calendar.DAY_OF_MONTH));break;
-      case 2: holder.txt_day.setText(ItDays.LUN +"\n"+ data.get(Calendar.DAY_OF_MONTH));break;
-      case 3: holder.txt_day.setText(ItDays.MAR +"\n"+ data.get(Calendar.DAY_OF_MONTH));break;
-      case 4: holder.txt_day.setText(ItDays.MER +"\n"+ data.get(Calendar.DAY_OF_MONTH));break;
-      case 5: holder.txt_day.setText(ItDays.GIO+"\n"+ data.get(Calendar.DAY_OF_MONTH));break;
-      case 6: holder.txt_day.setText(ItDays.VEN +"\n"+ data.get(Calendar.DAY_OF_MONTH));break;
-      default: holder.txt_day.setText(ItDays.SAB +"\n"+ data.get(Calendar.DAY_OF_MONTH));break;
+      case 1: holder.txt_day.setText(String.format("%s\n%s", ItDays.DOM, data.get(Calendar.DAY_OF_MONTH)));break;
+      case 2: holder.txt_day.setText(String.format("%s\n%s", ItDays.LUN, data.get(Calendar.DAY_OF_MONTH)));break;
+      case 3: holder.txt_day.setText(String.format("%s\n%s", ItDays.MAR, data.get(Calendar.DAY_OF_MONTH)));break;
+      case 4: holder.txt_day.setText(String.format("%s\n%s", ItDays.MER, data.get(Calendar.DAY_OF_MONTH)));break;
+      case 5: holder.txt_day.setText(String.format("%s\n%s", ItDays.GIO, data.get(Calendar.DAY_OF_MONTH)));break;
+      case 6: holder.txt_day.setText(String.format("%s\n%s", ItDays.VEN, data.get(Calendar.DAY_OF_MONTH)));break;
+      case 7: holder.txt_day.setText(String.format("%s\n%s", ItDays.SAB, data.get(Calendar.DAY_OF_MONTH)));break;
+      default:holder.txt_day.setText(String.format("%s\n%s", ItDays.SAB, data.get(Calendar.DAY_OF_MONTH)));break;
     }
 
     WeatherForDayEntity wfd = weather_report.getPrevisione().getGiorni().get(position);
 
     // Temp. massima e minima
-    holder.txt_temperature_max.setText(wfd.gettMaxGiorno() + " °");
-    holder.txt_temperature_min.setText(wfd.gettMinGiorno() + " °");
+    holder.txt_temperature_max.setText(String.format("%s °", wfd.gettMaxGiorno()));
+    holder.txt_temperature_min.setText(String.format("%s °", wfd.gettMinGiorno()));
 
-    if(!wfd.getIcoAllerte().equals("")) {
+    if(!wfd.getIcoAllerte().isEmpty()) {
       holder.img_warning.setImageResource(R.drawable.ic_warning);
     }
 
@@ -150,7 +151,6 @@ public class WeatherSevenDayAdapter extends RecyclerView.Adapter<WeatherSevenDay
 
   @Override
   public int getItemCount() {
-    //Return the number of items in your list
     return weather_report.getPrevisione().getGiorni().size();
   }
 }
