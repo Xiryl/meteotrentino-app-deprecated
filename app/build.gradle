@@ -6,8 +6,8 @@ android {
         applicationId "it.chiarani.meteotrentinoapp"
         minSdkVersion 22
         targetSdkVersion 27
-        versionCode 10
-        versionName "1.6"
+        versionCode 11
+        versionName "1.7"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         manifestPlaceholders = [

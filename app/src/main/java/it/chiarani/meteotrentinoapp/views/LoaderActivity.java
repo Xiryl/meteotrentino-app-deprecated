@@ -70,7 +70,7 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
 
     // Set loader gif
     Glide.with(this)
-        .load(R.drawable.git_weather_loading)
+        .load(R.drawable.weather_gif)
         .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE))
         .into(binding.activityLoaderGifLoading);
 
@@ -119,7 +119,7 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
         // set toolbar color
         Window window = this.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(Color.parseColor("#33495F"));
+        window.setStatusBarColor(Color.parseColor("#FFFFFF"));
 
         // get user location from GPS
           if (ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {

@@ -11,33 +11,34 @@
   <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="@dimen/toolbar_height"
-    android:background="@color/app_azure">
-
+    android:background="@color/app_azure"
+    android:orientation="horizontal">
     <ImageButton
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_margin="@dimen/toolbar_margin_btn_back"
-      android:id="@+id/fragmentRadarDayBtnMenu"
+      android:layout_width="55dp"
+      android:layout_height="match_parent"
+      android:padding="16dp"
+      android:layout_gravity="center"
+      android:id="@+id/fragment_radar_day_btn_menu"
       android:background="#00000000"
-      android:src="@drawable/ic_arrow_back"/>
-
+      android:src="@drawable/ic_arrow_back"
+      />
     <TextView
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:textSize="@dimen/toolbar_text_size"
-      android:textColor="@color/white"
-      android:layout_gravity="center_vertical"
+      android:layout_height="match_parent"
       android:gravity="center"
+      android:text="Stazioni Metereologiche"
       android:fontFamily="@font/os_regular"
-      android:text="Dati Stazioni Metereologiche"/>
+      android:textColor="@color/white"
+      android:layout_gravity="center_horizontal"
+      android:textSize="@dimen/activity_weatherreport_title_size"/>
   </LinearLayout>
   <!-- MAIN TOOLBAR -->
   <Spinner
     android:id="@+id/activity_weather_station_spinner"
     android:layout_marginTop="80dp"
     android:layout_width="fill_parent"
-    android:layout_marginLeft="40dp"
-    android:layout_marginRight="40dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
     android:layout_height="wrap_content" />
 
   <!-- LIST -->

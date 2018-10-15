@@ -137,7 +137,7 @@
             android:textSize="@dimen/activity_main_posbar_txt_size"
             android:layout_marginTop="@dimen/activity_main_posbar_txt_prev_mt"
             android:textColor="@color/white"
-            android:fontFamily="@font/os_regular"
+            android:fontFamily="@font/os_bold"
             android:textStyle="italic" />
           <TextView
             android:layout_below="@id/activity_main_txt_weather_description"

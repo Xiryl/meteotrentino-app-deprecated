@@ -16,11 +16,11 @@ import it.chiarani.meteotrentinoapp.database.entity.CustomAlertEntity;
 import it.chiarani.meteotrentinoapp.repositories.CustomAlertRepository;
 import it.chiarani.meteotrentinoapp.views.MessageActivity;
 
-public class NotificationOpenedHandler implements OneSignal.NotificationOpenedHandler {
+public class OSNotificationOpenedHandler implements OneSignal.NotificationOpenedHandler {
 
   private Application application;
 
-  public NotificationOpenedHandler(Application application) {
+  public OSNotificationOpenedHandler(Application application) {
     this.application = application;
   }
 

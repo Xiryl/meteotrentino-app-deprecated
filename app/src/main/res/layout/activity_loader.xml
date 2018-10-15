@@ -6,14 +6,16 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="#33495F">
+  android:background="#FFFFFF">
   <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:textColor="@color/white_gray"
+    android:textColor="@color/blue_main"
     android:text="Ottengo i dati meteo..\nAttiva il GPS per automatizzare la ricerca della tua posizione attuale!"
-    android:layout_marginTop="30dp"
-    android:textSize="20sp"
+    android:layout_marginTop="40dp"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
+    android:textSize="15sp"
     android:fontFamily="@font/os_regular"
     android:gravity="center_horizontal"/>
   <ImageView
@@ -22,5 +24,10 @@
     android:layout_centerVertical="true"
     android:layout_centerHorizontal="true"
     android:id="@+id/activity_loader_gif_loading"/>
+  <ImageView
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/activity_info_bottom_img_size"
+    android:layout_alignParentBottom="true"
+    android:src="@drawable/img_bottom_background"/>
 </RelativeLayout>
 </layout>

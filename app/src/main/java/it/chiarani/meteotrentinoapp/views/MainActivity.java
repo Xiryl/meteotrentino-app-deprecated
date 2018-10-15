@@ -47,7 +47,7 @@ import it.chiarani.meteotrentinoapp.models.WeatherReport;
 import it.chiarani.meteotrentinoapp.repositories.CustomAlertRepository;
 import it.chiarani.meteotrentinoapp.repositories.OpenWeatherDataRepository;
 import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
-import it.chiarani.meteotrentinoapp.servicies.NotificationOpenedHandler;
+import it.chiarani.meteotrentinoapp.servicies.OSNotificationOpenedHandler;
 
 public class MainActivity extends SampleActivity{
 
@@ -103,7 +103,7 @@ public class MainActivity extends SampleActivity{
     OneSignal.startInit(this)
         .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
         .unsubscribeWhenNotificationsAreDisabled(true)
-        .setNotificationOpenedHandler(new NotificationOpenedHandler(getApplication()))
+        .setNotificationOpenedHandler(new OSNotificationOpenedHandler(getApplication()))
         .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
         .autoPromptLocation(true)
         .init();
@@ -297,8 +297,12 @@ public class MainActivity extends SampleActivity{
           window.setStatusBarColor(Color.parseColor("#EF7942"));
         }
 
-        binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_day);
-        window.setStatusBarColor(Color.parseColor("#7AA9C3"));
+
+        if(now >= (sunrise + 900000)) {
+          binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_day);
+          window.setStatusBarColor(Color.parseColor("#7AA9C3"));
+        }
+
 
         if(now >= sunset){
           // sunset

@@ -65,7 +65,7 @@
     <activity android:name=".views.SettingsActivity" android:screenOrientation="portrait"/>
 
     <service
-      android:name=".servicies.NotificationExtenderExample"
+      android:name=".servicies.OSNotificationExtender"
       android:exported="false"
       android:permission="android.permission.BIND_JOB_SERVICE">
       <intent-filter>

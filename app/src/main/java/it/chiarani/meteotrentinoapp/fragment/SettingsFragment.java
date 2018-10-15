@@ -97,7 +97,10 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Prefer
                 "\n-Versione beta-1.6" +
                 "\n *fix bug animazione iniziale" +
                 "\n *fix bug notifiche (Android < v6.0)" +
-                "\n *miglioramento stabilità dell'app e dei colori")
+                "\n *miglioramento stabilità dell'app e dei colori" +
+                "\n-Versione beta-1.7" +
+                "\n *miglioramento UI" +
+                "\n *fix bug notifiche")
             .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
               public void onClick(DialogInterface dialog, int which) {
 
