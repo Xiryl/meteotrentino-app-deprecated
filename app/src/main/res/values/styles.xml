@@ -14,4 +14,8 @@
 
   <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+  <style name="NavigationDrawerStyle">
+    <item name="android:typeface">@font/os_regular</item>
+  </style>
+
 </resources>

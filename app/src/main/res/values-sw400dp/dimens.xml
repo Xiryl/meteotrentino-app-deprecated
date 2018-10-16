@@ -45,7 +45,7 @@
   <dimen name="activity_main_posbar_mt">20dp</dimen>
   <dimen name="activity_main_posbar_img_size">20dp</dimen>
   <dimen name="activity_main_posbar_txt_size">15sp</dimen>
-  <dimen name="activity_main_posbar_txt_prev_mt">6dp</dimen>
+  <dimen name="activity_main_posbar_txt_prev_mt">15dp</dimen>
   <dimen name="activity_main_posbar_txt_allerta_mt">7dp</dimen>
   <dimen name="activity_main_tempbar_mt">170dp</dimen>
   <dimen name="activity_main_tempbar_txt_temp_size">130sp</dimen>

@@ -291,30 +291,27 @@ public class MainActivity extends SampleActivity{
         long sunset = opw.getSunset();
         long sunrise = opw.getSunrise();
 
-        if(now >= (sunrise - 900000) ) {
+        // day
+        binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_day);
+        window.setStatusBarColor(Color.parseColor("#7AA9C3"));
+
+        if(now >= (sunrise - 1800000) && now < (sunrise + 1800000)) {
           // sunrise
           binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_new_sunsire);
           window.setStatusBarColor(Color.parseColor("#EF7942"));
         }
-
-
-        if(now >= (sunrise + 900000)) {
-          binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_day);
-          window.setStatusBarColor(Color.parseColor("#7AA9C3"));
-        }
-
-
-        if(now >= sunset){
+        if(now >= (sunset - 900000) && now < (sunset + 900000)  ){
           // sunset
           binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_sunset);
           window.setStatusBarColor(Color.parseColor("#BA725A"));
         }
-        if( (now >= sunset + 3600000) && (now <= sunrise + 79200000)) {
+        if(  now >= (sunset + 900000)) {
           // night
           binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_night);
           window.setStatusBarColor(Color.parseColor("#345A7B"));
           isNight = true;
         }
+
 
         switch (WeatherIconDescriptor.getWeatherType(wfd.getIcona())) {
           case COPERTO:

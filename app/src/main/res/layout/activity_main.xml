@@ -9,6 +9,7 @@
     android:id="@+id/main_activity_drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:switchTextAppearance="@font/os_regular"
     android:fitsSystemWindows="true">
     <RelativeLayout
       android:layout_width="match_parent"
@@ -66,7 +67,7 @@
               android:layout_width="wrap_content"
               android:layout_marginLeft="10dp"
               android:layout_height="wrap_content"
-              android:fontFamily="@font/os_regular"
+              android:fontFamily="@font/os_light"
               android:textColor="#ffffff"
               android:maxWidth="45dp"
               android:textSize="@dimen/activity_main_itembar_txt_size" />
@@ -81,7 +82,7 @@
               android:layout_width="wrap_content"
               android:layout_marginLeft="10dp"
               android:layout_height="wrap_content"
-              android:fontFamily="@font/os_regular"
+              android:fontFamily="@font/os_light"
               android:textColor="#ffffff"
               android:textSize="@dimen/activity_main_itembar_txt_size" />
             <ImageView
@@ -95,7 +96,7 @@
               android:layout_marginLeft="10dp"
               android:maxWidth="50dp"
               android:layout_height="wrap_content"
-              android:fontFamily="@font/os_regular"
+              android:fontFamily="@font/os_light"
               android:textColor="#ffffff"
               android:textSize="@dimen/activity_main_itembar_txt_size"/>
           </LinearLayout>
@@ -204,7 +205,7 @@
                   android:id="@+id/activity_main_txt_max_temperature"
                   android:layout_width="wrap_content"
                   android:layout_gravity="center"
-                  android:fontFamily="@font/os_regular"
+                  android:fontFamily="@font/os_light"
                   android:layout_height="wrap_content"
                   android:textSize="@dimen/activity_main_tempbar_right_txt_temp_size"
                   android:textColor="@color/white" />
@@ -226,7 +227,7 @@
                 <TextView
                   android:id="@+id/activity_main_txt_min_temperature"
                   android:layout_width="wrap_content"
-                  android:fontFamily="@font/os_regular"
+                  android:fontFamily="@font/os_light"
                   android:layout_gravity="center"
                   android:layout_height="wrap_content"
                   android:layout_marginBottom="3dp"
@@ -258,7 +259,7 @@
        android:gravity="center"
        android:layout_alignParentBottom="true"
        android:textColor="@color/white_gray"
-       android:textStyle="bold"
+       android:fontFamily="@font/os_bold"
       android:layout_marginBottom="4dp"/>
      </RelativeLayout>
    </FrameLayout>
