@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -41,6 +42,7 @@ import it.chiarani.meteotrentinoapp.database.entity.WeatherForDayEntity;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherForWeekEntity;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherReportEntity;
 import it.chiarani.meteotrentinoapp.databinding.ActivityMainBinding;
+import it.chiarani.meteotrentinoapp.helper.CustomDialog;
 import it.chiarani.meteotrentinoapp.helper.DialogShower;
 import it.chiarani.meteotrentinoapp.helper.WeatherIconDescriptor;
 import it.chiarani.meteotrentinoapp.models.WeatherReport;
@@ -128,8 +130,11 @@ public class MainActivity extends SampleActivity{
     second_pos = getPrefs.getString("second_pos", "Aggiungi 2° Preferito");
 
     Menu menu = binding.mainActivityNavView.getMenu();
-    MenuItem first_pref = menu.findItem(R.id.drawer_view_first_pref);
+    MenuItem first_pref  = menu.findItem(R.id.drawer_view_first_pref);
     MenuItem second_pref = menu.findItem(R.id.drawer_view_second_pref);
+    MenuItem app_version = menu.findItem(R.id.drawer_view_app_version);
+
+    app_version.setTitle("v1.9-beta");
 
     first_pref.setTitle(first_pos);
     second_pref.setTitle(second_pos);
@@ -141,6 +146,11 @@ public class MainActivity extends SampleActivity{
 
           switch (menuItem.getItemId()){
 
+            case R.id.drawer_view_app_version:
+              CustomDialog cdd = new CustomDialog(MainActivity.this, "Versione v1.9-beta\n-Miglioramento Interfaccia Grafica\n-Miglioramento gestione delle notifiche\n-Risolto problema sfondo\n-Migliore Stabilità Nell'app");
+              cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+              cdd.show();
+              break;
             case R.id.drawer_view_first_pref:
               if(first_pos.isEmpty() || first_pos.equals("Aggiungi 1° Preferito")) {
                 Intent chooseloc_intent = new Intent(MainActivity.this, ChooseLocationActivity.class);
@@ -478,6 +488,7 @@ public class MainActivity extends SampleActivity{
     repository.getAll().observe(this, entries -> {
       if (entries == null || entries.isEmpty() || entries.size() == 0) {
         // Build alert dialog
+
         DialogShower.ShowDialog(this,new Intent(getApplicationContext(), ChooseLocationActivity.class),"Località non trovata", "Non sono riuscito a rilevare la tua posizione dal GPS.\nProva a ricercala manualmente!", "Ricerca", "Annulla");
         return;
       }

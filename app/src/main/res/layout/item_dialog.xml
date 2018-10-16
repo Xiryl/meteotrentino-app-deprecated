@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  android:background="@drawable/round_dialog_shape"
+  android:layout_marginLeft="20dp"
+  android:layout_marginRight="20dp"
+  android:orientation="vertical" >
+
+  <TextView
+    android:id="@+id/item_dialog_txt"
+    android:layout_marginTop="25dp"
+    android:layout_marginBottom="30dp"
+    android:layout_width="wrap_content"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:text="Do you realy want to exit ?"
+    android:textColor="@color/blue_main"
+    android:fontFamily="@font/os_regular"
+/>
+
+
+  <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/round_dialog_shape_colored"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp"
+    android:orientation="horizontal" >
+
+    <android.support.v7.widget.AppCompatButton
+      android:id="@+id/item_dialog_btn_ok"
+      android:layout_width="wrap_content"
+      android:layout_height="30dp"
+      android:text="   Ok   "
+      android:textColor="@color/blue_azure"
+      android:layout_centerHorizontal="true"
+      android:background="@drawable/rounded_button"/>
+  </RelativeLayout>
+
+</LinearLayout>

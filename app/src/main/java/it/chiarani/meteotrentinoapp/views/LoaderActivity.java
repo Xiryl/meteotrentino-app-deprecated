@@ -68,6 +68,10 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
+    Window window = this.getWindow();
+    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+    window.setStatusBarColor(Color.parseColor("#FFFFFF"));
+
     // Set loader gif
     Glide.with(this)
         .load(R.drawable.weather_gif)
@@ -115,11 +119,6 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
         //WeatherReportRepository repository = new WeatherReportRepository(this.getApplication());
         // TODO CHECK DELETE ALL
         //repository.deleteAll();
-
-        // set toolbar color
-        Window window = this.getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(Color.parseColor("#FFFFFF"));
 
         // get user location from GPS
           if (ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {

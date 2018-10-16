@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
@@ -18,6 +19,7 @@ import com.bumptech.glide.request.RequestOptions;
 import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.api.API_endpoint;
 import it.chiarani.meteotrentinoapp.databinding.ActivityRadarBinding;
+import it.chiarani.meteotrentinoapp.helper.CustomDialog;
 import it.chiarani.meteotrentinoapp.helper.DialogShower;
 
 public class RadarActivity extends SampleActivity{
@@ -64,7 +66,8 @@ public class RadarActivity extends SampleActivity{
       }
     });
 
-    DialogShower.ShowDialog(this, null,  "Radar", "Il caricamento delle immagini satellitari dipende dalla velocità della tua connessione dati", "ok", "");
-
+    CustomDialog cdd = new CustomDialog(this, "Il caricamento delle immagini satellitari dipende dalla velocità della tua connessione dati");
+    cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+    cdd.show();
   }
 }

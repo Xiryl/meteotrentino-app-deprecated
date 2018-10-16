@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-  <group android:checkableBehavior="single">
+  <group android:id="@+id/menu_top"
+    android:checkableBehavior="single">
     <item
       android:id="@+id/drawer_view_search"
       android:icon="@drawable/ic_search"
@@ -39,7 +40,8 @@
       android:title="Telegram Bot" />
 
   </group>
-  <group android:checkableBehavior="single">
+  <group android:id="@+id/menu_bottom"
+    android:checkableBehavior="none">
     <item
       android:id="@+id/drawer_view_settings"
       android:icon="@drawable/ic_settings"
@@ -47,7 +49,11 @@
     <item
       android:id="@+id/drawer_view_info"
       android:icon="@drawable/ic_info"
-      android:title="info" />
+      android:title="Info" />
+    <item
+      android:id="@+id/drawer_view_app_version"
+      android:icon="@drawable/ic_tag"
+      android:title="v" />
   </group>
 
 </menu>
