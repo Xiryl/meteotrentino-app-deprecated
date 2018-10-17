@@ -40,13 +40,15 @@ public class AllerteListAdapter extends RecyclerView.Adapter<AllerteListAdapter.
      * UI elements
      */
     TextView    txt_name;
+    TextView    txt_day;
     ImageButton btn_link;
     CardView    card;
     LinearLayout ll;
 
     public ViewHolder(View v) {
       super(v);
-      txt_name = v.findViewById(R.id.item_allerte_txt_name);
+      txt_name = v.findViewById(R.id.item_allerte_txt_title);
+      txt_day  = v.findViewById(R.id.item_allerte_txt_subtitle);
       btn_link = v.findViewById(R.id.item_allerte_btn_link);
       card     = v.findViewById(R.id.item_allerte_cardview);
       ll       = v.findViewById(R.id.item_allerte_ll);
@@ -79,7 +81,8 @@ public class AllerteListAdapter extends RecyclerView.Adapter<AllerteListAdapter.
     String data   = allerta[1];
     String titolo = allerta[0];
     String link   = allerta[2];
-    holder.txt_name.setText(String.format("%s \n %s", data, titolo));
+    holder.txt_day.setText(String.format("%s", data));
+    holder.txt_name.setText(String.format("%s", titolo));
 
     holder.btn_link.setOnClickListener(v -> {
       // open link

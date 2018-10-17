@@ -2,6 +2,7 @@ package it.chiarani.meteotrentinoapp.views;
 
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,6 +23,7 @@ import it.chiarani.meteotrentinoapp.adapters.WeatherStationAdapter;
 import it.chiarani.meteotrentinoapp.api.API_stationWeatherData;
 import it.chiarani.meteotrentinoapp.api.API_stationWeatherData_response;
 import it.chiarani.meteotrentinoapp.databinding.ActivityWeatherStationBinding;
+import it.chiarani.meteotrentinoapp.helper.CustomDialog;
 import it.chiarani.meteotrentinoapp.helper.WeatherStation;
 import it.chiarani.meteotrentinoapp.xml_parser.XmlDatiOggi;
 import it.chiarani.meteotrentinoapp.xml_parser.XmlTemperaturaAria;
@@ -77,7 +79,11 @@ public class WeatherStationActivity extends SampleActivity implements API_statio
     data = dataaa;
 
     if(data.getTemperature().get(0).getTemperature() == null || data.getTemperature()== null || data == null || data.getTemperature().isEmpty()) {
-      Toast.makeText(this, "Stazione non attiva.", Toast.LENGTH_LONG).show();
+
+      CustomDialog cdd = new CustomDialog(this, "Stazione meteo non attiva.");
+      cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+      cdd.show();
+
       if(binding.activityWeatherStationRv.getAdapter() != null) {
         WeatherStationAdapter adapter1 = (WeatherStationAdapter) binding.activityWeatherStationRv.getAdapter();
         adapter1.clear();

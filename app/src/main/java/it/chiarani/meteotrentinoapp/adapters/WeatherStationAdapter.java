@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.Collections;
+
 import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.xml_parser.XmlDatiOggi;
 
@@ -21,6 +23,7 @@ public class WeatherStationAdapter extends RecyclerView.Adapter<WeatherStationAd
   }
 
   public WeatherStationAdapter(XmlDatiOggi report) {
+    Collections.reverse(report.getTemperature().get(0).getTemperature());
     this.report = report;
   }
 
@@ -48,7 +51,7 @@ public class WeatherStationAdapter extends RecyclerView.Adapter<WeatherStationAd
     String ora  = report.getTemperature().get(0).getTemperature().get(position).getData().split("T")[1];
     String temp = report.getTemperature().get(0).getTemperature().get(position).getTemperatura();
 
-    holder.txt_data.setText(String.format("%s %s", data, ora));
+    holder.txt_data.setText(String.format("[%s] Ore: %s", data, ora.substring(0,5)));
     holder.txt_temp.setText(String.format("%s °C", temp));
   }
 

@@ -42,10 +42,10 @@
   <dimen name="activity_main_itembar_img_ml">30dp</dimen>
   <dimen name="activity_main_itembar_img_size">20dp</dimen>
   <dimen name="activity_main_itembar_txt_size">14sp</dimen>
-  <dimen name="activity_main_posbar_mt">20dp</dimen>
+  <dimen name="activity_main_posbar_mt">25dp</dimen>
   <dimen name="activity_main_posbar_img_size">20dp</dimen>
   <dimen name="activity_main_posbar_txt_size">15sp</dimen>
-  <dimen name="activity_main_posbar_txt_prev_mt">15dp</dimen>
+  <dimen name="activity_main_posbar_txt_prev_mt">10dp</dimen>
   <dimen name="activity_main_posbar_txt_allerta_mt">7dp</dimen>
   <dimen name="activity_main_tempbar_mt">170dp</dimen>
   <dimen name="activity_main_tempbar_txt_temp_size">90sp</dimen>
