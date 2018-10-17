@@ -305,7 +305,13 @@ public class MainActivity extends SampleActivity{
         binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_day);
         window.setStatusBarColor(Color.parseColor("#7AA9C3"));
 
-        if(now >= (sunrise - 1800000) && now < (sunrise + 1800000)) {
+        if(now <= (sunrise - 1800000)) {
+          // night
+          binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_night);
+          window.setStatusBarColor(Color.parseColor("#345A7B"));
+          isNight = true;
+        }
+        if(now > (sunrise - 1800000) && now < (sunrise + 1800000)) {
           // sunrise
           binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_new_sunsire);
           window.setStatusBarColor(Color.parseColor("#EF7942"));
