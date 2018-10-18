@@ -5,7 +5,7 @@
     <item
       android:id="@+id/drawer_view_search"
       android:icon="@drawable/ic_search"
-      android:title="Cambia Luogo" />
+      android:title="Cambia Località" />
     <item
       android:id="@+id/drawer_view_first_pref"
       android:icon="@drawable/ic_star"

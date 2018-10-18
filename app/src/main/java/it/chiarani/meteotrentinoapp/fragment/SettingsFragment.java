@@ -81,6 +81,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Prefer
       case "pref_key_pulisci_database":
         WeatherReportRepository repo = new WeatherReportRepository(getActivity().getApplication());
         repo.deleteAll();
+        Toast.makeText(getContext(), "Ok.", Toast.LENGTH_SHORT).show();
         break;
     }
 

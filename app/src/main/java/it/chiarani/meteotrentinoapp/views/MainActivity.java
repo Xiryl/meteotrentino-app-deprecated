@@ -134,7 +134,7 @@ public class MainActivity extends SampleActivity{
     MenuItem second_pref = menu.findItem(R.id.drawer_view_second_pref);
     MenuItem app_version = menu.findItem(R.id.drawer_view_app_version);
 
-    app_version.setTitle("v1.9.1-beta");
+    app_version.setTitle("v2.0-stabile");
 
     first_pref.setTitle(first_pos);
     second_pref.setTitle(second_pos);
@@ -147,7 +147,7 @@ public class MainActivity extends SampleActivity{
           switch (menuItem.getItemId()){
 
             case R.id.drawer_view_app_version:
-              CustomDialog cdd = new CustomDialog(MainActivity.this, "Versione v1.9.1-beta\n-Miglioramento Interfaccia Grafica\n-Miglioramento Reparto \"Dati Stazioni\"\n-Miglioramento gestione delle notifiche\n-Risolto problema sfondo\n-Migliore Stabilità Nell'app");
+              CustomDialog cdd = new CustomDialog(MainActivity.this, "Versione v2-.0-stabile\n-Miglioramento Interfaccia Grafica\n-Miglioramento Reparto \"Dati Stazioni\"\n-Miglioramento gestione delle notifiche\n-Risolto problema sfondo\n-Migliore Stabilità Nell'app\n-Aggiunta opzione \"pulisci database\" all'interno delle impostazioni");
               cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
               cdd.show();
               break;
