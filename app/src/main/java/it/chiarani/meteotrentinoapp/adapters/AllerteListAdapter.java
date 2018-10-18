@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -43,7 +43,7 @@ public class AllerteListAdapter extends RecyclerView.Adapter<AllerteListAdapter.
     TextView    txt_day;
     ImageButton btn_link;
     CardView    card;
-    LinearLayout ll;
+    RelativeLayout rl;
 
     public ViewHolder(View v) {
       super(v);
@@ -51,7 +51,7 @@ public class AllerteListAdapter extends RecyclerView.Adapter<AllerteListAdapter.
       txt_day  = v.findViewById(R.id.item_allerte_txt_subtitle);
       btn_link = v.findViewById(R.id.item_allerte_btn_link);
       card     = v.findViewById(R.id.item_allerte_cardview);
-      ll       = v.findViewById(R.id.item_allerte_ll);
+      rl = v.findViewById(R.id.item_allerte_rl);
       v.setOnClickListener(this);
     }
 
@@ -74,9 +74,19 @@ public class AllerteListAdapter extends RecyclerView.Adapter<AllerteListAdapter.
 
   /**
    * Single Item
+   * the position is the absolute
    */
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
+
+    if(position == 0){
+      holder.rl.setBackgroundResource(R.drawable.allerte_item_list_gradient_accent);
+    }
+    else{
+      holder.rl.setBackgroundResource(R.drawable.allerte_item_list_gradient);
+    }
+
+
     String[] allerta = allerte_list.get(position).split(";");
     String data   = allerta[1];
     String titolo = allerta[0];

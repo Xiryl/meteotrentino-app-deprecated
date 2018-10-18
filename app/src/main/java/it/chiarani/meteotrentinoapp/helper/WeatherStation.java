@@ -21,7 +21,6 @@ public class WeatherStation {
 
   public static String getStationFromPos(int Pos) {
     String[] arr = WeatherStationsCSV.WeatherStationsCSV.split("\n");
-
     int i = 1;
     for (String anArr : arr) {
       if(i == Pos) {
@@ -29,7 +28,6 @@ public class WeatherStation {
       }
       i++;
     }
-
     return "";
   }
 }

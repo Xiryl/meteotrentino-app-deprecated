@@ -23,16 +23,12 @@ public class DialogShower {
     builder = new AlertDialog.Builder(context, android.R.style.Theme_Material_Dialog_Alert);
     builder.setTitle(title)
         .setMessage(description)
-        .setPositiveButton(posButton, new DialogInterface.OnClickListener() {
-          public void onClick(DialogInterface dialog, int which) {
-            if(intent != null)
-              context.startActivity(intent);
-          }
+        .setPositiveButton(posButton, (dialog, which) -> {
+          if(intent != null)
+            context.startActivity(intent);
         })
-        .setNegativeButton(negButton, new DialogInterface.OnClickListener() {
-          public void onClick(DialogInterface dialog, int which) {
-            // do nothing
-          }
+        .setNegativeButton(negButton, (dialog, which) -> {
+          // do nothing
         })
         .setIcon(android.R.drawable.ic_dialog_alert)
         .show();

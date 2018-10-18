@@ -19,8 +19,8 @@ public class OpenWeatherDataRepository {
   private LiveData<List<OpenWeatherDataEntity>> openWeatherDataEntities;
 
   public OpenWeatherDataRepository(Application app ){
-    AppDatabase db = Room.databaseBuilder(app.getApplicationContext(), AppDatabase.class, "appDatabase").build();
-    openWeatherDataDao = db.openWeatherDataDao();
+    AppDatabase db          = Room.databaseBuilder(app.getApplicationContext(), AppDatabase.class, "appDatabase").build();
+    openWeatherDataDao      = db.openWeatherDataDao();
     openWeatherDataEntities = openWeatherDataDao.getAll();
   }
 

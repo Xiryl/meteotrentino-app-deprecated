@@ -30,13 +30,11 @@ import it.chiarani.meteotrentinoapp.repositories.LocalityRepository;
 public class API_protezioneCivileAvvisiAllerte extends AsyncTask<String, Integer, Integer> {
 
   // #region private fields
-  private final static String API_LOCALITY_TAG = "API_LOCALITY";
-  private final static String URL_API = API_endpoint.ENDPOINT_LOCALITY;
+  private final static String                       CLASS_TAG = "API_protAllerte";
+  private API_protezioneCivileAvvisiAllerte_response delegate = null;
+  private ArrayList<String>                          data     = new ArrayList<>();
   private Context mContext;
   private AlertDialog builder;
-  private Application _app;
-  private API_protezioneCivileAvvisiAllerte_response delegate = null;
-  private ArrayList<String> data = new ArrayList<>();
   // #endregion
 
   /**
@@ -44,8 +42,7 @@ public class API_protezioneCivileAvvisiAllerte extends AsyncTask<String, Integer
    * @param mContext app context
    * @param res callback interface for get content async
    */
-  public API_protezioneCivileAvvisiAllerte(Application app, Context mContext, API_protezioneCivileAvvisiAllerte_response res) {
-    this._app     = app;
+  public API_protezioneCivileAvvisiAllerte(Context mContext, API_protezioneCivileAvvisiAllerte_response res) {
     this.mContext = mContext;
     this.delegate = res;
   }
@@ -58,7 +55,7 @@ public class API_protezioneCivileAvvisiAllerte extends AsyncTask<String, Integer
     super.onPreExecute();
 
     AlertDialog.Builder alert = new AlertDialog.Builder(mContext);
-    alert.setMessage("Ottengo le allerte..").create();
+    alert.setMessage(mContext.getResources().getString(R.string.API_protezionecivile)).create();
     alert.setCancelable(false);
     builder = alert.show();
   }
@@ -80,39 +77,40 @@ public class API_protezioneCivileAvvisiAllerte extends AsyncTask<String, Integer
   @Override
   protected Integer doInBackground(String... s) {
     try {
-      Document doc = Jsoup.connect("http://avvisi.protezionecivile.tn.it/elencoavvisi.aspx").get();
-      String title = doc.title();
+      Document doc = Jsoup.connect(API_endpoint.ENDPOINT_ALLERTE).get();
+
+      // get data from DOM
       Elements links = doc.select("ul li span a");
       Elements dates = doc.select("ul li span span");
-      ArrayList<String> tmp = new ArrayList<>();
 
       int x = 0;
       for (Element link : links) {
-        String onclick = link.attr("onclick");
-        String sub_onclick = onclick.substring(13);
-        String sub_link = sub_onclick.split(",")[0];
-        String my_l = sub_link.substring(0, sub_link.length()-1);
-        String y = "http://avvisi.protezionecivile.tn.it" + my_l;
-        String l =  dates.get(x).text().split(" ")[1];
-        String l1=dates.get(x).text().split(" ")[2];
-        String l2=dates.get(x).text().split(" ")[3];
-        data.add(link.text()+ ";" + l+ " "+ l1+ " "+ l2+";" + y);
+
+        String onclick_attr  = link.attr("onclick");
+        String sub_onclick   = onclick_attr.substring(13);
+        String sub_link      = sub_onclick.split(",")[0];
+        String document_link = sub_link.substring(0, sub_link.length()-1);
+        String final_link    = "http://avvisi.protezionecivile.tn.it" + document_link;
+        String date_pt1      = dates.get(x).text().split(" ")[1];
+        String date_pt2      = dates.get(x).text().split(" ")[2];
+        String date_pt3      = dates.get(x).text().split(" ")[3];
+
+        // add element to list
+        data.add(link.text() + ";" + date_pt1 + " "+ date_pt2 + " "+ date_pt3 +";" + final_link);
+
         x++;
         if(x >= links.size())
           break;
       }
-
-
-
     } catch (IOException e) {
-      Log.d("d", e.getMessage());
+      Log.e(CLASS_TAG, e.getMessage());
     }
     return 1;
   }
 
   @Override
   protected void onProgressUpdate(Integer... values) {
-    TextView messageView = (TextView)builder.findViewById(android.R.id.message);
-    messageView.setText("Ottengo le allerte.. "+ values[0] +"%");
+    TextView messageView = builder.findViewById(android.R.id.message);
+    messageView.setText(String.format("%s %s%%", mContext.getResources().getString(R.string.API_protezionecivile), values[0]));
   }
 }

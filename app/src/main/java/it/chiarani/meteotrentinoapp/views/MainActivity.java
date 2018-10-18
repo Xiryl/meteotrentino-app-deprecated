@@ -134,7 +134,7 @@ public class MainActivity extends SampleActivity{
     MenuItem second_pref = menu.findItem(R.id.drawer_view_second_pref);
     MenuItem app_version = menu.findItem(R.id.drawer_view_app_version);
 
-    app_version.setTitle("v1.9-beta");
+    app_version.setTitle("v1.9.1-beta");
 
     first_pref.setTitle(first_pos);
     second_pref.setTitle(second_pos);

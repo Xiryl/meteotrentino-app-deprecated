@@ -34,6 +34,7 @@ import java.util.List;
 import java.util.Locale;
 
 import it.chiarani.meteotrentinoapp.R;
+import it.chiarani.meteotrentinoapp.adapters.WeatherReportAdapter;
 import it.chiarani.meteotrentinoapp.api.API_weatherReport;
 import it.chiarani.meteotrentinoapp.api.API_weatherReport_response;
 import it.chiarani.meteotrentinoapp.database.entity.LocalityEntity;
@@ -47,10 +48,9 @@ import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
 public class LoaderActivity extends SampleActivity implements API_weatherReport_response{
 
   // #region private fields
+  private final static String ACTIVITY_TAG = "LOADER_ACTIVITY";
   private ActivityLoaderBinding binding;
   private String user_location = "TRENTO";
-  private boolean wait_for_permissions = false;
-  private final static String ACTIVITY_TAG = "LOADER_ACTIVITY";
   private final int PERMISSION_REQ_CODE = 101;
   // #endregion
 
@@ -88,12 +88,10 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
     //  If the activity has never started before...
     if (isFirstStart) {
 
-
       Intent x = new Intent(this, IntroActivity.class);
       x.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
       startActivity(x);
       this.finish();
-
 
       //  Make a new preferences editor
       SharedPreferences.Editor e = getPrefs.edit();
@@ -103,8 +101,6 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
 
       //  Apply changes
       e.apply();
-
-
     }
     else
     {

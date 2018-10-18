@@ -12,5 +12,4 @@ public class ItDays {
   public static final String VEN = "Ven ";
   public static final String SAB = "Sab ";
   public static final String DOM = "Dom ";
-
 }

@@ -29,8 +29,8 @@ public class CustomAlertRepository {
    * Constructor
    */
   public CustomAlertRepository(Application app) {
-    AppDatabase db = Room.databaseBuilder(app.getApplicationContext(), AppDatabase.class, "appDatabase").build();
-    alertDao    = db.customAlertDao();
+    AppDatabase db    = Room.databaseBuilder(app.getApplicationContext(), AppDatabase.class, "appDatabase").build();
+    alertDao          = db.customAlertDao();
     customAlertEntity = alertDao.getAll();
   }
 

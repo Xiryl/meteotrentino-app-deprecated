@@ -23,6 +23,10 @@
       android:title="Cancella Località Preferite"
       android:summary="Clicca qua per resettare le località preferite salvate" />
     <Preference
+      android:key="pref_key_pulisci_database"
+      android:title="Cancella dati database"
+      android:summary="Elimina tutti i dati interni dell'applicazione" />
+    <Preference
       android:key="pref_key_feedback"
       android:title="Contattami"
       android:summary="Vuoi proporre una modifica o segnalare un malfunzionamento?" />

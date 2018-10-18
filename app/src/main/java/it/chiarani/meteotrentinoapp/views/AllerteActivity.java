@@ -103,7 +103,7 @@ public class AllerteActivity extends SampleActivity implements API_protezioneCiv
       });
     });
 
-    new API_protezioneCivileAvvisiAllerte(getApplication(), this, this::processFinish).execute();
+    new API_protezioneCivileAvvisiAllerte(this, this::processFinish).execute();
   }
 
   @Override

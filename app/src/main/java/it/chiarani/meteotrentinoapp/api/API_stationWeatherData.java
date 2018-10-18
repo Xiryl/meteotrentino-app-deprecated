@@ -1,6 +1,7 @@
 package it.chiarani.meteotrentinoapp.api;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.thoughtworks.xstream.XStream;
 
@@ -15,9 +16,10 @@ import it.chiarani.meteotrentinoapp.xml_parser.XmlTemperature;
 public class API_stationWeatherData extends AsyncTask<Void, Void, Void> {
 
   // #region private fields
+  private final static String             CLASS_TAG    = "API_stationWeatherData";
+  private final int                       HTTP_TIMEOUT = 15000;
+  private API_stationWeatherData_response delegate     = null;
   private XmlDatiOggi data;
-  private API_stationWeatherData_response delegate = null;
-  private final int HTTP_TIMEOUT = 15000;
   private String API_URL;
   // #endregion
 
@@ -27,7 +29,7 @@ public class API_stationWeatherData extends AsyncTask<Void, Void, Void> {
    */
   public API_stationWeatherData(API_stationWeatherData_response delegate, String station_code) {
     this.delegate = delegate;
-    this.API_URL = API_endpoint.ENDPOINT_XML_STATION_DATA + station_code;
+    this.API_URL  = API_endpoint.ENDPOINT_XML_STATION_DATA + station_code;
   }
 
   @Override
@@ -36,7 +38,7 @@ public class API_stationWeatherData extends AsyncTask<Void, Void, Void> {
       XStream xstream = new XStream();
       xstream.ignoreUnknownElements();
 
-      // aliasing
+      // aliasing xml
       xstream.autodetectAnnotations(true);
       xstream.alias("datiOggi", XmlDatiOggi.class);
       xstream.alias("temperature", XmlTemperature.class);
@@ -45,7 +47,7 @@ public class API_stationWeatherData extends AsyncTask<Void, Void, Void> {
       data = loadXml(API_URL, xstream);
 
     } catch (Exception e) {
-      e.printStackTrace();
+      Log.e(CLASS_TAG, e.getMessage());
     }
     return null;
   }
@@ -59,14 +61,15 @@ public class API_stationWeatherData extends AsyncTask<Void, Void, Void> {
   private InputStream getInputStreamFromURL(String stringUrl) throws Exception {
     URL input = new URL(stringUrl);
     HttpURLConnection conn = (HttpURLConnection) input.openConnection();
+
     conn.setConnectTimeout(HTTP_TIMEOUT);
     conn.setReadTimeout(HTTP_TIMEOUT);
+
     return conn.getInputStream();
   }
 
   // load xml from stream
   private <T> T loadXml(String xmlUrl, XStream xStream) {
-
     T result = null;
     try {
       InputStream inputStream = getInputStreamFromURL(xmlUrl);

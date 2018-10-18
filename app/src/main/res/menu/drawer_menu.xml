@@ -27,13 +27,13 @@
       android:icon="@drawable/ic_station"
       android:title="Dati Stazioni" />
     <item
-      android:id="@+id/drawer_view_staz_neve"
-      android:icon="@drawable/ic_valanghe"
-      android:title="Neve e Valanghe" />
-    <item
       android:id="@+id/drawer_view_bollettini"
       android:icon="@drawable/ic_report"
       android:title="Bollettini" />
+    <item
+      android:id="@+id/drawer_view_staz_neve"
+      android:icon="@drawable/ic_valanghe"
+      android:title="Neve e Valanghe" />
     <item
       android:id="@+id/drawer_view_telegram"
       android:icon="@drawable/ic_telegram"
