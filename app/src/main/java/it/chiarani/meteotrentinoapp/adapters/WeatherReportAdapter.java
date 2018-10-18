@@ -45,7 +45,7 @@ public class WeatherReportAdapter extends RecyclerView.Adapter<WeatherReportAdap
   }
 
 
-  public static class ViewHolder extends RecyclerView.ViewHolder {
+  class ViewHolder extends RecyclerView.ViewHolder {
 
     TextView     txt_time_slot;
     TextView     txt_tmin;
@@ -97,11 +97,10 @@ public class WeatherReportAdapter extends RecyclerView.Adapter<WeatherReportAdap
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-
-  /**
-   * To collapse elements:
-   * https://stackoverflow.com/questions/27203817/recyclerview-expand-collapse-items
-   */
+    /**
+     * To collapse elements:
+     * https://stackoverflow.com/questions/27203817/recyclerview-expand-collapse-items
+     */
 
     final boolean isExpanded = position == mExpandedPosition;
 
@@ -127,12 +126,10 @@ public class WeatherReportAdapter extends RecyclerView.Adapter<WeatherReportAdap
     WeatherForDayEntity wfd  = weather_report.getPrevisione().getGiorni().get(weather_day);
     WeatherForSlotEntity wfs = wfd.getFasce().get(position);
 
-    if(wfd.getDescIconaAllerte().isEmpty())
-    {
+    if(wfd.getDescIconaAllerte().isEmpty()) {
       holder.txt_allerta.setVisibility(View.GONE);
     }
-    else
-    {
+    else {
       // show allerta info
       holder.txt_allerta.setVisibility(View.VISIBLE);
       holder.txt_allerta.setText(wfd.getDescIconaAllerte());
@@ -145,7 +142,6 @@ public class WeatherReportAdapter extends RecyclerView.Adapter<WeatherReportAdap
       mExpandedPosition = isExpanded ? -1 : position;
       notifyItemChanged(position);
     });
-
 
     // set item data
     holder.txt_tmin           .setText(String.format("%s: %s°", mContext.getResources().getString(R.string.s_weatherreportadapter_tmin), wfd.gettMinGiorno()));
@@ -168,5 +164,4 @@ public class WeatherReportAdapter extends RecyclerView.Adapter<WeatherReportAdap
   public int getItemCount() {
     return weather_report.getPrevisione().getGiorni().get(weather_day).getFasce().size();
   }
-
 }

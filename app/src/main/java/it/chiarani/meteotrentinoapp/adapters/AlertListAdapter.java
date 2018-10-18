@@ -1,7 +1,6 @@
 package it.chiarani.meteotrentinoapp.adapters;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -21,28 +20,28 @@ import it.chiarani.meteotrentinoapp.api.API_endpoint;
  * Adapter for allerte used in AllerteActivity
  */
 
-public class AllerteListAdapter extends RecyclerView.Adapter<AllerteListAdapter.ViewHolder> {
+public class AlertListAdapter extends RecyclerView.Adapter<AlertListAdapter.ViewHolder> {
 
   // #region private fields
-  private ArrayList<String> allerte_list;
+  private ArrayList<String> alerts;
   // #endregion
 
-  public AllerteListAdapter(ArrayList<String> data) {
-    this.allerte_list = data;
+  public AlertListAdapter(ArrayList<String> data) {
+    this.alerts = data;
   }
 
   /**
    * ViewHolder
    */
-  public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+  class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     /**
      * UI elements
      */
-    TextView    txt_name;
-    TextView    txt_day;
-    ImageButton btn_link;
-    CardView    card;
+    TextView       txt_name;
+    TextView       txt_day;
+    ImageButton    btn_link;
+    CardView       card;
     RelativeLayout rl;
 
     public ViewHolder(View v) {
@@ -51,14 +50,14 @@ public class AllerteListAdapter extends RecyclerView.Adapter<AllerteListAdapter.
       txt_day  = v.findViewById(R.id.item_allerte_txt_subtitle);
       btn_link = v.findViewById(R.id.item_allerte_btn_link);
       card     = v.findViewById(R.id.item_allerte_cardview);
-      rl = v.findViewById(R.id.item_allerte_rl);
+      rl       = v.findViewById(R.id.item_allerte_rl);
       v.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
       int pos = this.getLayoutPosition();
-      String link = allerte_list.get(pos).split(";")[2];
+      String link = alerts.get(pos).split(";")[2];
 
       // Open link
       Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(API_endpoint.GOOGLE_DOCS_BASE + link));
@@ -67,7 +66,7 @@ public class AllerteListAdapter extends RecyclerView.Adapter<AllerteListAdapter.
   }
 
   @Override
-  public AllerteListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+  public AlertListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     View singleItemLayout = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_allerte, parent, false);
     return new ViewHolder(singleItemLayout);
   }
@@ -79,20 +78,19 @@ public class AllerteListAdapter extends RecyclerView.Adapter<AllerteListAdapter.
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
 
-    if(position == 0){
+    if(position == 0) {
       holder.rl.setBackgroundResource(R.drawable.allerte_item_list_gradient_accent);
     }
-    else{
+    else {
       holder.rl.setBackgroundResource(R.drawable.allerte_item_list_gradient);
     }
 
-
-    String[] allerta = allerte_list.get(position).split(";");
-    String data   = allerta[1];
-    String titolo = allerta[0];
-    String link   = allerta[2];
+    String[] alert = alerts.get(position).split(";");
+    String data   = alert[1];
+    String title = alert[0];
+    String link   = alert[2];
     holder.txt_day.setText(String.format("%s", data));
-    holder.txt_name.setText(String.format("%s", titolo));
+    holder.txt_name.setText(String.format("%s", title));
 
     holder.btn_link.setOnClickListener(v -> {
       // open link
@@ -103,6 +101,6 @@ public class AllerteListAdapter extends RecyclerView.Adapter<AllerteListAdapter.
 
   @Override
   public int getItemCount() {
-    return allerte_list.size();
+    return alerts.size();
   }
 }

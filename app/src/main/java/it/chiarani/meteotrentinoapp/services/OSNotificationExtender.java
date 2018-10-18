@@ -1,4 +1,4 @@
-package it.chiarani.meteotrentinoapp.servicies;
+package it.chiarani.meteotrentinoapp.services;
 
 import android.app.Notification;
 import android.content.Intent;
@@ -149,7 +149,7 @@ public class OSNotificationExtender extends NotificationExtenderService {
 
     if (show_notification) {
       OSNotificationDisplayedResult displayedResult = displayNotification(overrideSettings);
-      Log.d("OneSignalExample", "Notification displayed with id: " + displayedResult.androidNotificationId);
+      Log.d(OSNotificationExtender.class.getSimpleName(), "Notification displayed with id: " + displayedResult.androidNotificationId);
     }
 
     return true;

@@ -27,7 +27,7 @@ public class WeatherStationAdapter extends RecyclerView.Adapter<WeatherStationAd
     this.report = report;
   }
 
-  public static class ViewHolder extends RecyclerView.ViewHolder {
+  class ViewHolder extends RecyclerView.ViewHolder {
 
     TextView txt_data;
     TextView txt_temp;

@@ -18,14 +18,14 @@ import android.widget.Toast;
 import java.util.List;
 
 import it.chiarani.meteotrentinoapp.R;
-import it.chiarani.meteotrentinoapp.api.API_locality;
-import it.chiarani.meteotrentinoapp.api.API_locality_response;
+import it.chiarani.meteotrentinoapp.api.API_location;
+import it.chiarani.meteotrentinoapp.api.API_location_response;
 import it.chiarani.meteotrentinoapp.database.entity.LocalityEntity;
 import it.chiarani.meteotrentinoapp.databinding.ActivityChooseLocationBinding;
 import it.chiarani.meteotrentinoapp.models.Locality;
 import it.chiarani.meteotrentinoapp.repositories.LocalityRepository;
 
-public class ChooseLocationActivity extends SampleActivity implements API_locality_response {
+public class ChooseLocationActivity extends SampleActivity implements API_location_response {
 
   // #region private fields
   private static final String CHOOSELOCATIONACTIVITY_TAG = "CHOOSELOCATIONACTIVITY";
@@ -69,7 +69,7 @@ public class ChooseLocationActivity extends SampleActivity implements API_locali
     repository.getAll().observe(this, entries -> {
       if(entries.size() == 0) {
         // Launch async task for get locality
-        new API_locality(getApplication(), this, this::processFinish).execute();
+        new API_location(getApplication(), this, this::processFinish).execute();
       }
       else
       {

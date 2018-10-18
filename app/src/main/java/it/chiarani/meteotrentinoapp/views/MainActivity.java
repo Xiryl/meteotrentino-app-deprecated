@@ -49,7 +49,7 @@ import it.chiarani.meteotrentinoapp.models.WeatherReport;
 import it.chiarani.meteotrentinoapp.repositories.CustomAlertRepository;
 import it.chiarani.meteotrentinoapp.repositories.OpenWeatherDataRepository;
 import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
-import it.chiarani.meteotrentinoapp.servicies.OSNotificationOpenedHandler;
+import it.chiarani.meteotrentinoapp.services.OSNotificationOpenedHandler;
 
 public class MainActivity extends SampleActivity{
 

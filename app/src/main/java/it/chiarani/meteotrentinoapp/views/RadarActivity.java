@@ -1,13 +1,9 @@
 package it.chiarani.meteotrentinoapp.views;
 
-import android.app.Dialog;
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
-import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -20,7 +16,6 @@ import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.api.API_endpoint;
 import it.chiarani.meteotrentinoapp.databinding.ActivityRadarBinding;
 import it.chiarani.meteotrentinoapp.helper.CustomDialog;
-import it.chiarani.meteotrentinoapp.helper.DialogShower;
 
 public class RadarActivity extends SampleActivity{
 
@@ -55,7 +50,7 @@ public class RadarActivity extends SampleActivity{
 
     // infrarossi
     Glide.with(this)
-        .load(API_endpoint.ENDPOINT_INFRAROSSI)
+        .load(API_endpoint.ENDPOINT_INFRARED)
         .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE))
         .into(binding.fragmentRadarImgInfrarossoAlpi);
 

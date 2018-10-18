@@ -1,29 +1,13 @@
-package it.chiarani.meteotrentinoapp.servicies;
+package it.chiarani.meteotrentinoapp.services;
 
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.app.Service;
-import android.content.Context;
-import android.content.Intent;
-import android.media.RingtoneManager;
-import android.net.Uri;
-import android.os.Build;
-import android.os.IBinder;
-import android.support.v4.app.NotificationCompat;
 import android.util.Log;
-
-import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
-
-import it.chiarani.meteotrentinoapp.R;
-import it.chiarani.meteotrentinoapp.views.MainActivity;
 
 // https://www.codementor.io/flame3/send-push-notifications-to-android-with-firebase-du10860kb
 // https://medium.com/@mateuslb91/firebase-cloud-messaging-1cc8f1fbb4cf
 // https://firebase.google.com/docs/cloud-messaging/android/receive
 
-public class MyFirebaseMessagingService extends FirebaseMessagingService {
+public class MessagingService extends com.google.firebase.messaging.FirebaseMessagingService {
   private static final String TAG = "FCMService";
   @Override
   public void onMessageReceived(RemoteMessage remoteMessage) {

@@ -1,4 +1,4 @@
-package it.chiarani.meteotrentinoapp.servicies;
+package it.chiarani.meteotrentinoapp.services;
 
 import android.util.Log;
 

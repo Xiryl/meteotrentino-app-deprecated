@@ -18,7 +18,7 @@ public class API_stationWeatherData extends AsyncTask<Void, Void, Void> {
   // #region private fields
   private final static String             CLASS_TAG    = "API_stationWeatherData";
   private final int                       HTTP_TIMEOUT = 15000;
-  private API_stationWeatherData_response delegate     = null;
+  private API_stationWeatherData_response delegate;
   private XmlDatiOggi data;
   private String API_URL;
   // #endregion

@@ -39,8 +39,6 @@ public class OpenWeatherDataRepository {
 
   public void deleteAll() {
     // start on a new thread
-    Executors.newSingleThreadExecutor().execute(() -> {
-      openWeatherDataDao.deleteAll();
-    });
+    Executors.newSingleThreadExecutor().execute(() -> openWeatherDataDao.deleteAll());
   }
 }

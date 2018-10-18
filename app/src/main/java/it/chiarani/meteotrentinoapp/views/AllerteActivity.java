@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.chiarani.meteotrentinoapp.R;
-import it.chiarani.meteotrentinoapp.adapters.AllerteListAdapter;
+import it.chiarani.meteotrentinoapp.adapters.AlertListAdapter;
 import it.chiarani.meteotrentinoapp.api.API_protezioneCivileAvvisiAllerte;
 import it.chiarani.meteotrentinoapp.api.API_protezioneCivileAvvisiAllerte_response;
 import it.chiarani.meteotrentinoapp.databinding.ActivityAllerteBinding;
@@ -114,7 +114,7 @@ public class AllerteActivity extends SampleActivity implements API_protezioneCiv
 
     LinearLayoutManager horizontalLayoutManagaer = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
     binding.activityAllerteRv.setLayoutManager(horizontalLayoutManagaer);
-    AllerteListAdapter adapter1 = new AllerteListAdapter(data);
+    AlertListAdapter adapter1 = new AlertListAdapter(data);
     binding.activityAllerteRv.setAdapter(adapter1);
 
 

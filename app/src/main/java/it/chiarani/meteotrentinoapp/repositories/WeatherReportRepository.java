@@ -36,9 +36,7 @@ public class WeatherReportRepository {
 
   public void deleteAll() {
     // start on a new thread
-    Executors.newSingleThreadExecutor().execute(() -> {
-      weatherReportDao.deleteAll();
-    });
+    Executors.newSingleThreadExecutor().execute(() -> weatherReportDao.deleteAll());
   }
 
 }

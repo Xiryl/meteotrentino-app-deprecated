@@ -109,7 +109,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging:17.3.1'
     implementation 'com.crashlytics.sdk.android:crashlytics:2.9.5'
 
-    // play servicies
+    // play services
     implementation 'com.google.android.gms:play-services-location:15.0.1'
     implementation 'com.google.android.gms:play-services-places:15.0.1'
 

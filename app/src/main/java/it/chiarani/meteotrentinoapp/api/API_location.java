@@ -21,15 +21,15 @@ import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.database.entity.LocalityEntity;
 import it.chiarani.meteotrentinoapp.repositories.LocalityRepository;
 
-public class API_locality extends AsyncTask<String, Integer, Integer>{
+public class API_location extends AsyncTask<String, Integer, Integer>{
 
   // #region private fields
-  private final static String   CLASS_TAG        = "API_LOCALITY";
-  private final static String   URL_API          = API_endpoint.ENDPOINT_LOCALITY;
-  private API_locality_response delegate         = null;
-  private Context               mContext;
+  private final static String   CLASS_TAG        = API_location.class.getSimpleName();
+  private final static String   URL_API          = API_endpoint.ENDPOINT_LOCATION;
+  private API_location_response delegate;
+  private Context               context;
   private AlertDialog           builder;
-  private Application           _app;
+  private Application           app;
   // #endregion
 
   /**
@@ -37,9 +37,9 @@ public class API_locality extends AsyncTask<String, Integer, Integer>{
    * @param mContext app context
    * @param res callback interface for get content async
    */
-  public API_locality(Application app, Context mContext, API_locality_response res) {
-    this._app     = app;
-    this.mContext = mContext;
+  public API_location(Application app, Context mContext, API_location_response res) {
+    this.app = app;
+    this.context = mContext;
     this.delegate = res;
   }
 
@@ -50,8 +50,8 @@ public class API_locality extends AsyncTask<String, Integer, Integer>{
   protected void onPreExecute() {
     super.onPreExecute();
 
-    AlertDialog.Builder alert = new AlertDialog.Builder(mContext);
-    alert.setMessage(mContext.getResources().getString(R.string.API_locality_alert)).create();
+    AlertDialog.Builder alert = new AlertDialog.Builder(context);
+    alert.setMessage(context.getResources().getString(R.string.API_locality_alert)).create();
     alert.setCancelable(false);
     builder = alert.show();
   }
@@ -72,7 +72,7 @@ public class API_locality extends AsyncTask<String, Integer, Integer>{
    */
   @Override
   protected Integer doInBackground(String... s) {
-    LocalityRepository repository = new LocalityRepository(_app);
+    LocalityRepository repository = new LocalityRepository(app);
     HttpURLConnection  connection = null;
     BufferedReader     reader     = null;
 
@@ -129,6 +129,6 @@ public class API_locality extends AsyncTask<String, Integer, Integer>{
   @Override
   protected void onProgressUpdate(Integer... values) {
     TextView messageView = builder.findViewById(android.R.id.message);
-    messageView.setText(String.format("%s %s/539",mContext.getResources().getText(R.string.API_locality_alert), values[0] ));
+    messageView.setText(String.format("%s %s/539", context.getResources().getText(R.string.API_locality_alert), values[0] ));
   }
 }

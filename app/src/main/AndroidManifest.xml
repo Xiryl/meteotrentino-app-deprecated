@@ -37,12 +37,12 @@
     <activity android:name=".views.ChooseLocationActivity" android:screenOrientation="portrait"/>
     <activity android:name=".views.WeatherReportActivity" android:screenOrientation="portrait"/>
 
-    <service android:name=".servicies.MyFirebaseMessagingService">
+    <service android:name=".services.MessagingService">
       <intent-filter>
         <action android:name="com.google.firebase.MESSAGING_EVENT" />
       </intent-filter>
     </service>
-    <service android:name=".servicies.FirebaseIDService">
+    <service android:name=".services.FirebaseIDService">
       <intent-filter>
         <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
       </intent-filter>
@@ -65,7 +65,7 @@
     <activity android:name=".views.SettingsActivity" android:screenOrientation="portrait"/>
 
     <service
-      android:name=".servicies.OSNotificationExtender"
+      android:name=".services.OSNotificationExtender"
       android:exported="false"
       android:permission="android.permission.BIND_JOB_SERVICE">
       <intent-filter>

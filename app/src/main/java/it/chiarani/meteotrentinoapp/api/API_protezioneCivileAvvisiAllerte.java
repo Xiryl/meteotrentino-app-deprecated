@@ -1,31 +1,20 @@
 package it.chiarani.meteotrentinoapp.api;
 
 import android.app.AlertDialog;
-import android.app.Application;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
 import it.chiarani.meteotrentinoapp.R;
-import it.chiarani.meteotrentinoapp.database.entity.LocalityEntity;
-import it.chiarani.meteotrentinoapp.repositories.LocalityRepository;
 
 public class API_protezioneCivileAvvisiAllerte extends AsyncTask<String, Integer, Integer> {
 
@@ -77,7 +66,7 @@ public class API_protezioneCivileAvvisiAllerte extends AsyncTask<String, Integer
   @Override
   protected Integer doInBackground(String... s) {
     try {
-      Document doc = Jsoup.connect(API_endpoint.ENDPOINT_ALLERTE).get();
+      Document doc = Jsoup.connect(API_endpoint.ENDPOINT_ALERTS).get();
 
       // get data from DOM
       Elements links = doc.select("ul li span a");
@@ -90,13 +79,13 @@ public class API_protezioneCivileAvvisiAllerte extends AsyncTask<String, Integer
         String sub_onclick   = onclick_attr.substring(13);
         String sub_link      = sub_onclick.split(",")[0];
         String document_link = sub_link.substring(0, sub_link.length()-1);
-        String final_link    = "http://avvisi.protezionecivile.tn.it" + document_link;
+        String final_link    = "http://avvisi.protezionecivile.tn.it" + document_link; // TODO: copy url to API_endpoint
         String date_pt1      = dates.get(x).text().split(" ")[1];
         String date_pt2      = dates.get(x).text().split(" ")[2];
         String date_pt3      = dates.get(x).text().split(" ")[3];
 
         // add element to list
-        data.add(link.text() + ";" + date_pt1 + " "+ date_pt2 + " "+ date_pt3 +";" + final_link);
+        data.add(link.text() + ";" + date_pt1 + " "+ date_pt2 + " "+ date_pt3 +";" + final_link); // TODO: use String.format()
 
         x++;
         if(x >= links.size())

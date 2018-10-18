@@ -36,7 +36,7 @@ public class WeatherSevenDayAdapter extends RecyclerView.Adapter<WeatherSevenDay
     this.weather_report = weather_report;
   }
 
-  public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+  class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     TextView       txt_day;
     TextView       txt_temperature_max;

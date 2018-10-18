@@ -1,8 +1,6 @@
-package it.chiarani.meteotrentinoapp.servicies;
+package it.chiarani.meteotrentinoapp.services;
 
 import android.app.Application;
-import android.content.Intent;
-import android.util.Log;
 
 import com.onesignal.OSNotificationOpenResult;
 import com.onesignal.OneSignal;
@@ -14,7 +12,6 @@ import java.util.TimeZone;
 
 import it.chiarani.meteotrentinoapp.database.entity.CustomAlertEntity;
 import it.chiarani.meteotrentinoapp.repositories.CustomAlertRepository;
-import it.chiarani.meteotrentinoapp.views.MessageActivity;
 
 public class OSNotificationOpenedHandler implements OneSignal.NotificationOpenedHandler {
 
