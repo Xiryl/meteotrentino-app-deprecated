@@ -19,7 +19,7 @@ import it.chiarani.meteotrentinoapp.R;
 public class API_protezioneCivileAvvisiAllerte extends AsyncTask<String, Integer, Integer> {
 
   // #region private fields
-  private final static String                       CLASS_TAG = "API_protAllerte";
+  private final static String                       CLASS_TAG = API_protezioneCivileAvvisiAllerte.class.getSimpleName();
   private API_protezioneCivileAvvisiAllerte_response delegate = null;
   private ArrayList<String>                          data     = new ArrayList<>();
   private Context mContext;
@@ -61,7 +61,7 @@ public class API_protezioneCivileAvvisiAllerte extends AsyncTask<String, Integer
 
   /**
    * Execute in bakground the task:
-   * Create a GET and call a REST API for get all locality and parse the JSON
+   * Create a GET and call a REST API for get all location and parse the JSON
    */
   @Override
   protected Integer doInBackground(String... s) {

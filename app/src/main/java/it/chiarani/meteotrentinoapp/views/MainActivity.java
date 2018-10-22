@@ -19,6 +19,8 @@ import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Toast;
 import com.onesignal.OneSignal;
+import com.sothree.slidinguppanel.ScrollableViewHelper;
+import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 import com.takusemba.spotlight.OnSpotlightStateChangedListener;
 import com.takusemba.spotlight.OnTargetStateChangedListener;
 import com.takusemba.spotlight.Spotlight;
@@ -51,7 +53,7 @@ import it.chiarani.meteotrentinoapp.repositories.OpenWeatherDataRepository;
 import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
 import it.chiarani.meteotrentinoapp.services.OSNotificationOpenedHandler;
 
-public class MainActivity extends SampleActivity{
+public class MainActivity extends SampleActivity {
 
   // #region private fields
   private final static String MAINACTIVITY_TAG = "MAINACTIVITY";
@@ -83,15 +85,10 @@ public class MainActivity extends SampleActivity{
     AppRate.with(this)
         .setInstallDays(4) // default 10, 0 means install day.
         .setLaunchTimes(10) // default 10
-        .setRemindInterval(2) // default 1
-        .setShowLaterButton(true) // default true
-        .setDebug(false) // default false
-        .setOnClickButtonListener(new OnClickButtonListener() { // callback listener.
-          @Override
-          public void onClickButton(int which) {
-            Log.d(MainActivity.class.getName(), Integer.toString(which));
-          }
-        })
+        .setRemindInterval(2)
+        .setShowLaterButton(true)
+        .setDebug(false)
+        .setOnClickButtonListener(which -> Log.d(MainActivity.class.getName(), Integer.toString(which)))
         .monitor();
 
     // Show a dialog if meets conditions
@@ -134,7 +131,7 @@ public class MainActivity extends SampleActivity{
     MenuItem second_pref = menu.findItem(R.id.drawer_view_second_pref);
     MenuItem app_version = menu.findItem(R.id.drawer_view_app_version);
 
-    app_version.setTitle("v2.1-stabile");
+    app_version.setTitle("v2.1.1-stabile");
 
     first_pref.setTitle(first_pos);
     second_pref.setTitle(second_pos);
@@ -147,7 +144,7 @@ public class MainActivity extends SampleActivity{
           switch (menuItem.getItemId()){
 
             case R.id.drawer_view_app_version:
-              CustomDialog cdd = new CustomDialog(MainActivity.this, "Versione v2-.1-stabil\ne-Miglioramento Reparto \"Dati Stazioni\"");
+              CustomDialog cdd = new CustomDialog(MainActivity.this, "Versione v2.1.1-stabile\n-Miglioramento allerte\n-Miglioramento Reparto \"Dati Stazioni\"");
               cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
               cdd.show();
               break;
