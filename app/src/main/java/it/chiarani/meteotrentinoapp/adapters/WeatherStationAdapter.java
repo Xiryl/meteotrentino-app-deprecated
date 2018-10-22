@@ -15,6 +15,7 @@ public class WeatherStationAdapter extends RecyclerView.Adapter<WeatherStationAd
 
   // #region private fields
   private XmlDatiOggi report;
+  private int type = 0; // 0 pioggia; 1 temperature
   // #endregion
 
   public void clear() {
@@ -22,9 +23,10 @@ public class WeatherStationAdapter extends RecyclerView.Adapter<WeatherStationAd
     notifyDataSetChanged();
   }
 
-  public WeatherStationAdapter(XmlDatiOggi report) {
+  public WeatherStationAdapter(XmlDatiOggi report, int type) {
     Collections.reverse(report.getTemperature().get(0).getTemperature());
     this.report = report;
+    this.type = type;
   }
 
   class ViewHolder extends RecyclerView.ViewHolder {
@@ -47,12 +49,24 @@ public class WeatherStationAdapter extends RecyclerView.Adapter<WeatherStationAd
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    String data = report.getTemperature().get(0).getTemperature().get(position).getData().split("T")[0];
-    String ora  = report.getTemperature().get(0).getTemperature().get(position).getData().split("T")[1];
-    String temp = report.getTemperature().get(0).getTemperature().get(position).getTemperatura();
 
-    holder.txt_data.setText(String.format("[%s] Ore: %s", data, ora.substring(0,5)));
-    holder.txt_temp.setText(String.format("%s °C", temp));
+    if(type == 1) {
+      String data = report.getTemperature().get(0).getTemperature().get(position).getData().split("T")[0];
+      String ora  = report.getTemperature().get(0).getTemperature().get(position).getData().split("T")[1];
+      String temp = report.getTemperature().get(0).getTemperature().get(position).getTemperatura();
+
+      holder.txt_data.setText(String.format("[%s] Ore: %s", data, ora.substring(0,5)));
+      holder.txt_temp.setText(String.format("%s °C", temp));
+    }
+    if(type == 0) {
+      String data = report.getPrecipitazioni().get(0).getPrecipitazione().get(position).getData().split("T")[0];
+      String ora  = report.getPrecipitazioni().get(0).getPrecipitazione().get(position).getData().split("T")[1];
+      String prec = report.getPrecipitazioni().get(0).getPrecipitazione().get(position).getPioggia();
+
+      holder.txt_data.setText(String.format("[%s] Ore: %s", data, ora.substring(0,5)));
+      holder.txt_temp.setText(String.format("%s mm", prec));
+    }
+
   }
 
   @Override

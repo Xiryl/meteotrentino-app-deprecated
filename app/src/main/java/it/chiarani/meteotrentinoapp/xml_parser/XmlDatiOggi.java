@@ -27,12 +27,16 @@ public class XmlDatiOggi {
   @XStreamImplicit
   private List<XmlTemperature> temperature;
 
-  public XmlDatiOggi(String data, String tmin, String tmax, String rain, List<XmlTemperature> temperature) {
-  this.data = data;
-  this.tmax = tmax;
-  this.tmin = tmin;
-  this.rain = rain;
-  this.temperature = temperature;
+  @XStreamImplicit
+  private List<XmlPrecipitazioni> precipitazioni;
+
+  public XmlDatiOggi(String data, String tmin, String tmax, String rain, List<XmlTemperature> temperature, List<XmlPrecipitazioni> precipitazioni) {
+  this.data           = data;
+  this.tmax           = tmax;
+  this.tmin           = tmin;
+  this.rain           = rain;
+  this.temperature    = temperature;
+  this.precipitazioni = precipitazioni;
   }
 
   public String getData() {
@@ -73,6 +77,14 @@ public class XmlDatiOggi {
 
   public void setTemperature(List<XmlTemperature> temperature) {
     this.temperature = temperature;
+  }
+
+  public List<XmlPrecipitazioni> getPrecipitazioni() {
+    return precipitazioni;
+  }
+
+  public void setPrecipitazioni(List<XmlPrecipitazioni> precipitazioni) {
+    this.precipitazioni = precipitazioni;
   }
 }
 

@@ -13,6 +13,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -32,6 +33,7 @@ public class WeatherStationActivity extends SampleActivity implements API_statio
 
   ActivityWeatherStationBinding binding;
   XmlDatiOggi data = null;
+  String staton_code = "";
 
   @Override
   protected int getLayoutID() {
@@ -70,6 +72,38 @@ public class WeatherStationActivity extends SampleActivity implements API_statio
     spinner.setAdapter(adapter);
     spinner.setOnItemSelectedListener(this);
 
+
+    binding.activityWeatherStationRdbtnPioggia.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+      @Override
+      public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if(!staton_code.isEmpty()) {
+
+          binding.activityWeatherStationRv.setHasFixedSize(true);
+
+          LinearLayoutManager horizontalLayoutManagaer = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+          binding.activityWeatherStationRv.setLayoutManager(horizontalLayoutManagaer);
+          WeatherStationAdapter adapter1 = new WeatherStationAdapter(data, 1);
+          binding.activityWeatherStationRv.setAdapter(adapter1);
+
+        }
+      }
+    });
+
+    binding.activityWeatherStationRdbtnTemperatura.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+      @Override
+      public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if(!staton_code.isEmpty()) {
+
+          binding.activityWeatherStationRv.setHasFixedSize(true);
+
+          LinearLayoutManager horizontalLayoutManagaer = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+          binding.activityWeatherStationRv.setLayoutManager(horizontalLayoutManagaer);
+          WeatherStationAdapter adapter1 = new WeatherStationAdapter(data, 0);
+          binding.activityWeatherStationRv.setAdapter(adapter1);
+
+        }
+      }
+    });
   }
 
 
@@ -83,10 +117,12 @@ public class WeatherStationActivity extends SampleActivity implements API_statio
       CustomDialog cdd = new CustomDialog(this, "Stazione meteo non attiva.");
       cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
       cdd.show();
+      staton_code = "";
 
       if(binding.activityWeatherStationRv.getAdapter() != null) {
         WeatherStationAdapter adapter1 = (WeatherStationAdapter) binding.activityWeatherStationRv.getAdapter();
         adapter1.clear();
+        staton_code = "";
       }
       return;
     }
@@ -97,8 +133,11 @@ public class WeatherStationActivity extends SampleActivity implements API_statio
 
     LinearLayoutManager horizontalLayoutManagaer = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
     binding.activityWeatherStationRv.setLayoutManager(horizontalLayoutManagaer);
-    WeatherStationAdapter adapter1 = new WeatherStationAdapter(data);
+    WeatherStationAdapter adapter1 = new WeatherStationAdapter(data, 1);
     binding.activityWeatherStationRv.setAdapter(adapter1);
+
+    binding.activityWeatherStationRain.setText(data.getTemperature().get(0).getTemperature().get(0).getTemperatura() + "°C");
+    binding.activityWeatherStationTemp.setText(data.getPrecipitazioni().get(0).getPrecipitazione().get(0).getPioggia() + "mm");
   }
 
   public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
@@ -107,11 +146,13 @@ public class WeatherStationActivity extends SampleActivity implements API_statio
     if(pos == 0) return;
     try {
       String code = WeatherStation.getStationFromPos(pos+1);
-      API_stationWeatherData task = new API_stationWeatherData(this::processFinish, code);
+      staton_code = code;
+      API_stationWeatherData task = new API_stationWeatherData(this::processFinish, staton_code);
       task.execute();
     }
     catch (Exception ex ) {
       Log.d("d","d");
+      staton_code = "";
     }
   }
 

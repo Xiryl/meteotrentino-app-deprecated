@@ -132,7 +132,7 @@ public class WeatherReportAdapter extends RecyclerView.Adapter<WeatherReportAdap
     else {
       // show allerta info
       holder.txt_allerta.setVisibility(View.VISIBLE);
-      holder.txt_allerta.setText(wfd.getDescIconaAllerte());
+      holder.txt_allerta.setText(String.format("Allerta: %s",wfd.getDescIconaAllerte()));
 
       String hex_color = wfd.getColoreAllerte();
       holder.txt_allerta.setBackgroundColor(Color.parseColor(hex_color));

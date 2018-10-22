@@ -134,7 +134,7 @@ public class MainActivity extends SampleActivity{
     MenuItem second_pref = menu.findItem(R.id.drawer_view_second_pref);
     MenuItem app_version = menu.findItem(R.id.drawer_view_app_version);
 
-    app_version.setTitle("v2.0-stabile");
+    app_version.setTitle("v2.1-stabile");
 
     first_pref.setTitle(first_pos);
     second_pref.setTitle(second_pos);
@@ -147,7 +147,7 @@ public class MainActivity extends SampleActivity{
           switch (menuItem.getItemId()){
 
             case R.id.drawer_view_app_version:
-              CustomDialog cdd = new CustomDialog(MainActivity.this, "Versione v2-.0-stabile\n-Miglioramento Interfaccia Grafica\n-Miglioramento Reparto \"Dati Stazioni\"\n-Miglioramento gestione delle notifiche\n-Risolto problema sfondo\n-Migliore Stabilità Nell'app\n-Aggiunta opzione \"pulisci database\" all'interno delle impostazioni");
+              CustomDialog cdd = new CustomDialog(MainActivity.this, "Versione v2-.1-stabil\ne-Miglioramento Reparto \"Dati Stazioni\"");
               cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
               cdd.show();
               break;
@@ -500,7 +500,7 @@ public class MainActivity extends SampleActivity{
       }
 
       // check time for reload weather meteo
-      if(System.currentTimeMillis() >= (entries.get(entries.size() - 1).getDataInserimentoDb() + (600000) ) ) {
+      if(System.currentTimeMillis() >= (entries.get(entries.size() - 1).getDataInserimentoDb() + (1200000) ) ) {
         // passate 2 ore
         Intent i = new Intent(MainActivity.this, LoaderActivity.class);
         i.putExtra("POSITION", entries.get(entries.size()-1).getPrevisione().getLocalita());

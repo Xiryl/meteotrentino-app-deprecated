@@ -259,7 +259,8 @@
        android:gravity="center"
        android:layout_alignParentBottom="true"
        android:textColor="@color/white_gray"
-       android:fontFamily="@font/os_bold"
+       android:fontFamily="@font/os_regular"
+       android:textStyle="italic"
       android:layout_marginBottom="4dp"/>
      </RelativeLayout>
    </FrameLayout>

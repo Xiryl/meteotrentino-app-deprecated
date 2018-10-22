@@ -10,6 +10,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import it.chiarani.meteotrentinoapp.xml_parser.XmlDatiOggi;
+import it.chiarani.meteotrentinoapp.xml_parser.XmlPrecipitazione;
+import it.chiarani.meteotrentinoapp.xml_parser.XmlPrecipitazioni;
 import it.chiarani.meteotrentinoapp.xml_parser.XmlTemperaturaAria;
 import it.chiarani.meteotrentinoapp.xml_parser.XmlTemperature;
 
@@ -43,6 +45,8 @@ public class API_stationWeatherData extends AsyncTask<Void, Void, Void> {
       xstream.alias("datiOggi", XmlDatiOggi.class);
       xstream.alias("temperature", XmlTemperature.class);
       xstream.alias("temperatura_aria", XmlTemperaturaAria.class);
+      xstream.alias("precipitazione", XmlPrecipitazione.class);
+      xstream.alias("precipitazioni", XmlPrecipitazioni.class);
 
       data = loadXml(API_URL, xstream);
 

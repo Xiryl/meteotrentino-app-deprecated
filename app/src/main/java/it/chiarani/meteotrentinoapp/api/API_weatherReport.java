@@ -99,6 +99,8 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
       URL url = new URL(URL_API);
       connection = (HttpURLConnection) url.openConnection();
       connection.connect();
+      connection.setConnectTimeout(15000);
+      connection.setReadTimeout(15000);
 
       InputStream stream = connection.getInputStream();
       reader = new BufferedReader(new InputStreamReader(stream));

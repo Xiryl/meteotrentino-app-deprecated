@@ -108,6 +108,7 @@ public class WeatherSevenDayAdapter extends RecyclerView.Adapter<WeatherSevenDay
 
     if(!wfd.getIcoAllerte().isEmpty()) {
       holder.img_warning.setImageResource(R.drawable.ic_warning);
+      holder.img_warning.setBackgroundColor(Color.parseColor("#D3AE3A"));
     }
 
     WeatherTypes wtype = WeatherIconDescriptor.getWeatherType(wfd.getIcona());
