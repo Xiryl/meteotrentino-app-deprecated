@@ -16,6 +16,8 @@ import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
 
 public class SettingsFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceClickListener {
 
+  public final static String PREF_FIRST_POS = "first_pos";
+  public final static String PREF_SECOND_POS = "second_pos";
   public Preference pref_key_notifica_mattina;
   public Preference pref_key_privacy;
   public Preference pref_key_feedback;
@@ -56,8 +58,8 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Prefer
         SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getActivity().getBaseContext());
         SharedPreferences.Editor e = getPrefs.edit();
 
-        e.putString("second_pos", "Aggiungi 2° Preferito");
-        e.putString("first_pos", "Aggiungi 1° Preferito");
+        e.putString(PREF_FIRST_POS, getContext().getResources().getString(R.string.first_pref));
+        e.putString(PREF_SECOND_POS, getContext().getResources().getString(R.string.second_pref));
 
         //  Apply changes
         e.apply();

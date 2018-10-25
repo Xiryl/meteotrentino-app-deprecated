@@ -32,5 +32,9 @@
   <string name="s_weatherreportadapter_fascia">Fascia Per</string>
   <string name="s_weatherreportadapter_allerta">Allerta</string>
 
+  <!-- General -->
+  <string name="first_pref">Aggiungi 1° Preferito</string>
+  <string name="second_pref">Aggiungi 2° Preferito</string>
+
 
 </resources>
