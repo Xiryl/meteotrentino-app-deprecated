@@ -36,5 +36,9 @@
   <string name="first_pref">Aggiungi 1° Preferito</string>
   <string name="second_pref">Aggiungi 2° Preferito</string>
 
+  <!-- Notifiche -->
+  <string name="notification_title">Buongiorno!</string>
+  <string name="notification_descr">Il cielo oggi sarà</string>
+
 
 </resources>

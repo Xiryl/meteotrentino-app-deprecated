@@ -277,7 +277,7 @@ public class MainActivity extends SampleActivity {
 
       binding.activityMainTxtRain.setText(wfd.getFasce().get(0).getDescPrecProb() + "%");
 
-      binding.activityMainTxtPosition.setText(wfw.getLocalita());
+      binding.activityMainTxtPosition.setText(String.format("%s (%s m)", wfw.getLocalita(), wfw.getQuota()));
       binding.activityMainTxtWeatherDescription.setText(wfd.getDescIcona());
 
       if(!wfd.getDescIconaAllerte().isEmpty()) {

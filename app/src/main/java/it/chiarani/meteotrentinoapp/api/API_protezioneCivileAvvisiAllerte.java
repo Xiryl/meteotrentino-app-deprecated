@@ -85,7 +85,7 @@ public class API_protezioneCivileAvvisiAllerte extends AsyncTask<String, Integer
         String date_pt3      = dates.get(x).text().split(" ")[3];
 
         // add element to list
-        data.add(String.format("%s;%s;%s;%s;%s",link.text(),date_pt1,date_pt2, date_pt3, final_link));
+        data.add(String.format("%s;%s %s %s;%s",link.text(),date_pt1,date_pt2, date_pt3, final_link));
 
         x++;
         if(x >= links.size())

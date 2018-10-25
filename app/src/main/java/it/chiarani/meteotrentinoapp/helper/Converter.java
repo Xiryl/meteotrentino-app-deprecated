@@ -22,7 +22,7 @@ public class Converter {
     try {
       String substr  = uri.split("_")[1];
       String numbers = substr.substring(0,3);
-      icon = Integer.parseInt(numbers);
+      icon           = Integer.parseInt(numbers);
     }
     catch (Exception ex) {
       Log.e(CLASS_TAG, "Errore nella conversione da uri a int (icona): " + ex);
