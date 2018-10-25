@@ -16,7 +16,9 @@ public class WeatherReportRepository {
   private LiveData<List<WeatherReportEntity>> weatherReportentity;
 
   public WeatherReportRepository(Application app ){
-    AppDatabase db      = Room.databaseBuilder(app.getApplicationContext(), AppDatabase.class, "appDatabase").build();
+    AppDatabase db      = Room.databaseBuilder(app.getApplicationContext(), AppDatabase.class, "appDatabase")
+        .fallbackToDestructiveMigration()
+        .build();
     weatherReportDao    = db.weatherReportDao();
     weatherReportentity = weatherReportDao.getAll();
   }

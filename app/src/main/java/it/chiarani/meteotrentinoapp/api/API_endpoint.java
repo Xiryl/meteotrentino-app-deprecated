@@ -12,4 +12,5 @@ public class API_endpoint {
   public static final String ENDPOINT_INFRARED         = "http://api.sat24.com/animated/ALPS/infraPolair/1/Central%20European%20Standard%20Time/493234";
   public static final String GOOGLE_DOCS_BASE          = "http://docs.google.com/gview?embedded=true&url=";
   public static final String ENDPOINT_ALERTS           = "http://avvisi.protezionecivile.tn.it/elencoavvisi.aspx";
+  public static final String ENDPOINT_PROTEZIONE_CIV   = "http://avvisi.protezionecivile.tn.it";
 }

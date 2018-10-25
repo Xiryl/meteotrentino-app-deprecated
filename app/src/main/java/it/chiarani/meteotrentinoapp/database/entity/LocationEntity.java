@@ -3,14 +3,14 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
-import it.chiarani.meteotrentinoapp.models.Locality;
+import it.chiarani.meteotrentinoapp.models.Location;
 
 /**
  * Guide: https://developer.android.com/training/data-storage/room/
  */
 
-@Entity(tableName = "locality")
-public class LocalityEntity implements Locality {
+@Entity(tableName = "location")
+public class LocationEntity implements Location {
 
   // #region private fields
   @PrimaryKey (autoGenerate = true)
@@ -24,12 +24,12 @@ public class LocalityEntity implements Locality {
   // #endregion
 
   @Ignore
-  public LocalityEntity() {}
+  public LocationEntity() {}
 
   /**
    * full constructor
    */
-  public LocalityEntity(String loc, String municipality, int height, String latitude, String longitude) {
+  public LocationEntity(String loc, String municipality, int height, String latitude, String longitude) {
     this.loc          = loc;
     this.municipality = municipality;
     this.height       = height;

@@ -86,10 +86,10 @@ public class AlertListAdapter extends RecyclerView.Adapter<AlertListAdapter.View
     }
 
     String[] alert = alerts.get(position).split(";");
-    String data   = alert[1];
-    String title = alert[0];
-    String link   = alert[2];
-    holder.txt_day.setText(String.format("%s", data));
+    String data    = alert[1];
+    String title   = alert[0];
+    String link    = alert[2];
+    holder.txt_day.setText( String.format("%s", data));
     holder.txt_name.setText(String.format("%s", title));
 
     holder.btn_link.setOnClickListener(v -> {

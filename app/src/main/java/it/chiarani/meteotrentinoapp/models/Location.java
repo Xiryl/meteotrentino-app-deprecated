@@ -4,7 +4,7 @@ package it.chiarani.meteotrentinoapp.models;
  * Describe the locality
  */
 
-public interface Locality {
+public interface Location {
 
   int getIdLocality();
 

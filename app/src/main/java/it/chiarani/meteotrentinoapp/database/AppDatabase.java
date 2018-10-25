@@ -6,11 +6,11 @@ import android.arch.persistence.room.TypeConverters;
 
 import it.chiarani.meteotrentinoapp.database.converters.WeatherForWeekConverter;
 import it.chiarani.meteotrentinoapp.database.dao.CustomAlertDao;
-import it.chiarani.meteotrentinoapp.database.dao.LocalityDao;
+import it.chiarani.meteotrentinoapp.database.dao.LocationDao;
 import it.chiarani.meteotrentinoapp.database.dao.OpenWeatherDataDao;
 import it.chiarani.meteotrentinoapp.database.dao.WeatherReportDao;
 import it.chiarani.meteotrentinoapp.database.entity.CustomAlertEntity;
-import it.chiarani.meteotrentinoapp.database.entity.LocalityEntity;
+import it.chiarani.meteotrentinoapp.database.entity.LocationEntity;
 import it.chiarani.meteotrentinoapp.database.entity.OpenWeatherDataEntity;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherReportEntity;
 
@@ -18,11 +18,11 @@ import it.chiarani.meteotrentinoapp.database.entity.WeatherReportEntity;
  * Link entities
  */
 @Database(entities = {
-    LocalityEntity.class,
+    LocationEntity.class,
     WeatherReportEntity.class,
     OpenWeatherDataEntity.class,
     CustomAlertEntity.class},
-    version = 1,
+    version = 2,
     exportSchema = false)
 
 /**
@@ -36,10 +36,10 @@ import it.chiarani.meteotrentinoapp.database.entity.WeatherReportEntity;
 public abstract class AppDatabase extends RoomDatabase {
 
   /**
-   * Locality DAO
+   * Location DAO
    * @return locality table
    */
-  public abstract LocalityDao localityDao();
+  public abstract LocationDao localityDao();
 
   /**
    * WeatherReport DAO

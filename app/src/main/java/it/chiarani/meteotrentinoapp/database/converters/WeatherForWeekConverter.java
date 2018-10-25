@@ -29,7 +29,6 @@ public class WeatherForWeekConverter {
   @TypeConverter
   public static String fromWeatherForWeek(WeatherForWeekEntity weatherForWeek) {
     Gson gson = new Gson();
-    String json = gson.toJson(weatherForWeek);
-    return json;
+    return gson.toJson(weatherForWeek);
   }
 }

@@ -81,7 +81,7 @@ public class WeatherSevenDayAdapter extends RecyclerView.Adapter<WeatherSevenDay
 
     // Set current day as green background
     if(position == 0) {
-      holder.main_rl.setBackgroundColor(Color.parseColor("#489E64"));
+      holder.main_rl.setBackgroundResource(R.color.seven_day_list_first_item_background_color);
     }
 
     Date date = new Date();
@@ -103,12 +103,14 @@ public class WeatherSevenDayAdapter extends RecyclerView.Adapter<WeatherSevenDay
     WeatherForDayEntity wfd = weather_report.getPrevisione().getGiorni().get(position);
 
     // Temp. massima e minima
-    holder.txt_temperature_max.setText(String.format("%s °", wfd.gettMaxGiorno()));
-    holder.txt_temperature_min.setText(String.format("%s °", wfd.gettMinGiorno()));
+    holder.txt_temperature_max.setText(String.format("%s°", wfd.gettMaxGiorno()));
+    holder.txt_temperature_min.setText(String.format("%s°", wfd.gettMinGiorno()));
 
     if(!wfd.getIcoAllerte().isEmpty()) {
       holder.img_warning.setImageResource(R.drawable.ic_warning);
-      holder.img_warning.setBackgroundColor(Color.parseColor("#D3AE3A"));
+
+      String hex_color = wfd.getColoreAllerte();
+      holder.img_warning.setBackgroundColor(Color.parseColor(hex_color));
     }
 
     WeatherTypes wtype = WeatherIconDescriptor.getWeatherType(wfd.getIcona());

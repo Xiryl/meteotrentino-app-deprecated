@@ -9,19 +9,17 @@ import java.util.concurrent.Executors;
 
 import it.chiarani.meteotrentinoapp.database.AppDatabase;
 import it.chiarani.meteotrentinoapp.database.dao.CustomAlertDao;
-import it.chiarani.meteotrentinoapp.database.dao.LocalityDao;
 import it.chiarani.meteotrentinoapp.database.entity.CustomAlertEntity;
-import it.chiarani.meteotrentinoapp.database.entity.LocalityEntity;
 
 public class CustomAlertRepository {
 
   /**
-   * Locality DAO
+   * Location DAO
    */
   private CustomAlertDao alertDao;
 
   /**
-   * Locality Entities
+   * Location Entities
    */
   private LiveData<List<CustomAlertEntity>> customAlertEntity;
 
@@ -29,7 +27,9 @@ public class CustomAlertRepository {
    * Constructor
    */
   public CustomAlertRepository(Application app) {
-    AppDatabase db    = Room.databaseBuilder(app.getApplicationContext(), AppDatabase.class, "appDatabase").build();
+    AppDatabase db    = Room.databaseBuilder(app.getApplicationContext(), AppDatabase.class, "appDatabase")
+        .fallbackToDestructiveMigration()
+        .build();
     alertDao          = db.customAlertDao();
     customAlertEntity = alertDao.getAll();
   }

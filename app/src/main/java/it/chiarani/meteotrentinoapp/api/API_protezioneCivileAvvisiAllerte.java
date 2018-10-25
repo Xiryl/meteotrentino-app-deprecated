@@ -79,13 +79,13 @@ public class API_protezioneCivileAvvisiAllerte extends AsyncTask<String, Integer
         String sub_onclick   = onclick_attr.substring(13);
         String sub_link      = sub_onclick.split(",")[0];
         String document_link = sub_link.substring(0, sub_link.length()-1);
-        String final_link    = "http://avvisi.protezionecivile.tn.it" + document_link; // TODO: copy url to API_endpoint
+        String final_link    = API_endpoint.ENDPOINT_PROTEZIONE_CIV + document_link;
         String date_pt1      = dates.get(x).text().split(" ")[1];
         String date_pt2      = dates.get(x).text().split(" ")[2];
         String date_pt3      = dates.get(x).text().split(" ")[3];
 
         // add element to list
-        data.add(link.text() + ";" + date_pt1 + " "+ date_pt2 + " "+ date_pt3 +";" + final_link); // TODO: use String.format()
+        data.add(String.format("%s;%s;%s;%s;%s",link.text(),date_pt1,date_pt2, date_pt3, final_link));
 
         x++;
         if(x >= links.size())

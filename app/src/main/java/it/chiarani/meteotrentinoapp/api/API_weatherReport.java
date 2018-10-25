@@ -115,14 +115,14 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
       JSONObject json_ob = new JSONObject(data);
 
       tmp_report.setDataPubblicazione(json_ob.optString("dataPubblicazione"));                // dataPubblicazione
-      tmp_report.setIdPrevisione(json_ob.optInt("idPrevisione"));                     // idPrevisione
-      tmp_report.setEvoluzione(json_ob.optString("evoluzione"));                       // evoluzione
-      tmp_report.setEvoluzioneBreve(json_ob.optString("evoluzioneBreve"));                  // evoluzioneBreve
+      tmp_report.setIdPrevisione     (json_ob.optInt("idPrevisione"));                        // idPrevisione
+      tmp_report.setEvoluzione       (json_ob.optString("evoluzione"));                       // evoluzione
+      tmp_report.setEvoluzioneBreve  (json_ob.optString("evoluzioneBreve"));                  // evoluzioneBreve
 
       JSONArray arr_previsioni = json_ob.getJSONArray("previsione");                          // previsione
 
       wfw.setLocalita(arr_previsioni.getJSONObject(0).optString("localita"));           // localita
-      wfw.setQuota(arr_previsioni.getJSONObject(0).optInt("quota"));              // quota
+      wfw.setQuota   (arr_previsioni.getJSONObject(0).optInt("quota"));                 // quota
 
       JSONArray arr_giorni = arr_previsioni.getJSONObject(0).getJSONArray("giorni");    // giorni
 
@@ -176,15 +176,15 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
               wfs.setDescPrecProb("50");
               break;
             case "alta":
-              wfs.setDescPrecProb("80");
+              wfs.setDescPrecProb("90");
               break;
           }
+
 
           if (arr_fasce.getJSONObject(j).optString("descPrecInten").equals("--"))
             wfs.setDescPrecInten("0");
           else
-            wfs.setDescPrecInten(arr_fasce.getJSONObject(j).optString("descPrecInten"));                // descPrecInten
-
+            wfs.setDescPrecInten(arr_fasce.getJSONObject(j).optString("descPrecInten"));                        // descPrecInten
           if (arr_fasce.getJSONObject(j).optString("descTempProb").equals("--"))
             wfs.setDescTempProb("0");
           else

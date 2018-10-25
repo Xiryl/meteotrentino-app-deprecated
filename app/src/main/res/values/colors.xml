@@ -19,4 +19,6 @@
   <color name="app_azure">#65A8D9</color>
   <color name="allerte_base_item">#EFF2F5</color>
   <color name="allerte_accent_item">#F29F76</color>
+  <color name="seven_day_list_background_color">#122948</color>
+  <color name="seven_day_list_first_item_background_color">#499E65</color>
 </resources>

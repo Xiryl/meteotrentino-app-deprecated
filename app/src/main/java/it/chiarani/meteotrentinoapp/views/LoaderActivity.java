@@ -1,6 +1,5 @@
 package it.chiarani.meteotrentinoapp.views;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -12,37 +11,25 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.util.AttributeSet;
 import android.util.Log;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.DecelerateInterpolator;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
-import com.takusemba.spotlight.OnSpotlightStateChangedListener;
-import com.takusemba.spotlight.OnTargetStateChangedListener;
-import com.takusemba.spotlight.Spotlight;
-import com.takusemba.spotlight.shape.Circle;
-import com.takusemba.spotlight.target.SimpleTarget;
 
 import java.util.List;
 import java.util.Locale;
 
 import it.chiarani.meteotrentinoapp.R;
-import it.chiarani.meteotrentinoapp.adapters.WeatherReportAdapter;
 import it.chiarani.meteotrentinoapp.api.API_weatherReport;
 import it.chiarani.meteotrentinoapp.api.API_weatherReport_response;
-import it.chiarani.meteotrentinoapp.database.entity.LocalityEntity;
-import it.chiarani.meteotrentinoapp.database.entity.WeatherReportEntity;
+import it.chiarani.meteotrentinoapp.database.entity.LocationEntity;
 import it.chiarani.meteotrentinoapp.databinding.ActivityLoaderBinding;
 import it.chiarani.meteotrentinoapp.helper.GpsTracker;
-import it.chiarani.meteotrentinoapp.repositories.LocalityRepository;
-import it.chiarani.meteotrentinoapp.repositories.OpenWeatherDataRepository;
+import it.chiarani.meteotrentinoapp.repositories.LocationRepository;
 import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
 
 public class LoaderActivity extends SampleActivity implements API_weatherReport_response{
@@ -269,14 +256,14 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
 
 
   private void callAPI(String location) {
-    LocalityRepository repo = new LocalityRepository(getApplication());
+    LocationRepository repo = new LocationRepository(getApplication());
     repo.getAll().observe(this, localityEntities -> {
       if(localityEntities == null || localityEntities.isEmpty()) {
         new API_weatherReport(getApplication(), this, this::processFinish, location, "", "").execute();
       }
       else {
-        LocalityEntity tmp = new LocalityEntity();
-        for(LocalityEntity e : localityEntities)
+        LocationEntity tmp = new LocationEntity();
+        for(LocationEntity e : localityEntities)
           if(e.getLoc().equals(location))
           {
             tmp = e;

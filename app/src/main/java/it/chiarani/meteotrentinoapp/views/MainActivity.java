@@ -60,8 +60,6 @@ public class MainActivity extends SampleActivity {
   private ActivityMainBinding binding;
   private WeatherReport _report;
   private final static String INTENT_USER_LOCATION_TAG = "user_location";
-  private boolean flocation = false;
-  private boolean slocation = false;
   String first_pos;
   String second_pos;
   // #endregion
@@ -81,6 +79,28 @@ public class MainActivity extends SampleActivity {
     super.onCreate(savedInstanceState);
 
     Log.d(MAINACTIVITY_TAG, "Start mainactivity");
+
+    // preferences
+    SharedPreferences getPrefs = PreferenceManager
+        .getDefaultSharedPreferences(getBaseContext());
+
+    boolean isMsg = getPrefs.getBoolean("msg_reminder", true);
+
+    if(isMsg){
+    //  Make a new preferences editor
+      SharedPreferences.Editor e = getPrefs.edit();
+
+      //  Edit preference to make it false because we don't want this to run again
+      e.putBoolean("msg_reminder", false);
+
+      //  Apply changes
+      e.apply();
+
+      CustomDialog cdd = new CustomDialog(MainActivity.this, "Hey!\n Lo sai che dalle impostazioni puoi attivare/disattivare le notifiche?");
+      cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+      cdd.show();
+    }
+
 
     AppRate.with(this)
         .setInstallDays(4) // default 10, 0 means install day.
@@ -118,9 +138,6 @@ public class MainActivity extends SampleActivity {
     Window window = this.getWindow();
     window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
-    // preferences
-    SharedPreferences getPrefs = PreferenceManager
-        .getDefaultSharedPreferences(getBaseContext());
 
     // create a new boolean and preference
     first_pos = getPrefs.getString("first_pos", "Aggiungi 1° Preferito");
@@ -264,7 +281,7 @@ public class MainActivity extends SampleActivity {
       binding.activityMainTxtWeatherDescription.setText(wfd.getDescIcona());
 
       if(!wfd.getDescIconaAllerte().isEmpty()) {
-        binding.activityMainTxtAllerta.setText("Allerta: " + wfd.getDescIconaAllerte());
+        binding.activityMainTxtAllerta.setText("ALLERTA: " + wfd.getDescIconaAllerte());
       }
 
       OpenWeatherDataRepository repository_op = new OpenWeatherDataRepository(getApplication());
@@ -302,6 +319,7 @@ public class MainActivity extends SampleActivity {
         binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_day);
         window.setStatusBarColor(Color.parseColor("#7AA9C3"));
 
+
         if(now <= (sunrise - 1800000)) {
           // night
           binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_night);
@@ -312,6 +330,7 @@ public class MainActivity extends SampleActivity {
           // sunrise
           binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_new_sunsire);
           window.setStatusBarColor(Color.parseColor("#EF7942"));
+          binding.activityMainTxtAllerta.setTextColor(Color.parseColor("#12329B"));
         }
         if(now >= (sunset - 900000) && now < (sunset + 900000)  ){
           // sunset
@@ -322,6 +341,7 @@ public class MainActivity extends SampleActivity {
           // night
           binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_night);
           window.setStatusBarColor(Color.parseColor("#345A7B"));
+
           isNight = true;
         }
 

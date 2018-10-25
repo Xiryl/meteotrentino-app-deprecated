@@ -30,6 +30,7 @@
   <string name="s_weatherreportadapter_zero_termico">Zero Termico</string>
   <string name="s_weatherreportadapter_previsione">Previsione</string>
   <string name="s_weatherreportadapter_fascia">Fascia Per</string>
+  <string name="s_weatherreportadapter_allerta">Allerta</string>
 
 
 </resources>

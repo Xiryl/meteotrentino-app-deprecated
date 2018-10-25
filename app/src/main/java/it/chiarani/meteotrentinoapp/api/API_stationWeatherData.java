@@ -42,11 +42,11 @@ public class API_stationWeatherData extends AsyncTask<Void, Void, Void> {
 
       // aliasing xml
       xstream.autodetectAnnotations(true);
-      xstream.alias("datiOggi", XmlDatiOggi.class);
-      xstream.alias("temperature", XmlTemperature.class);
+      xstream.alias("datiOggi",         XmlDatiOggi.class);
+      xstream.alias("temperature",      XmlTemperature.class);
       xstream.alias("temperatura_aria", XmlTemperaturaAria.class);
-      xstream.alias("precipitazione", XmlPrecipitazione.class);
-      xstream.alias("precipitazioni", XmlPrecipitazioni.class);
+      xstream.alias("precipitazione",   XmlPrecipitazione.class);
+      xstream.alias("precipitazioni",   XmlPrecipitazioni.class);
 
       data = loadXml(API_URL, xstream);
 

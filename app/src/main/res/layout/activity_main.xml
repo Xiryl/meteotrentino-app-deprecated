@@ -150,9 +150,9 @@
             android:textSize="@dimen/activity_main_posbar_txt_size"
             android:gravity="center_horizontal"
             android:layout_marginTop="@dimen/activity_main_posbar_txt_allerta_mt"
-            android:textColor="#BB5233"
-            android:fontFamily="@font/os_regular"
-            android:textStyle="italic" />
+            android:textColor="#F8CF5E"
+            android:fontFamily="@font/os_bold"
+            android:textStyle="bold" />
           <!-- END LOCATION, WEATHER DESCRIPTION -->
 
           <!-- TEMPERATURE -->
@@ -308,7 +308,7 @@
             android:id="@+id/llRcv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#33495F"
+            android:background="@color/seven_day_list_background_color"
             android:layout_alignParentBottom="true"
             android:orientation="vertical">
             <android.support.v7.widget.RecyclerView

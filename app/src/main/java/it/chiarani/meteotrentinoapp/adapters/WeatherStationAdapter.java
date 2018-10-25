@@ -51,6 +51,7 @@ public class WeatherStationAdapter extends RecyclerView.Adapter<WeatherStationAd
   public void onBindViewHolder(ViewHolder holder, int position) {
 
     if(type == 1) {
+      // temperature
       String data = report.getTemperature().get(0).getTemperature().get(position).getData().split("T")[0];
       String ora  = report.getTemperature().get(0).getTemperature().get(position).getData().split("T")[1];
       String temp = report.getTemperature().get(0).getTemperature().get(position).getTemperatura();
@@ -59,6 +60,7 @@ public class WeatherStationAdapter extends RecyclerView.Adapter<WeatherStationAd
       holder.txt_temp.setText(String.format("%s °C", temp));
     }
     if(type == 0) {
+      // pioggie
       String data = report.getPrecipitazioni().get(0).getPrecipitazione().get(position).getData().split("T")[0];
       String ora  = report.getPrecipitazioni().get(0).getPrecipitazione().get(position).getData().split("T")[1];
       String prec = report.getPrecipitazioni().get(0).getPrecipitazione().get(position).getPioggia();
@@ -66,7 +68,6 @@ public class WeatherStationAdapter extends RecyclerView.Adapter<WeatherStationAd
       holder.txt_data.setText(String.format("[%s] Ore: %s", data, ora.substring(0,5)));
       holder.txt_temp.setText(String.format("%s mm", prec));
     }
-
   }
 
   @Override

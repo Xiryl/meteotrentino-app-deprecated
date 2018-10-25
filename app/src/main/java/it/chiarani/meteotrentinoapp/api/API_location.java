@@ -18,8 +18,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import it.chiarani.meteotrentinoapp.R;
-import it.chiarani.meteotrentinoapp.database.entity.LocalityEntity;
-import it.chiarani.meteotrentinoapp.repositories.LocalityRepository;
+import it.chiarani.meteotrentinoapp.database.entity.LocationEntity;
+import it.chiarani.meteotrentinoapp.repositories.LocationRepository;
 
 public class API_location extends AsyncTask<String, Integer, Integer>{
 
@@ -38,8 +38,8 @@ public class API_location extends AsyncTask<String, Integer, Integer>{
    * @param res callback interface for get content async
    */
   public API_location(Application app, Context mContext, API_location_response res) {
-    this.app = app;
-    this.context = mContext;
+    this.app      = app;
+    this.context  = mContext;
     this.delegate = res;
   }
 
@@ -72,7 +72,7 @@ public class API_location extends AsyncTask<String, Integer, Integer>{
    */
   @Override
   protected Integer doInBackground(String... s) {
-    LocalityRepository repository = new LocalityRepository(app);
+    LocationRepository repository = new LocationRepository(app);
     HttpURLConnection  connection = null;
     BufferedReader     reader     = null;
 
@@ -105,7 +105,7 @@ public class API_location extends AsyncTask<String, Integer, Integer>{
         String longitudine = arr_locality.getJSONObject(i).optString("longitudine");
 
         // + DB
-        repository.insert(new LocalityEntity(locality, location, altitude, latitudine, longitudine));
+        repository.insert(new LocationEntity(locality, location, altitude, latitudine, longitudine));
       }
     } catch (Exception e) {
       e.printStackTrace();

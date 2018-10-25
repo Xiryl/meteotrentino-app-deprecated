@@ -20,10 +20,10 @@ import java.util.List;
 import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.api.API_location;
 import it.chiarani.meteotrentinoapp.api.API_location_response;
-import it.chiarani.meteotrentinoapp.database.entity.LocalityEntity;
+import it.chiarani.meteotrentinoapp.database.entity.LocationEntity;
 import it.chiarani.meteotrentinoapp.databinding.ActivityChooseLocationBinding;
-import it.chiarani.meteotrentinoapp.models.Locality;
-import it.chiarani.meteotrentinoapp.repositories.LocalityRepository;
+import it.chiarani.meteotrentinoapp.models.Location;
+import it.chiarani.meteotrentinoapp.repositories.LocationRepository;
 
 public class ChooseLocationActivity extends SampleActivity implements API_location_response {
 
@@ -64,7 +64,7 @@ public class ChooseLocationActivity extends SampleActivity implements API_locati
     window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
     window.setStatusBarColor(Color.parseColor("#65A8D9"));
 
-    LocalityRepository repository = new LocalityRepository(this.getApplication());
+    LocationRepository repository = new LocationRepository(this.getApplication());
 
     repository.getAll().observe(this, entries -> {
       if(entries.size() == 0) {
@@ -278,7 +278,7 @@ public class ChooseLocationActivity extends SampleActivity implements API_locati
    */
   @Override
   public void processFinish() {
-    LocalityRepository repository = new LocalityRepository(this.getApplication());
+    LocationRepository repository = new LocationRepository(this.getApplication());
 
     repository.getAll().observe(this, entries -> {
       all_locs = listTostring(entries);
@@ -302,14 +302,14 @@ public class ChooseLocationActivity extends SampleActivity implements API_locati
    * @param data ArrayList to convert
    * @return String[] with locality
    */
-  private String[] listTostring(List<LocalityEntity> data) {
+  private String[] listTostring(List<LocationEntity> data) {
     if(data.isEmpty())
       return null;
 
     String[] tmp = new String[data.size()];
 
     int i = 0;
-    for(Locality loc : data) {
+    for(Location loc : data) {
       tmp[i++] = loc.getLoc();
     }
 
