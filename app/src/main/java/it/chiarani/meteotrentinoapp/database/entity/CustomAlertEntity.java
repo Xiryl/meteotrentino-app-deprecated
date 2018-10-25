@@ -10,13 +10,13 @@ import it.chiarani.meteotrentinoapp.models.CustomAlert;
 public class CustomAlertEntity implements CustomAlert {
 
   @PrimaryKey(autoGenerate = true)
-  private int alertId;
-  private String alertDescription;
-  private long alertTime;
+  private int     alertId;
+  private String  alertDescription;
+  private long    alertTime;
 
   public CustomAlertEntity(String alertDescription, long alertTime){
     this.alertDescription = alertDescription;
-    this.alertTime = alertTime;
+    this.alertTime        = alertTime;
   }
 
   @Ignore

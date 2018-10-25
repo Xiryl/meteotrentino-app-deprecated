@@ -19,8 +19,8 @@ public class OpenWeatherDataEntity implements OpenWeatherData {
 
   private String humidity;
   private String pressure;
-  private long sunrise;
-  private long sunset;
+  private long   sunrise;
+  private long   sunset;
   private String actualTemperature;
   private String windSpeed;
   // #endregion
