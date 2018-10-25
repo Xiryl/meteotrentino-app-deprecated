@@ -22,6 +22,7 @@ import java.util.List;
 
 import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.adapters.AlertListAdapter;
+import it.chiarani.meteotrentinoapp.api.API_endpoint;
 import it.chiarani.meteotrentinoapp.api.API_protezioneCivileAvvisiAllerte;
 import it.chiarani.meteotrentinoapp.api.API_protezioneCivileAvvisiAllerte_response;
 import it.chiarani.meteotrentinoapp.databinding.ActivityAllerteBinding;
@@ -31,8 +32,8 @@ public class AllerteActivity extends SampleActivity implements API_protezioneCiv
 
   // #region private fields
   private ActivityAllerteBinding binding;
-  private final static String URL_PROVINCIA = "http://www.protezionecivile.tn.it/news_comunicati_stampa/";
-  private final static String URL_METEO     = "https://www.meteotrentino.it/#!/content?menuItemDesktop=44";
+  private final static String URL_PROVINCIA = API_endpoint.URL_ALLERTE_PROVINCIA;
+  private final static String URL_METEO     = API_endpoint.URL_ALLERTE_METEOTT;
 
   private RapidFloatingActionLayout rfaLayout;
   private RapidFloatingActionButton rfaBtn;

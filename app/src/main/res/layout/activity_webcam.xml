@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+  <data />
+  <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- TOOLBAR -->
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/toolbar_height"
+      android:background="@color/app_azure"
+      android:orientation="horizontal">
+      <ImageButton
+        android:layout_width="55dp"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:layout_gravity="center"
+        android:id="@+id/fragment_radar_day_btn_menu"
+        android:background="#00000000"
+        android:src="@drawable/ic_arrow_back"
+        />
+      <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="Webcam"
+        android:fontFamily="@font/os_regular"
+        android:textColor="@color/white"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/activity_weatherreport_title_size"/>
+    </LinearLayout>
+    <!-- MAIN TOOLBAR -->
+    <Spinner
+      android:id="@+id/activity_webcam_spinner"
+      android:layout_marginTop="80dp"
+      android:layout_width="fill_parent"
+      android:layout_marginLeft="16dp"
+      android:layout_marginRight="16dp"
+      android:layout_height="wrap_content" />
+
+    <ImageView
+      android:id="@+id/activity_webcam_img"
+      android:layout_marginTop="130dp"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent" />
+
+  </RelativeLayout>
+</layout>

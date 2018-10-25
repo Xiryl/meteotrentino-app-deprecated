@@ -221,6 +221,11 @@ public class MainActivity extends SampleActivity {
               startActivity(allerte_intent);
               break;
 
+            case R.id.drawer_view_webcam:
+              Intent webcam_intent = new Intent(MainActivity.this, WebcamActivity.class);
+              startActivity(webcam_intent);
+              break;
+
             case R.id.drawer_view_telegram:
               Intent telegram_intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.t.me/MeteoTrentinoBot"));
               startActivity(telegram_intent);
