@@ -30,6 +30,7 @@ public class OSNotificationExtender extends NotificationExtenderService {
   private static final String HIGH_PRIORITY_URGENT_ALARM_TAG = "HIGH_PRIORITY_URGENT_ALARM";
   private static final String ALARM_TAG = "BACKGROUND-DATA";
   private static final String SETTINGS_MORNING_MESSAGE_KEY = "pref_key_notifica_mattina";
+  private static final String SETTINGS_ALLERTA_KEY = "pref_key_notifica_allerta";
   private static final String CLASS_TAG = "OSNotificationExtender";
   boolean show_notification = true;
   // #endregion
@@ -44,46 +45,52 @@ public class OSNotificationExtender extends NotificationExtenderService {
     // Ottengo dalle preferenze la scelta dell'utente
     SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
     Boolean pref_notifica_mattina = settings.getBoolean(SETTINGS_MORNING_MESSAGE_KEY, true);
+    Boolean pref_notifica_allerta = settings.getBoolean(SETTINGS_ALLERTA_KEY, true);
 
     // Rimuovo le notifiche precedenti
     OneSignal.clearOneSignalNotifications();
 
-    try {
-
-      JSONObject data = receivedResult.payload.additionalData;
-      String notification_hp_payload = data.optString(HIGH_PRIORITY_URGENT_ALARM_TAG);
-
-      if (notification_hp_payload != null && !notification_hp_payload.isEmpty()) {
-        // ----------------
-        // NOTIFICA URGENTE
-        // ----------------
-
-        Calendar start = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"));
-        long now = start.getTimeInMillis();
-
-        // Salvo nel database il payload
-        CustomAlertRepository repository = new CustomAlertRepository(getApplication());
-        repository.insert(new CustomAlertEntity(notification_hp_payload, now));
-
-        // Lancio l'activity di allerta
-        Intent message_alert_i = new Intent(this, MessageActivity.class);
-        message_alert_i.putExtra("payload", notification_hp_payload);
-        startActivity(message_alert_i);
-      }
-
-      String notification_normal_alarm_payload = data.optString(ALARM_TAG);
-      if (!notification_normal_alarm_payload.isEmpty()) {
-        // -------------------------
-        // NOTIFICA ALLERTA CLASSICA
-        // -------------------------
-
-        OverrideSettings overrideSettings = new OverrideSettings();
-        OSNotificationDisplayedResult displayedResult = displayNotification(overrideSettings);
-        return true;
-      }
+    if (!pref_notifica_allerta) {
+      show_notification = false;
     }
-    catch (Exception ex) {
-      Log.d(CLASS_TAG, ex.getMessage());
+    else {
+
+      try {
+
+        JSONObject data = receivedResult.payload.additionalData;
+        String notification_hp_payload = data.optString(HIGH_PRIORITY_URGENT_ALARM_TAG);
+
+        if (notification_hp_payload != null && !notification_hp_payload.isEmpty()) {
+          // ----------------
+          // NOTIFICA URGENTE
+          // ----------------
+
+          Calendar start = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"));
+          long now = start.getTimeInMillis();
+
+          // Salvo nel database il payload
+          CustomAlertRepository repository = new CustomAlertRepository(getApplication());
+          repository.insert(new CustomAlertEntity(notification_hp_payload, now));
+
+          // Lancio l'activity di allerta
+          Intent message_alert_i = new Intent(this, MessageActivity.class);
+          message_alert_i.putExtra("payload", notification_hp_payload);
+          startActivity(message_alert_i);
+        }
+
+        String notification_normal_alarm_payload = data.optString(ALARM_TAG);
+        if (!notification_normal_alarm_payload.isEmpty()) {
+          // -------------------------
+          // NOTIFICA ALLERTA CLASSICA
+          // -------------------------
+
+          OverrideSettings overrideSettings = new OverrideSettings();
+          OSNotificationDisplayedResult displayedResult = displayNotification(overrideSettings);
+          return true;
+        }
+      } catch (Exception ex) {
+        Log.d(CLASS_TAG, ex.getMessage());
+      }
     }
 
     OverrideSettings overrideSettings = new OverrideSettings();

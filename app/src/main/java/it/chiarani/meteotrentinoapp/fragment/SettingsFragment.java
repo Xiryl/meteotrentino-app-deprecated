@@ -19,6 +19,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Prefer
   public final static String PREF_FIRST_POS = "first_pos";
   public final static String PREF_SECOND_POS = "second_pos";
   public Preference pref_key_notifica_mattina;
+  public Preference pref_key_allerta;
   public Preference pref_key_privacy;
   public Preference pref_key_feedback;
   public Preference pref_version;
@@ -34,6 +35,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Prefer
     pref_version              = findPreference("pref_key_versione");
     pref_preferiti            = findPreference("pref_key_pulisci_preferiti");
     pref_clean_cache          = findPreference("pref_key_pulisci_database");
+    pref_key_allerta          = findPreference("pref_key_notifica_allerta");
 
     try {
       pref_version.setSummary(this.getContext().getPackageManager().getPackageInfo(this.getContext().getPackageName(), 0).versionName);

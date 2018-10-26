@@ -93,12 +93,7 @@ public class AllerteActivity extends SampleActivity implements API_protezioneCiv
     WeatherReportRepository repo = new WeatherReportRepository(getApplication());
     repo.getAll().observe(this, entries -> {
 
-      binding.fragmentRadarDayBtnMenu.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-          onBackPressed();
-        }
-      });
+      binding.fragmentRadarDayBtnMenu.setOnClickListener(v -> onBackPressed());
     });
 
     new API_protezioneCivileAvvisiAllerte(this, this::processFinish).execute();

@@ -53,37 +53,23 @@ public class BulletinActivity extends SampleActivity{
     WeatherReportRepository repo = new WeatherReportRepository(getApplication());
     repo.getAll().observe(this, entries -> {
 
-      binding.activityBulletinCrdwMontagna.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-          Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(URL_BOLLETTINO_MONTAGNA));
-          startActivity(browserIntent);
-        }
+      binding.activityBulletinCrdwMontagna.setOnClickListener(v -> {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(URL_BOLLETTINO_MONTAGNA));
+        startActivity(browserIntent);
       });
 
-      binding.activityBulletinCrdwProb.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-          Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(URL_BOLLETTINO_PROBABILISTICO + entries.get(entries.size()-1).getIdPrevisione() + "&history=0"));
-          startActivity(browserIntent);
-        }
+      binding.activityBulletinCrdwProb.setOnClickListener(v -> {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(URL_BOLLETTINO_PROBABILISTICO + entries.get(entries.size()-1).getIdPrevisione() + "&history=0"));
+        startActivity(browserIntent);
       });
 
-      binding.activityBulletinCrdwValanghe.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-          Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(URL_BOLLETTINO_VALANGHE));
-          startActivity(browserIntent);
-        }
+      binding.activityBulletinCrdwValanghe.setOnClickListener(v -> {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(URL_BOLLETTINO_VALANGHE));
+        startActivity(browserIntent);
       });
     });
 
-    binding.fragmentRadarDayBtnMenu.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        onBackPressed();
-      }
-    });
+    binding.fragmentRadarDayBtnMenu.setOnClickListener(v -> onBackPressed());
 
 
   }

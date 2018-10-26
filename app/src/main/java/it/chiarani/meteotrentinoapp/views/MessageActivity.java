@@ -44,6 +44,10 @@ public class MessageActivity extends SampleActivity {
       Window window = this.getWindow();
       window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
       window.setStatusBarColor(Color.parseColor("#BB5233"));
+
+      CustomAlertRepository repo = new CustomAlertRepository(getApplication());
+      repo.deleteAll();
+
     }
   }
 }

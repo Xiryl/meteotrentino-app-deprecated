@@ -512,21 +512,34 @@ public class MainActivity extends SampleActivity {
     first_pref.setTitle(first_pos);
     second_pref.setTitle(second_pos);
 
-    WeatherReportRepository repository = new WeatherReportRepository(this.getApplication());
-    repository.getAll().observe(this, entries -> {
-      if (entries == null || entries.isEmpty() || entries.size() == 0) {
-        // Build alert dialog
-
-        DialogShower.ShowDialog(this,new Intent(getApplicationContext(), ChooseLocationActivity.class),"Località non trovata", "Non sono riuscito a rilevare la tua posizione dal GPS.\nProva a ricercala manualmente!", "Ricerca", "Annulla");
-        return;
+    CustomAlertRepository alertRepository = new CustomAlertRepository(getApplication());
+    alertRepository.getAll().observe(this, alertEntities -> {
+      if(alertEntities.size() > 0 ) {
+        Calendar start = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"));
+          Intent message_alert_i = new Intent(this, MessageActivity.class);
+          message_alert_i.putExtra("payload", alertEntities.get(alertEntities.size()-1).getAlertDescription());
+          startActivity(message_alert_i);
+          this.finish();
       }
+      else
+      {
+        WeatherReportRepository repository = new WeatherReportRepository(this.getApplication());
+        repository.getAll().observe(this, entries -> {
+          if (entries == null || entries.isEmpty() || entries.size() == 0) {
+            // Build alert dialog
 
-      // check time for reload weather meteo
-      if(System.currentTimeMillis() >= (entries.get(entries.size() - 1).getDataInserimentoDb() + (1200000) ) ) {
-        // passate 2 ore
-        Intent i = new Intent(MainActivity.this, LoaderActivity.class);
-        i.putExtra("POSITION", entries.get(entries.size()-1).getPrevisione().getLocalita());
-        this.startActivity(i);
+            DialogShower.ShowDialog(this,new Intent(getApplicationContext(), ChooseLocationActivity.class),"Località non trovata", "Non sono riuscito a rilevare la tua posizione dal GPS.\nProva a ricercala manualmente!", "Ricerca", "Annulla");
+            return;
+          }
+
+          // check time for reload weather meteo
+          if(System.currentTimeMillis() >= (entries.get(entries.size() - 1).getDataInserimentoDb() + (120000) ) ) {
+            // passate 2 ore
+            Intent i = new Intent(MainActivity.this, LoaderActivity.class);
+            i.putExtra("POSITION", entries.get(entries.size()-1).getPrevisione().getLocalita());
+            this.startActivity(i);
+          }
+        });
       }
     });
   }
