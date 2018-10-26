@@ -245,7 +245,7 @@ public class WebcamListCSV {
   public static List<String> getWebcamNames() {
     String[] arr = webcamListCSV.split("\n");
     Arrays.sort(arr);
-    arr[0] = "Seleziona una Webcam;https://static.thenounproject.com/png/3624-200.png";
+    arr[0] = "Seleziona una Webcam;https://uxwing.com/wp-content/themes/uxwing/download/08-technology/webcam.png";
 
     List<String> tmp = new ArrayList<>();
     for (String anArr : arr) {
@@ -257,7 +257,7 @@ public class WebcamListCSV {
   public static String getWebcamUrl(int pos) {
     String[] arr = webcamListCSV.split("\n");
     Arrays.sort(arr);
-    arr[0] = "Seleziona una Webcam;https://static.thenounproject.com/png/3624-200.png";
+    arr[0] = "Seleziona una Webcam;https://uxwing.com/wp-content/themes/uxwing/download/08-technology/webcam.png";
 
     int i = 0;
     for (String anArr : arr) {

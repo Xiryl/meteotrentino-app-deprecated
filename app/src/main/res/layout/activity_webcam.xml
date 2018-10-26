@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="Webcam Trentino"
+        android:text="Webcam del Trentino"
         android:fontFamily="@font/os_regular"
         android:textColor="@color/white"
         android:layout_gravity="center_horizontal"
@@ -41,10 +41,33 @@
       android:layout_marginRight="16dp"
       android:layout_height="wrap_content" />
 
+
+
+    <TextView
+      android:id="@+id/activity_webcam_txtwebcam"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="120dp"
+      android:text=""
+      android:fontFamily="@font/os_bold"
+      android:textColor="@color/blue_main"
+      android:layout_marginLeft="16dp"
+      android:layout_marginRight="16dp"
+      android:layout_gravity="center"
+      android:layout_centerHorizontal="true"/>
+
+    <com.github.chrisbanes.photoview.PhotoView
+      android:id="@+id/activity_webcam_img"
+      android:layout_marginTop="110dp"
+      android:layout_marginLeft="16dp"
+      android:layout_marginRight="16dp"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent" />
+
     <me.biubiubiu.justifytext.library.JustifyTextView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginBottom="5dp"
+      android:layout_marginBottom="50dp"
       android:text="Attenzione:Le webcam non sono di proprietà di Meteo Trentino App, il malfunzionamento o discostamento rispetto alla realtà non è responsabilità dello sviluppatore. Vorresti aggiungere un'altra webcam?Contattami!                                                 "
       android:fontFamily="@font/os_regular"
       android:textSize="11sp"
@@ -54,24 +77,11 @@
       android:layout_marginRight="16dp"
       android:layout_gravity="center"/>
 
-    <TextView
-      android:id="@+id/activity_webcam_txtwebcam"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="110dp"
-      android:text=""
-      android:fontFamily="@font/os_bold"
-      android:textColor="@color/blue_main"
-      android:layout_marginLeft="16dp"
-      android:layout_marginRight="16dp"
-      android:layout_gravity="center"
-      android:layout_centerHorizontal="true"/>
-
     <ImageView
-      android:id="@+id/activity_webcam_img"
-      android:layout_marginTop="130dp"
       android:layout_width="match_parent"
-      android:layout_height="match_parent" />
-
+      android:layout_height="@dimen/activity_info_bottom_img_size"
+      android:layout_marginBottom="0dp"
+      android:layout_alignParentBottom="true"
+      android:src="@drawable/img_bottom_background"/>
   </RelativeLayout>
 </layout>

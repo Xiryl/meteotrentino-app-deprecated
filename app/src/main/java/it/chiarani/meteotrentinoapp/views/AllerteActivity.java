@@ -91,10 +91,7 @@ public class AllerteActivity extends SampleActivity implements API_protezioneCiv
     window.setStatusBarColor(Color.parseColor("#65A8D9"));
 
     WeatherReportRepository repo = new WeatherReportRepository(getApplication());
-    repo.getAll().observe(this, entries -> {
-
-      binding.fragmentRadarDayBtnMenu.setOnClickListener(v -> onBackPressed());
-    });
+    repo.getAll().observe(this, entries -> binding.fragmentRadarDayBtnMenu.setOnClickListener(v -> onBackPressed()));
 
     new API_protezioneCivileAvvisiAllerte(this, this::processFinish).execute();
   }
