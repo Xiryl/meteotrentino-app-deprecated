@@ -57,15 +57,23 @@ public class WebcamActivity extends SampleActivity implements  AdapterView.OnIte
     spinner.setAdapter(adapter);
     spinner.setOnItemSelectedListener(this);
 
+    binding.fragmentRadarDayBtnMenu.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        onBackPressed();
+      }
+    });
   }
 
   @Override
   public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-    String url = WebcamListCSV.getWebcamUrl(position+1);
+    String url = WebcamListCSV.getWebcamUrl(position);
     Glide.with(this)
         .load(url)
         .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE))
         .into(binding.activityWebcamImg);
+
+    binding.activityWebcamTxtwebcam.setText("Selezionato: " + binding.activityWebcamSpinner.getSelectedItem().toString());
   }
 
   @Override

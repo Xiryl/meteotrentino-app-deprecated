@@ -148,7 +148,7 @@ public class MainActivity extends SampleActivity {
     MenuItem second_pref = menu.findItem(R.id.drawer_view_second_pref);
     MenuItem app_version = menu.findItem(R.id.drawer_view_app_version);
 
-    app_version.setTitle("v2.1.1-stabile");
+    app_version.setTitle("v2.2-stabile");
 
     first_pref.setTitle(first_pos);
     second_pref.setTitle(second_pos);
@@ -161,7 +161,7 @@ public class MainActivity extends SampleActivity {
           switch (menuItem.getItemId()){
 
             case R.id.drawer_view_app_version:
-              CustomDialog cdd = new CustomDialog(MainActivity.this, "Versione v2.1.1-stabile\n-Miglioramento allerte\n-Miglioramento Reparto \"Dati Stazioni\"");
+              CustomDialog cdd = new CustomDialog(MainActivity.this, "Versione v2.s-stabile\n-Miglioramento Colori app\nA-ggiunta altitudine\n-Miglioramento visibilità allerte\n-Aggiunte webcam");
               cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
               cdd.show();
               break;
