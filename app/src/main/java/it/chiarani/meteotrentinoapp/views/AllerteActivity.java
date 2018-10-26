@@ -32,11 +32,6 @@ public class AllerteActivity extends SampleActivity implements API_protezioneCiv
 
   // #region private fields
   private ActivityAllerteBinding binding;
-  private final static String URL_PROVINCIA = API_endpoint.URL_ALLERTE_PROVINCIA;
-  private final static String URL_METEO     = API_endpoint.URL_ALLERTE_METEOTT;
-
-  private RapidFloatingActionLayout rfaLayout;
-  private RapidFloatingActionButton rfaBtn;
   private RapidFloatingActionHelper rfabHelper;
   // #endregion
 
@@ -54,8 +49,8 @@ public class AllerteActivity extends SampleActivity implements API_protezioneCiv
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    rfaLayout = findViewById(R.id.activity_main_rfal);
-    rfaBtn = findViewById(R.id.activity_main_rfab);
+    RapidFloatingActionLayout rfaLayout = findViewById(R.id.activity_main_rfal);
+    RapidFloatingActionButton rfaBtn = findViewById(R.id.activity_main_rfab);
 
     RapidFloatingActionContentLabelList rfaContent = new RapidFloatingActionContentLabelList(this);
     rfaContent.setOnRapidFloatingActionContentLabelListListener(this);
@@ -88,6 +83,8 @@ public class AllerteActivity extends SampleActivity implements API_protezioneCiv
         rfaBtn,
         rfaContent
     ).build();
+
+
     // set toolbar color
     Window window = this.getWindow();
     window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -109,47 +106,37 @@ public class AllerteActivity extends SampleActivity implements API_protezioneCiv
 
   @Override
   public void processFinish(ArrayList<String> data) {
-    // use this setting to improve performance if you know that changes
-    // in content do not change the layout size of the RecyclerView
     binding.activityAllerteRv.setHasFixedSize(true);
 
     LinearLayoutManager horizontalLayoutManagaer = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
     binding.activityAllerteRv.setLayoutManager(horizontalLayoutManagaer);
+
     AlertListAdapter adapter1 = new AlertListAdapter(data);
     binding.activityAllerteRv.setAdapter(adapter1);
-
-
   }
 
   @Override
   public void onRFACItemLabelClick(int position, RFACLabelItem item) {
-    Toast.makeText(this, "clicked label: " + position, Toast.LENGTH_SHORT).show();
-
-    if(position == 0) {
-      // meteo
-      Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(URL_METEO));
-      startActivity(i);
-    }
-    else
-    {
-      Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(URL_PROVINCIA));
-      startActivity(i);
-    }
+    launchBrowser(position);
     rfabHelper.toggleContent();
   }
 
   @Override
   public void onRFACItemIconClick(int position, RFACLabelItem item) {
+    launchBrowser(position);
+    rfabHelper.toggleContent();
+  }
+
+  private void launchBrowser(int position) {
     if(position == 0) {
       // meteo
-      Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(URL_METEO));
+      Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(API_endpoint.URL_ALLERTE_METEOTT));
       startActivity(i);
     }
     else
     {
-      Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(URL_PROVINCIA));
+      Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(API_endpoint.URL_ALLERTE_PROVINCIA));
       startActivity(i);
     }
-    rfabHelper.toggleContent();
   }
 }
