@@ -151,6 +151,10 @@ dependencies {
 
     // app rate
     implementation 'com.github.hotchemi:android-rate:1.0.1'
+
+    // photo view
+    // https://github.com/chrisbanes/PhotoView
+    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
 }
 
 
