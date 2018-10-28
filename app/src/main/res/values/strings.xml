@@ -38,7 +38,7 @@
 
   <!-- Notifiche -->
   <string name="notification_title">Buongiorno!</string>
-  <string name="notification_descr">Il cielo oggi sarà</string>
+  <string name="notification_descr">Il cielo oggi sarà </string>
 
 
 </resources>

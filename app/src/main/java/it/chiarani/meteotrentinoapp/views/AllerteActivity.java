@@ -49,6 +49,11 @@ public class AllerteActivity extends SampleActivity implements API_protezioneCiv
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
+    // set toolbar color
+    Window window = this.getWindow();
+    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+    window.setStatusBarColor(Color.parseColor("#65A8D9"));
+
     RapidFloatingActionLayout rfaLayout = findViewById(R.id.activity_main_rfal);
     RapidFloatingActionButton rfaBtn = findViewById(R.id.activity_main_rfab);
 
@@ -83,12 +88,6 @@ public class AllerteActivity extends SampleActivity implements API_protezioneCiv
         rfaBtn,
         rfaContent
     ).build();
-
-
-    // set toolbar color
-    Window window = this.getWindow();
-    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-    window.setStatusBarColor(Color.parseColor("#65A8D9"));
 
     WeatherReportRepository repo = new WeatherReportRepository(getApplication());
     repo.getAll().observe(this, entries -> binding.fragmentRadarDayBtnMenu.setOnClickListener(v -> onBackPressed()));

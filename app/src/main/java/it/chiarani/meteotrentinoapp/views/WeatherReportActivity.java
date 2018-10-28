@@ -64,6 +64,10 @@ public class WeatherReportActivity extends SampleActivity {
 
       OpenWeatherDataRepository repository_op = new OpenWeatherDataRepository(getApplication());
       repository_op.getAll().observe(this, entries_op -> {
+        if(entries_op == null) {
+          return;
+        }
+
         WeatherReportAdapter adapter = new WeatherReportAdapter(this, report, entries_op.get(entries_op.size()-1), report_day);
         binding.weatherReportRvWeather.setAdapter(adapter);
 

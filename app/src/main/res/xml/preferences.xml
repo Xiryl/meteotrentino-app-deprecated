@@ -26,10 +26,23 @@
       android:key="pref_key_pulisci_database"
       android:title="Cancella dati database"
       android:summary="Elimina tutti i dati interni dell'applicazione" />
+  </PreferenceCategory>
+
+  <PreferenceCategory
+    android:title="INFO"
+    android:key="pref_key_storage_settings">
     <Preference
       android:key="pref_key_feedback"
-      android:title="Contattami"
+      android:title="Contattami [Email]"
       android:summary="Vuoi proporre una modifica o segnalare un malfunzionamento?" />
+    <Preference
+      android:key="pref_key_feedback_telegram"
+      android:title="Contattami [Telegram]"
+      android:summary="(Più Veloce) Vuoi proporre una modifica o segnalare un malfunzionamento?" />
+    <Preference
+      android:key="pref_key_sito_web"
+      android:title="Sviluppatore"
+      android:summary="Vai al sito web dello sviluppatore" />
     <Preference
       android:key="pref_key_privacy"
       android:title="Privacy Policy"

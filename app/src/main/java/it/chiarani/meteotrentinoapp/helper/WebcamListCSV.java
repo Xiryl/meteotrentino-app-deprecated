@@ -262,8 +262,13 @@ public class WebcamListCSV {
     int i = 0;
     for (String anArr : arr) {
       if(i == pos) {
-        String[] x =  anArr.split(";");
-        return x[1];
+        try{
+          String[] x =  anArr.split(";");
+          return x[1];
+        }
+        catch (Exception ex) {
+          return "";
+        }
       }
       i++;
     }

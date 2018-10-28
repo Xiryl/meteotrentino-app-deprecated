@@ -25,6 +25,8 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Prefer
   public Preference pref_version;
   public Preference pref_preferiti;
   public Preference pref_clean_cache;
+  public Preference pref_key_contatti_t;
+  public Preference pref_key_sito;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,8 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Prefer
     pref_preferiti            = findPreference("pref_key_pulisci_preferiti");
     pref_clean_cache          = findPreference("pref_key_pulisci_database");
     pref_key_allerta          = findPreference("pref_key_notifica_allerta");
+    pref_key_contatti_t       = findPreference("pref_key_feedback_telegram");
+    pref_key_sito             = findPreference("pref_key_sito_web");
 
     try {
       pref_version.setSummary(this.getContext().getPackageManager().getPackageInfo(this.getContext().getPackageName(), 0).versionName);
@@ -46,6 +50,8 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Prefer
     pref_version      .setOnPreferenceClickListener(this);
     pref_preferiti    .setOnPreferenceClickListener(this);
     pref_clean_cache  .setOnPreferenceClickListener(this);
+    pref_key_contatti_t.setOnPreferenceClickListener(this);
+    pref_key_sito.setOnPreferenceClickListener(this);
   }
 
   @Override
@@ -55,6 +61,14 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Prefer
 
   @Override public boolean onPreferenceClick(Preference preference) {
     switch (preference.getKey()) {
+      case "pref_key_sito_web":
+        Intent sitointent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.chiarani.it"));
+        startActivity(sitointent);
+        break;
+      case "pref_key_feedback_telegram":
+        Intent telegramintent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/Xiryl"));
+        startActivity(telegramintent);
+        break;
       case "pref_key_pulisci_preferiti":
 
         SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getActivity().getBaseContext());

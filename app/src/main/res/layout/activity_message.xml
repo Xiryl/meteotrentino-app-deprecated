@@ -9,12 +9,14 @@
     <!-- TOOLBAR -->
     <LinearLayout
       android:layout_width="match_parent"
-      android:layout_height="@dimen/toolbar_height"
-      android:background="#F8CE5D">
+      android:layout_height="120dp"
+      android:background="#F8CE5D"
+      android:layout_marginBottom="15dp"
+      android:orientation="vertical">
 
       <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/os_bold"
         android:textSize="@dimen/toolbar_text_size"
         android:textColor="@color/white"
@@ -22,6 +24,13 @@
         android:gravity="center"
         android:text="ALLERTA:\nAvviso Di Notifica Intelligente"/>
 
+      <ImageView
+        android:layout_marginTop="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_warning"
+        android:background="#F8CE5D" />
 
     </LinearLayout>
     <!-- END TOOLBAR -->
@@ -29,18 +38,12 @@
     <!-- MAIN CONTENT -->
     <LinearLayout
       android:layout_width="match_parent"
-      android:layout_marginTop="@dimen/toolbar_height"
+      android:layout_marginTop="120dp"
       android:layout_height="match_parent"
       android:background="@color/white"
       android:orientation="vertical">
 
-      <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_gravity="center"
-        android:src="@drawable/ic_warning"
-        android:background="#F8CE5D"
-        android:paddingBottom="10dp"/>
+
 
       <TextView
         android:id="@+id/activity_message_txt"
@@ -57,9 +60,9 @@
 
     <ImageView
       android:layout_width="match_parent"
-      android:layout_height="120dp"
+      android:layout_height="@dimen/activity_info_bottom_img_size"
+      android:layout_marginBottom="0dp"
       android:layout_alignParentBottom="true"
-      android:src="@drawable/ic_launcher_foreground"
-      android:paddingBottom="10dp"/>
+      android:src="@drawable/img_bottom_background"/>
   </RelativeLayout>
 </layout>

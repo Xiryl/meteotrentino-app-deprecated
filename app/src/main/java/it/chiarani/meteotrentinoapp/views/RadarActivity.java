@@ -54,6 +54,25 @@ public class RadarActivity extends SampleActivity{
         .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE))
         .into(binding.fragmentRadarImgInfrarossoAlpi);
 
+
+    Glide.with(this)
+        .load("https://api.sat24.com/mostrecent/ALPS/visual5hdcomplete")
+        .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE))
+        .into(binding.fragmentRadarImgZonaAlpina);
+
+    Glide.with(this)
+        .load("https://api.sat24.com/animated/EU/snow/1/Central%20European%20Standard%20Time")
+        .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE))
+        .into(binding.fragmentRadarImgRadarNeve);
+
+    Glide.with(this)
+        .load("https://api.sat24.com/animated/EU/infraPolair/1/Central%20European%20Standard%20Time")
+        .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE))
+        .into(binding.fragmentRadarImgInfrarossoEuropa);
+
+
+
+
     binding.fragmentRadarDayBtnMenu.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -61,7 +80,7 @@ public class RadarActivity extends SampleActivity{
       }
     });
 
-    CustomDialog cdd = new CustomDialog(this, "Il caricamento delle immagini satellitari dipende dalla velocità della tua connessione dati");
+    CustomDialog cdd = new CustomDialog(this, "Il caricamento delle immagini satellitari dipende dalla velocità della tua connessione dati\n\nScorri per visualizzare tutti i radar!");
     cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     cdd.show();
   }

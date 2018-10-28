@@ -84,9 +84,10 @@ public class MainActivity extends SampleActivity {
     SharedPreferences getPrefs = PreferenceManager
         .getDefaultSharedPreferences(getBaseContext());
 
-    boolean isMsg = getPrefs.getBoolean("msg_reminder", true);
+    boolean isMsgNotifiche = getPrefs.getBoolean("msg_reminder", true);
+    boolean isMsgBollettino = getPrefs.getBoolean("msg_bollettino", true);
 
-    if(isMsg){
+    if(isMsgNotifiche){
     //  Make a new preferences editor
       SharedPreferences.Editor e = getPrefs.edit();
 
@@ -96,7 +97,22 @@ public class MainActivity extends SampleActivity {
       //  Apply changes
       e.apply();
 
-      CustomDialog cdd = new CustomDialog(MainActivity.this, "Hey!\n Lo sai che dalle impostazioni puoi attivare/disattivare le notifiche?");
+      CustomDialog cdd = new CustomDialog(MainActivity.this, "Hey!\nLo sai che dalle impostazioni puoi attivare/disattivare le notifiche?");
+      cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+      cdd.show();
+    }
+
+    if(isMsgBollettino) {
+      //  Make a new preferences editor
+      SharedPreferences.Editor e = getPrefs.edit();
+
+      //  Edit preference to make it false because we don't want this to run again
+      e.putBoolean("msg_bollettino", false);
+
+      //  Apply changes
+      e.apply();
+
+      CustomDialog cdd = new CustomDialog(MainActivity.this, "TIP: Premi sull'immagine del sole/nuvola per leggere direttamente il bollettino!");
       cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
       cdd.show();
     }
@@ -148,7 +164,7 @@ public class MainActivity extends SampleActivity {
     MenuItem second_pref = menu.findItem(R.id.drawer_view_second_pref);
     MenuItem app_version = menu.findItem(R.id.drawer_view_app_version);
 
-    app_version.setTitle("v2.2-stabile");
+    app_version.setTitle("v2.3-stabile");
 
     first_pref.setTitle(first_pos);
     second_pref.setTitle(second_pos);
@@ -161,7 +177,7 @@ public class MainActivity extends SampleActivity {
           switch (menuItem.getItemId()){
 
             case R.id.drawer_view_app_version:
-              CustomDialog cdd = new CustomDialog(MainActivity.this, "Versione v2.s-stabile\n-Miglioramento Colori app\nA-ggiunta altitudine\n-Miglioramento visibilità allerte\n-Aggiunte webcam");
+              CustomDialog cdd = new CustomDialog(MainActivity.this, "Versione v2.3-stabile\n-Premi sull'icona meteo per vedere il bollettino!\n-Aggiunti più radar\n-Ora i radar si possono ingrandire!\n-Risolto ordinamento dati nella sezione 'Dati Stazioni'\n-Migliorate le impostazioni dell'app\n-Migliorato il sistema di notifiche");
               cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
               cdd.show();
               break;
@@ -266,9 +282,16 @@ public class MainActivity extends SampleActivity {
         }
       });
 
-      WeatherReportEntity wfr = entries.get(entries.size() - 1);
-      WeatherForWeekEntity wfw = wfr.getPrevisione();
-      WeatherForDayEntity wfd = wfw.getGiorni().get(0);
+      WeatherReportEntity wfr   = entries.get(entries.size() - 1);
+      WeatherForWeekEntity wfw  = wfr.getPrevisione();
+      WeatherForDayEntity wfd   = wfw.getGiorni().get(0);
+
+      binding.activityMainIcWeatherIcon.setOnClickListener(v -> {
+        String txt = wfr.getPrevisione().getGiorni().get(0).getTestoGiorno();
+        CustomDialog cdd = new CustomDialog(MainActivity.this, "Previsione: " + txt);
+        cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        cdd.show();
+      });
 
       binding.activityMainTxtMaxTemperature.setText(wfd.gettMaxGiorno() + ""); // Temp. MAX
       binding.activityMainTxtMinTemperature.setText(wfd.gettMinGiorno() + ""); // Temp. MIN
@@ -283,6 +306,7 @@ public class MainActivity extends SampleActivity {
       binding.activityMainTxtRain.setText(wfd.getFasce().get(0).getDescPrecProb() + "%");
 
       binding.activityMainTxtPosition.setText(String.format("%s (%s m)", wfw.getLocalita(), wfw.getQuota()));
+
       binding.activityMainTxtWeatherDescription.setText(wfd.getDescIcona());
 
       if(!wfd.getDescIconaAllerte().isEmpty()) {
@@ -313,7 +337,6 @@ public class MainActivity extends SampleActivity {
         // ------ ------ ------
         // SET BACKGROUND IMAGE
         // ------ ------ ------
-
 
         Boolean isNight = false;
         long now = start.getTimeInMillis();
@@ -486,6 +509,7 @@ public class MainActivity extends SampleActivity {
       });
     });
 
+
   }
 
   @Override
@@ -532,8 +556,15 @@ public class MainActivity extends SampleActivity {
             return;
           }
 
+          binding.activityMainIcWeatherIcon.setOnClickListener(v -> {
+            String txt = entries.get(0).getPrevisione().getGiorni().get(0).getTestoGiorno();
+            CustomDialog cdd = new CustomDialog(MainActivity.this, "Previsione: " + txt);
+            cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            cdd.show();
+          });
+
           // check time for reload weather meteo
-          if(System.currentTimeMillis() >= (entries.get(entries.size() - 1).getDataInserimentoDb() + (120000) ) ) {
+          if(System.currentTimeMillis() >= (entries.get(entries.size() - 1).getDataInserimentoDb() + (7200000) ) ) {
             // passate 2 ore
             Intent i = new Intent(MainActivity.this, LoaderActivity.class);
             i.putExtra("POSITION", entries.get(entries.size()-1).getPrevisione().getLocalita());

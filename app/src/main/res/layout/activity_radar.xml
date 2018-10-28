@@ -70,7 +70,7 @@
           android:text="Radar Precipitazioni"/>
 
 
-        <ImageView
+        <com.github.chrisbanes.photoview.PhotoView
           android:layout_width="match_parent"
           android:layout_marginTop="@dimen/activity_radar_card_img_margin"
           android:layout_marginBottom="@dimen/activity_radar_card_img_margin"
@@ -96,10 +96,68 @@
             android:gravity="center"
             android:fontFamily="@font/os_bold"
             android:layout_margin="5dp"
+            android:text="Radar Neve"/>
+
+
+          <com.github.chrisbanes.photoview.PhotoView
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/activity_radar_card_img_margin"
+            android:layout_marginBottom="@dimen/activity_radar_card_img_margin"
+            android:layout_height="match_parent"
+            android:id="@+id/fragment_radar_img_radar_neve"/>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+          android:backgroundTint="@color/white_gray"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/activity_radar_card_height"
+          android:layout_margin="@dimen/activity_radar_card_margin"
+          android:padding="@dimen/activity_radar_card_padding"
+          app:cardElevation="@dimen/card_elevation">
+
+          <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/activity_radar_card_title_size"
+            android:textColor="@color/blue_main"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:fontFamily="@font/os_bold"
+            android:layout_margin="5dp"
+            android:text="Infrarosso Europa"/>
+
+
+          <com.github.chrisbanes.photoview.PhotoView
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/activity_radar_card_img_margin"
+            android:layout_marginBottom="@dimen/activity_radar_card_img_margin"
+            android:layout_height="match_parent"
+            android:id="@+id/fragment_radar_img_infrarosso_europa"/>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+          android:backgroundTint="@color/white_gray"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/activity_radar_card_height"
+          android:layout_margin="@dimen/activity_radar_card_margin"
+          android:padding="@dimen/activity_radar_card_padding"
+          app:cardElevation="@dimen/card_elevation">
+
+          <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/activity_radar_card_title_size"
+            android:textColor="@color/blue_main"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:fontFamily="@font/os_bold"
+            android:layout_margin="5dp"
             android:text="Infrarosso Alpi"/>
 
 
-          <ImageView
+          <com.github.chrisbanes.photoview.PhotoView
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/activity_radar_card_img_margin"
             android:layout_marginBottom="@dimen/activity_radar_card_img_margin"
@@ -107,6 +165,37 @@
             android:id="@+id/fragment_radar_img_infrarosso_alpi"/>
 
         </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+        android:backgroundTint="@color/white_gray"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_radar_card_height"
+        android:layout_margin="@dimen/activity_radar_card_margin"
+        android:padding="@dimen/activity_radar_card_padding"
+        app:cardElevation="@dimen/card_elevation">
+
+        <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textSize="@dimen/activity_radar_card_title_size"
+          android:textColor="@color/blue_main"
+          android:layout_gravity="center_horizontal"
+          android:gravity="center"
+          android:fontFamily="@font/os_bold"
+          android:layout_margin="5dp"
+          android:text="Immagine Zona Alpina"/>
+
+
+        <com.github.chrisbanes.photoview.PhotoView
+          android:layout_width="match_parent"
+          android:layout_marginTop="@dimen/activity_radar_card_img_margin"
+          android:layout_marginBottom="@dimen/activity_radar_card_img_margin"
+          android:layout_height="match_parent"
+          android:id="@+id/fragment_radar_img_zona_alpina"/>
+
+      </android.support.v7.widget.CardView>
+
+
 
       </LinearLayout>
       <!-- END MAIN CONTENT -->

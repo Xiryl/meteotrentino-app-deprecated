@@ -138,6 +138,7 @@ public class WeatherStationActivity extends SampleActivity implements API_statio
 
     if(data.getTemperature() != null && data.getPrecipitazioni() != null && data.getTemperature().get(0).getTemperature() != null
         && data.getPrecipitazioni().get(0).getPrecipitazione() != null ) {
+
       binding.activityWeatherStationRain.setText(data.getTemperature().get(0).getTemperature().get(0).getTemperatura() + "°C");
       binding.activityWeatherStationTemp.setText(data.getPrecipitazioni().get(0).getPrecipitazione().get(0).getPioggia() + "mm");
     }

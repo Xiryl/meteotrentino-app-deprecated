@@ -27,6 +27,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="Webcam del Trentino"
+        android:layout_marginRight="50dp"
         android:fontFamily="@font/os_regular"
         android:textColor="@color/white"
         android:layout_gravity="center_horizontal"
