@@ -57,7 +57,7 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
 
     Window window = this.getWindow();
     window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-    window.setStatusBarColor(Color.parseColor("#FFFFFF"));
+    window.setStatusBarColor(getResources().getColor(R.color.white));
 
     // Set loader gif
     Glide.with(this)
@@ -65,14 +65,11 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
         .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE))
         .into(binding.activityLoaderGifLoading);
 
-    // preferences
-    SharedPreferences getPrefs = PreferenceManager
-        .getDefaultSharedPreferences(getBaseContext());
 
-    //  Create a new boolean and preference and set it to true
+    SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
     boolean isFirstStart = getPrefs.getBoolean("firstStart_loader", true);
 
-    //  If the activity has never started before...
+    //  If the activity has never started before call intro
     if (isFirstStart) {
 
       Intent x = new Intent(this, IntroActivity.class);
@@ -80,37 +77,32 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
       startActivity(x);
       this.finish();
 
-      //  Make a new preferences editor
+
       SharedPreferences.Editor e = getPrefs.edit();
-
-      //  Edit preference to make it false because we don't want this to run again
       e.putBoolean("firstStart_loader", false);
-
-      //  Apply changes
       e.apply();
     }
     else
     {
       Intent intent = getIntent();
       if(intent.hasExtra("POSITION")) {
+
         // call API
         String pos = intent.getStringExtra("POSITION");
         callAPI(pos);
       }
       else {
-        // clean repository
-        //WeatherReportRepository repository = new WeatherReportRepository(this.getApplication());
-        // TODO CHECK DELETE ALL
-        //repository.deleteAll();
 
         // get user location from GPS
-          if (ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSION_REQ_CODE);
-          }
+        if (ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+          ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSION_REQ_CODE);
+        }
 
-          // PERMESSO AL GPS DATO
+       // GPS granted
         WeatherReportRepository repository = new WeatherReportRepository(this.getApplication());
         repository.getAll().observe(this, entities -> {
+
+          // no data
           if (entities.size() <= 0) {
             Intent i = new Intent(LoaderActivity.this, ChooseLocationActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -118,6 +110,8 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
           }
           else
           {
+            // yes data
+
             try {
               GpsTracker gpsTracker = new GpsTracker(this);
               if (gpsTracker.canGetLocation()) {
@@ -135,7 +129,7 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
                 callAPI(user_location);
 
               } else {
-                Toast.makeText(getApplicationContext(), "GPS non attivo.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.loaderact_gps_not_active), Toast.LENGTH_SHORT).show();
                   if (entities.size() <= 0) {
                     Intent i = new Intent(LoaderActivity.this, ChooseLocationActivity.class);
                     i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -145,13 +139,13 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
                   {
                     // chiamo le API con l'ultima località assumendo che sia la predefinita
                     String loc = entities.get(entities.size()-1).getPrevisione().getLocalita();
-                    Toast.makeText(getApplicationContext(), "GPS non attivo, ottengo l'ultima località ricercata...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.loaderact_gps_not_active_get_last), Toast.LENGTH_SHORT).show();
                     callAPI(loc);
                   }
               }
             }
             catch (Exception e) {
-              Log.d("", e.getMessage());
+              Log.d("LoaderAct-ask-gps", e.getMessage());
             }
           }
         });
@@ -188,7 +182,7 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
               callAPI(user_location);
 
             } else {
-              Toast.makeText(getApplicationContext(), "GPS non attivo.", Toast.LENGTH_SHORT).show();
+              Toast.makeText(getApplicationContext(), getResources().getString(R.string.loaderact_gps_not_active), Toast.LENGTH_SHORT).show();
               repository.getAll().observe(this, entities -> {
                 if (entities.size() <= 0) {
                   Intent i = new Intent(LoaderActivity.this, ChooseLocationActivity.class);
@@ -199,7 +193,7 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
                 {
                   // chiamo le API con l'ultima località assumendo che sia la predefinita
                   String loc = entities.get(entities.size()-1).getPrevisione().getLocalita();
-                  Toast.makeText(getApplicationContext(), "GPS non attivo, ottengo l'ultima località ricercata...", Toast.LENGTH_SHORT).show();
+                  Toast.makeText(getApplicationContext(), getResources().getString(R.string.loaderact_gps_not_active_get_last), Toast.LENGTH_SHORT).show();
                   callAPI(loc);
                 }
               });
@@ -214,7 +208,7 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
           Log.e("Permission","Not Granted");
           repository.getAll().observe(this, entities -> {
             if (entities.size() <= 0) {
-              Toast.makeText(getApplicationContext(), "Permesso al GPS negato", Toast.LENGTH_LONG).show();
+              Toast.makeText(getApplicationContext(), getResources().getString(R.string.loaderact_gps_denied), Toast.LENGTH_LONG).show();
               Intent i = new Intent(LoaderActivity.this, ChooseLocationActivity.class);
               i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
               this.startActivity(i);
@@ -223,7 +217,7 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
             {
               // chiamo le API con l'ultima località assumendo che sia la predefinita
               String loc = entities.get(entities.size()-1).getPrevisione().getLocalita();
-              Toast.makeText(getApplicationContext(), "GPS non attivo, ottengo l'ultima località ricercata...", Toast.LENGTH_SHORT).show();
+              Toast.makeText(getApplicationContext(), getResources().getString(R.string.loaderact_gps_not_active_get_last), Toast.LENGTH_SHORT).show();
               callAPI(loc);
             }
           });
@@ -235,23 +229,23 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
   @Override
   public void processFinish(int response) {
     if(response == 1) {
-      Intent i = new Intent(LoaderActivity.this, MainActivity.class);
-      i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-      this.startActivity(i);
+      callIntent();
     }
     else if(response == -2)
     {
-      Toast.makeText(this,"Errore nella localizzazione GPS, raccolgo l'ultima località salvata ... ", Toast.LENGTH_LONG).show();
-      Intent i = new Intent(LoaderActivity.this, MainActivity.class);
-      i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-      this.startActivity(i);
+      Toast.makeText(this,getResources().getString(R.string.gps_error), Toast.LENGTH_LONG).show();
+      callIntent();
     }
     else if(response == -1) {
-      Toast.makeText(this,"Errore nella connessione al server meteotrentino.it ... ", Toast.LENGTH_LONG).show();
-      Intent i = new Intent(LoaderActivity.this, MainActivity.class);
-      i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-      this.startActivity(i);
+      Toast.makeText(this, getResources().getString(R.string.server_error), Toast.LENGTH_LONG).show();
+      callIntent();
     }
+  }
+
+  private void callIntent() {
+    Intent i = new Intent(LoaderActivity.this, MainActivity.class);
+    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+    this.startActivity(i);
   }
 
 

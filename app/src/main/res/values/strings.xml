@@ -45,5 +45,12 @@
   <string name="error_insert_location">Inserire una località per continuare!</string>
   <string name="error_invalid_location">Località non valida.</string>
 
+  <!-- LoaderActivity -->
+  <string name="loaderact_gps_not_active">GPS non attivo.</string>
+  <string name="loaderact_gps_not_active_get_last">GPS non attivo, ottengo l\'ultima località ricercata...</string>
+  <string name="loaderact_gps_denied">Permesso al gps negato.</string>
+  <string name="server_error">Errore nella connessione al server meteotrentino.it ... </string>
+  <string name="gps_error">Errore nella localizzazione GPS, raccolgo l\'ultima località salvata...</string>
+
 
 </resources>
