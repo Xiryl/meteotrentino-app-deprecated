@@ -44,25 +44,14 @@ public class WebcamActivity extends SampleActivity implements  AdapterView.OnIte
     // set toolbar color
     Window window = this.getWindow();
     window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-    window.setStatusBarColor(Color.parseColor("#65A8D9"));
-
-    Spinner spinner = (Spinner) findViewById(R.id.activity_webcam_spinner);
-
-    // Create an ArrayAdapter using the string array and a default spinner layout
-    ArrayAdapter<String> adapter = new ArrayAdapter<String>
-        (this, android.R.layout.simple_spinner_item, WebcamListCSV.getWebcamNames());
-    // Specify the layout to use when the list of choices appears
+    window.setStatusBarColor(getResources().getColor(R.color.toolbar_color));
+    
+    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, WebcamListCSV.getWebcamNames());
     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-    // Apply the adapter to the spinner
-    spinner.setAdapter(adapter);
-    spinner.setOnItemSelectedListener(this);
+    binding.activityWebcamSpinner.setAdapter(adapter);
+    binding.activityWebcamSpinner.setOnItemSelectedListener(this);
 
-    binding.fragmentRadarDayBtnMenu.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        onBackPressed();
-      }
-    });
+    binding.fragmentRadarDayBtnMenu.setOnClickListener(v -> onBackPressed());
   }
 
   @Override
