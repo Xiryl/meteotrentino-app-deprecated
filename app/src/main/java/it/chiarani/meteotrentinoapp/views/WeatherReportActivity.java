@@ -40,16 +40,15 @@ public class WeatherReportActivity extends SampleActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
+    // set toolbar color
+    Window window = this.getWindow();
+    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+    window.setStatusBarColor(getResources().getColor(R.color.toolbar_color));
+
     Intent intent = getIntent();
     if(intent.hasExtra(INTENT_DAY_TAG)) {
       report_day = intent.getExtras().getInt(INTENT_DAY_TAG);
     }
-
-    // set toolbar color
-    Window window = this.getWindow();
-    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-    window.setStatusBarColor(Color.parseColor("#65A8D9"));
-
 
     WeatherReportRepository repository = new WeatherReportRepository(getApplication());
     repository.getAll().observe(this, entries -> {
@@ -61,9 +60,9 @@ public class WeatherReportActivity extends SampleActivity {
       linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
       binding.weatherReportRvWeather.setLayoutManager(linearLayoutManager);
 
-
       OpenWeatherDataRepository repository_op = new OpenWeatherDataRepository(getApplication());
       repository_op.getAll().observe(this, entries_op -> {
+
         if(entries_op == null) {
           return;
         }
@@ -71,20 +70,14 @@ public class WeatherReportActivity extends SampleActivity {
         WeatherReportAdapter adapter = new WeatherReportAdapter(this, report, entries_op.get(entries_op.size()-1), report_day);
         binding.weatherReportRvWeather.setAdapter(adapter);
 
-
         binding.activityWeatherReportTxtPrevisione.setText(report.getPrevisione().getGiorni().get(report_day).getTestoGiorno());
-        binding.activityWeatherReportTxtPosition.setText(report.getPrevisione().getLocalita());
+        binding.activityWeatherReportTxtPosition.  setText(report.getPrevisione().getLocalita());
 
       });
 
     });
 
-    binding.fragmentRadarDayBtnMenu.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        onBackPressed();
-      }
-    });
+    binding.fragmentRadarDayBtnMenu.setOnClickListener(v -> onBackPressed());
 
   }
 }
