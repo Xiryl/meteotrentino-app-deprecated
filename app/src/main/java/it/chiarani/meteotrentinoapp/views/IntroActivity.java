@@ -32,9 +32,16 @@ public class IntroActivity extends AppIntro2 implements ISlideBackgroundColorHol
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    addSlide(AppIntro2Fragment.newInstance("Meteo Trentino", "Benvenuto in Meteo Trentino App!\nTi chiediamo l'accesso al GPS per fornirti i dati meteo nella tua posizione attuale!", R.drawable.img_1, Color.parseColor("#A0C264")));
-    addSlide(AppIntro2Fragment.newInstance("Meteo Sempre Aggiornato", "Previsioni, dati radar, umidità, vento, probabilità precipitazioni e quant'altro in questa applicazione..", R.drawable.img_2, Color.parseColor("#51AFDF")));
-    addSlide(AppIntro2Fragment.newInstance("Allerte Intelligenti", "Disponiamo di un sistema di notifiche intelligenti in caso di allerte provinciali e metereologiche, rimani sempre aggiornato con la nostra applicazione!", R.drawable.img_3, Color.parseColor("#F4C359")));
+    addSlide(AppIntro2Fragment.newInstance("Meteo Trentino",
+        "Benvenuto in Meteo Trentino App!\nTi chiediamo l'accesso al GPS per fornirti i dati meteo nella tua posizione attuale!",
+        R.drawable.img_1, Color.parseColor("#A0C264")));
+
+    addSlide(AppIntro2Fragment.newInstance("Meteo Sempre Aggiornato",
+        "Previsioni, dati radar, umidità, vento, probabilità precipitazioni e quant'altro in questa applicazione..",
+        R.drawable.img_2, Color.parseColor("#51AFDF")));
+
+    addSlide(AppIntro2Fragment.newInstance("Allerte Intelligenti",
+        "Disponiamo di un sistema di notifiche intelligenti in caso di allerte provinciali e metereologiche, rimani sempre aggiornato con questa applicazione!", R.drawable.img_3, Color.parseColor("#F4C359")));
 
     // Hide Skip/Done button.
     showSkipButton(false);
@@ -47,14 +54,13 @@ public class IntroActivity extends AppIntro2 implements ISlideBackgroundColorHol
 
 
     // Ask for CAMERA permission on the second slide
-    askForPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1); // OR
+    askForPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
 
   }
 
   @Override
   public void onSkipPressed(Fragment currentFragment) {
     super.onSkipPressed(currentFragment);
-    // Do something when users tap on Skip button.
   }
 
   @Override
@@ -67,7 +73,6 @@ public class IntroActivity extends AppIntro2 implements ISlideBackgroundColorHol
 
   @Override
   public int getDefaultBackgroundColor() {
-    // Return the default background color of the slide.
     return Color.parseColor("#000000");
   }
 
