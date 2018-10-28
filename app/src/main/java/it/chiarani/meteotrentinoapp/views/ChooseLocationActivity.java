@@ -65,7 +65,6 @@ public class ChooseLocationActivity extends SampleActivity implements API_locati
 
     repository.getAll().observe(this, entries -> {
       if(entries.size() == 0) {
-
         // Launch async task for get locality
         new API_location(getApplication(), this, this::processFinish).execute();
       }
@@ -118,26 +117,25 @@ public class ChooseLocationActivity extends SampleActivity implements API_locati
       return false;
     });
 
-    // set next button handler
-    binding.chooseLocationBtnNext.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
+    /**
+     * Catch NEXT button
+     */
+    binding.chooseLocationBtnNext.setOnClickListener(v -> {
 
-        String user_location = binding.chooseLocationAutoCompleteTxt.getText().toString();
+      String user_location = binding.chooseLocationAutoCompleteTxt.getText().toString();
 
-        if(user_location.isEmpty() || user_location == null || all_locs == null || all_locs.length == 0) {
-          Toast.makeText(v.getContext(), getResources().getString(R.string.error_insert_location), Toast.LENGTH_LONG).show();
-          return;
-        }
-
-        for(String l : all_locs){
-          if(l.toLowerCase().equals(user_location.toLowerCase()))
-          {
-            callLoaderactivity(getPrefs);
-          }
-        }
-        Toast.makeText(v.getContext(), getResources().getString(R.string.error_invalid_location), Toast.LENGTH_LONG).show();
+      if(user_location.isEmpty() || user_location == null || all_locs == null || all_locs.length == 0) {
+        Toast.makeText(v.getContext(), getResources().getString(R.string.error_insert_location), Toast.LENGTH_LONG).show();
+        return;
       }
+
+      for(String l : all_locs){
+        if(l.toLowerCase().equals(user_location.toLowerCase()))
+        {
+          callLoaderactivity(getPrefs);
+        }
+      }
+      Toast.makeText(v.getContext(), getResources().getString(R.string.error_invalid_location), Toast.LENGTH_LONG).show();
     });
 
     /**
@@ -152,34 +150,31 @@ public class ChooseLocationActivity extends SampleActivity implements API_locati
   }
 
   private void callLoaderactivity(SharedPreferences getPrefs) {
+    SharedPreferences.Editor e = getPrefs.edit();
+
     if(pref_number == 1) {
-
-      SharedPreferences.Editor e = getPrefs.edit();
-
       e.putString("first_pos", binding.chooseLocationAutoCompleteTxt.getText().toString());
-      e.apply();
 
-      Intent myIntent = new Intent(ChooseLocationActivity.this, LoaderActivity.class);
-      myIntent.putExtra("POSITION", binding.chooseLocationAutoCompleteTxt.getText().toString());
-      startActivity(myIntent);
+      e.apply();
+      launchIntent();
     }
     else if(pref_number == 2) {
-
-      SharedPreferences.Editor e = getPrefs.edit();
-
       e.putString("second_pos", binding.chooseLocationAutoCompleteTxt.getText().toString());
-      e.apply();
 
-      Intent myIntent = new Intent(ChooseLocationActivity.this, LoaderActivity.class);
-      myIntent.putExtra("POSITION", binding.chooseLocationAutoCompleteTxt.getText().toString());
-      startActivity(myIntent);
+      e.apply();
+      launchIntent();
     }
     else
     {
-      Intent myIntent = new Intent(ChooseLocationActivity.this, LoaderActivity.class);
-      myIntent.putExtra("POSITION", binding.chooseLocationAutoCompleteTxt.getText().toString());
-      startActivity(myIntent);
+      launchIntent();
     }
+  }
+
+  private void launchIntent()
+  {
+    Intent myIntent = new Intent(ChooseLocationActivity.this, LoaderActivity.class);
+    myIntent.putExtra("POSITION", binding.chooseLocationAutoCompleteTxt.getText().toString());
+    startActivity(myIntent);
   }
 
   /**
