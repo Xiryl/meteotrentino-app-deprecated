@@ -43,22 +43,13 @@ public class InfoActivity extends SampleActivity{
     // set toolbar color
     Window window = this.getWindow();
     window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-    window.setStatusBarColor(Color.parseColor("#65A8D9"));
+    window.setStatusBarColor(getResources().getColor(R.color.toolbar_color));
 
-    binding.fragmentRadarDayBtnMenu.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        onBackPressed();
-      }
-    });
+    binding.fragmentRadarDayBtnMenu.setOnClickListener(v -> onBackPressed());
 
-    binding.btnPayp.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.paypal.me/fabChiarani/3"));
-        startActivity(browserIntent);
-
-      }
+    binding.btnPayp.setOnClickListener(v -> {
+      Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.paypal.me/fabChiarani/2"));
+      startActivity(browserIntent);
     });
   }
 }
