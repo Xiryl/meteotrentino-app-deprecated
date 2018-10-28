@@ -15,4 +15,7 @@ public class API_endpoint {
   public static final String ENDPOINT_PROTEZIONE_CIV   = "http://avvisi.protezionecivile.tn.it";
   public static final String URL_ALLERTE_METEOTT       = "https://www.meteotrentino.it/#!/content?menuItemDesktop=44";
   public static final String URL_ALLERTE_PROVINCIA     = "http://www.protezionecivile.tn.it/news_comunicati_stampa/";
+  public static final String ENDPOINT_IMG_ZONA_ALPINA  = "https://api.sat24.com/mostrecent/ALPS/visual5hdcomplete";
+  public static final String ENDPOINT_IMG_RADAR_NEVE   = "https://api.sat24.com/animated/EU/snow/1/Central%20European%20Standard%20Time";
+  public static final String ENDPOINT_IMG_EUROPA       = "https://api.sat24.com/animated/EU/infraPolair/1/Central%20European%20Standard%20Time";
 }

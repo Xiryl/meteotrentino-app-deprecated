@@ -54,22 +54,23 @@ public class RadarActivity extends SampleActivity{
         .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE))
         .into(binding.fragmentRadarImgInfrarossoAlpi);
 
-
+    // zona alpina
     Glide.with(this)
-        .load("https://api.sat24.com/mostrecent/ALPS/visual5hdcomplete")
+        .load(API_endpoint.ENDPOINT_IMG_ZONA_ALPINA)
         .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE))
         .into(binding.fragmentRadarImgZonaAlpina);
 
+    // radar neve
     Glide.with(this)
-        .load("https://api.sat24.com/animated/EU/snow/1/Central%20European%20Standard%20Time")
+        .load(API_endpoint.ENDPOINT_IMG_RADAR_NEVE)
         .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE))
         .into(binding.fragmentRadarImgRadarNeve);
 
+    // immagine europea
     Glide.with(this)
-        .load("https://api.sat24.com/animated/EU/infraPolair/1/Central%20European%20Standard%20Time")
+        .load(API_endpoint.ENDPOINT_IMG_EUROPA)
         .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE))
         .into(binding.fragmentRadarImgInfrarossoEuropa);
-
 
 
 
@@ -80,7 +81,7 @@ public class RadarActivity extends SampleActivity{
       }
     });
 
-    CustomDialog cdd = new CustomDialog(this, "Il caricamento delle immagini satellitari dipende dalla velocità della tua connessione dati\n\nScorri per visualizzare tutti i radar!");
+    CustomDialog cdd = new CustomDialog(this, getResources().getString(R.string.radar_message));
     cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     cdd.show();
   }

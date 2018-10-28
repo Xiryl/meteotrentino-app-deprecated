@@ -52,5 +52,9 @@
   <string name="server_error">Errore nella connessione al server meteotrentino.it ... </string>
   <string name="gps_error">Errore nella localizzazione GPS, raccolgo l\'ultima località salvata...</string>
 
+  <!-- Radar -->
+  <string name="radar_message">Il caricamento delle immagini satellitari dipende dalla velocità della tua connessione dati\n\nScorri per visualizzare tutti i radar!</string>
+
+
 
 </resources>
