@@ -34,20 +34,16 @@ public class MessageActivity extends SampleActivity {
 
     Intent this_intent = getIntent();
 
+    Window window = this.getWindow();
+    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+    window.setStatusBarColor(getResources().getColor(R.color.blue_main));
+
     if(this_intent.hasExtra("payload")){
       String payload = this_intent.getStringExtra("payload");
       binding.activityMessageTxt.setText(payload);
 
       CustomAlertRepository repository = new CustomAlertRepository(getApplication());
       repository.deleteAll();
-
-      Window window = this.getWindow();
-      window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-      window.setStatusBarColor(Color.parseColor("#BB5233"));
-
-      CustomAlertRepository repo = new CustomAlertRepository(getApplication());
-      repo.deleteAll();
-
     }
   }
 }
