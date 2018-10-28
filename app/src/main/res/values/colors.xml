@@ -21,4 +21,5 @@
   <color name="allerte_accent_item">#F29F76</color>
   <color name="seven_day_list_background_color">#122948</color>
   <color name="seven_day_list_first_item_background_color">#499E65</color>
+  <color name="toolbar_color">#65A8D9</color>
 </resources>

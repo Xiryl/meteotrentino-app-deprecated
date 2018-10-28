@@ -40,5 +40,10 @@
   <string name="notification_title">Buongiorno!</string>
   <string name="notification_descr">Il cielo oggi sarà </string>
 
+  <!-- ChooseLocationActivity -->
+  <string name="error_download_location">Impossibile scaricare le località. riprova.</string>
+  <string name="error_insert_location">Inserire una località per continuare!</string>
+  <string name="error_invalid_location">Località non valida.</string>
+
 
 </resources>

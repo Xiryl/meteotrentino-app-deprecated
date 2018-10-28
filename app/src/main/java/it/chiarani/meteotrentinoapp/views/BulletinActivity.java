@@ -48,7 +48,7 @@ public class BulletinActivity extends SampleActivity{
     // set toolbar color
     Window window = this.getWindow();
     window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-    window.setStatusBarColor(Color.parseColor("#65A8D9"));
+    window.setStatusBarColor(getResources().getColor(R.color.toolbar_color));
 
     WeatherReportRepository repo = new WeatherReportRepository(getApplication());
     repo.getAll().observe(this, entries -> {
