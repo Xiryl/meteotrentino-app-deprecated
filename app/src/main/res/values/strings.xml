@@ -55,6 +55,8 @@
   <!-- Radar -->
   <string name="radar_message">Il caricamento delle immagini satellitari dipende dalla velocità della tua connessione dati\n\nScorri per visualizzare tutti i radar!</string>
 
+  <!-- WeatherStation -->
+  <string name="inactive_station">Stazione meteo non attiva.</string>
 
 
 </resources>

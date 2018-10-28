@@ -52,93 +52,70 @@ public class WeatherStationActivity extends SampleActivity implements API_statio
     // set toolbar color
     Window window = this.getWindow();
     window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-    window.setStatusBarColor(Color.parseColor("#65A8D9"));
+    window.setStatusBarColor(getResources().getColor(R.color.toolbar_color));
 
-    binding.fragmentRadarDayBtnMenu.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        onBackPressed();
-      }
-    });
+    binding.fragmentRadarDayBtnMenu.setOnClickListener(v -> onBackPressed());
 
-    Spinner spinner = (Spinner) findViewById(R.id.activity_weather_station_spinner);
 
-    // Create an ArrayAdapter using the string array and a default spinner layout
-    ArrayAdapter<String> adapter = new ArrayAdapter<String>
-        (this, android.R.layout.simple_spinner_item, WeatherStation.getWeatherStationList());
-    // Specify the layout to use when the list of choices appears
+    // fill spinner
+    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, WeatherStation.getWeatherStationList());
     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-    // Apply the adapter to the spinner
-    spinner.setAdapter(adapter);
-    spinner.setOnItemSelectedListener(this);
+    binding.activityWeatherStationSpinner.setAdapter(adapter);
+    binding.activityWeatherStationSpinner.setOnItemSelectedListener(this);
 
 
-    binding.activityWeatherStationRdbtnPioggia.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-      @Override
-      public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if(!staton_code.isEmpty()) {
-
-          binding.activityWeatherStationRv.setHasFixedSize(true);
-
-          LinearLayoutManager horizontalLayoutManagaer = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
-          binding.activityWeatherStationRv.setLayoutManager(horizontalLayoutManagaer);
-          WeatherStationAdapter adapter1 = new WeatherStationAdapter(data, 1);
-          binding.activityWeatherStationRv.setAdapter(adapter1);
-
-        }
+    /**
+     * Checkbox pioggia
+     */
+    binding.activityWeatherStationRdbtnPioggia.setOnCheckedChangeListener((buttonView, isChecked) -> {
+      if(!staton_code.isEmpty()) {
+        buildRecyclervier(1);
       }
     });
 
-    binding.activityWeatherStationRdbtnTemperatura.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-      @Override
-      public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if(!staton_code.isEmpty()) {
-
-          binding.activityWeatherStationRv.setHasFixedSize(true);
-
-          LinearLayoutManager horizontalLayoutManagaer = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
-          binding.activityWeatherStationRv.setLayoutManager(horizontalLayoutManagaer);
-          WeatherStationAdapter adapter1 = new WeatherStationAdapter(data, 0);
-          binding.activityWeatherStationRv.setAdapter(adapter1);
-
-        }
+    /**
+     * Checkbox temperatura
+     */
+    binding.activityWeatherStationRdbtnTemperatura.setOnCheckedChangeListener((buttonView, isChecked) -> {
+      if(!staton_code.isEmpty()) {
+        buildRecyclervier(0);
       }
     });
   }
 
+  private void buildRecyclervier(int weather){
+    binding.activityWeatherStationRv.setHasFixedSize(true);
+
+    LinearLayoutManager horizontalLayoutManagaer = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+    binding.activityWeatherStationRv.setLayoutManager(horizontalLayoutManagaer);
+    WeatherStationAdapter adapter1 = new WeatherStationAdapter(data, weather);
+    binding.activityWeatherStationRv.setAdapter(adapter1);
+  }
+
 
   @Override
-  public void processFinish(XmlDatiOggi dataaa) {
-    List<XmlTemperaturaAria> tmp_temperature = dataaa.getTemperature().get(0).getTemperature();
-    data = dataaa;
+  public void processFinish(XmlDatiOggi data) {
+    if(data.getTemperature().get(0).getTemperature() == null || data.getTemperature()== null || data.getTemperature().isEmpty()) {
 
-    if(data.getTemperature().get(0).getTemperature() == null || data.getTemperature()== null || data == null || data.getTemperature().isEmpty()) {
-
-      CustomDialog cdd = new CustomDialog(this, "Stazione meteo non attiva.");
+      CustomDialog cdd = new CustomDialog(this, getResources().getString(R.string.inactive_station));
       cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
       cdd.show();
-      staton_code = "";
 
       if(binding.activityWeatherStationRv.getAdapter() != null) {
         WeatherStationAdapter adapter1 = (WeatherStationAdapter) binding.activityWeatherStationRv.getAdapter();
         adapter1.clear();
-        staton_code = "";
       }
+
+      staton_code = "";
       return;
     }
 
-    // use this setting to improve performance if you know that changes
-    // in content do not change the layout size of the RecyclerView
-    binding.activityWeatherStationRv.setHasFixedSize(true);
+    buildRecyclervier(1);
 
-    LinearLayoutManager horizontalLayoutManagaer = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-    binding.activityWeatherStationRv.setLayoutManager(horizontalLayoutManagaer);
-    WeatherStationAdapter adapter1 = new WeatherStationAdapter(data, 1);
-    binding.activityWeatherStationRv.setAdapter(adapter1);
-
-    if(data.getTemperature() != null && data.getPrecipitazioni() != null && data.getTemperature().get(0).getTemperature() != null
-        && data.getPrecipitazioni().get(0).getPrecipitazione() != null ) {
-
+    if(data.getTemperature() != null &&
+        data.getPrecipitazioni() != null &&
+        data.getTemperature().get(0).getTemperature() != null  &&
+        data.getPrecipitazioni().get(0).getPrecipitazione() != null ) {
       binding.activityWeatherStationRain.setText(data.getTemperature().get(0).getTemperature().get(0).getTemperatura() + "°C");
       binding.activityWeatherStationTemp.setText(data.getPrecipitazioni().get(0).getPrecipitazione().get(0).getPioggia() + "mm");
     }
@@ -146,9 +123,8 @@ public class WeatherStationActivity extends SampleActivity implements API_statio
   }
 
   public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-    // An item was selected. You can retrieve the selected item using
-    // parent.getItemAtPosition(pos)
     if(pos == 0) return;
+
     try {
       String code = WeatherStation.getStationFromPos(pos+1);
       staton_code = code;
@@ -156,12 +132,12 @@ public class WeatherStationActivity extends SampleActivity implements API_statio
       task.execute();
     }
     catch (Exception ex ) {
-      Log.d("d","d");
+      Log.d("selected-item",ex.getMessage());
       staton_code = "";
     }
   }
 
   public void onNothingSelected(AdapterView<?> parent) {
-    // Another interface callback
+    // do nothing
   }
 }
