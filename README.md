@@ -50,5 +50,7 @@ L'applicazione non salva alcun dato personale dell'utente. Vengono utilizzati i 
 
 ### PR
 L'applicazione è ancora in fase di sviluppo, ma si accettano comunque PR seguendo il seguente schema:
-[...]
+ - Creare branch dev
+ - Commit con descrizione
+ 
 happy coding.
