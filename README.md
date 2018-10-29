@@ -24,7 +24,7 @@ La temperatura attuale presente nella homepage è ricavata da un servizio estern
 
 > D: La temperatura attuale è maggiore/minore della massima/minima, perchè?
 
-Gli opendata di www.meteotrentino.it rilasciano solo le temperature massime e minime, poichè non è disponibile la temperatura attuale viene utilizzata da un servizio esterno (openweathermap) il quale può rilevare una temperatura che può essere diversa dalla solia presente impostata nel primo bollettino della giornata. Ricordo che previsioni meteo non sono una certezza ma l'analisi di una raccolta dati di processi atmosferici per ottenere una stima dell'evoluzione atmosferica.
+Gli opendata di www.meteotrentino.it rilasciano solo le temperature massime e minime e, poiché la temperatura attuale non è disponibile, essa viene ricavata da un servizio esterno (openweathermap), il quale può rilevare una temperatura diversa da quella impostata nel primo bollettino della giornata. Ricordo che le previsioni meteo non sono una certezza ma l'analisi di una raccolta dati di processi atmosferici per ottenere una stima dell'evoluzione atmosferica.
 
 > D: Il radar non si carica, perchè?
 
