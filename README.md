@@ -20,19 +20,19 @@ Può capitare che la connessione dati non sia sufficiente per scaricare i dati m
 
 > D: La temperatura attuale è diversa da quella rilevata dalla stazione metereologica della stessa località, perchè?
 
-La temperatura attuale presente nella homepage è ricavata da un servizio terzo (openweathermap) poichè la provincia non rilascia alcun dato per la temperatura attuale, ma bensì solo la massima e la minima. Viene utilizzato un servizio terzo poichè non tutte le località hanno una stazione metereologica da cui ricavare tutti i dati.
+La temperatura attuale presente nella homepage è ricavata da un servizio esterno (openweathermap) poichè la provincia non rilascia alcun dato per la temperatura attuale, ma bensì solo la massima e la minima. Viene utilizzato un servizio esterno poichè non tutte le località hanno una stazione metereologica da cui ricavare tutti i dati.
 
 > D: La temperatura attuale è maggiore/minore della massima/minima, perchè?
 
-Gli opendata di www.meteotrentino.it rilasciano solo le temperature massime e minime, poichè non è disponibile la temperatura attuale viene utilizzata da un servizio terzo (openweathermap) il quale può rilevare una temperatura che può essere diversa dalla solia presente impostata nel primo bollettino della giornata. Ricordo che previsioni meteo non sono una certezza ma l'analisi di una raccolta dati di processi atmosferici per ottenere una stima dell'evoluzione atmosferica.
+Gli opendata di www.meteotrentino.it rilasciano solo le temperature massime e minime, poichè non è disponibile la temperatura attuale viene utilizzata da un servizio esterno (openweathermap) il quale può rilevare una temperatura che può essere diversa dalla solia presente impostata nel primo bollettino della giornata. Ricordo che previsioni meteo non sono una certezza ma l'analisi di una raccolta dati di processi atmosferici per ottenere una stima dell'evoluzione atmosferica.
 
 > D: Il radar non si carica, perchè?
 
-Può dipendere dalla tua connessione dati o da un malservizio dell'ente da cui si ricava l'immagine radar
+Può dipendere dalla tua connessione dati o da un disservizio dell'ente da cui si ricava l'immagine radar
 
 > D: La webcam non si carica / non è aggiornata, perchè?
 
-Può essere dovuto da malservizio dell'ente da cui si ricava l'immagine webcam
+Può essere dovuto da disservizio dell'ente da cui si ricava l'immagine webcam
 
 > D: La mia località non è presente, perchè?
 
