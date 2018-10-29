@@ -65,7 +65,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Prefer
   @Override public boolean onPreferenceClick(Preference preference) {
     switch (preference.getKey()) {
       case "pref_key_faq":
-        Intent faqintent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.chiarani.it"));
+        Intent faqintent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Xiryl/MeteoTrentino-App/blob/master/README.md#faq"));
         startActivity(faqintent);
         break;
       case "pref_key_sito_web":

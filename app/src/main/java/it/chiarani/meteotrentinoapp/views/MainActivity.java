@@ -117,7 +117,7 @@ public class MainActivity extends SampleActivity {
 
     // faq button
     binding.mainActivityBtnInfo.setOnClickListener( v ->{
-      Intent faqintent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.chiarani.it"));
+      Intent faqintent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Xiryl/MeteoTrentino-App/blob/master/README.md#faq"));
       startActivity(faqintent);
     });
 
