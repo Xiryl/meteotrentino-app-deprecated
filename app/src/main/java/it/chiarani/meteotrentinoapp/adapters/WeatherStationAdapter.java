@@ -24,10 +24,10 @@ public class WeatherStationAdapter extends RecyclerView.Adapter<WeatherStationAd
   }
 
   public WeatherStationAdapter(XmlDatiOggi report, int type) {
-    if(report.getTemperature() != null && report.getTemperature().get(0).getTemperature() != null)
+    if(report != null && report.getTemperature() != null && report.getTemperature().get(0).getTemperature() != null)
       Collections.reverse(report.getTemperature().get(0).getTemperature());
 
-    if(report.getPrecipitazioni() != null && report.getPrecipitazioni().get(0).getPrecipitazione() != null)
+    if(report != null && report.getPrecipitazioni() != null && report.getPrecipitazioni().get(0).getPrecipitazione() != null)
     Collections.reverse(report.getPrecipitazioni().get(0).getPrecipitazione());
 
     this.report = report;

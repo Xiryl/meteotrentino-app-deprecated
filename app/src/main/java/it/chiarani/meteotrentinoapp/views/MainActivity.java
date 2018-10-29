@@ -13,14 +13,13 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Toast;
 import com.onesignal.OneSignal;
-import com.sothree.slidinguppanel.ScrollableViewHelper;
-import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 import com.takusemba.spotlight.OnSpotlightStateChangedListener;
 import com.takusemba.spotlight.OnTargetStateChangedListener;
 import com.takusemba.spotlight.Spotlight;
@@ -35,7 +34,6 @@ import java.util.List;
 import java.util.TimeZone;
 
 import hotchemi.android.rate.AppRate;
-import hotchemi.android.rate.OnClickButtonListener;
 import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.adapters.WeatherSevenDayAdapter;
 import it.chiarani.meteotrentinoapp.database.entity.CustomAlertEntity;
@@ -47,7 +45,6 @@ import it.chiarani.meteotrentinoapp.databinding.ActivityMainBinding;
 import it.chiarani.meteotrentinoapp.helper.CustomDialog;
 import it.chiarani.meteotrentinoapp.helper.DialogShower;
 import it.chiarani.meteotrentinoapp.helper.WeatherIconDescriptor;
-import it.chiarani.meteotrentinoapp.models.WeatherReport;
 import it.chiarani.meteotrentinoapp.repositories.CustomAlertRepository;
 import it.chiarani.meteotrentinoapp.repositories.OpenWeatherDataRepository;
 import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
@@ -57,6 +54,8 @@ public class MainActivity extends SampleActivity {
 
   // #region private fields
   private final static String MAINACTIVITY_TAG = "MAINACTIVITY";
+  private final static String KEY_FIRST_POS = "first_pos";
+  private final static String KEY_SECOND_POS = "second_pos";
   private ActivityMainBinding binding;
   String first_pos;
   String second_pos;
@@ -91,41 +90,55 @@ public class MainActivity extends SampleActivity {
     // OneSignal Initialization
     initOnesignal();
 
-    binding.mainActBtnMenu.setOnClickListener(v -> binding.mainActivityDrawerLayout.openDrawer(Gravity.LEFT));
+    // animate icon
+    Animation pulse = AnimationUtils.loadAnimation(this, R.anim.pulse);
+    binding.activityMainIcWeatherIcon.startAnimation(pulse);
 
     // set toolbar color
     Window window = this.getWindow();
     window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
     // get user pref
-    first_pos = getPrefs.getString("first_pos",   getResources().getString(R.string.first_pref));
-    second_pos = getPrefs.getString("second_pos", getResources().getString(R.string.second_pref));
+    first_pos = getPrefs.getString(KEY_FIRST_POS,   getResources().getString(R.string.first_pref));
+    second_pos = getPrefs.getString(KEY_SECOND_POS, getResources().getString(R.string.second_pref));
 
+    // Update menu values
     Menu menu = binding.mainActivityNavView.getMenu();
     MenuItem first_pref  = menu.findItem(R.id.drawer_view_first_pref);
     MenuItem second_pref = menu.findItem(R.id.drawer_view_second_pref);
     MenuItem app_version = menu.findItem(R.id.drawer_view_app_version);
 
-    app_version.setTitle("2.3.1-stabile");
+    app_version.setTitle("2.4-stabile");
     first_pref. setTitle(first_pos);
     second_pref.setTitle(second_pos);
 
-    // left menu
-    leftDrawerListener();
+    // build left menu
+    initLeftMenuDrawer();
 
+    // faq button
+    binding.mainActivityBtnInfo.setOnClickListener( v ->{
+      Intent faqintent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.chiarani.it"));
+      startActivity(faqintent);
+    });
+
+    // show weather data
     repository.getAll().observe(this, entries -> {
-      if (entries == null || entries.isEmpty() || entries.size() == 0) {
-        Toast.makeText(this, "Dati meteo non disponibili, riprova più tardi", Toast.LENGTH_SHORT).show();
+
+      if (entries == null || entries.isEmpty()) {
+        Toast.makeText(this, getResources().getString(R.string.main_no_wether_data), Toast.LENGTH_SHORT).show();
         return;
       }
 
       CustomAlertRepository alertRepository = new CustomAlertRepository(getApplication());
+
+      // check for alerts
       alertRepository.getAll().observe(this, alertEntities -> {
-        if(alertEntities.size() > 0 ) {
+
+        if(alertEntities != null && alertEntities.size() > 0 ) {
           Calendar start = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"));
           long now = start.getTimeInMillis();
-
           CustomAlertEntity last_alert = alertEntities.get(alertEntities.size() -1);
+
           if(last_alert.getAlertTime() <= (now + 3600000)) {
             Intent message_alert_i = new Intent(this, MessageActivity.class);
             message_alert_i.putExtra("payload", last_alert.getAlertDescription());
@@ -134,72 +147,77 @@ public class MainActivity extends SampleActivity {
           }
         }
       });
+      // -- end alert repo --
 
       WeatherReportEntity wfr   = entries.get(entries.size() - 1);
       WeatherForWeekEntity wfw  = wfr.getPrevisione();
       WeatherForDayEntity wfd   = wfw.getGiorni().get(0);
 
-      binding.activityMainIcWeatherIcon.setOnClickListener(v -> {
-        String txt = wfr.getPrevisione().getGiorni().get(0).getTestoGiorno();
-        CustomDialog cdd = new CustomDialog(MainActivity.this, "Previsione: " + txt);
-        cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        cdd.show();
-      });
+      // set values
+      binding.activityMainTxtMaxTemperature.setText(String.format("%s", wfd.gettMaxGiorno())); // Temp. MAX
+      binding.activityMainTxtMinTemperature.setText(String.format("%s", wfd.gettMinGiorno())); // Temp. MIN
+      binding.activityMainTxtRain.setText(String.format("%s%%",wfd.getFasce().get(0).getDescPrecProb()));
+      binding.activityMainTxtPosition.setText(String.format("%s (%s m)", wfw.getLocalita(), wfw.getQuota()));
+      binding.activityMainTxtWeatherDescription.setText(wfd.getDescIcona());
 
-      binding.activityMainTxtMaxTemperature.setText(wfd.gettMaxGiorno() + ""); // Temp. MAX
-      binding.activityMainTxtMinTemperature.setText(wfd.gettMinGiorno() + ""); // Temp. MIN
-
-      // Lista Meteo 7 giorni
+      // set week forecast
       binding.fragmentMainRvWeatherSlot.setHasFixedSize(true);
       LinearLayoutManager horizontalLayoutManagaer = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
       binding.fragmentMainRvWeatherSlot.setLayoutManager(horizontalLayoutManagaer);
       WeatherSevenDayAdapter adapter = new WeatherSevenDayAdapter(wfr);
       binding.fragmentMainRvWeatherSlot.setAdapter(adapter);
 
-      binding.activityMainTxtRain.setText(wfd.getFasce().get(0).getDescPrecProb() + "%");
-
-      binding.activityMainTxtPosition.setText(String.format("%s (%s m)", wfw.getLocalita(), wfw.getQuota()));
-
-      binding.activityMainTxtWeatherDescription.setText(wfd.getDescIcona());
-
+      // show alert
       if(!wfd.getDescIconaAllerte().isEmpty()) {
-        binding.activityMainTxtAllerta.setText("ALLERTA: " + wfd.getDescIconaAllerte());
+        binding.activityMainTxtAllerta.setText(String.format("ALLERTA: %s",wfd.getDescIconaAllerte()));
       }
 
+      // show today bulletin if weather icon is clicked
+      binding.activityMainIcWeatherIcon.setOnClickListener(v -> {
+        String txt = wfr.getPrevisione().getGiorni().get(0).getTestoGiorno();
+
+        CustomDialog cdd = new CustomDialog(MainActivity.this, "Previsione: " + txt);
+        cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        cdd.show();
+      });
+
+
+      // opwen weather values
       OpenWeatherDataRepository repository_op = new OpenWeatherDataRepository(getApplication());
       repository_op.getAll().observe(this, (List<OpenWeatherDataEntity> od_entries) -> {
         if (od_entries.isEmpty() || od_entries.size() == 0) {
-          Toast.makeText(this, "Dati meteo non disponibili, riprova più tardi", Toast.LENGTH_SHORT);
+          Toast.makeText(this, getResources().getString(R.string.main_no_wether_data), Toast.LENGTH_SHORT);
           return;
         }
+
+
         OpenWeatherDataEntity opw = od_entries.get(od_entries.size() - 1);
-        binding.activityMainTxtActTemperature.setText(opw.getActualTemperature() + "");
-        binding.activityMainTxtHumidity.setText(opw.getHumidity() + "%");
         NumberFormat formatter_w = new DecimalFormat("#0.00");
-        Double w = Double.parseDouble(opw.getWindSpeed()) * 3.6;
-        binding.activityMainTxtWind.setText(formatter_w.format(w) + " km/h");
-
         DateFormat formatter = new SimpleDateFormat("HH:mm");
+        Double w = Double.parseDouble(opw.getWindSpeed()) * 3.6;
+
+        // set values
+        binding.activityMainTxtActTemperature .setText(String.format("%s",opw.getActualTemperature()));
+        binding.activityMainTxtHumidity       .setText(String.format("%s%%",opw.getHumidity()));
+        binding.activityMainTxtWind           .setText(String.format("%s km/h", formatter_w.format(w)));
+
         formatter.setTimeZone(TimeZone.getTimeZone("Europe/Rome"));
-
         Calendar start = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"));
-        String actual_date = formatter.format(start.getTime());
 
-        binding.mainActivityTxtUltimoAgg.setText("Alba "+ formatter.format(opw.getSunrise()) +" - Tramonto " + formatter.format(opw.getSunset()) + "\nAggiornato alle: " + formatter.format(entries.get(entries.size()-1).getDataInserimentoDb()));
+        binding.mainActivityTxtUltimoAgg.setText(String.format("Alba: %s - Tramonto %s\nAggiornato alle: %s", formatter.format(opw.getSunrise()), formatter.format(opw.getSunset()), formatter.format(entries.get(entries.size()-1).getDataInserimentoDb()));
 
         // ------ ------ ------
         // SET BACKGROUND IMAGE
         // ------ ------ ------
 
         Boolean isNight = false;
-        long now = start.getTimeInMillis();
-        long sunset = opw.getSunset();
-        long sunrise = opw.getSunrise();
+        long now      = start.getTimeInMillis();
+        long sunset   = opw.getSunset();
+        long sunrise  = opw.getSunrise();
 
         // day
         binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_day);
         window.setStatusBarColor(Color.parseColor("#7AA9C3"));
-
 
         if(now <= (sunrise - 1800000)) {
           // night
@@ -222,18 +240,19 @@ public class MainActivity extends SampleActivity {
           // night
           binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_night);
           window.setStatusBarColor(Color.parseColor("#345A7B"));
-
           isNight = true;
         }
 
 
+        // -------------
+        // SET BIG IMAGE
+        // -------------
         switch (WeatherIconDescriptor.getWeatherType(wfd.getIcona())) {
           case COPERTO:
             binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_cloud);
             break;
 
           case COPERTO_CON_PIOGGIA:
-
             binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_light_rain);
             binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_cloud);
             window.setStatusBarColor(Color.parseColor("#4B4C4C"));
@@ -272,19 +291,19 @@ public class MainActivity extends SampleActivity {
           case SOLEGGIATO_CON_PIOGGIA:
             binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_sun_cloud_rain);
             binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_cloud);
-            window.setStatusBarColor(Color.parseColor("#4B4C4C"));
+            window.setStatusBarColor(getResources().getColor(R.color.txt_allerta_cloud));
             break;
 
           case SOLEGGIATO_CON_PIOGGIA_E_NEVE:
             binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_sun_cloud_rain_snow);
             binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_cloud);
-            window.setStatusBarColor(Color.parseColor("#4B4C4C"));
+            window.setStatusBarColor(getResources().getColor(R.color.txt_allerta_cloud));
             break;
 
           case TEMPORALE:
             binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_thunderstorm);
             binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_cloud);
-            window.setStatusBarColor(Color.parseColor("#4B4C4C"));
+            window.setStatusBarColor(getResources().getColor(R.color.txt_allerta_cloud));
             break;
 
           case UNDEFINED:
@@ -292,73 +311,7 @@ public class MainActivity extends SampleActivity {
             break;
         }
 
-        //  Create a new boolean and preference and set it to true
-        boolean isFirstStart = getPrefs.getBoolean("firstStart", true);
-
-        //  If the activity has never started before...
-        if (isFirstStart) {
-          SimpleTarget simpleTarget = new SimpleTarget.Builder(this)
-              .setPoint(binding.mainActBtnMenu)
-              .setShape(new Circle(200f))
-              .setTitle("Maggiori Funzionalità")
-              .setDescription("Apri il menù laterale per ottenere più funzionalità")
-              .setOnSpotlightStartedListener(new OnTargetStateChangedListener<SimpleTarget>() {
-                @Override
-                public void onStarted(SimpleTarget target) {
-                  // do something
-                }
-                @Override
-                public void onEnded(SimpleTarget target) {
-                  // do something
-                }
-              })
-              .build();
-
-          SimpleTarget simpleTarget1 = new SimpleTarget.Builder(this)
-              .setPoint(binding.activityMainLlSlideUp)
-              .setShape(new Circle(200f))
-              .setTitle("Scopri il meteo settimanale")
-              .setDescription("Alza la tendina e premi sul giorno per ottenere il bollettino metereologico")
-              .setOnSpotlightStartedListener(new OnTargetStateChangedListener<SimpleTarget>() {
-                @Override
-                public void onStarted(SimpleTarget target) {
-                  // do something
-                }
-
-                @Override
-                public void onEnded(SimpleTarget target) {
-                  // do something
-                }
-              })
-              .build();
-
-          Spotlight.with(this)
-              .setOverlayColor(R.color.background)
-              .setDuration(10)
-              .setAnimation(new DecelerateInterpolator(1f))
-              .setTargets(simpleTarget, simpleTarget1)
-              .setClosedOnTouchedOutside(true)
-              .setOnSpotlightStateListener(new OnSpotlightStateChangedListener() {
-                @Override
-                public void onStarted() {
-                }
-
-                @Override
-                public void onEnded() {
-                }
-              })
-              .start();
-
-
-          //  Make a new preferences editor
-          SharedPreferences.Editor e = getPrefs.edit();
-
-          //  Edit preference to make it false because we don't want this to run again
-          e.putBoolean("firstStart", false);
-
-          //  Apply changes
-          e.apply();
-        }
+        callHelperGuide(getPrefs);
       });
     });
 
@@ -375,24 +328,25 @@ public class MainActivity extends SampleActivity {
     super.onResume();
 
     // preferences
-    SharedPreferences getPrefs = PreferenceManager
-        .getDefaultSharedPreferences(getBaseContext());
+    SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 
-    // create a new boolean and preference
-    first_pos = getPrefs.getString("first_pos", "Aggiungi 1° Preferito");
-    second_pos = getPrefs.getString("second_pos", "Aggiungi 2° Preferito");
+    // get user pref
+    first_pos = getPrefs.getString(KEY_FIRST_POS,   getResources().getString(R.string.first_pref));
+    second_pos = getPrefs.getString(KEY_SECOND_POS, getResources().getString(R.string.second_pref));
 
-    Menu menu = binding.mainActivityNavView.getMenu();
-    MenuItem first_pref = menu.findItem(R.id.drawer_view_first_pref);
-    MenuItem second_pref = menu.findItem(R.id.drawer_view_second_pref);
+    Menu menu             = binding.mainActivityNavView.getMenu();
+    MenuItem first_pref   = menu.findItem(R.id.drawer_view_first_pref);
+    MenuItem second_pref  = menu.findItem(R.id.drawer_view_second_pref);
 
     first_pref.setTitle(first_pos);
     second_pref.setTitle(second_pos);
 
     CustomAlertRepository alertRepository = new CustomAlertRepository(getApplication());
     alertRepository.getAll().observe(this, alertEntities -> {
-      if(alertEntities.size() > 0 ) {
-        Calendar start = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"));
+
+      if(alertEntities != null && alertEntities.size() > 0 ) {
+          // if got an alert start message activity
+
           Intent message_alert_i = new Intent(this, MessageActivity.class);
           message_alert_i.putExtra("payload", alertEntities.get(alertEntities.size()-1).getAlertDescription());
           startActivity(message_alert_i);
@@ -402,9 +356,8 @@ public class MainActivity extends SampleActivity {
       {
         WeatherReportRepository repository = new WeatherReportRepository(this.getApplication());
         repository.getAll().observe(this, entries -> {
-          if (entries == null || entries.isEmpty() || entries.size() == 0) {
-            // Build alert dialog
-
+          if (entries == null || entries.isEmpty()) {
+            // No loc
             DialogShower.ShowDialog(this,new Intent(getApplicationContext(), ChooseLocationActivity.class),"Località non trovata", "Non sono riuscito a rilevare la tua posizione dal GPS.\nProva a ricercala manualmente!", "Ricerca", "Annulla");
             return;
           }
@@ -416,9 +369,8 @@ public class MainActivity extends SampleActivity {
             cdd.show();
           });
 
-          // check time for reload weather meteo
+          // check time for reload weather meteo ::= 2h
           if(System.currentTimeMillis() >= (entries.get(entries.size() - 1).getDataInserimentoDb() + (7200000) ) ) {
-            // passate 2 ore
             Intent i = new Intent(MainActivity.this, LoaderActivity.class);
             i.putExtra("POSITION", entries.get(entries.size()-1).getPrevisione().getLocalita());
             this.startActivity(i);
@@ -487,7 +439,11 @@ public class MainActivity extends SampleActivity {
           .init();
   }
 
-  private void leftDrawerListener() {
+  private void initLeftMenuDrawer() {
+
+    binding.mainActBtnMenu.setOnClickListener(v -> binding.mainActivityDrawerLayout.openDrawer(Gravity.LEFT));
+
+
     binding.mainActivityNavView.setNavigationItemSelectedListener(
         menuItem -> {
           // set item as selected to persist highlight
@@ -496,7 +452,7 @@ public class MainActivity extends SampleActivity {
           switch (menuItem.getItemId()){
 
             case R.id.drawer_view_app_version:
-              CustomDialog cdd = new CustomDialog(MainActivity.this, "Versione v2.3-stabile\n-Premi sull'icona meteo per vedere il bollettino!\n-Aggiunti più radar\n-Ora i radar si possono ingrandire!\n-Risolto ordinamento dati nella sezione 'Dati Stazioni'\n-Migliorate le impostazioni dell'app\n-Migliorato il sistema di notifiche");
+              CustomDialog cdd = new CustomDialog(MainActivity.this, "Versione v2.4-stabile\n-Premi sull'icona meteo per vedere il bollettino!\n-Aggiunti più radar\n-Risolto ordinamento dati nella sezione 'Dati Stazioni'\n-Migliorate le impostazioni dell'app\n-Migliorato il sistema di notifiche");
               cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
               cdd.show();
               break;
@@ -578,5 +534,75 @@ public class MainActivity extends SampleActivity {
           }
           return true;
         });
+  }
+
+  private void callHelperGuide(SharedPreferences getPrefs) {
+
+    //  Create a new boolean and preference and set it to true
+    boolean isFirstStart = getPrefs.getBoolean("firstStart", true);
+
+    //  If the activity has never started before...
+    if (isFirstStart) {
+      SimpleTarget simpleTarget = new SimpleTarget.Builder(this)
+          .setPoint(binding.mainActBtnMenu)
+          .setShape(new Circle(200f))
+          .setTitle("Maggiori Funzionalità")
+          .setDescription("Apri il menù laterale per ottenere più funzionalità")
+          .setOnSpotlightStartedListener(new OnTargetStateChangedListener<SimpleTarget>() {
+            @Override
+            public void onStarted(SimpleTarget target) {
+              // do something
+            }
+            @Override
+            public void onEnded(SimpleTarget target) {
+              // do something
+            }
+          })
+          .build();
+
+      SimpleTarget simpleTarget1 = new SimpleTarget.Builder(this)
+          .setPoint(binding.activityMainLlSlideUp)
+          .setShape(new Circle(200f))
+          .setTitle("Scopri il meteo settimanale")
+          .setDescription("Alza la tendina e premi sul giorno per ottenere il bollettino metereologico")
+          .setOnSpotlightStartedListener(new OnTargetStateChangedListener<SimpleTarget>() {
+            @Override
+            public void onStarted(SimpleTarget target) {
+              // do something
+            }
+
+            @Override
+            public void onEnded(SimpleTarget target) {
+              // do something
+            }
+          })
+          .build();
+
+      Spotlight.with(this)
+          .setOverlayColor(R.color.background)
+          .setDuration(10)
+          .setAnimation(new DecelerateInterpolator(1f))
+          .setTargets(simpleTarget, simpleTarget1)
+          .setClosedOnTouchedOutside(true)
+          .setOnSpotlightStateListener(new OnSpotlightStateChangedListener() {
+            @Override
+            public void onStarted() {
+            }
+
+            @Override
+            public void onEnded() {
+            }
+          })
+          .start();
+
+      //  Make a new preferences editor
+      SharedPreferences.Editor e = getPrefs.edit();
+
+      //  Edit preference to make it false because we don't want this to run again
+      e.putBoolean("firstStart", false);
+
+      //  Apply changes
+      e.apply();
+    }
   }
 }

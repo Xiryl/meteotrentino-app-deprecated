@@ -32,7 +32,7 @@ import it.chiarani.meteotrentinoapp.xml_parser.XmlTemperaturaAria;
 public class WeatherStationActivity extends SampleActivity implements API_stationWeatherData_response, AdapterView.OnItemSelectedListener {
 
   ActivityWeatherStationBinding binding;
-  XmlDatiOggi data = null;
+  XmlDatiOggi mData;
   String staton_code = "";
 
   @Override
@@ -69,7 +69,7 @@ public class WeatherStationActivity extends SampleActivity implements API_statio
      */
     binding.activityWeatherStationRdbtnPioggia.setOnCheckedChangeListener((buttonView, isChecked) -> {
       if(!staton_code.isEmpty()) {
-        buildRecyclervier(1);
+        buildRecyclervier(1, mData);
       }
     });
 
@@ -78,12 +78,43 @@ public class WeatherStationActivity extends SampleActivity implements API_statio
      */
     binding.activityWeatherStationRdbtnTemperatura.setOnCheckedChangeListener((buttonView, isChecked) -> {
       if(!staton_code.isEmpty()) {
-        buildRecyclervier(0);
+        buildRecyclervier(0, mData);
       }
     });
   }
 
-  private void buildRecyclervier(int weather){
+  @Override
+  public void processFinish(XmlDatiOggi data) {
+    mData = data;
+    if (data == null || data.getTemperature().get(0).getTemperature() == null || data.getTemperature() == null || data.getTemperature().isEmpty()) {
+
+      CustomDialog cdd = new CustomDialog(this, getResources().getString(R.string.inactive_station));
+      cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+      cdd.show();
+
+      if (binding.activityWeatherStationRv.getAdapter() != null) {
+        WeatherStationAdapter adapter1 = (WeatherStationAdapter) binding.activityWeatherStationRv.getAdapter();
+        adapter1.clear();
+      }
+
+      binding.activityWeatherStationRain.setText("- °C");
+      binding.activityWeatherStationTemp.setText("- mm");
+      staton_code = "";
+      return;
+    }
+
+    buildRecyclervier(1, data);
+
+    if (data.getTemperature() != null &&
+        data.getPrecipitazioni() != null &&
+        data.getTemperature().get(0).getTemperature() != null &&
+        data.getPrecipitazioni().get(0).getPrecipitazione() != null) {
+      binding.activityWeatherStationRain.setText(data.getTemperature().get(0).getTemperature().get(0).getTemperatura() + "°C");
+      binding.activityWeatherStationTemp.setText(data.getPrecipitazioni().get(0).getPrecipitazione().get(0).getPioggia() + "mm");
+    }
+  }
+
+  private void buildRecyclervier(int weather, XmlDatiOggi data){
     binding.activityWeatherStationRv.setHasFixedSize(true);
 
     LinearLayoutManager horizontalLayoutManagaer = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
@@ -92,35 +123,6 @@ public class WeatherStationActivity extends SampleActivity implements API_statio
     binding.activityWeatherStationRv.setAdapter(adapter1);
   }
 
-
-  @Override
-  public void processFinish(XmlDatiOggi data) {
-    if(data.getTemperature().get(0).getTemperature() == null || data.getTemperature()== null || data.getTemperature().isEmpty()) {
-
-      CustomDialog cdd = new CustomDialog(this, getResources().getString(R.string.inactive_station));
-      cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-      cdd.show();
-
-      if(binding.activityWeatherStationRv.getAdapter() != null) {
-        WeatherStationAdapter adapter1 = (WeatherStationAdapter) binding.activityWeatherStationRv.getAdapter();
-        adapter1.clear();
-      }
-
-      staton_code = "";
-      return;
-    }
-
-    buildRecyclervier(1);
-
-    if(data.getTemperature() != null &&
-        data.getPrecipitazioni() != null &&
-        data.getTemperature().get(0).getTemperature() != null  &&
-        data.getPrecipitazioni().get(0).getPrecipitazione() != null ) {
-      binding.activityWeatherStationRain.setText(data.getTemperature().get(0).getTemperature().get(0).getTemperatura() + "°C");
-      binding.activityWeatherStationTemp.setText(data.getPrecipitazioni().get(0).getPrecipitazione().get(0).getPioggia() + "mm");
-    }
-
-  }
 
   public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
     if(pos == 0) return;

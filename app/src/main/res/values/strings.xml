@@ -19,7 +19,7 @@
   <!-- WeatherReportAdapter -->
   <string name="s_weatherreportadapter_tmin">Temperatura Minima</string>
   <string name="s_weatherreportadapter_tmax">Temperatura Massima</string>
-  <string name="s_weatherreportadapter_pressure">Pressione Atmosferica:</string>
+  <string name="s_weatherreportadapter_pressure">Pressione Atmosferica</string>
   <string name="s_weatherreportadapter_prob_prec">Probabilità Precipitazioni</string>
   <string name="s_weatherreportadapter_int_prec">Intensità Precipitazioni</string>
   <string name="s_weatherreportadapter_prob_temporali">Probabilità Temporali</string>
@@ -53,10 +53,13 @@
   <string name="gps_error">Errore nella localizzazione GPS, raccolgo l\'ultima località salvata...</string>
 
   <!-- Radar -->
-  <string name="radar_message">Il caricamento delle immagini satellitari dipende dalla velocità della tua connessione dati\n\nScorri per visualizzare tutti i radar!</string>
+  <string name="radar_message">Il caricamento delle immagini satellitari dipende dalla velocità della tua connessione dati e dal servizio.\n\nScorri per visualizzare tutti i radar!</string>
 
   <!-- WeatherStation -->
   <string name="inactive_station">Stazione meteo non attiva.</string>
+
+  <!-- MainActivity -->
+  <string name="main_no_wether_data">Dati meteo non disponibili, riprova più tardi</string>
 
 
 </resources>

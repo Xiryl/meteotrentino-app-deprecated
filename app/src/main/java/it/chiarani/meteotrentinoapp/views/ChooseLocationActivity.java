@@ -142,7 +142,7 @@ public class ChooseLocationActivity extends SampleActivity implements API_locati
      * Skip activity after choose the item
      */
     binding.chooseLocationAutoCompleteTxt.setOnItemClickListener((arg0, arg1, arg2, arg3) -> {
-
+      callLoaderactivity(getPrefs);
     });
 
     // back button

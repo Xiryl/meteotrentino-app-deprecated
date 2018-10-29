@@ -36,7 +36,6 @@
           android:orientation="vertical">
           <RelativeLayout
             android:layout_width="match_parent"
-
             android:layout_height="match_parent">
           <ImageButton
             android:layout_width="wrap_content"
@@ -61,7 +60,6 @@
               android:layout_width="@dimen/activity_main_itembar_img_size"
               android:layout_height="@dimen/activity_main_itembar_img_size"
               android:src="@drawable/ic_rain"/>
-
             <TextView
               android:id="@+id/activity_main_txt_rain"
               android:layout_width="wrap_content"
@@ -71,7 +69,6 @@
               android:textColor="#ffffff"
               android:maxWidth="45dp"
               android:textSize="@dimen/activity_main_itembar_txt_size" />
-
             <ImageView
               android:layout_width="@dimen/activity_main_itembar_img_size"
               android:layout_marginLeft="@dimen/activity_main_itembar_img_ml"
@@ -208,7 +205,7 @@
                   android:fontFamily="@font/os_light"
                   android:layout_height="wrap_content"
                   android:textSize="@dimen/activity_main_tempbar_right_txt_temp_size"
-                  android:textColor="@color/white" />
+                  android:textColor="#F3F3F3" />
               </LinearLayout>
               <LinearLayout
                 android:layout_width="wrap_content"
@@ -232,7 +229,7 @@
                   android:layout_height="wrap_content"
                   android:layout_marginBottom="3dp"
                   android:textSize="@dimen/activity_main_tempbar_right_txt_temp_size"
-                  android:textColor="@color/white"
+                  android:textColor="#F3F3F3"
                   />
               </LinearLayout>
             </LinearLayout>
@@ -250,6 +247,19 @@
             android:layout_gravity="center"
             android:id="@+id/activity_main_ic_weather_icon"/>
 
+
+
+            <ImageButton
+              android:id="@+id/main_Activity_btn_info"
+              android:layout_width="wrap_content"
+              android:layout_height="30dp"
+              android:scaleType="fitCenter"
+              android:adjustViewBounds="true"
+              android:layout_margin="6dp"
+              android:src="@drawable/ic_info"
+              android:layout_alignParentBottom="true"
+              android:layout_alignParentRight="true"
+              android:background="#00000000"/>
      <TextView
        android:id="@+id/main_activity_txt_ultimo_agg"
        android:layout_width="match_parent"

@@ -54,7 +54,6 @@ public class OSNotificationExtender extends NotificationExtenderService {
       show_notification = false;
     }
     else {
-
       try {
 
         JSONObject data = receivedResult.payload.additionalData;
@@ -118,12 +117,12 @@ public class OSNotificationExtender extends NotificationExtenderService {
               // se la data dell'inserimento nel db è compresa tra la mezzanotte di oggi e le sette di mattina
               builder.setContentTitle(getApplicationContext().getResources().getString(R.string.notification_title))
                   .setColor(getResources().getColor(R.color.colorAccent))
-                  .setContentText(getApplicationContext().getResources().getString(R.string.notification_descr) +
+                  .setContentText(getApplicationContext().getResources().getString(R.string.notification_descr) + " " +
                       entries.get(entries.size() - 1).getPrevisione().getGiorni().get(0).getDescIcona())
                   .setGroup("meteotrentinoapp")
                   .setAutoCancel(true)
                   .setColor(ContextCompat.getColor(getApplicationContext(), R.color.blue_main))
-                  .setStyle(new NotificationCompat.BigTextStyle().bigText(getApplicationContext().getResources().getString(R.string.notification_descr) +
+                  .setStyle(new NotificationCompat.BigTextStyle().bigText(getApplicationContext().getResources().getString(R.string.notification_descr) + " " +
                       entries.get(entries.size() - 1).getPrevisione().getGiorni().get(0).getDescIcona()))
                   .setPriority(Notification.PRIORITY_HIGH);
               return builder;
@@ -133,11 +132,11 @@ public class OSNotificationExtender extends NotificationExtenderService {
               // sennò prendo il giorno[2] del database che punta ad oggi
               builder.setContentTitle(getApplicationContext().getResources().getString(R.string.notification_title))
                   .setColor(getResources().getColor(R.color.colorAccent))
-                  .setContentText(getApplicationContext().getResources().getString(R.string.notification_descr) +
+                  .setContentText(getApplicationContext().getResources().getString(R.string.notification_descr) + " " +
                       entries.get(entries.size() - 1).getPrevisione().getGiorni().get(1).getDescIcona())
                   .setGroup("meteotrentinoapp")
                   .setAutoCancel(true)
-                  .setStyle(new NotificationCompat.BigTextStyle().bigText(getApplicationContext().getResources().getString(R.string.notification_descr) +
+                  .setStyle(new NotificationCompat.BigTextStyle().bigText(getApplicationContext().getResources().getString(R.string.notification_descr) + " " +
                       entries.get(entries.size() - 1).getPrevisione().getGiorni().get(1).getDescIcona()))
                   .setPriority(Notification.PRIORITY_HIGH);
               return builder;

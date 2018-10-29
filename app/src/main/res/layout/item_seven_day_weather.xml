@@ -4,7 +4,6 @@
   xmlns:app="http://schemas.android.com/apk/res-auto">
   <data>
   </data>
-
       <RelativeLayout
         android:id="@+id/item_sevenday_weather_rl"
         android:layout_width="@dimen/item_sevenday_width"
@@ -17,7 +16,7 @@
         <TextView
           android:id="@+id/item_sevenday_weather_txt_data"
           android:layout_width="match_parent"
-          android:layout_marginTop="20dp"
+          android:layout_marginTop="10dp"
           android:layout_gravity="center"
           android:gravity="center"
           android:layout_height="wrap_content"
@@ -45,14 +44,15 @@
         <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
+          android:gravity="center_horizontal"
           android:orientation="horizontal"
           android:layout_marginTop="155dp">
           <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxWidth="25dp"
+            android:maxWidth="20dp"
             android:maxHeight="30dp"
-            android:padding="4dp"
+            android:padding="2dp"
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
             android:src="@drawable/ic_arrow_up"
@@ -60,12 +60,11 @@
             />
           <TextView
             android:id="@+id/item_sevenday_weather_txt_tmax"
-            android:layout_width="wrap_content"
+            android:layout_width="35dp"
             android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:text="24°"
-            android:textSize="15sp"
-            android:textStyle="italic"
+            android:textSize="14sp"
             android:fontFamily="@font/os_regular"
             android:padding="@dimen/offset_5"
             android:textColor="@color/white" />
@@ -75,13 +74,14 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:orientation="horizontal"
+          android:gravity="center_horizontal"
           android:layout_marginTop="180dp">
           <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxWidth="25dp"
-            android:maxHeight="25dp"
-            android:padding="4dp"
+            android:maxWidth="20dp"
+            android:maxHeight="30dp"
+            android:padding="2dp"
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
             android:src="@drawable/ic_arrow_down"
@@ -89,13 +89,12 @@
             />
           <TextView
             android:id="@+id/item_sevenday_weather_txt_tmin"
-            android:layout_width="wrap_content"
+            android:layout_width="35dp"
             android:layout_gravity="center"
             android:layout_height="wrap_content"
-            android:text="24°"
-            android:textSize="15sp"
+            android:text="2°"
+            android:textSize="14sp"
             android:fontFamily="@font/os_regular"
-            android:textStyle="italic"
             android:padding="@dimen/offset_5"
             android:textColor="@color/white" />
         </LinearLayout>

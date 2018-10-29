@@ -47,7 +47,7 @@
       android:fontFamily="@font/os_regular"
       android:layout_marginStart="@dimen/activity_chooselocation_desc_margin"
       android:layout_marginEnd="@dimen/activity_chooselocation_desc_margin"
-      android:text="Tutte le località del trentino sono supportate. Le località supportate sono accquisite direttamente dagli opendata forniti da www.meteotrentino.it. Manca la tua località? Contattami!"
+      android:text="Le località supportate sono ottenute direttamente dagli opendata forniti da www.meteotrentino.it. Attiva il GPS per automatizzare il rilevamento della posizione all'avvio dell'applicazione. Manca la tua località? Contattami!    \            "
       android:layout_marginTop="@dimen/offset_15"
       android:layout_centerHorizontal="true"
       android:textSize="@dimen/activity_chooselocation_desc_size"/>

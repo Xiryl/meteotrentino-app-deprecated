@@ -52,7 +52,7 @@
         android:fontFamily="@font/os_regular"
         android:gravity="center"
         android:layout_marginTop="@dimen/offset_30"
-        android:text="Storico Allerte:"/>
+        android:text="Tutte le Allerte Emanate:"/>
 
       <android.support.v7.widget.RecyclerView
         android:layout_marginTop="30dp"

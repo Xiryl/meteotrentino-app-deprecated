@@ -32,6 +32,10 @@
     android:title="INFO"
     android:key="pref_key_storage_settings">
     <Preference
+      android:key="pref_key_faq"
+      android:title="FAQ"
+      android:summary="Prova a cercare una risposta alle classiche domande" />
+    <Preference
       android:key="pref_key_feedback"
       android:title="Contattami [Email]"
       android:summary="Vuoi proporre una modifica o segnalare un malfunzionamento?" />

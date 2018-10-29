@@ -103,8 +103,8 @@ public class WeatherSevenDayAdapter extends RecyclerView.Adapter<WeatherSevenDay
     WeatherForDayEntity wfd = weather_report.getPrevisione().getGiorni().get(position);
 
     // Temp. massima e minima
-    holder.txt_temperature_max.setText(String.format("%s°", wfd.gettMaxGiorno()));
-    holder.txt_temperature_min.setText(String.format("%s°", wfd.gettMinGiorno()));
+    holder.txt_temperature_max.setText(String.format("%1$2s°", wfd.gettMaxGiorno()));
+    holder.txt_temperature_min.setText(String.format("%1$2s°", wfd.gettMinGiorno()));
 
     if(!wfd.getIcoAllerte().isEmpty()) {
       holder.img_warning.setImageResource(R.drawable.ic_warning);
