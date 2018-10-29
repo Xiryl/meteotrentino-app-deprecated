@@ -45,7 +45,7 @@ public class WebcamActivity extends SampleActivity implements  AdapterView.OnIte
     Window window = this.getWindow();
     window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
     window.setStatusBarColor(getResources().getColor(R.color.toolbar_color));
-    
+
     ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, WebcamListCSV.getWebcamNames());
     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
     binding.activityWebcamSpinner.setAdapter(adapter);

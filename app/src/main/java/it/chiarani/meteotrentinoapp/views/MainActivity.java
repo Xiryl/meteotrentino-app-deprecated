@@ -58,8 +58,6 @@ public class MainActivity extends SampleActivity {
   // #region private fields
   private final static String MAINACTIVITY_TAG = "MAINACTIVITY";
   private ActivityMainBinding binding;
-  private WeatherReport _report;
-  private final static String INTENT_USER_LOCATION_TAG = "user_location";
   String first_pos;
   String second_pos;
   // #endregion
@@ -80,185 +78,40 @@ public class MainActivity extends SampleActivity {
 
     Log.d(MAINACTIVITY_TAG, "Start mainactivity");
 
-    // preferences
-    SharedPreferences getPrefs = PreferenceManager
-        .getDefaultSharedPreferences(getBaseContext());
+    // tips
+    SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+    sendTips(getPrefs);
 
-    boolean isMsgNotifiche = getPrefs.getBoolean("msg_reminder", true);
-    boolean isMsgBollettino = getPrefs.getBoolean("msg_bollettino", true);
+    // rate app
+    rateApp();
 
-    if(isMsgNotifiche){
-    //  Make a new preferences editor
-      SharedPreferences.Editor e = getPrefs.edit();
-
-      //  Edit preference to make it false because we don't want this to run again
-      e.putBoolean("msg_reminder", false);
-
-      //  Apply changes
-      e.apply();
-
-      CustomDialog cdd = new CustomDialog(MainActivity.this, "Hey!\nLo sai che dalle impostazioni puoi attivare/disattivare le notifiche?");
-      cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-      cdd.show();
-    }
-
-    if(isMsgBollettino) {
-      //  Make a new preferences editor
-      SharedPreferences.Editor e = getPrefs.edit();
-
-      //  Edit preference to make it false because we don't want this to run again
-      e.putBoolean("msg_bollettino", false);
-
-      //  Apply changes
-      e.apply();
-
-      CustomDialog cdd = new CustomDialog(MainActivity.this, "TIP: Premi sull'immagine del sole/nuvola per leggere direttamente il bollettino!");
-      cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-      cdd.show();
-    }
-
-
-    AppRate.with(this)
-        .setInstallDays(4) // default 10, 0 means install day.
-        .setLaunchTimes(10) // default 10
-        .setRemindInterval(2)
-        .setShowLaterButton(true)
-        .setDebug(false)
-        .setOnClickButtonListener(which -> Log.d(MainActivity.class.getName(), Integer.toString(which)))
-        .monitor();
-
-    // Show a dialog if meets conditions
-    AppRate.showRateDialogIfMeetsConditions(this);
-
-    // get repository
+    // build repository
     WeatherReportRepository repository = new WeatherReportRepository(this.getApplication());
 
-
     // OneSignal Initialization
-    OneSignal.startInit(this)
-        .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
-        .unsubscribeWhenNotificationsAreDisabled(true)
-        .setNotificationOpenedHandler(new OSNotificationOpenedHandler(getApplication()))
-        .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
-        .autoPromptLocation(true)
-        .init();
+    initOnesignal();
 
-    binding.mainActBtnMenu.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        binding.mainActivityDrawerLayout.openDrawer(Gravity.LEFT);
-      }
-    });
+    binding.mainActBtnMenu.setOnClickListener(v -> binding.mainActivityDrawerLayout.openDrawer(Gravity.LEFT));
 
     // set toolbar color
     Window window = this.getWindow();
     window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
-
-    // create a new boolean and preference
-    first_pos = getPrefs.getString("first_pos", "Aggiungi 1° Preferito");
-    second_pos = getPrefs.getString("second_pos", "Aggiungi 2° Preferito");
+    // get user pref
+    first_pos = getPrefs.getString("first_pos",   getResources().getString(R.string.first_pref));
+    second_pos = getPrefs.getString("second_pos", getResources().getString(R.string.second_pref));
 
     Menu menu = binding.mainActivityNavView.getMenu();
     MenuItem first_pref  = menu.findItem(R.id.drawer_view_first_pref);
     MenuItem second_pref = menu.findItem(R.id.drawer_view_second_pref);
     MenuItem app_version = menu.findItem(R.id.drawer_view_app_version);
 
-    app_version.setTitle("v2.3-stabile");
-
-    first_pref.setTitle(first_pos);
+    app_version.setTitle("2.3.1-stabile");
+    first_pref. setTitle(first_pos);
     second_pref.setTitle(second_pos);
 
-    binding.mainActivityNavView.setNavigationItemSelectedListener(
-        menuItem -> {
-          // set item as selected to persist highlight
-          menuItem.setChecked(true);
-
-          switch (menuItem.getItemId()){
-
-            case R.id.drawer_view_app_version:
-              CustomDialog cdd = new CustomDialog(MainActivity.this, "Versione v2.3-stabile\n-Premi sull'icona meteo per vedere il bollettino!\n-Aggiunti più radar\n-Ora i radar si possono ingrandire!\n-Risolto ordinamento dati nella sezione 'Dati Stazioni'\n-Migliorate le impostazioni dell'app\n-Migliorato il sistema di notifiche");
-              cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-              cdd.show();
-              break;
-            case R.id.drawer_view_first_pref:
-              if(first_pos.isEmpty() || first_pos.equals("Aggiungi 1° Preferito")) {
-                Intent chooseloc_intent = new Intent(MainActivity.this, ChooseLocationActivity.class);
-                chooseloc_intent.putExtra("PREF_NUMBER", 1);
-                startActivity(chooseloc_intent);
-              }
-              else
-              {
-                Intent myIntent = new Intent(this, LoaderActivity.class);
-                myIntent.putExtra("POSITION", first_pos);
-                startActivity(myIntent);
-              }
-              break;
-            case R.id.drawer_view_second_pref:
-              if(second_pos.isEmpty()  || second_pos.equals("Aggiungi 2° Preferito")) {
-                Intent chooseloc_intent = new Intent(MainActivity.this, ChooseLocationActivity.class);
-                chooseloc_intent.putExtra("PREF_NUMBER", 2);
-                startActivity(chooseloc_intent);
-              }
-              else
-              {
-                Intent myIntent = new Intent(this, LoaderActivity.class);
-                myIntent.putExtra("POSITION", second_pos);
-                startActivity(myIntent);
-              }
-              break;
-
-            case R.id.drawer_view_search:
-              Intent chooseloc_intent = new Intent(MainActivity.this, ChooseLocationActivity.class);
-              startActivity(chooseloc_intent);
-              break;
-
-            case R.id.drawer_view_radar:
-              Intent radar_intent = new Intent(MainActivity.this, RadarActivity.class);
-              startActivity(radar_intent);
-              break;
-
-            case R.id.drawer_view_staz_meteorologiche:
-              Intent staz_intent = new Intent(MainActivity.this, WeatherStationActivity.class);
-              startActivity(staz_intent);
-              break;
-
-            case R.id.drawer_view_staz_neve:
-              Toast.makeText(this, "Servizio attivo solo d'inverno", Toast.LENGTH_LONG).show();
-              break;
-
-            case R.id.drawer_view_bollettini:
-              Intent bulletin_intent = new Intent(MainActivity.this, BulletinActivity.class);
-              startActivity(bulletin_intent);
-              break;
-
-            case R.id.drawer_view_allerte:
-              Intent allerte_intent = new Intent(MainActivity.this, AllerteActivity.class);
-              startActivity(allerte_intent);
-              break;
-
-            case R.id.drawer_view_webcam:
-              Intent webcam_intent = new Intent(MainActivity.this, WebcamActivity.class);
-              startActivity(webcam_intent);
-              break;
-
-            case R.id.drawer_view_telegram:
-              Intent telegram_intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.t.me/MeteoTrentinoBot"));
-              startActivity(telegram_intent);
-              break;
-
-              case R.id.drawer_view_settings:
-                Intent settings_intent =  new Intent(MainActivity.this, SettingsActivity.class);
-                startActivity(settings_intent);
-                break;
-
-            case R.id.drawer_view_info:
-              Intent info_intent =  new Intent(MainActivity.this, InfoActivity.class);
-              startActivity(info_intent);
-              break;
-          }
-          return true;
-        });
+    // left menu
+    leftDrawerListener();
 
     repository.getAll().observe(this, entries -> {
       if (entries == null || entries.isEmpty() || entries.size() == 0) {
@@ -573,5 +426,157 @@ public class MainActivity extends SampleActivity {
         });
       }
     });
+  }
+
+  private void sendTips(SharedPreferences getPrefs) {
+    boolean isMsgNotifiche = getPrefs.getBoolean("msg_reminder", true);
+    boolean isMsgBollettino = getPrefs.getBoolean("msg_bollettino", true);
+
+    if (isMsgNotifiche) {
+      //  Make a new preferences editor
+      SharedPreferences.Editor e = getPrefs.edit();
+
+      //  Edit preference to make it false because we don't want this to run again
+      e.putBoolean("msg_reminder", false);
+
+      //  Apply changes
+      e.apply();
+
+      CustomDialog cdd = new CustomDialog(MainActivity.this, "Hey!\nLo sai che dalle impostazioni puoi attivare/disattivare le notifiche?");
+      cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+      cdd.show();
+    }
+
+    if (isMsgBollettino) {
+      //  Make a new preferences editor
+      SharedPreferences.Editor e = getPrefs.edit();
+
+      //  Edit preference to make it false because we don't want this to run again
+      e.putBoolean("msg_bollettino", false);
+
+      //  Apply changes
+      e.apply();
+
+      CustomDialog cdd = new CustomDialog(MainActivity.this, "TIP: Premi sull'immagine del sole/nuvola per leggere direttamente il bollettino!");
+      cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+      cdd.show();
+    }
+  }
+
+    private void rateApp() {
+      AppRate.with(this)
+          .setInstallDays(4)
+          .setLaunchTimes(10)
+          .setRemindInterval(2)
+          .setShowLaterButton(true)
+          .setDebug(false)
+          .setOnClickButtonListener(which -> Log.d(MainActivity.class.getName(), Integer.toString(which)))
+          .monitor();
+
+      // Show a dialog if meets conditions
+      AppRate.showRateDialogIfMeetsConditions(this);
+    }
+
+    private void initOnesignal() {
+      OneSignal.startInit(this)
+          .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+          .unsubscribeWhenNotificationsAreDisabled(true)
+          .setNotificationOpenedHandler(new OSNotificationOpenedHandler(getApplication()))
+          .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+          .autoPromptLocation(true)
+          .init();
+  }
+
+  private void leftDrawerListener() {
+    binding.mainActivityNavView.setNavigationItemSelectedListener(
+        menuItem -> {
+          // set item as selected to persist highlight
+          menuItem.setChecked(true);
+
+          switch (menuItem.getItemId()){
+
+            case R.id.drawer_view_app_version:
+              CustomDialog cdd = new CustomDialog(MainActivity.this, "Versione v2.3-stabile\n-Premi sull'icona meteo per vedere il bollettino!\n-Aggiunti più radar\n-Ora i radar si possono ingrandire!\n-Risolto ordinamento dati nella sezione 'Dati Stazioni'\n-Migliorate le impostazioni dell'app\n-Migliorato il sistema di notifiche");
+              cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+              cdd.show();
+              break;
+            case R.id.drawer_view_first_pref:
+              if(first_pos.isEmpty() || first_pos.equals("Aggiungi 1° Preferito")) {
+                Intent chooseloc_intent = new Intent(MainActivity.this, ChooseLocationActivity.class);
+                chooseloc_intent.putExtra("PREF_NUMBER", 1);
+                startActivity(chooseloc_intent);
+              }
+              else
+              {
+                Intent myIntent = new Intent(this, LoaderActivity.class);
+                myIntent.putExtra("POSITION", first_pos);
+                startActivity(myIntent);
+              }
+              break;
+            case R.id.drawer_view_second_pref:
+              if(second_pos.isEmpty()  || second_pos.equals("Aggiungi 2° Preferito")) {
+                Intent chooseloc_intent = new Intent(MainActivity.this, ChooseLocationActivity.class);
+                chooseloc_intent.putExtra("PREF_NUMBER", 2);
+                startActivity(chooseloc_intent);
+              }
+              else
+              {
+                Intent myIntent = new Intent(this, LoaderActivity.class);
+                myIntent.putExtra("POSITION", second_pos);
+                startActivity(myIntent);
+              }
+              break;
+
+            case R.id.drawer_view_search:
+              Intent chooseloc_intent = new Intent(MainActivity.this, ChooseLocationActivity.class);
+              startActivity(chooseloc_intent);
+              break;
+
+            case R.id.drawer_view_radar:
+              Intent radar_intent = new Intent(MainActivity.this, RadarActivity.class);
+              startActivity(radar_intent);
+              break;
+
+            case R.id.drawer_view_staz_meteorologiche:
+              Intent staz_intent = new Intent(MainActivity.this, WeatherStationActivity.class);
+              startActivity(staz_intent);
+              break;
+
+            case R.id.drawer_view_staz_neve:
+              Toast.makeText(this, "Servizio attivo solo d'inverno", Toast.LENGTH_LONG).show();
+              break;
+
+            case R.id.drawer_view_bollettini:
+              Intent bulletin_intent = new Intent(MainActivity.this, BulletinActivity.class);
+              startActivity(bulletin_intent);
+              break;
+
+            case R.id.drawer_view_allerte:
+              Intent allerte_intent = new Intent(MainActivity.this, AllerteActivity.class);
+              startActivity(allerte_intent);
+              break;
+
+            case R.id.drawer_view_webcam:
+              Intent webcam_intent = new Intent(MainActivity.this, WebcamActivity.class);
+              startActivity(webcam_intent);
+              break;
+
+            case R.id.drawer_view_telegram:
+              Intent telegram_intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.t.me/MeteoTrentinoBot"));
+              startActivity(telegram_intent);
+              break;
+
+            case R.id.drawer_view_settings:
+              Intent settings_intent =  new Intent(MainActivity.this, SettingsActivity.class);
+              startActivity(settings_intent);
+              break;
+
+            case R.id.drawer_view_info:
+              Intent info_intent =  new Intent(MainActivity.this, InfoActivity.class);
+              startActivity(info_intent);
+              break;
+          }
+          return true;
+        });
   }
 }
