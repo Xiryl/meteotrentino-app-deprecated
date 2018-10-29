@@ -204,7 +204,7 @@ public class MainActivity extends SampleActivity {
         formatter.setTimeZone(TimeZone.getTimeZone("Europe/Rome"));
         Calendar start = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"));
 
-        binding.mainActivityTxtUltimoAgg.setText(String.format("Alba: %s - Tramonto %s\nAggiornato alle: %s", formatter.format(opw.getSunrise()), formatter.format(opw.getSunset()), formatter.format(entries.get(entries.size()-1).getDataInserimentoDb()));
+        binding.mainActivityTxtUltimoAgg.setText(String.format("Alba: %s - Tramonto %s\nAggiornato alle: %s", formatter.format(opw.getSunrise()), formatter.format(opw.getSunset()), formatter.format(entries.get(entries.size()-1).getDataInserimentoDb())));
 
         // ------ ------ ------
         // SET BACKGROUND IMAGE
