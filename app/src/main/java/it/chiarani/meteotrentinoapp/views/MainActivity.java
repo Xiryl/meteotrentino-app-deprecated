@@ -255,19 +255,19 @@ public class MainActivity extends SampleActivity {
           case COPERTO_CON_PIOGGIA:
             binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_light_rain);
             binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_cloud);
-            window.setStatusBarColor(Color.parseColor("#4B4C4C"));
+            window.setStatusBarColor(getResources().getColor(R.color.toolbar_cloud));
             break;
 
           case COPERTO_CON_PIOGGIA_ABBONDANTE:
             binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_rain);
             binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_cloud);
-            window.setStatusBarColor(Color.parseColor("#4B4C4C"));
+            window.setStatusBarColor(getResources().getColor(R.color.toolbar_cloud));
             break;
 
           case COPERTO_CON_PIOGGIA_E_NEVE:
             binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_snow_rain);
             binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_cloud);
-            window.setStatusBarColor(Color.parseColor("#4B4C4C"));
+            window.setStatusBarColor(getResources().getColor(R.color.toolbar_cloud));
             break;
 
           case NEVICATA:
@@ -291,19 +291,19 @@ public class MainActivity extends SampleActivity {
           case SOLEGGIATO_CON_PIOGGIA:
             binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_sun_cloud_rain);
             binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_cloud);
-            window.setStatusBarColor(getResources().getColor(R.color.txt_allerta_cloud));
+            window.setStatusBarColor(getResources().getColor(R.color.toolbar_cloud));
             break;
 
           case SOLEGGIATO_CON_PIOGGIA_E_NEVE:
             binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_sun_cloud_rain_snow);
             binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_cloud);
-            window.setStatusBarColor(getResources().getColor(R.color.txt_allerta_cloud));
+            window.setStatusBarColor(getResources().getColor(R.color.toolbar_cloud));
             break;
 
           case TEMPORALE:
             binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_thunderstorm);
             binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_cloud);
-            window.setStatusBarColor(getResources().getColor(R.color.txt_allerta_cloud));
+            window.setStatusBarColor(getResources().getColor(R.color.toolbar_cloud));
             break;
 
           case UNDEFINED:
@@ -551,11 +551,9 @@ public class MainActivity extends SampleActivity {
           .setOnSpotlightStartedListener(new OnTargetStateChangedListener<SimpleTarget>() {
             @Override
             public void onStarted(SimpleTarget target) {
-              // do something
             }
             @Override
             public void onEnded(SimpleTarget target) {
-              // do something
             }
           })
           .build();
@@ -568,12 +566,10 @@ public class MainActivity extends SampleActivity {
           .setOnSpotlightStartedListener(new OnTargetStateChangedListener<SimpleTarget>() {
             @Override
             public void onStarted(SimpleTarget target) {
-              // do something
             }
 
             @Override
             public void onEnded(SimpleTarget target) {
-              // do something
             }
           })
           .build();
