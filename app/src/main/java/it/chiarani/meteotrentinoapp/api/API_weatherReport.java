@@ -47,7 +47,7 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
    * @param location locality
    */
   public API_weatherReport(Application app, Context mContext, API_weatherReport_response res, String location, String lat, String lon) {
-    this.mApp     = app; // TODO: replace mApp
+    this.mApp     = app;
     this.delegate = res;
 
     // build URL API call

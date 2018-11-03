@@ -22,12 +22,12 @@
         android:textColor="@color/white"
         android:layout_gravity="center_vertical"
         android:gravity="center"
-        android:text="ALLERTA:\nAvviso Di Notifica Intelligente"/>
+        android:text="ALLERTA / AVVISO"/>
 
       <ImageView
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_gravity="center"
         android:src="@drawable/ic_warning"
         android:background="#F8CE5D" />
@@ -43,8 +43,6 @@
       android:background="@color/white"
       android:orientation="vertical">
 
-
-
       <TextView
         android:id="@+id/activity_message_txt"
         android:layout_width="match_parent"
@@ -54,7 +52,7 @@
         android:textColor="#000"
         android:layout_margin="20dp"
 
-        android:text="Avviso Notifica Intelligente"/>
+        android:text="Avviso"/>
 
     </LinearLayout>
 

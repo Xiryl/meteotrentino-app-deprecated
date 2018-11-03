@@ -174,9 +174,9 @@ public class MainActivity extends SampleActivity {
 
       // show today bulletin if weather icon is clicked
       binding.activityMainIcWeatherIcon.setOnClickListener(v -> {
-        String txt = wfr.getPrevisione().getGiorni().get(0).getTestoGiorno();
+        String txt = wfd.getTestoGiorno();
 
-        CustomDialog cdd = new CustomDialog(MainActivity.this, "Previsione: " + txt);
+        CustomDialog cdd = new CustomDialog(MainActivity.this, "Previsione di oggi:\n" + txt);
         cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         cdd.show();
       });
@@ -363,8 +363,8 @@ public class MainActivity extends SampleActivity {
           }
 
           binding.activityMainIcWeatherIcon.setOnClickListener(v -> {
-            String txt = entries.get(0).getPrevisione().getGiorni().get(0).getTestoGiorno();
-            CustomDialog cdd = new CustomDialog(MainActivity.this, "Previsione: " + txt);
+            String txt = entries.get(entries.size() - 1).getPrevisione().getGiorni().get(0).getTestoGiorno();
+            CustomDialog cdd = new CustomDialog(MainActivity.this, "Previsione di oggi:\n" + txt);
             cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             cdd.show();
           });
