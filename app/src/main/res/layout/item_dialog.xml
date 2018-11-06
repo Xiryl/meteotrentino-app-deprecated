@@ -16,7 +16,7 @@
     android:layout_marginRight="20dp"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:text="Do you realy want to exit ?"
+    android:text=""
     android:textColor="@color/blue_main"
     android:fontFamily="@font/os_regular"
 />
@@ -35,7 +35,7 @@
       android:id="@+id/item_dialog_btn_ok"
       android:layout_width="wrap_content"
       android:layout_height="30dp"
-      android:text="   Ok   "
+      android:text=" Ok "
       android:textColor="@color/blue_azure"
       android:layout_centerHorizontal="true"
       android:background="@drawable/rounded_button"/>

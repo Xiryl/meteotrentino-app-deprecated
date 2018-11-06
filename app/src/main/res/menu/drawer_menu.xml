@@ -51,6 +51,10 @@
       android:icon="@drawable/ic_settings"
       android:title="Impostazioni" />
     <item
+        android:id="@+id/drawer_view_faq"
+        android:icon="@drawable/ic_info"
+        android:title="FAQ" />
+    <item
       android:id="@+id/drawer_view_info"
       android:icon="@drawable/ic_info"
       android:title="Info" />

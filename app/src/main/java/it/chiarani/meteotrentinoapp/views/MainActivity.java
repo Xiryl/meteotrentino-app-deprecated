@@ -108,16 +108,16 @@ public class MainActivity extends SampleActivity {
     MenuItem second_pref = menu.findItem(R.id.drawer_view_second_pref);
     MenuItem app_version = menu.findItem(R.id.drawer_view_app_version);
 
-    app_version.setTitle("2.4-stabile");
+    app_version.setTitle("2.5-stabile");
     first_pref. setTitle(first_pos);
     second_pref.setTitle(second_pos);
 
     // build left menu
     initLeftMenuDrawer();
 
-    // faq button
-    binding.mainActivityBtnInfo.setOnClickListener( v ->{
-      Intent faqintent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Xiryl/MeteoTrentino-App/blob/master/README.md#faq"));
+    // speak button
+    binding.mainActivityBtnSpeak.setOnClickListener( v ->{
+      Intent faqintent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://content.meteotrentino.it/Bollettini/Audio/sintetico.mp3"));
       startActivity(faqintent);
     });
 
@@ -451,8 +451,12 @@ public class MainActivity extends SampleActivity {
 
           switch (menuItem.getItemId()){
 
+            case R.id.drawer_view_faq:
+              Intent faqintent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Xiryl/MeteoTrentino-App/blob/master/README.md#faq"));
+              startActivity(faqintent);
+              break;
             case R.id.drawer_view_app_version:
-              CustomDialog cdd = new CustomDialog(MainActivity.this, "Versione v2.4-stabile\n-Premi sull'icona meteo per vedere il bollettino!\n-Aggiunti più radar\n-Risolto ordinamento dati nella sezione 'Dati Stazioni'\n-Migliorate le impostazioni dell'app\n-Migliorato il sistema di notifiche");
+              CustomDialog cdd = new CustomDialog(MainActivity.this, "Versione v2.5-stabile\n-Premi sull'icona meteo per vedere il bollettino!\n-Aggiunti più radar\n-Risolto ordinamento dati nella sezione 'Dati Stazioni'\n-Migliorate le impostazioni dell'app\n-Migliorato il sistema di notifiche");
               cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
               cdd.show();
               break;

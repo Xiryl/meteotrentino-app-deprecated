@@ -117,3 +117,5 @@ local.properties
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+app/src/main/java/it/chiarani/meteotrentinoapp/configuration/AppConfiguration\.java

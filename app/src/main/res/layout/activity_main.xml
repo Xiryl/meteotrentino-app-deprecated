@@ -38,8 +38,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
           <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
             android:id="@+id/main_act_btn_menu"
             android:background="#00000000"
             android:src="@drawable/ic_menu_left"
@@ -247,19 +249,17 @@
             android:layout_gravity="center"
             android:id="@+id/activity_main_ic_weather_icon"/>
 
-
-
             <ImageButton
-              android:id="@+id/main_Activity_btn_info"
-              android:layout_width="wrap_content"
-              android:layout_height="30dp"
-              android:scaleType="fitCenter"
-              android:adjustViewBounds="true"
-              android:layout_margin="6dp"
-              android:src="@drawable/ic_info"
-              android:layout_alignParentBottom="true"
-              android:layout_alignParentRight="true"
-              android:background="#00000000"/>
+                android:id="@+id/main_Activity_btn_speak"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:layout_margin="5dp"
+                android:src="@drawable/ic_audio"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:background="#00000000"/>
      <TextView
        android:id="@+id/main_activity_txt_ultimo_agg"
        android:layout_width="match_parent"

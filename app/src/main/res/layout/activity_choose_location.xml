@@ -31,7 +31,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:textColor="@color/white"
-      android:text="Seleziona Una Località Predefinita"
+      android:text="Seleziona una località Predefinita"
       android:fontFamily="@font/os_bold"
       android:layout_marginTop="@dimen/activity_chooselocation_title_margin_top"
       android:layout_centerHorizontal="true"
