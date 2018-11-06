@@ -42,7 +42,8 @@ android {
 
 buildscript {
     repositories {
-        maven { url 'https://plugins.gradle.org/m2/' }
+        maven { url 'https://plugins.gradle.org/m2/'}
+
     }
     dependencies {
         classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.11.0, 0.99.99]'
@@ -155,6 +156,10 @@ dependencies {
     // photo view
     // https://github.com/chrisbanes/PhotoView
     implementation 'com.github.chrisbanes:PhotoView:2.0.0'
+
+    // textdrawable
+    //https://github.com/amulyakhare/TextDrawable
+    implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
 }
 
 

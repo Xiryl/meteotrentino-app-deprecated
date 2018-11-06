@@ -5,32 +5,34 @@
   <data>
   </data>
 
-  <android.support.v7.widget.CardView
-    android:id="@+id/item_allerte_cardview"
-    android:layout_width="match_parent"
-    android:layout_height="60dp"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
-    android:layout_marginTop="8dp"
-    app:background="@drawable/allerte_item_list_gradient"
-    app:cardCornerRadius="10dp">
     <RelativeLayout
       android:id="@+id/item_allerte_rl"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_marginLeft="16dp"
+      android:layout_marginRight="16dp"
       android:orientation="horizontal"
-      android:background="@drawable/allerte_item_list_gradient">
+      android:background="@drawable/allerte_item_list_gradient"
+        android:layout_marginBottom="4dp">
+      <ImageView
+          android:padding="5dp"
+          android:layout_width="60dp"
+          android:layout_marginLeft="1dp"
+          android:layout_centerVertical="true"
+          android:layout_height="60dp"
+          android:id="@+id/item_allerte_img_colored"/>
     <LinearLayout
+        android:layout_marginLeft="65dp"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:paddingTop="5dp"
-      android:layout_marginRight="35dp"
+        android:layout_centerVertical="true"
+      android:layout_marginRight="10dp"
       android:orientation="vertical">
       <TextView
         android:id="@+id/item_allerte_txt_title"
         android:layout_width="match_parent"
         android:fontFamily="@font/os_bold"
-        android:gravity="center"
+        android:gravity="left"
         android:layout_height="wrap_content"
         android:text="Testo"/>
 
@@ -40,33 +42,12 @@
       android:layout_weight="1"
       android:fontFamily="@font/os_regular"
         android:textStyle="italic"
-      android:gravity="center"
+      android:gravity="left"
       android:layout_height="wrap_content"
       android:text="Testo"/>
 
     </LinearLayout>
-
-      <ImageButton
-
-        android:id="@+id/item_allerte_btn_link"
-        android:backgroundTint="#588AED"
-        android:layout_alignParentRight="true"
-        android:layout_marginLeft="6dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_width="wrap_content"
-        android:textColor="@color/white_gray"
-        android:layout_height="wrap_content"
-        android:scaleType="fitCenter"
-        android:adjustViewBounds="true"
-        android:padding="10dp"
-        android:src="@drawable/ic_arrow_right"
-        android:background="#00000000"/>
-
-
-
     </RelativeLayout>
 
-  </android.support.v7.widget.CardView>
 
 </layout>

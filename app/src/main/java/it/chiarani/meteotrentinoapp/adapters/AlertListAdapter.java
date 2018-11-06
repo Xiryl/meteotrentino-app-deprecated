@@ -1,6 +1,7 @@
 package it.chiarani.meteotrentinoapp.adapters;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -8,8 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.amulyakhare.textdrawable.TextDrawable;
+import com.amulyakhare.textdrawable.util.ColorGenerator;
 
 import java.util.ArrayList;
 
@@ -41,15 +46,15 @@ public class AlertListAdapter extends RecyclerView.Adapter<AlertListAdapter.View
     TextView       txt_name;
     TextView       txt_day;
     ImageButton    btn_link;
-    CardView       card;
+    ImageView      img_colored;
     RelativeLayout rl;
 
     public ViewHolder(View v) {
       super(v);
       txt_name = v.findViewById(R.id.item_allerte_txt_title);
       txt_day  = v.findViewById(R.id.item_allerte_txt_subtitle);
-      btn_link = v.findViewById(R.id.item_allerte_btn_link);
-      card     = v.findViewById(R.id.item_allerte_cardview);
+      //btn_link = v.findViewById(R.id.item_allerte_btn_link);
+      img_colored     = v.findViewById(R.id.item_allerte_img_colored);
       rl       = v.findViewById(R.id.item_allerte_rl);
       v.setOnClickListener(this);
     }
@@ -85,6 +90,9 @@ public class AlertListAdapter extends RecyclerView.Adapter<AlertListAdapter.View
       holder.rl.setBackgroundResource(R.drawable.allerte_item_list_gradient);
     }
 
+    ColorGenerator generator = ColorGenerator.MATERIAL; // or use DEFAULT
+
+
     String[] alert = alerts.get(position).split(";");
     String data    = alert[1];
     String title   = alert[0];
@@ -92,11 +100,46 @@ public class AlertListAdapter extends RecyclerView.Adapter<AlertListAdapter.View
     holder.txt_day.setText( String.format("%s", data));
     holder.txt_name.setText(String.format("%s", title));
 
-    holder.btn_link.setOnClickListener(v -> {
+    // generate color based on a key (same key returns the same color), useful for list/grid views
+    int color2 = generator.getColor(convertMonth(data.split(" ")[1]));
+
+    // declare the builder object once.
+    TextDrawable.IBuilder builder = TextDrawable.builder()
+            .beginConfig()
+            .withBorder(0)
+            .fontSize(40) /* size in px */
+            .endConfig()
+            .roundRect(70);
+
+    // reuse the builder specs to create multiple drawables
+    TextDrawable ic1 =  builder.build(convertMonth(data.split(" ")[1]), color2);
+    holder.img_colored.setImageDrawable(ic1);
+
+   /* holder.btn_link.setOnClickListener(v -> {
       // open link
       Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(API_endpoint.GOOGLE_DOCS_BASE + link));
       v.getContext().startActivity(browserIntent);
-    });
+    });*/
+  }
+
+
+  private String convertMonth(String month) {
+    switch (month) {
+      case "gennaio":       return "GEN";
+      case "febbraio":      return "FEB";
+      case "marzo":         return "MAR";
+      case "aprile":        return "APR";
+      case "maggio":        return "MAG";
+      case "giugno":        return "GIU";
+      case "luglio":        return "LUG";
+      case "agosto":        return "AGO";
+      case "settembre":     return "SET";
+      case "ottobre":       return "OTT";
+      case "novembre":      return "NOV";
+      case "dicembre":      return "DIC";
+      default:              return " ";
+
+    }
   }
 
   @Override

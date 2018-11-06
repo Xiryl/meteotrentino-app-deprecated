@@ -51,12 +51,13 @@
         android:layout_gravity="center_horizontal"
         android:fontFamily="@font/os_regular"
         android:gravity="center"
-        android:layout_marginTop="@dimen/offset_30"
+        android:layout_marginTop="@dimen/offset_15"
         android:text="Tutte le allerte emanate:"/>
 
       <android.support.v7.widget.RecyclerView
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/offset_30"
         android:layout_width="match_parent"
+        android:overScrollMode="never"
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:scrollbars="horizontal"
