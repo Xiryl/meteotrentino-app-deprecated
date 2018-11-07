@@ -6,8 +6,8 @@ android {
         applicationId "it.chiarani.meteotrentinoapp"
         minSdkVersion 22
         targetSdkVersion 27
-        versionCode 23
-        versionName "2.5"
+        versionCode 25
+        versionName "2.8"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         manifestPlaceholders = [
@@ -160,6 +160,10 @@ dependencies {
     // textdrawable
     //https://github.com/amulyakhare/TextDrawable
     implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+
+    // animinterpolator
+    // https://github.com/MasayukiSuda/EasingInterpolator
+    implementation 'com.daasuu:EasingInterpolator:1.0.0'
 }
 
 
