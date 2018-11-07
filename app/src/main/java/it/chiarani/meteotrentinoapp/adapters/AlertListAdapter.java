@@ -112,7 +112,7 @@ public class AlertListAdapter extends RecyclerView.Adapter<AlertListAdapter.View
             .roundRect(70);
 
     // reuse the builder specs to create multiple drawables
-    TextDrawable ic1 =  builder.build(convertMonth(data.split(" ")[1]), color2);
+    TextDrawable ic1 =  builder.build(convertMonth(data.split(" ")[1]), Color.GRAY);
     holder.img_colored.setImageDrawable(ic1);
 
    /* holder.btn_link.setOnClickListener(v -> {

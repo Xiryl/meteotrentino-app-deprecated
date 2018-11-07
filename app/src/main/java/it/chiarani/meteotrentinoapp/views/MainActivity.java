@@ -108,7 +108,7 @@ public class MainActivity extends SampleActivity {
     MenuItem second_pref = menu.findItem(R.id.drawer_view_second_pref);
     MenuItem app_version = menu.findItem(R.id.drawer_view_app_version);
 
-    app_version.setTitle("2.5-stabile");
+    app_version.setTitle("2.8-stabile");
     first_pref. setTitle(first_pos);
     second_pref.setTitle(second_pos);
 
@@ -456,7 +456,7 @@ public class MainActivity extends SampleActivity {
               startActivity(faqintent);
               break;
             case R.id.drawer_view_app_version:
-              CustomDialog cdd = new CustomDialog(MainActivity.this, "Versione v2.5-stabile\n-Premi sull'icona meteo per vedere il bollettino!\n-Aggiunti più radar\n-Risolto ordinamento dati nella sezione 'Dati Stazioni'\n-Migliorate le impostazioni dell'app\n-Migliorato il sistema di notifiche");
+              CustomDialog cdd = new CustomDialog(MainActivity.this, "Versione v2.8-stabile\n-Migliorata grafica dell'app e migliorata l'esperienza utente");
               cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
               cdd.show();
               break;
