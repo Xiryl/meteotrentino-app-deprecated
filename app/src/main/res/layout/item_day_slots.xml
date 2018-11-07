@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/item_day_slots_rl"
+        android:layout_width="180dp"
+        android:layout_height="65dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:orientation="horizontal"
+        android:background="@drawable/allerte_item_list_gradient"
+        android:layout_marginBottom="4dp">
+        <ImageView
+            android:padding="5dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="16dp"
+            android:layout_centerVertical="true"
+            android:id="@+id/item_day_slots_img_weather"/>
+        <LinearLayout
+            android:layout_marginLeft="65dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/item_day_slots__txt_subtitle"
+                android:layout_width="match_parent"
+                android:fontFamily="@font/os_regular"
+                android:gravity="center|left"
+                android:layout_height="match_parent"
+                android:text="Testo"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</layout>

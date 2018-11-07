@@ -7,18 +7,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+      android:background="@color/white_gray"
     android:orientation="vertical">
 
     <!-- FIXED BAR -->
     <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:background="@color/app_azure"
+      android:background="@color/white"
       android:orientation="vertical">
       <LinearLayout
+          android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbar_height"
-
         android:orientation="horizontal">
         <ImageButton
           android:layout_width="wrap_content"
@@ -27,7 +28,7 @@
           android:layout_gravity="center"
           android:id="@+id/fragment_radar_day_btn_menu"
           android:background="#00000000"
-          android:src="@drawable/ic_arrow_back"
+          android:src="@drawable/ic_arrow_back_gray"
           />
         <TextView
           android:layout_width="match_parent"
@@ -36,13 +37,21 @@
           android:text="Bollettino Metereologico"
           android:fontFamily="@font/os_regular"
           android:layout_marginRight="30dp"
-          android:textColor="@color/white"
+          android:textColor="@color/textgray"
           android:textStyle="bold"
           android:layout_gravity="center_horizontal"
           android:textSize="@dimen/activity_weatherreport_title_size"/>
       </LinearLayout>
 
-
+        <ScrollView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
       <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -52,45 +61,369 @@
         <ImageView
           android:layout_width="20dp"
           android:layout_height="20dp"
-          android:src="@drawable/ic_position"/>
+          android:src="@drawable/ic_position_g"/>
         <TextView
           android:id="@+id/activity_weather_report_txt_position"
           android:layout_width="wrap_content"
-          android:fontFamily="@font/os_bold"
+          android:fontFamily="@font/os_regular"
           android:layout_gravity="center_vertical"
           android:layout_height="wrap_content"
+        android:text="località"
           android:textSize="@dimen/activity_weatherreport_txt_loc_size"
-          android:textColor="@color/white" />
+          android:textColor="@color/textgray" />
       </LinearLayout>
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:fontFamily="@font/os_regular"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="PREVISIONE"
+            android:textSize="17sp"
+            android:textColor="#000" />
 
+      <RelativeLayout
+          android:id="@+id/item_allerte_rl"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="16dp"
+          android:layout_marginRight="16dp"
+          android:layout_marginTop="10dp"
+          android:orientation="horizontal"
+          android:background="@drawable/white_rounded_bg"
+          android:layout_marginBottom="4dp">
+        <me.biubiubiu.justifytext.library.JustifyTextView
+            android:id="@+id/activity_weather_report_txt_previsione"
+            android:layout_width="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:textSize="13sp"
+            android:text="Bollettino meteo non ancora pubblicato."
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/os_regular"
+            android:textColor="@color/textgray" />
+      </RelativeLayout>
 
-      <me.biubiubiu.justifytext.library.JustifyTextView
-        android:id="@+id/activity_weather_report_txt_previsione"
-        android:layout_width="wrap_content"
-        android:gravity="center_horizontal"
-        android:layout_marginBottom="25dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="10dp"
-        android:textSize="12sp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/os_regular"
-        android:textColor="@color/white_gray" />
-    </LinearLayout>
     <!-- END FIXED BAR -->
+
+
+
+    <!-- ALLERTE -->
+                <TextView
+                    android:id="@+id/activity_weather_report_txt_title_allerte"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:fontFamily="@font/os_regular"
+                    android:layout_gravity="center_vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:text="ALLERTA"
+                    android:textSize="17sp"
+                    android:textColor="#000" />
+
+                <RelativeLayout
+                    android:id="@+id/activity_weather_report_rl_allerte"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:background="@drawable/orange_rounded_bg"
+                    android:layout_marginBottom="4dp">
+                    <me.biubiubiu.justifytext.library.JustifyTextView
+                        android:id="@+id/activity_weather_report_txt_description_allerte"
+                        android:layout_width="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="10dp"
+                        android:textSize="13sp"
+                        android:text="Bollettino meteo non ancora pubblicato."
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/os_regular"
+                        android:textColor="@color/textgray" />
+                </RelativeLayout>
+    <!-- END ALLERTE-->
+
 
     <!-- LIST -->
     <LinearLayout
       android:layout_width="match_parent"
-      android:layout_height="match_parent" >
+      android:layout_height="match_parent"
+        android:orientation="vertical">
 
-      <android.support.v7.widget.RecyclerView
-        android:id="@+id/weather_report_rv_weather"
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:fontFamily="@font/os_regular"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="SELEZIONA UNA FASCIA ORARIA"
+            android:textSize="17sp"
+            android:textColor="#000" />
+    <android.support.v7.widget.RecyclerView
+android:paddingLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:clipToPadding = "false"
+        android:overScrollMode="never"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:scrollbars="horizontal"
+        android:id="@+id/activity_weather_report_rv_slot"
+        android:orientation="horizontal"/>
+
+        <RelativeLayout
+            android:id="@+id/weather_report_activity_rl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:orientation="vertical"
+            android:background="@drawable/allerte_item_list_gradient"
+            android:layout_marginBottom="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:scaleType="fitCenter"
+
+                        android:layout_marginLeft="16dp"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/ic_colored_thermometer"/>
+                    <TextView
+                        android:id="@+id/activity_weather_report_dati_metereologici"
+                        android:layout_width="wrap_content"
+                        android:fontFamily="@font/os_regular"
+                        android:layout_gravity="center_vertical"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:text="DATI METEREOLOGICI"
+                        android:textSize="15sp"
+                        android:textColor="#000" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/item_weather_report_txt_prev_breve"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Temperatura Massima: molto bassa"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/os_regular"
+                    android:layout_gravity="left"
+                    android:textColor="@color/textgray"
+                    android:textSize="14sp"/>
+                <TextView
+                    android:id="@+id/item_weather_report_txt_tmax"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Temperatura Massima: molto bassa"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/os_regular"
+                    android:layout_gravity="left"
+                    android:textColor="@color/textgray"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/item_weather_report_txt_tmin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Temperatura Massima: molto bassa"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/os_regular"
+                    android:layout_gravity="left"
+                    android:textColor="@color/textgray"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/item_weather_report_txt_zero"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Temperatura Massima: zero termico"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="left"
+                    android:textColor="@color/textgray"
+                    android:fontFamily="@font/os_regular"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/item_weather_report_txt_pressione"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Temperatura Massima: pressione"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="left"
+                    android:textColor="@color/textgray"
+                    android:fontFamily="@font/os_regular"
+                    android:textSize="14sp"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="29dp"
+                        android:layout_height="29dp"
+                        android:scaleType="fitCenter"
+
+                        android:layout_marginLeft="16dp"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/ic_colored_umbrella"/>
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:fontFamily="@font/os_regular"
+                        android:layout_gravity="center_vertical"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:text="PRECIPITAZIONI"
+                        android:textSize="15sp"
+                        android:textColor="#000" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/item_weather_report_txt_prob_prec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Temperatura Massima: pressione"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="left"
+                    android:textColor="@color/textgray"
+                    android:fontFamily="@font/os_regular"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/item_weather_report_txt_intensita_prec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Temperatura Massima: pressione"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="left"
+                    android:textColor="@color/textgray"
+                    android:fontFamily="@font/os_regular"
+                    android:textSize="14sp"/>
+
+
+                <TextView
+                    android:id="@+id/item_weather_report_txt_prob_temp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Temperatura Massima: pressione"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="left"
+                    android:textColor="@color/textgray"
+                    android:fontFamily="@font/os_regular"
+                    android:textSize="14sp"/>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:scaleType="fitCenter"
+
+                        android:layout_marginLeft="16dp"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/ic_colored_wind"/>
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:fontFamily="@font/os_regular"
+                        android:layout_gravity="center_vertical"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:text="VENTI"
+                        android:textSize="15sp"
+                        android:textColor="#000" />
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/item_weather_report_txt_vento_quota"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Temperatura Massima: pressione"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="left"
+                    android:textColor="@color/textgray"
+                    android:fontFamily="@font/os_regular"
+                    android:textSize="14sp"/>
+
+
+                <TextView
+                    android:id="@+id/item_weather_report_txt_vento_valle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Temperatura Massima: pressione"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="left"
+                    android:textColor="@color/textgray"
+                    android:fontFamily="@font/os_regular"
+                    android:textSize="14sp"/>
+
+
+                <TextView
+                    android:id="@+id/item_weather_report_txt_vento_quota_dir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Temperatura Massima: pressione"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="left"
+                    android:textColor="@color/textgray"
+                    android:fontFamily="@font/os_regular"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/item_weather_report_txt_vento_valle_dir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Temperatura Massima: pressione"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="left"
+                    android:textColor="@color/textgray"
+                    android:fontFamily="@font/os_regular"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
     </LinearLayout>
     <!-- END LIST -->
-
+        </ScrollView>
   </LinearLayout>
 
+  </LinearLayout>
 </layout>

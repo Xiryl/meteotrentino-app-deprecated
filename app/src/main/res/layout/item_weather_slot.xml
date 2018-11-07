@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/weather_report_activity_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        android:background="@drawable/allerte_item_list_gradient"
+        android:layout_marginBottom="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:scaleType="fitCenter"
+
+                android:layout_marginLeft="16dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_colored_thermometer"/>
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:fontFamily="@font/os_regular"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="DATI METEREOLOGICI"
+            android:textSize="15sp"
+            android:textColor="#000" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/item_weather_report_txt_prev_breve"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Temperatura Massima: molto bassa"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/os_regular"
+                android:layout_gravity="left"
+                android:textColor="@color/textgray"
+                android:textSize="14sp"/>
+            <TextView
+                android:id="@+id/item_weather_report_txt_tmax"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Temperatura Massima: molto bassa"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/os_regular"
+                android:layout_gravity="left"
+                android:textColor="@color/textgray"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/item_weather_report_txt_tmin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Temperatura Massima: molto bassa"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/os_regular"
+                android:layout_gravity="left"
+                android:textColor="@color/textgray"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/item_weather_report_txt_zero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Temperatura Massima: zero termico"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="left"
+                android:textColor="@color/textgray"
+                android:fontFamily="@font/os_regular"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/item_weather_report_txt_pressione"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Temperatura Massima: pressione"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="left"
+                android:textColor="@color/textgray"
+                android:fontFamily="@font/os_regular"
+                android:textSize="14sp"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="29dp"
+                    android:layout_height="29dp"
+                    android:scaleType="fitCenter"
+
+                    android:layout_marginLeft="16dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_colored_umbrella"/>
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:fontFamily="@font/os_regular"
+                    android:layout_gravity="center_vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:text="PRECIPITAZIONI"
+                    android:textSize="15sp"
+                    android:textColor="#000" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/item_weather_report_txt_prob_prec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Temperatura Massima: pressione"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="left"
+                android:textColor="@color/textgray"
+                android:fontFamily="@font/os_regular"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/item_weather_report_txt_intensita_prec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Temperatura Massima: pressione"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="left"
+                android:textColor="@color/textgray"
+                android:fontFamily="@font/os_regular"
+                android:textSize="14sp"/>
+
+
+            <TextView
+                android:id="@+id/item_weather_report_txt_prob_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Temperatura Massima: pressione"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="left"
+                android:textColor="@color/textgray"
+                android:fontFamily="@font/os_regular"
+                android:textSize="14sp"/>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:scaleType="fitCenter"
+
+                    android:layout_marginLeft="16dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_colored_wind"/>
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:fontFamily="@font/os_regular"
+                    android:layout_gravity="center_vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:text="VENTI"
+                    android:textSize="15sp"
+                    android:textColor="#000" />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/item_weather_report_txt_vento_quota"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Temperatura Massima: pressione"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="left"
+                android:textColor="@color/textgray"
+                android:fontFamily="@font/os_regular"
+                android:textSize="14sp"/>
+
+
+            <TextView
+                android:id="@+id/item_weather_report_txt_vento_valle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Temperatura Massima: pressione"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="left"
+                android:textColor="@color/textgray"
+                android:fontFamily="@font/os_regular"
+                android:textSize="14sp"/>
+
+
+            <TextView
+                android:id="@+id/item_weather_report_txt_vento_quota_dir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Temperatura Massima: pressione"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="left"
+                android:textColor="@color/textgray"
+                android:fontFamily="@font/os_regular"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/item_weather_report_txt_vento_valle_dir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Temperatura Massima: pressione"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="left"
+                android:textColor="@color/textgray"
+                android:fontFamily="@font/os_regular"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</layout>
