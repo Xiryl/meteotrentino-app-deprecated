@@ -1,65 +1,65 @@
 <resources>
-  <string name="app_name">Meteo Trentino</string>
+    <string name="app_name">Meteo Trentino</string>
 
-  <!-- CODE STRINGS -->
+    <!-- CODE STRINGS -->
 
-  <!-- API -->
-  <string name="API_locality_alert">Ottengo le località..</string>
-  <string name="API_weather_alert">Ottengo i dati meteo..</string>
-  <string name="API_weatherReport_zero_data">Ottengo i dati meteo.. 0%</string>
-  <string name="API_protezionecivile">Ottengo le allerte...</string>
+    <!-- API -->
+    <string name="API_locality_alert">Ottengo le località..</string>
+    <string name="API_weather_alert">Ottengo i dati meteo..</string>
+    <string name="API_weatherReport_zero_data">Ottengo i dati meteo.. 0%</string>
+    <string name="API_protezionecivile">Ottengo le allerte...</string>
 
-  <!-- TODO: Remove or change this placeholder text -->
-  <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
-  <!-- WeatherSlotAdapter -->
-  <string name="weather_slot_adapter_fascia_oraria">Fascia Oraria: </string>
-  <string name="title_activity_intro">IntroActivity</string>
+    <!-- WeatherSlotAdapter -->
+    <string name="weather_slot_adapter_fascia_oraria">Fascia Oraria: </string>
+    <string name="title_activity_intro">IntroActivity</string>
 
-  <!-- WeatherReportAdapter -->
-  <string name="s_weatherreportadapter_tmin">Temperatura Minima</string>
-  <string name="s_weatherreportadapter_tmax">Temperatura Massima</string>
-  <string name="s_weatherreportadapter_pressure">Pressione Atmosferica</string>
-  <string name="s_weatherreportadapter_prob_prec">Probabilità Precipitazioni</string>
-  <string name="s_weatherreportadapter_int_prec">Intensità Precipitazioni</string>
-  <string name="s_weatherreportadapter_prob_temporali">Probabilità Temporali</string>
-  <string name="s_weatherreportadapter_int_vento_quota">Intensità Vento Quota</string>
-  <string name="s_weatherreportadapter_int_vento_valle">Intensità Vento Valle</string>
-  <string name="s_weatherreportadapter_dir_vento_valle">Direzione Vento Valle</string>
-  <string name="s_weatherreportadapter_dir_vento_quota">Direzione Vento Quota</string>
-  <string name="s_weatherreportadapter_zero_termico">Zero Termico</string>
-  <string name="s_weatherreportadapter_previsione">Previsione</string>
-  <string name="s_weatherreportadapter_fascia">Fascia Per</string>
-  <string name="s_weatherreportadapter_allerta">Allerta</string>
+    <!-- WeatherReportAdapter -->
+    <string name="s_weatherreportadapter_tmin">Temperatura Minima</string>
+    <string name="s_weatherreportadapter_tmax">Temperatura Massima</string>
+    <string name="s_weatherreportadapter_pressure">Pressione Atmosferica</string>
+    <string name="s_weatherreportadapter_prob_prec">Probabilità Precipitazioni</string>
+    <string name="s_weatherreportadapter_int_prec">Intensità Precipitazioni</string>
+    <string name="s_weatherreportadapter_prob_temporali">Probabilità Temporali</string>
+    <string name="s_weatherreportadapter_int_vento_quota">Intensità Vento Quota</string>
+    <string name="s_weatherreportadapter_int_vento_valle">Intensità Vento Valle</string>
+    <string name="s_weatherreportadapter_dir_vento_valle">Direzione Vento Valle</string>
+    <string name="s_weatherreportadapter_dir_vento_quota">Direzione Vento Quota</string>
+    <string name="s_weatherreportadapter_zero_termico">Zero Termico</string>
+    <string name="s_weatherreportadapter_previsione">Previsione</string>
+    <string name="s_weatherreportadapter_fascia">Fascia Per</string>
+    <string name="s_weatherreportadapter_allerta">Allerta</string>
 
-  <!-- General -->
-  <string name="first_pref">Aggiungi 1° Preferito</string>
-  <string name="second_pref">Aggiungi 2° Preferito</string>
+    <!-- General -->
+    <string name="first_pref">Aggiungi 1° Preferito</string>
+    <string name="second_pref">Aggiungi 2° Preferito</string>
 
-  <!-- Notifiche -->
-  <string name="notification_title">Buongiorno!</string>
-  <string name="notification_descr">Il cielo oggi sarà </string>
+    <!-- Notifiche -->
+    <string name="notification_title">Buongiorno!</string>
+    <string name="notification_descr">Il cielo oggi sarà </string>
 
-  <!-- ChooseLocationActivity -->
-  <string name="error_download_location">Impossibile scaricare le località. riprova.</string>
-  <string name="error_insert_location">Inserire una località per continuare!</string>
-  <string name="error_invalid_location">Località non valida.</string>
+    <!-- ChooseLocationActivity -->
+    <string name="error_download_location">Impossibile scaricare le località. riprova.</string>
+    <string name="error_insert_location">Inserire una località per continuare!</string>
+    <string name="error_invalid_location">Località non valida.</string>
 
-  <!-- LoaderActivity -->
-  <string name="loaderact_gps_not_active">GPS non attivo.</string>
-  <string name="loaderact_gps_not_active_get_last">GPS non attivo, ottengo l\'ultima località ricercata...</string>
-  <string name="loaderact_gps_denied">Permesso al gps negato.</string>
-  <string name="server_error">Errore nella connessione al server meteotrentino.it ... </string>
-  <string name="gps_error">Errore nella localizzazione GPS, raccolgo l\'ultima località salvata...</string>
+    <!-- LoaderActivity -->
+    <string name="loaderact_gps_not_active">GPS non attivo.</string>
+    <string name="loaderact_gps_not_active_get_last">GPS non attivo, ottengo l\'ultima località ricercata...</string>
+    <string name="loaderact_gps_denied">Permesso al gps negato.</string>
+    <string name="server_error">Errore nella connessione al server meteotrentino.it ... </string>
+    <string name="gps_error">Errore nella localizzazione GPS, raccolgo l\'ultima località salvata...</string>
 
-  <!-- Radar -->
-  <string name="radar_message">Il caricamento delle immagini satellitari dipende dalla velocità della tua connessione dati e dal servizio.\n\nScorri per visualizzare tutti i radar!</string>
+    <!-- Radar -->
+    <string name="radar_message">Il caricamento delle immagini satellitari dipende dalla velocità della tua connessione dati e dal servizio.\n\nScorri per visualizzare tutti i radar!</string>
 
-  <!-- WeatherStation -->
-  <string name="inactive_station">Stazione meteo non attiva.</string>
+    <!-- WeatherStation -->
+    <string name="inactive_station">Stazione meteo non attiva.</string>
 
-  <!-- MainActivity -->
-  <string name="main_no_wether_data">Dati meteo non disponibili, riprova più tardi</string>
+    <!-- MainActivity -->
+    <string name="main_no_wether_data">Dati meteo non disponibili, riprova più tardi</string>
 
 
 </resources>

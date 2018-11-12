@@ -67,6 +67,7 @@ public class WeatherReportActivity extends SampleActivity implements DaySlotsAda
     window.setStatusBarColor(getResources().getColor(R.color.toolbar_color));
 
     Intent intent = getIntent();
+
     if(intent.hasExtra(INTENT_DAY_TAG)) {
       report_day = intent.getExtras().getInt(INTENT_DAY_TAG);
     }

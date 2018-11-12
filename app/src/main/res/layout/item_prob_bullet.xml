@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+    <data>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/item_prob_bullet_main_rl"
+        android:layout_width="57dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#FFFFFF">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- ID FASCIA -->
+            <TextView
+                android:id="@+id/item_prob_bullet_txt_fascia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="06-12"
+                android:gravity="center"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/os_regular"
+                android:layout_gravity="left"
+                android:textColor="@color/textgray"
+                android:textSize="17sp"/>
+
+            <!-- SEPARATORE -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@android:color/darker_gray"/>
+
+            <!-- PRECIPITAZIONI ABBONDANTI -->
+            <android.support.v7.widget.CardView
+                android:id="@+id/item_prob_bullet_crd_precipitazioni_abbondanti"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="33dp"
+                card_view:cardPreventCornerOverlap="true"
+
+                card_view:cardCornerRadius="4dp">
+                <TextView
+                    android:id="@+id/item_prob_bullet_txt_precipitazioni_abbondanti"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="/"
+                    android:gravity="center"
+                    android:fontFamily="@font/os_regular"
+                    android:layout_gravity="left"
+                    android:textColor="#4C4C4C"
+                    android:textSize="14sp"/>
+            </android.support.v7.widget.CardView>
+
+            <!-- ROVESCI O TEMPORALI -->
+            <android.support.v7.widget.CardView
+                android:id="@+id/item_prob_bullet_crd_rovesci_o_temporali"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="33dp"
+                card_view:cardPreventCornerOverlap="true"
+
+                card_view:cardCornerRadius="4dp">
+                <TextView
+                    android:id="@+id/item_prob_bullet_txt_rovesci_o_temporali"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="/"
+                    android:gravity="center"
+                    android:fontFamily="@font/os_regular"
+                    android:layout_gravity="left"
+                    android:textColor="#4C4C4C"
+                    android:textSize="14sp"/>
+            </android.support.v7.widget.CardView>
+
+            <!-- VENTO FORTE IN VALLE -->
+            <android.support.v7.widget.CardView
+                android:id="@+id/item_prob_bullet_crd_vento_forte_in_valle"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="33dp"
+                card_view:cardPreventCornerOverlap="true"
+
+                card_view:cardCornerRadius="4dp">
+                <TextView
+                    android:id="@+id/item_prob_bullet_txt_vento_forte_in_valle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="/"
+                    android:gravity="center"
+                    android:fontFamily="@font/os_regular"
+                    android:layout_gravity="left"
+                    android:textColor="#4C4C4C"
+                    android:textSize="14sp"/>
+            </android.support.v7.widget.CardView>
+
+            <!-- VENTO FORTE IN MONTAGNA -->
+            <android.support.v7.widget.CardView
+                android:id="@+id/item_prob_bullet_crd_vento_forte_in_montagna"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                card_view:cardPreventCornerOverlap="true"
+                android:layout_width="match_parent"
+                android:layout_height="33dp"
+
+                card_view:cardCornerRadius="4dp">
+                <TextView
+                    android:id="@+id/item_prob_bullet_txt_vento_forte_in_montagna"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="/"
+                    android:gravity="center"
+                    android:fontFamily="@font/os_regular"
+                    android:layout_gravity="left"
+                    android:textColor="#4C4C4C"
+                    android:textSize="14sp"/>
+            </android.support.v7.widget.CardView>
+
+            <!-- NEVICATE -->
+            <android.support.v7.widget.CardView
+                android:id="@+id/item_prob_bullet_crd_nevicate"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                card_view:cardPreventCornerOverlap="true"
+                android:layout_width="match_parent"
+                android:layout_height="33dp"
+
+                card_view:cardCornerRadius="4dp">
+                <TextView
+                    android:id="@+id/item_prob_bullet_txt_nevicate"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="/"
+                    android:gravity="center"
+                    android:fontFamily="@font/os_regular"
+                    android:layout_gravity="left"
+                    android:textColor="#4C4C4C"
+                    android:textSize="14sp"/>
+            </android.support.v7.widget.CardView>
+
+            <!-- QUOTA NEVE -->
+            <android.support.v7.widget.CardView
+                android:id="@+id/item_prob_bullet_crd_quota_neve"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="33dp"
+                card_view:cardPreventCornerOverlap="true"
+
+                android:backgroundTint="@color/white"
+                card_view:cardCornerRadius="4dp"
+                card_view:cardElevation="1dp">
+                <TextView
+                    android:id="@+id/item_prob_bullet_txt_quota_neve"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="/"
+                    android:gravity="center"
+                    android:fontFamily="@font/os_regular"
+                    android:layout_gravity="left"
+                    android:textColor="#4C4C4C"
+                    android:textSize="14sp"/>
+            </android.support.v7.widget.CardView>
+
+            <!-- ZERO TERMICO -->
+            <android.support.v7.widget.CardView
+                android:id="@+id/item_prob_bullet_crd_zero_termico"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                card_view:cardPreventCornerOverlap="true"
+                android:layout_width="match_parent"
+                android:layout_height="33dp"
+                android:paddingBottom="2dp"
+                android:layout_marginBottom="3dp"
+                android:backgroundTint="@color/white"
+                card_view:cardCornerRadius="4dp"
+                card_view:cardElevation="1dp">
+                <TextView
+                    android:id="@+id/item_prob_bullet_txt_zero_termico"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="/"
+                    android:gravity="center"
+                    android:fontFamily="@font/os_regular"
+                    android:layout_gravity="left"
+                    android:textColor="#4C4C4C"
+                    android:textSize="14sp"/>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+    </RelativeLayout>
+
+</layout>

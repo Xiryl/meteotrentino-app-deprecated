@@ -1,102 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="it.chiarani.meteotrentinoapp">
+    package="it.chiarani.meteotrentinoapp">
 
-  <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
-  <!-- FOR GPS LOCALIZATION -->
-  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-  <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- FOR GPS LOCALIZATION -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
-  <application
-    android:allowBackup="true"
-    android:icon="@mipmap/ic_launcher"
-    android:label="@string/app_name"
-    android:roundIcon="@mipmap/ic_launcher_round"
-    android:supportsRtl="true"
-    android:theme="@style/AppTheme">
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
 
-    <!--
+        <!--
      Set custom default icon. This is used when no icon is set for incoming notification messages.
      See README(https://goo.gl/l4GJaQ) for more.
       https://firebase.google.com/docs/cloud-messaging/android/send-multiple
         -->
-    <meta-data
-      android:name="com.google.firebase.messaging.default_notification_icon"
-      android:resource="@drawable/ic_w_sun" />
-    <!--
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_w_sun" />
+        <!--
          Set color used with incoming notification messages. This is used when no color is set for the incoming
          notification message. See README(https://goo.gl/6BKBk7) for more.
         -->
-    <meta-data
-      android:name="com.google.firebase.messaging.default_notification_color"
-      android:resource="@color/colorAccent" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
 
-    <activity
-      android:name=".views.MainActivity"
-      android:screenOrientation="portrait" />
-    <activity
-      android:name=".views.ChooseLocationActivity"
-      android:screenOrientation="portrait" />
-    <activity
-      android:name=".views.WeatherReportActivity"
-      android:screenOrientation="portrait" />
+        <activity
+            android:name=".views.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".views.ChooseLocationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".views.WeatherReportActivity"
+            android:screenOrientation="portrait" />
 
-    <service android:name=".services.MessagingService">
-      <intent-filter>
-        <action android:name="com.google.firebase.MESSAGING_EVENT" />
-      </intent-filter>
-    </service>
-    <service android:name=".services.FirebaseIDService">
-      <intent-filter>
-        <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
-      </intent-filter>
-    </service>
+        <service android:name=".services.MessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".services.FirebaseIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
 
-    <activity
-      android:name=".views.WeatherStationActivity"
-      android:screenOrientation="portrait" />
-    <activity
-      android:name=".views.RadarActivity"
-      android:screenOrientation="portrait" />
-    <activity
-      android:name=".views.LoaderActivity"
-      android:noHistory="true"
-      android:screenOrientation="portrait">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
+        <activity
+            android:name=".views.WeatherStationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".views.RadarActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".views.LoaderActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <category android:name="android.intent.category.LAUNCHER" />
-      </intent-filter>
-    </activity>
-    <activity
-      android:name=".views.BulletinActivity"
-      android:screenOrientation="portrait" />
-    <activity
-      android:name=".views.AllerteActivity"
-      android:screenOrientation="portrait" />
-    <activity
-      android:name=".views.SettingsActivity"
-      android:screenOrientation="portrait" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".views.BulletinActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".views.AllerteActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".views.SettingsActivity"
+            android:screenOrientation="portrait" />
 
-    <service
-      android:name=".services.OSNotificationExtender"
-      android:exported="false"
-      android:permission="android.permission.BIND_JOB_SERVICE">
-      <intent-filter>
-        <action android:name="com.onesignal.NotificationExtender" />
-      </intent-filter>
-    </service>
+        <service
+            android:name=".services.OSNotificationExtender"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE">
+            <intent-filter>
+                <action android:name="com.onesignal.NotificationExtender" />
+            </intent-filter>
+        </service>
 
-    <activity android:name=".views.InfoActivity" />
-    <activity android:name=".views.MessageActivity" />
-    <activity
-      android:name=".views.IntroActivity"
-      android:label="@string/title_activity_intro"
-      android:screenOrientation="portrait"
-      android:theme="@style/AppTheme" />
-    <activity android:name=".views.WebcamActivity"></activity>
-  </application>
+        <activity android:name=".views.InfoActivity" />
+        <activity android:name=".views.MessageActivity" />
+        <activity
+            android:name=".views.IntroActivity"
+            android:label="@string/title_activity_intro"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".views.WebcamActivity" />
+        <activity android:name=".views.ProbBulletActivity"></activity>
+    </application>
 
 </manifest>

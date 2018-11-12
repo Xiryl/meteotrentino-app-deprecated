@@ -6,8 +6,8 @@ android {
         applicationId "it.chiarani.meteotrentinoapp"
         minSdkVersion 22
         targetSdkVersion 27
-        versionCode 25
-        versionName "2.8"
+        versionCode 26
+        versionName "2.9"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         manifestPlaceholders = [
@@ -42,7 +42,7 @@ android {
 
 buildscript {
     repositories {
-        maven { url 'https://plugins.gradle.org/m2/'}
+        maven { url 'https://plugins.gradle.org/m2/' }
 
     }
     dependencies {

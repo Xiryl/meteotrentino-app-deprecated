@@ -42,8 +42,6 @@
       android:layout_marginRight="16dp"
       android:layout_height="wrap_content" />
 
-
-
     <TextView
       android:id="@+id/activity_webcam_txtwebcam"
       android:layout_width="match_parent"

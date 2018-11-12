@@ -31,6 +31,10 @@
       android:icon="@drawable/ic_webcam"
       android:title="Webcam" />
     <item
+      android:id="@+id/drawer_view_bollettino_prob"
+      android:icon="@drawable/ic_report"
+      android:title="Probabilistico" />
+    <item
       android:id="@+id/drawer_view_bollettini"
       android:icon="@drawable/ic_report"
       android:title="Bollettini" />

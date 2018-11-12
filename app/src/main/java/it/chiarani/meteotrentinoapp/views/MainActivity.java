@@ -108,7 +108,7 @@ public class MainActivity extends SampleActivity {
     MenuItem second_pref = menu.findItem(R.id.drawer_view_second_pref);
     MenuItem app_version = menu.findItem(R.id.drawer_view_app_version);
 
-    app_version.setTitle("2.8-stabile");
+    app_version.setTitle("2.9-stabile");
     first_pref. setTitle(first_pos);
     second_pref.setTitle(second_pos);
 
@@ -450,13 +450,16 @@ public class MainActivity extends SampleActivity {
           menuItem.setChecked(true);
 
           switch (menuItem.getItemId()){
-
+              case R.id.drawer_view_bollettino_prob:
+                  Intent bollet_prob = new Intent(this, ProbBulletActivity.class);
+                  startActivity(bollet_prob);
+                  break;
             case R.id.drawer_view_faq:
               Intent faqintent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Xiryl/MeteoTrentino-App/blob/master/README.md#faq"));
               startActivity(faqintent);
               break;
             case R.id.drawer_view_app_version:
-              CustomDialog cdd = new CustomDialog(MainActivity.this, "Versione v2.8-stabile\n-Migliorata grafica dell'app e migliorata l'esperienza utente");
+              CustomDialog cdd = new CustomDialog(MainActivity.this, "Versione v2.9-stabile\n-Aggiunto Bollettino Probabilistico\n-Migliorata grafica dell'app e migliorata l'esperienza utente");
               cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
               cdd.show();
               break;
