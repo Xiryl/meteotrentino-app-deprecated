@@ -62,24 +62,46 @@
         android:id="@+id/activity_prob_bullet_rv_slot"
         android:orientation="horizontal"/>
 
-    <TextView
-        android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
-        android:fontFamily="@font/os_regular"
-        android:layout_gravity="center_vertical"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="30dp"
-        android:text="BOLLETTINO PROBABILISTICO"
-        android:textSize="17sp"
-        android:textColor="#000" />
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:fontFamily="@font/os_regular"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:text="BOLLETTINO PROBABILISTICO"
+            android:textSize="17sp"
+            android:textColor="#000" />
+        <ImageButton
+            android:id="@+id/btn_info_bullet"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:layout_marginLeft="16dp"
+            android:layout_margin="5dp"
+            android:src="@drawable/ic_info"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:background="#00000000"/>
+
+    </LinearLayout>
+
+
+
     <RelativeLayout
         android:id="@+id/activity_prob_bullet_main_rl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+
         android:padding="2dp"
         android:orientation="vertical"
         android:background="@drawable/white_rounded_bg"
+        android:layout_margin="16dp"
         android:layout_marginBottom="15dp">
 
         <LinearLayout
@@ -93,8 +115,8 @@
                 android:id="@+id/item_prob_bullet_main_rl"
                 android:layout_width="110dp"
                 android:padding="1dp"
-                android:layout_marginTop="21dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="16dp"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:background="#FFFFFF">
@@ -104,37 +126,18 @@
                     android:background="#00000000"
                     android:orientation="vertical">
 
-                    <!-- ID FASCIA -->
-                    <TextView
-                        android:id="@+id/item_prob_bullet_txt_fascia"
-                        android:layout_width="match_parent"
-                        android:layout_height="33dp"
-                        android:text="FASCIA"
-                        android:gravity="center"
 
-                        android:fontFamily="@font/os_regular"
-                        android:layout_gravity="left"
-                        android:textColor="@color/textgray"
-                        android:textSize="17sp"/>
-
-                    <!-- SEPARATORE -->
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"
-                        android:background="@android:color/darker_gray"/>
 
                     <!-- PRECIPITAZIONI ABBONDANTI -->
                     <android.support.v7.widget.CardView
                         android:id="@+id/item_prob_bullet_crd_precipitazioni_abbondanti"
                         android:layout_marginLeft="2dp"
                         android:layout_marginRight="2dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="28dp"
                         android:layout_gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="33dp"
+                        card_view:cardElevation="0dp"
                         card_view:cardPreventCornerOverlap="true"
                         card_view:cardBackgroundColor="#F2F2F2"
                         card_view:cardCornerRadius="4dp">
@@ -145,7 +148,7 @@
                             android:text="Precipitazioni
 Abbondanti"
                             android:gravity="center"
-                            android:fontFamily="@font/os_regular"
+                            android:fontFamily="@font/os_bold"
                             android:layout_gravity="left"
                             android:textColor="#383838"
                             android:padding="2dp"
@@ -158,6 +161,7 @@ Abbondanti"
                         android:layout_marginLeft="2dp"
                         android:layout_marginRight="2dp"
                         card_view:cardBackgroundColor="#F2F2F2"
+                        card_view:cardElevation="0dp"
                         android:layout_marginTop="10dp"
                         android:layout_gravity="center"
                         android:layout_width="match_parent"
@@ -171,7 +175,7 @@ Abbondanti"
                             android:text="Rovesci o
 Temporali"
                             android:gravity="center"
-                            android:fontFamily="@font/os_regular"
+                            android:fontFamily="@font/os_bold"
                             android:layout_gravity="left"
                             android:textColor="#383838"
                             android:textSize="10sp"/>
@@ -188,16 +192,16 @@ Temporali"
                         android:layout_width="match_parent"
                         android:layout_height="33dp"
                         card_view:cardPreventCornerOverlap="true"
-
+                        card_view:cardElevation="0dp"
                         card_view:cardCornerRadius="4dp">
                         <TextView
                             android:id="@+id/item_prob_bullet_txt_vento_forte_in_valle"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:text="Vento forte
-In Valle"
+in Valle"
                             android:gravity="center"
-                            android:fontFamily="@font/os_regular"
+                            android:fontFamily="@font/os_bold"
                             android:layout_gravity="left"
                             android:textColor="#383838"
                             android:textSize="10sp"/>
@@ -214,16 +218,16 @@ In Valle"
                         card_view:cardPreventCornerOverlap="true"
                         android:layout_width="match_parent"
                         android:layout_height="33dp"
-
+                        card_view:cardElevation="0dp"
                         card_view:cardCornerRadius="4dp">
                         <TextView
                             android:id="@+id/item_prob_bullet_txt_vento_forte_in_montagna"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:text="Vento forte
-In Montagna"
+in Montagna"
                             android:gravity="center"
-                            android:fontFamily="@font/os_regular"
+                            android:fontFamily="@font/os_bold"
                             android:layout_gravity="left"
                             android:textColor="#383838"
                             android:textSize="10sp"/>
@@ -240,7 +244,7 @@ In Montagna"
                         card_view:cardPreventCornerOverlap="true"
                         android:layout_width="match_parent"
                         android:layout_height="33dp"
-
+                        card_view:cardElevation="0dp"
                         card_view:cardCornerRadius="4dp">
                         <TextView
                             android:id="@+id/item_prob_bullet_txt_nevicate"
@@ -248,7 +252,7 @@ In Montagna"
                             android:layout_height="match_parent"
                             android:text="Nevicate"
                             android:gravity="center"
-                            android:fontFamily="@font/os_regular"
+                            android:fontFamily="@font/os_bold"
                             android:layout_gravity="left"
                             android:textColor="#383838"
                             android:textSize="10sp"/>
@@ -266,14 +270,14 @@ In Montagna"
                         android:layout_height="33dp"
                         card_view:cardPreventCornerOverlap="true"
                         card_view:cardCornerRadius="4dp"
-                        card_view:cardElevation="1dp">
+                        card_view:cardElevation="0dp">
                         <TextView
                             android:id="@+id/item_prob_bullet_txt_quota_neve"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:text="Quota Neve"
                             android:gravity="center"
-                            android:fontFamily="@font/os_regular"
+                            android:fontFamily="@font/os_bold"
                             android:layout_gravity="left"
                             android:textColor="#383838"
                             android:textSize="10sp"/>
@@ -291,14 +295,14 @@ In Montagna"
                         android:layout_width="match_parent"
                         android:layout_height="33dp"
                         card_view:cardCornerRadius="4dp"
-                        card_view:cardElevation="1dp">
+                        card_view:cardElevation="0dp">
                         <TextView
                             android:id="@+id/item_prob_bullet_txt_zero_termico"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:text="Zero Termico"
                             android:gravity="center"
-                            android:fontFamily="@font/os_regular"
+                            android:fontFamily="@font/os_bold"
                             android:layout_gravity="left"
                             android:textColor="#383838"
                             android:textSize="10sp"/>
@@ -319,180 +323,6 @@ In Montagna"
         </LinearLayout>
     </RelativeLayout>
 
-    <TextView
-        android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
-        android:fontFamily="@font/os_regular"
-        android:layout_gravity="center_vertical"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:text="LEGENDA DELLE PROBABILITÀ"
-        android:textSize="17sp"
-        android:textColor="#000" />
-    <RelativeLayout
-        android:id="@+id/activity_prob_bullet_rl_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:padding="2dp"
-        android:orientation="vertical"
-        android:background="@drawable/white_rounded_bg"
-        android:layout_marginBottom="4dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <android.support.v7.widget.CardView
-
-                    card_view:cardBackgroundColor="#65D26E"
-                    android:layout_margin="16dp"
-                    android:layout_gravity="center"
-                    card_view:cardPreventCornerOverlap="true"
-                    android:layout_width="40dp"
-                    android:layout_height="33dp"
-                    card_view:cardCornerRadius="4dp"
-                    card_view:cardElevation="1dp">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text=" 0 "
-                        android:gravity="center"
-                        android:fontFamily="@font/os_regular"
-                        android:layout_gravity="left"
-                        android:textColor="#000"
-                        android:textSize="11sp"/>
-                </android.support.v7.widget.CardView>
-
-                <TextView
-                    android:layout_margin="16dp"
-                    android:layout_width="wrap_content"
-                    android:fontFamily="@font/os_regular"
-                    android:layout_gravity="center_vertical"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:text="Molto bassa"
-                    android:textSize="17sp"
-                    android:textColor="#000" />
-            </LinearLayout>
-
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <android.support.v7.widget.CardView
-
-                    card_view:cardBackgroundColor="#FFFE54"
-                    android:layout_margin="16dp"
-                    android:layout_gravity="center"
-                    card_view:cardPreventCornerOverlap="true"
-                    android:layout_width="40dp"
-                    android:layout_height="33dp"
-                    card_view:cardCornerRadius="4dp"
-                    card_view:cardElevation="1dp">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text=" 1 "
-                        android:gravity="center"
-                        android:fontFamily="@font/os_regular"
-                        android:layout_gravity="left"
-                        android:textColor="#000"
-                        android:textSize="11sp"/>
-                </android.support.v7.widget.CardView>
-
-                <TextView
-                    android:layout_margin="16dp"
-                    android:layout_width="wrap_content"
-                    android:fontFamily="@font/os_regular"
-                    android:layout_gravity="center_vertical"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:text="Bassa"
-                    android:textSize="17sp"
-                    android:textColor="#000" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <android.support.v7.widget.CardView
-
-                    card_view:cardBackgroundColor="#F7CC54"
-                    android:layout_margin="16dp"
-                    android:layout_gravity="center"
-                    card_view:cardPreventCornerOverlap="true"
-                    android:layout_width="40dp"
-                    android:layout_height="33dp"
-                    card_view:cardCornerRadius="4dp"
-                    card_view:cardElevation="1dp">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text=" 2 "
-                        android:gravity="center"
-                        android:fontFamily="@font/os_regular"
-                        android:layout_gravity="left"
-                        android:textColor="#000"
-                        android:textSize="11sp"/>
-                </android.support.v7.widget.CardView>
-
-                <TextView
-                    android:layout_margin="16dp"
-                    android:layout_width="wrap_content"
-                    android:fontFamily="@font/os_regular"
-                    android:layout_gravity="center_vertical"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:text="Media"
-                    android:textSize="17sp"
-                    android:textColor="#000" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <android.support.v7.widget.CardView
-
-                    card_view:cardBackgroundColor="#EB3325"
-                    android:layout_margin="16dp"
-                    android:layout_gravity="center"
-                    card_view:cardPreventCornerOverlap="true"
-                    android:layout_width="40dp"
-                    android:layout_height="33dp"
-                    card_view:cardCornerRadius="4dp"
-                    card_view:cardElevation="1dp">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text=" 3 "
-                        android:gravity="center"
-                        android:fontFamily="@font/os_regular"
-                        android:layout_gravity="left"
-                        android:textColor="#000"
-                        android:textSize="11sp"/>
-                </android.support.v7.widget.CardView>
-
-                <TextView
-                    android:layout_margin="16dp"
-                    android:layout_width="wrap_content"
-                    android:fontFamily="@font/os_regular"
-                    android:layout_gravity="center_vertical"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:text="Alta"
-                    android:textSize="17sp"
-                    android:textColor="#000" />
-            </LinearLayout>
-        </LinearLayout>
-    </RelativeLayout>
 
 
 
@@ -519,47 +349,34 @@ In Montagna"
             android:layout_height="wrap_content"
             android:orientation="vertical">
         <TextView
-            android:layout_marginTop="10dp"
+            android:layout_margin="16dp"
             android:layout_width="wrap_content"
             android:fontFamily="@font/os_regular"
             android:layout_gravity="center_vertical"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:text="PRECIPITAZIONI ABBONDANTI:\n Precipitazioni intense e/o persistenti che raggiungono valori cumulati superiori a 40 mm/24 h su almeno la meta' del territorio provinciale."
+            android:text="PRECIPITAZIONI ABBONDANTI:\nPrecipitazioni intense e/o persistenti che raggiungono valori cumulati superiori a 40 mm/24 h su almeno la meta' del territorio provinciale."
             android:textSize="14sp"
             android:textColor="#000" />
 
         <TextView
-            android:layout_marginTop="20dp"
+            android:layout_margin="16dp"
             android:layout_width="wrap_content"
             android:fontFamily="@font/os_regular"
             android:layout_gravity="center_vertical"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:text="ROVESCI O TEMPORALI:\n Fenomeni convettivi intensi con precipitazioni superiori a 20 mm/h. Spesso accompagnati da fulmini, grandine e forti raffiche di vento."
+
+            android:text="ROVESCI O TEMPORALI:\nFenomeni convettivi intensi con precipitazioni superiori a 20 mm/h. Spesso accompagnati da fulmini, grandine e forti raffiche di vento."
             android:textSize="14sp"
             android:textColor="#000" />
 
         <TextView
-            android:layout_marginTop="10dp"
+            android:layout_margin="16dp"
             android:layout_width="wrap_content"
             android:fontFamily="@font/os_regular"
             android:layout_gravity="center_vertical"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:text="VENTI FORTI IN MONTAGNA:\n Venti con velocita' superiori a 15 m/s su gran parte delle montagne."
-            android:textSize="14sp"
-            android:textColor="#000" />
 
-
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:fontFamily="@font/os_regular"
-            android:layout_gravity="center_vertical"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:text="VENTI FORTI IN VALLE:\n Raffiche forti superiori a 15 m/s spesso associate a venti di foehn. Non e' detto che si verifichino in tutte le valli"
+            android:text="VENTI FORTI IN MONTAGNA:\nVenti con velocita' superiori a 15 m/s su gran parte delle montagne."
             android:textSize="14sp"
             android:textColor="#000" />
 
@@ -571,30 +388,41 @@ In Montagna"
             android:layout_gravity="center_vertical"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:text="NEVICATE:\n Nevicate superiori a 10 cm in 24 h oltre la quota indicata"
+            android:text="VENTI FORTI IN VALLE:\nRaffiche forti superiori a 15 m/s spesso associate a venti di foehn. Non e' detto che si verifichino in tutte le valli"
             android:textSize="14sp"
             android:textColor="#000" />
 
+
         <TextView
-            android:layout_marginTop="10dp"
+            android:layout_margin="16dp"
             android:layout_width="wrap_content"
             android:fontFamily="@font/os_regular"
             android:layout_gravity="center_vertical"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:text="CALDO INTENSO:\n Temperature massime maggiori di 35°C in Val d'Adige"
+
+            android:text="NEVICATE:\nNevicate superiori a 10 cm in 24 h oltre la quota indicata"
             android:textSize="14sp"
             android:textColor="#000" />
 
         <TextView
-            android:layout_marginTop="10dp"
+            android:layout_margin="16dp"
             android:layout_width="wrap_content"
             android:fontFamily="@font/os_regular"
             android:layout_gravity="center_vertical"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginBottom="16dp"
-            android:text="FREDDO INTENSO:\n Temperature minime minori di -10°C in Val d'Adige."
+
+            android:text="CALDO INTENSO:\nTemperature massime maggiori di 35°C in Val d'Adige"
+            android:textSize="14sp"
+            android:textColor="#000" />
+
+        <TextView
+            android:layout_margin="16dp"
+            android:layout_width="wrap_content"
+            android:fontFamily="@font/os_regular"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+
+            android:text="FREDDO INTENSO:\nTemperature minime minori di -10°C in Val d'Adige."
             android:textSize="14sp"
             android:textColor="#000" />
         </LinearLayout>

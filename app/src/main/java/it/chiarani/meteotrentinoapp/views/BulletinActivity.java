@@ -67,6 +67,11 @@ public class BulletinActivity extends SampleActivity{
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(URL_BOLLETTINO_VALANGHE));
         startActivity(browserIntent);
       });
+
+      binding.activityBulletinCrdwProbIntenal.setOnClickListener(v -> {
+          Intent intentbullet = new Intent(BulletinActivity.this, ProbBulletActivity.class);
+          startActivity(intentbullet);
+      });
     });
 
     binding.fragmentRadarDayBtnMenu.setOnClickListener(v -> onBackPressed());

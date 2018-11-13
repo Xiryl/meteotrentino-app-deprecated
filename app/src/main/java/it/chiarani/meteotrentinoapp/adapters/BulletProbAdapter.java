@@ -74,7 +74,9 @@ public class BulletProbAdapter extends RecyclerView.Adapter<BulletProbAdapter.Vi
     public void onBindViewHolder(ViewHolder holder, int position) {
         BulletProbFascia fascia = data.getGiorni().get(day).getFasce().get(position);
 
+
         holder.txt_fascia.setText(fascia.getFasciaPer());
+
 
         if(fascia.getFenomeni().size() == 6) {
            // holder.txt_quota_neve.setText(fascia.getFenomeni().get(5).getValore() + "");
@@ -89,10 +91,10 @@ public class BulletProbAdapter extends RecyclerView.Adapter<BulletProbAdapter.Vi
         // Precipitazioni abbondanti
         switch (fascia.getFenomeni().get(0).getValore()) {
             case 0:
-                setElementAttribute(holder.crd_prec, holder.txt_prec, "#65D26E", fascia.getFenomeni().get(0).getValore() + "");
+                setElementAttribute(holder.crd_prec, holder.txt_prec, "#93E374", fascia.getFenomeni().get(0).getValore() + "");
                 break;
             case 1:
-                setElementAttribute(holder.crd_prec, holder.txt_prec, "#FFFE54", fascia.getFenomeni().get(0).getValore() + "");
+                setElementAttribute(holder.crd_prec, holder.txt_prec, "#FEFF5C", fascia.getFenomeni().get(0).getValore() + "");
                 break;
             case 2:
                 setElementAttribute(holder.crd_prec, holder.txt_prec, "#F7CC54", fascia.getFenomeni().get(0).getValore() + "");
@@ -105,10 +107,10 @@ public class BulletProbAdapter extends RecyclerView.Adapter<BulletProbAdapter.Vi
         // Rovesci o temporali
         switch (fascia.getFenomeni().get(1).getValore()) {
             case 0:
-                setElementAttribute(holder.crd_temp, holder.txt_temp, "#65D26E", fascia.getFenomeni().get(1).getValore() + "");
+                setElementAttribute(holder.crd_temp, holder.txt_temp, "#93E374", fascia.getFenomeni().get(1).getValore() + "");
                 break;
             case 1:
-                setElementAttribute(holder.crd_temp, holder.txt_temp, "#FFFE54", fascia.getFenomeni().get(1).getValore() + "");
+                setElementAttribute(holder.crd_temp, holder.txt_temp, "#FEFF5C", fascia.getFenomeni().get(1).getValore() + "");
                 break;
             case 2:
                 setElementAttribute(holder.crd_temp, holder.txt_temp, "#F7CC54", fascia.getFenomeni().get(1).getValore() + "");
@@ -121,10 +123,10 @@ public class BulletProbAdapter extends RecyclerView.Adapter<BulletProbAdapter.Vi
         // Vento forte in valle
         switch (fascia.getFenomeni().get(2).getValore()) {
             case 0:
-                setElementAttribute(holder.crd_vento_v, holder.txt_vento_v, "#65D26E", fascia.getFenomeni().get(2).getValore() + "");
+                setElementAttribute(holder.crd_vento_v, holder.txt_vento_v, "#93E374", fascia.getFenomeni().get(2).getValore() + "");
                 break;
             case 1:
-                setElementAttribute(holder.crd_vento_v, holder.txt_vento_v, "#FFFE54", fascia.getFenomeni().get(2).getValore() + "");
+                setElementAttribute(holder.crd_vento_v, holder.txt_vento_v, "#FEFF5C", fascia.getFenomeni().get(2).getValore() + "");
                 break;
             case 2:
                 setElementAttribute(holder.crd_vento_v, holder.txt_vento_v, "#F7CC54", fascia.getFenomeni().get(2).getValore() + "");
@@ -137,10 +139,10 @@ public class BulletProbAdapter extends RecyclerView.Adapter<BulletProbAdapter.Vi
         // Vento forte in montagna
         switch (fascia.getFenomeni().get(3).getValore()) {
             case 0:
-                setElementAttribute(holder.crd_vento_m, holder.txt_vento_m, "#65D26E", fascia.getFenomeni().get(3).getValore() + "");
+                setElementAttribute(holder.crd_vento_m, holder.txt_vento_m, "#93E374", fascia.getFenomeni().get(3).getValore() + "");
                 break;
             case 1:
-                setElementAttribute(holder.crd_vento_m, holder.txt_vento_m, "#FFFE54", fascia.getFenomeni().get(3).getValore() + "");
+                setElementAttribute(holder.crd_vento_m, holder.txt_vento_m, "#FEFF5C", fascia.getFenomeni().get(3).getValore() + "");
                 break;
             case 2:
                 setElementAttribute(holder.crd_vento_m, holder.txt_vento_m, "#F7CC54", fascia.getFenomeni().get(3).getValore() + "");
@@ -153,10 +155,10 @@ public class BulletProbAdapter extends RecyclerView.Adapter<BulletProbAdapter.Vi
         // Nevicate
         switch (fascia.getFenomeni().get(4).getValore()) {
             case 0:
-                setElementAttribute(holder.crd_neve, holder.txt_neve, "#65D26E", fascia.getFenomeni().get(4).getValore() + "");
+                setElementAttribute(holder.crd_neve, holder.txt_neve, "#93E374", fascia.getFenomeni().get(4).getValore() + "");
                 break;
             case 1:
-                setElementAttribute(holder.crd_neve, holder.txt_neve, "#FFFE54", fascia.getFenomeni().get(4).getValore() + "");
+                setElementAttribute(holder.crd_neve, holder.txt_neve, "#FEFF5C", fascia.getFenomeni().get(4).getValore() + "");
                 break;
             case 2:
                 setElementAttribute(holder.crd_neve, holder.txt_neve, "#F7CC54", fascia.getFenomeni().get(4).getValore() + "");

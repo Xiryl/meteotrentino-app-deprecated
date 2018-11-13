@@ -27,29 +27,32 @@
       android:icon="@drawable/ic_station"
       android:title="Dati Stazioni" />
     <item
-      android:id="@+id/drawer_view_webcam"
-      android:icon="@drawable/ic_webcam"
-      android:title="Webcam" />
-    <item
       android:id="@+id/drawer_view_bollettino_prob"
       android:icon="@drawable/ic_report"
       android:title="Probabilistico" />
     <item
-      android:id="@+id/drawer_view_bollettini"
-      android:icon="@drawable/ic_report"
-      android:title="Bollettini" />
+      android:id="@+id/drawer_view_dighe"
+      android:icon="@drawable/ic_diga"
+      android:title="Dighe e Bacini" />
     <item
       android:id="@+id/drawer_view_staz_neve"
       android:icon="@drawable/ic_valanghe"
       android:title="Neve e Valanghe" />
+      <item
+          android:id="@+id/drawer_view_webcam"
+          android:icon="@drawable/ic_webcam"
+          android:title="Webcam" />
     <item
-      android:id="@+id/drawer_view_telegram"
-      android:icon="@drawable/ic_telegram"
-      android:title="Telegram Bot" />
-
+      android:id="@+id/drawer_view_bollettini"
+      android:icon="@drawable/ic_report"
+      android:title="Bollettini" />
   </group>
   <group android:id="@+id/menu_bottom"
     android:checkableBehavior="none">
+      <item
+          android:id="@+id/drawer_view_telegram"
+          android:icon="@drawable/ic_telegram"
+          android:title="Telegram Bot" />
     <item
       android:id="@+id/drawer_view_settings"
       android:icon="@drawable/ic_settings"

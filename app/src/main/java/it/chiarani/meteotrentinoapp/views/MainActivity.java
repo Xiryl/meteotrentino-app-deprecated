@@ -108,12 +108,18 @@ public class MainActivity extends SampleActivity {
     MenuItem second_pref = menu.findItem(R.id.drawer_view_second_pref);
     MenuItem app_version = menu.findItem(R.id.drawer_view_app_version);
 
-    app_version.setTitle("2.9-stabile");
+    app_version.setTitle("3.0.1-stabile");
     first_pref. setTitle(first_pos);
     second_pref.setTitle(second_pos);
 
     // build left menu
     initLeftMenuDrawer();
+
+      binding.mainActivityBtnBullettin.setOnClickListener(v -> {
+          Intent intentbullet = new Intent(MainActivity.this, ProbBulletActivity.class);
+          startActivity(intentbullet);
+      });
+
 
     // speak button
     binding.mainActivityBtnSpeak.setOnClickListener( v ->{
@@ -450,6 +456,11 @@ public class MainActivity extends SampleActivity {
           menuItem.setChecked(true);
 
           switch (menuItem.getItemId()){
+              case R.id.drawer_view_dighe :
+                  Intent bacini_intent = new Intent(this, DigheBaciniActivity.class);
+                  startActivity(bacini_intent);
+                  break;
+
               case R.id.drawer_view_bollettino_prob:
                   Intent bollet_prob = new Intent(this, ProbBulletActivity.class);
                   startActivity(bollet_prob);
@@ -459,7 +470,7 @@ public class MainActivity extends SampleActivity {
               startActivity(faqintent);
               break;
             case R.id.drawer_view_app_version:
-              CustomDialog cdd = new CustomDialog(MainActivity.this, "Versione v2.9-stabile\n-Aggiunto Bollettino Probabilistico\n-Migliorata grafica dell'app e migliorata l'esperienza utente");
+              CustomDialog cdd = new CustomDialog(MainActivity.this, "Versione v3.0.1-stabile\n-Aggiunto Bollettino Probabilistico\n-Migliorata grafica dell'app e migliorata l'esperienza utente");
               cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
               cdd.show();
               break;
@@ -506,7 +517,7 @@ public class MainActivity extends SampleActivity {
               break;
 
             case R.id.drawer_view_staz_neve:
-              Toast.makeText(this, "Servizio attivo solo d'inverno", Toast.LENGTH_LONG).show();
+              Toast.makeText(this, "Servizio attivo dal 1° Dicembre 2018", Toast.LENGTH_LONG).show();
               break;
 
             case R.id.drawer_view_bollettini:

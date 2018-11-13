@@ -2,6 +2,8 @@ package it.chiarani.meteotrentinoapp.views;
 
 import android.animation.ObjectAnimator;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,6 +19,7 @@ import it.chiarani.meteotrentinoapp.adapters.DaySlotsAdapter;
 import it.chiarani.meteotrentinoapp.api.API_bullet_prob;
 import it.chiarani.meteotrentinoapp.api.API_bullet_prob_response;
 import it.chiarani.meteotrentinoapp.databinding.ActivityProbBulletBinding;
+import it.chiarani.meteotrentinoapp.helper.CustomDialog;
 import it.chiarani.meteotrentinoapp.models.BulletProbFull;
 
 public class ProbBulletActivity extends SampleActivity implements API_bullet_prob_response, BulletProbDaysAdapter.ClickListener {
@@ -43,6 +46,15 @@ public class ProbBulletActivity extends SampleActivity implements API_bullet_pro
         api_bullet_prob.execute();
 
         binding.fragmentRadarDayBtnMenu.setOnClickListener(v -> onBackPressed());
+
+        binding.btnInfoBullet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CustomDialog cdd = new CustomDialog(ProbBulletActivity.this, "[0] VERDE: Molto bassa\n[1] GIALLO: bassa\n[2] ARANCIO: Media\n[3] ROSSO: Alta");
+                cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                cdd.show();
+            }
+        });
     }
 
     @Override

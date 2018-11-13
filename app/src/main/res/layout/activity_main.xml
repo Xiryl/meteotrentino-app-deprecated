@@ -255,11 +255,23 @@
                 android:layout_height="30dp"
                 android:scaleType="fitCenter"
                 android:adjustViewBounds="true"
-                android:layout_margin="5dp"
+                android:layout_margin="8dp"
                 android:src="@drawable/ic_audio"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
                 android:background="#00000000"/>
+
+              <ImageButton
+                  android:id="@+id/main_Activity_btn_bullettin"
+                  android:layout_width="wrap_content"
+                  android:layout_height="25dp"
+                  android:scaleType="fitCenter"
+                  android:adjustViewBounds="true"
+                  android:layout_margin="8dp"
+                  android:src="@drawable/ic_report"
+                  android:layout_alignParentBottom="true"
+                  android:layout_alignParentLeft="true"
+                  android:background="#00000000"/>
      <TextView
        android:id="@+id/main_activity_txt_ultimo_agg"
        android:layout_width="match_parent"

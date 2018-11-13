@@ -1,0 +1,3923 @@
+{
+  "brenta": {
+    "stazioni": [{
+      "nome_stazione": "Stazione di S. Agostino",
+      "sensori": {
+        "pluviometro": {
+          "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=11595&Argomento=0",
+          "id_sensore": 11595
+        },
+        "idrometro": {
+          "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11594&Argomento=0",
+          "id_sensore": 11594
+        },
+        "temperatura_aria": {
+          "api_temperatura_aria": "http://www.floods.it/public/download.php?Sensore=11596&Argomento=0",
+          "id_sensore": 11596
+        },
+        "igrometro": {
+          "api_igrometro": "",
+          "id_sensore": -1
+        },
+        "nivometro": {
+          "api_nivometro": "",
+          "id_sensore": -1
+        },
+        "barometro": {
+          "api_barometro": "",
+          "id_sensore": -1
+        },
+        "radiometro": {
+          "api_radiometro": "",
+          "id_sensore": -1
+        },
+        "vento": {
+          "api_vento": "",
+          "id_sensore": -1
+        },
+        "direzione_vento": {
+          "api_direzione_vento": "",
+          "id_sensore": -1
+        },
+        "portata": {
+          "api_portata": "",
+          "id_sensore": -1
+        }
+      },
+      "ente_proprietario": "Regione del Veneto",
+      "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=147300.php"
+    },
+      {
+        "nome_stazione": "Lugo di Vicenza",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=11603&Argomento=0",
+            "id_sensore": 11603
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11602&Argomento=0",
+            "id_sensore": 11602
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "http://www.floods.it/public/download.php?Sensore=11604&Argomento=0",
+            "id_sensore": 11604
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=147600.php"
+      },
+      {
+        "nome_stazione": "Vicenza",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11943&Argomento=0",
+            "id_sensore": 11943
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=147800.php"
+      },
+      {
+        "nome_stazione": "Villaggio del Sole",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=11378&Argomento=0",
+            "id_sensore": 11378
+          },
+          "idrometro": {
+            "api_idrometro": "",
+            "id_sensore": -1
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=175300.php"
+      },
+      {
+        "nome_stazione": "Valstagna",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=11374&Argomento=0",
+            "id_sensore": 11374
+          },
+          "idrometro": {
+            "api_idrometro": "",
+            "id_sensore": -1
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=239100.php"
+      },
+      {
+        "nome_stazione": "Gallio",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=16292&Argomento=0",
+            "id_sensore": 16292
+          },
+          "idrometro": {
+            "api_idrometro": "",
+            "id_sensore": -1
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "http://www.floods.it/public/download.php?Sensore=16293&Argomento=0",
+            "id_sensore": 16293
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "http://www.floods.it/public/download.php?Sensore=16295&Argomento=0",
+            "id_sensore": 16295
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Ufficio Idrografico di Venezia",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=240200.php"
+      },
+      {
+        "nome_stazione": "Ponte Filippini",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=28248&Argomento=0",
+            "id_sensore": 28248
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11766&Argomento=0",
+            "id_sensore": 11766
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=18705&Argomento=0",
+            "id_sensore": 18705
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=144700.php"
+      },
+      {
+        "nome_stazione": "Telve di Sopra",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=11651&Argomento=0",
+            "id_sensore": 11651
+          },
+          "idrometro": {
+            "api_idrometro": "",
+            "id_sensore": -1
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "http://www.floods.it/public/download.php?Sensore=11650&Argomento=0",
+            "id_sensore": 11650
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=130900.php"
+      },
+      {
+        "nome_stazione": "Borgo Valsugana",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=11804&Argomento=0",
+            "id_sensore": 11804
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11805&Argomento=0",
+            "id_sensore": 11805
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "http://www.floods.it/public/download.php?Sensore=11806&Argomento=0",
+            "id_sensore": 11806
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=144600.php"
+      },
+      {
+        "nome_stazione": "Roncegno",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=28233&Argomento=0",
+            "id_sensore": 28233
+          },
+          "idrometro": {
+            "api_idrometro": "",
+            "id_sensore": -1
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "http://www.floods.it/public/download.php?Sensore=28235&Argomento=0",
+            "id_sensore": 28235
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=397400.php"
+      },
+      {
+        "nome_stazione": "Vetriolo",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=11648&Argomento=0",
+            "id_sensore": 11648
+          },
+          "idrometro": {
+            "api_idrometro": "",
+            "id_sensore": -1
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=105200.php"
+      },
+      {
+        "nome_stazione": "Levico Ponte Cervia",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=11763&Argomento=0",
+            "id_sensore": 11763
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11762&Argomento=0",
+            "id_sensore": 11762
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "http://www.floods.it/public/download.php?Sensore=11764&Argomento=0",
+            "id_sensore": 11764
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=144500.php"
+      },
+      {
+        "nome_stazione": "Ponte Marchese",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11598&Argomento=0",
+            "id_sensore": 11598
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=147400.php"
+      },
+      {
+        "nome_stazione": "Bolzano Vicentino",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11600&Argomento=0",
+            "id_sensore": 11600
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=147500.php"
+      },
+      {
+        "nome_stazione": "Barzizza",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11380&Argomento=0",
+            "id_sensore": 11380
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=234300.php"
+      },
+      {
+        "nome_stazione": "Enego",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11376&Argomento=0",
+            "id_sensore": 11376
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=235700.php"
+      },
+      {
+        "nome_stazione": "Grigno Paese",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=30423&Argomento=0",
+            "id_sensore": 30423
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=38566&Argomento=0",
+            "id_sensore": 38566
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=397700.php"
+      },
+      {
+        "nome_stazione": "Ponte della Stua",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=50764&Argomento=0",
+            "id_sensore": 50764
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=710500.php"
+      },
+      {
+        "nome_stazione": "Ospedaletto",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=31936&Argomento=0",
+            "id_sensore": 31936
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=416400.php"
+      },
+      {
+        "nome_stazione": "Villa Agnedo",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=28219&Argomento=0",
+            "id_sensore": 28219
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=397600.php"
+      },
+      {
+        "nome_stazione": "Ponte delle Carrette",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=28205&Argomento=0",
+            "id_sensore": 28205
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=397500.php"
+      },
+      {
+        "nome_stazione": "Ponte Zaccon",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=31939&Argomento=0",
+            "id_sensore": 31939
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=417300.php"
+      },
+      {
+        "nome_stazione": "Brentella",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=30749&Argomento=0",
+            "id_sensore": 30749
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=38568&Argomento=0",
+            "id_sensore": 38568
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=416500.php"
+      },
+      {
+        "nome_stazione": "Brenta",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=57229&Argomento=0",
+            "id_sensore": 57229
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=397100.php"
+      },
+      {
+        "nome_stazione": "Aonè",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=31071&Argomento=0",
+            "id_sensore": 31071
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=395800.php"
+      },
+      {
+        "nome_stazione": "Monte Grappa",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "",
+            "id_sensore": -1
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "http://www.floods.it/public/download.php?Sensore=12098&Argomento=0",
+            "id_sensore": 12098
+          },
+          "nivometro": {
+            "api_nivometro": "http://www.floods.it/public/download.php?Sensore=12099&Argomento=0",
+            "id_sensore": 12099
+          },
+          "barometro": {
+            "api_barometro": "http://www.floods.it/public/download.php?Sensore=35313&Argomento=0",
+            "id_sensore": 35313
+          },
+          "radiometro": {
+            "api_radiometro": "http://www.floods.it/public/download.php?Sensore=12103&Argomento=0",
+            "id_sensore": 12103
+          },
+          "vento": {
+            "api_vento": "http://www.floods.it/public/download.php?Sensore=37766&Argomento=0",
+            "id_sensore": 37766
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "http://www.floods.it/public/download.php?Sensore=37768&Argomento=0",
+            "id_sensore": 37768
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=82400.php"
+      },
+      {
+        "nome_stazione": "Lisser",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "",
+            "id_sensore": -1
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "http://www.floods.it/public/download.php?Sensore=12365&Argomento=0",
+            "id_sensore": 12365
+          },
+          "nivometro": {
+            "api_nivometro": "http://www.floods.it/public/download.php?Sensore=12360&Argomento=0",
+            "id_sensore": 12360
+          },
+          "barometro": {
+            "api_barometro": "http://www.floods.it/public/download.php?Sensore=12366&Argomento=0",
+            "id_sensore": 12366
+          },
+          "radiometro": {
+            "api_radiometro": "http://www.floods.it/public/download.php?Sensore=12368&Argomento=0",
+            "id_sensore": 12368
+          },
+          "vento": {
+            "api_vento": "http://www.floods.it/public/download.php?Sensore=31035&Argomento=0",
+            "id_sensore": 31035
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "http://www.floods.it/public/download.php?Sensore=31036&Argomento=0",
+            "id_sensore": 31036
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=159000.php"
+      }
+    ]
+  },
+  "agno": {
+    "stazioni": [{
+      "nome_stazione": "Recoaro Terme",
+      "sensori": {
+        "pluviometro": {
+          "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=12462&Argomento=0",
+          "id_sensore": 11595
+        },
+        "idrometro": {
+          "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11382&Argomento=0",
+          "id_sensore": 11382
+        },
+        "temperatura_aria": {
+          "api_temperatura_aria": "http://www.floods.it/public/download.php?Sensore=12463&Argomento=0",
+          "id_sensore": 12463
+        },
+        "igrometro": {
+          "api_igrometro": "",
+          "id_sensore": -1
+        },
+        "nivometro": {
+          "api_nivometro": "",
+          "id_sensore": -1
+        },
+        "barometro": {
+          "api_barometro": "",
+          "id_sensore": -1
+        },
+        "radiometro": {
+          "api_radiometro": "",
+          "id_sensore": -1
+        },
+        "vento": {
+          "api_vento": "",
+          "id_sensore": -1
+        },
+        "direzione_vento": {
+          "api_direzione_vento": "",
+          "id_sensore": -1
+        },
+        "portata": {
+          "api_portata": "",
+          "id_sensore": -1
+        }
+      },
+      "ente_proprietario": "Regione del Veneto",
+      "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=237800.php"
+    },
+      {
+        "nome_stazione": "Brogliano",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=11389&Argomento=0",
+            "id_sensore": 11389
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11388&Argomento=0",
+            "id_sensore": 11388
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "http://www.floods.it/public/download.php?Sensore=11390&Argomento=0",
+            "id_sensore": 11390
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=237200.php"
+      },
+      {
+        "nome_stazione": "Ponte di Guà",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=11401&Argomento=0",
+            "id_sensore": 11401
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11400&Argomento=0",
+            "id_sensore": 11400
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=237300.php"
+      },
+      {
+        "nome_stazione": "Lonigo",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11398&Argomento=0",
+            "id_sensore": 11398
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=236400.php"
+      },
+      {
+        "nome_stazione": "Ponte Asse",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11626&Argomento=0",
+            "id_sensore": 11626
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=175500.php"
+      },
+      {
+        "nome_stazione": "Ponte Arzignano",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11627&Argomento=0",
+            "id_sensore": 11627
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=175600.php"
+      }
+    ]
+  },
+  "piave": {
+    "stazioni": [{
+      "nome_stazione": "Roncadin",
+      "sensori": {
+        "pluviometro": {
+          "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=11915&Argomento=0",
+          "id_sensore": 11915
+        },
+        "idrometro": {
+          "api_idrometro": "",
+          "id_sensore": -1
+        },
+        "temperatura_aria": {
+          "api_temperatura_aria": "http://www.floods.it/public/download.php?Sensore=11916&Argomento=0",
+          "id_sensore": 11916
+        },
+        "igrometro": {
+          "api_igrometro": "http://www.floods.it/public/download.php?Sensore=11917&Argomento=0",
+          "id_sensore": 11917
+        },
+        "nivometro": {
+          "api_nivometro": "",
+          "id_sensore": -1
+        },
+        "barometro": {
+          "api_barometro": "",
+          "id_sensore": -1
+        },
+        "radiometro": {
+          "api_radiometro": "http://www.floods.it/public/download.php?Sensore=11918&Argomento=0",
+          "id_sensore": 11918
+        },
+        "vento": {
+          "api_vento": "",
+          "id_sensore": -1
+        },
+        "direzione_vento": {
+          "api_direzione_vento": "",
+          "id_sensore": -1
+        },
+        "portata": {
+          "api_portata": "",
+          "id_sensore": -1
+        }
+      },
+      "ente_proprietario": "Ufficio Idrografico di Venezia",
+      "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=122900.php"
+    },
+      {
+        "nome_stazione": "Belluno Aerop. CMT",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=36617&Argomento=0",
+            "id_sensore": 36617
+          },
+          "idrometro": {
+            "api_idrometro": "",
+            "id_sensore": -1
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "http://www.floods.it/public/download.php?Sensore=36616&Argomento=0",
+            "id_sensore": 36616
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=491100.php"
+      },
+      {
+        "nome_stazione": "Passo Falzarego",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=11422&Argomento=0",
+            "id_sensore": 11422
+          },
+          "idrometro": {
+            "api_idrometro": "",
+            "id_sensore": -1
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "http://www.floods.it/public/download.php?Sensore=11416&Argomento=0",
+            "id_sensore": 11416
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "http://www.floods.it/public/download.php?Sensore=11418&Argomento=0",
+            "id_sensore": 11418
+          },
+          "radiometro": {
+            "api_radiometro": "http://www.floods.it/public/download.php?Sensore=11419&Argomento=0",
+            "id_sensore": 11419
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=40000.php"
+      },
+      {
+        "nome_stazione": "Piave a Ponte Lasta",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=34968&Argomento=0",
+            "id_sensore": 34968
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=398200.php"
+      },
+      {
+        "nome_stazione": "Boite a Cancia",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=34970&Argomento=0",
+            "id_sensore": 34970
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=402000.php"
+      },
+      {
+        "nome_stazione": "Ponte Mas",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11945&Argomento=0",
+            "id_sensore": 11945
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Ufficio Idrografico di Venezia",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=177900.php"
+      },
+      {
+        "nome_stazione": "Belluno",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11407&Argomento=0",
+            "id_sensore": 11407
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=39400.php"
+      },
+      {
+        "nome_stazione": "Segusino",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11405&Argomento=0",
+            "id_sensore": 11405
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=39700.php"
+      },
+      {
+        "nome_stazione": "Nervesa d. Battaglia",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11403&Argomento=0",
+            "id_sensore": 11403
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=39600.php"
+      },
+      {
+        "nome_stazione": "Ponte di Piave",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11437&Argomento=0",
+            "id_sensore": 11437
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Provincia di Treviso",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=76700.php"
+      },
+      {
+        "nome_stazione": "S.Donà  di Piave",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11424&Argomento=0",
+            "id_sensore": 11424
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=40200.php"
+      },
+      {
+        "nome_stazione": "Eraclea",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11426&Argomento=0",
+            "id_sensore": 11426
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=40300.php"
+      },
+      {
+        "nome_stazione": "Casera Coltrondo",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "",
+            "id_sensore": -1
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "http://www.floods.it/public/download.php?Sensore=12060&Argomento=0",
+            "id_sensore": 12060
+          },
+          "igrometro": {
+            "api_igrometro": "http://www.floods.it/public/download.php?Sensore=12061&Argomento=0",
+            "id_sensore": 12061
+          },
+          "nivometro": {
+            "api_nivometro": "http://www.floods.it/public/download.php?Sensore=12059&Argomento=0",
+            "id_sensore": 12059
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "http://www.floods.it/public/download.php?Sensore=12063&Argomento=0",
+            "id_sensore": 12063
+          },
+          "vento": {
+            "api_vento": "http://www.floods.it/public/download.php?Sensore=31157&Argomento=0",
+            "id_sensore": 31157
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=83700.php"
+      },
+      {
+        "nome_stazione": "Casera Doana-Razzo",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "",
+            "id_sensore": -1
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "http://www.floods.it/public/download.php?Sensore=11980&Argomento=0",
+            "id_sensore": 11980
+          },
+          "igrometro": {
+            "api_igrometro": "http://www.floods.it/public/download.php?Sensore=11981&Argomento=0",
+            "id_sensore": 11981
+          },
+          "nivometro": {
+            "api_nivometro": "http://www.floods.it/public/download.php?Sensore=11979&Argomento=0",
+            "id_sensore": 11979
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "http://www.floods.it/public/download.php?Sensore=11983&Argomento=0",
+            "id_sensore": 11983
+          },
+          "vento": {
+            "api_vento": "http://www.floods.it/public/download.php?Sensore=32073&Argomento=0",
+            "id_sensore": 32073
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=82100.php"
+      },
+      {
+        "nome_stazione": "Passo Falzarego",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "",
+            "id_sensore": -1
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "http://www.floods.it/public/download.php?Sensore=11415&Argomento=0",
+            "id_sensore": 11415
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "http://www.floods.it/public/download.php?Sensore=11417&Argomento=0",
+            "id_sensore": 11417
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=40000.php"
+      },
+      {
+        "nome_stazione": "Ornella",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "",
+            "id_sensore": -1
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "http://www.floods.it/public/download.php?Sensore=11873&Argomento=0",
+            "id_sensore": 11873
+          },
+          "igrometro": {
+            "api_igrometro": "http://www.floods.it/public/download.php?Sensore=11874&Argomento=0",
+            "id_sensore": 11874
+          },
+          "nivometro": {
+            "api_nivometro": "http://www.floods.it/public/download.php?Sensore=11889&Argomento=0",
+            "id_sensore": 11889
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "http://www.floods.it/public/download.php?Sensore=11893&Argomento=0",
+            "id_sensore": 11893
+          },
+          "vento": {
+            "api_vento": "http://www.floods.it/public/download.php?Sensore=32057&Argomento=0",
+            "id_sensore": 32057
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=119200.php"
+      },
+      {
+        "nome_stazione": "Faverghera",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "",
+            "id_sensore": -1
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "http://www.floods.it/public/download.php?Sensore=12080&Argomento=0",
+            "id_sensore": 12080
+          },
+          "igrometro": {
+            "api_igrometro": "http://www.floods.it/public/download.php?Sensore=12081&Argomento=0",
+            "id_sensore": 12081
+          },
+          "nivometro": {
+            "api_nivometro": "http://www.floods.it/public/download.php?Sensore=12079&Argomento=0",
+            "id_sensore": 12079
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "http://www.floods.it/public/download.php?Sensore=12083&Argomento=0",
+            "id_sensore": 12083
+          },
+          "vento": {
+            "api_vento": "http://www.floods.it/public/download.php?Sensore=31145&Argomento=0",
+            "id_sensore": 31145
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=81900.php"
+      }
+    ]
+  },
+  "livenza": {
+    "stazioni": [{
+      "nome_stazione": "Portobuffolè",
+      "sensori": {
+        "pluviometro": {
+          "api_pluviometro": "",
+          "id_sensore": -1
+        },
+        "idrometro": {
+          "api_idrometro": "http://www.floods.it/public/download.php?Sensore=34963&Argomento=0",
+          "id_sensore": 34963
+        },
+        "temperatura_aria": {
+          "api_temperatura_aria": "",
+          "id_sensore": -1
+        },
+        "igrometro": {
+          "api_igrometro": "",
+          "id_sensore": -1
+        },
+        "nivometro": {
+          "api_nivometro": "",
+          "id_sensore": -1
+        },
+        "barometro": {
+          "api_barometro": "",
+          "id_sensore": -1
+        },
+        "radiometro": {
+          "api_radiometro": "",
+          "id_sensore": -1
+        },
+        "vento": {
+          "api_vento": "",
+          "id_sensore": -1
+        },
+        "direzione_vento": {
+          "api_direzione_vento": "",
+          "id_sensore": -1
+        },
+        "portata": {
+          "api_portata": "",
+          "id_sensore": -1
+        }
+      },
+      "ente_proprietario": "Regione del Veneto",
+      "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=465100.php"
+    },
+      {
+        "nome_stazione": "Oderzo",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11433&Argomento=0",
+            "id_sensore": 11433
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Provincia di Trevisio",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=75700.php"
+      },
+      {
+        "nome_stazione": "Motta di Livenza",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=34960&Argomento=0",
+            "id_sensore": 34960
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=465200.php"
+      },
+      {
+        "nome_stazione": "Cessalto",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11439&Argomento=0",
+            "id_sensore": 11439
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Provincia di Trevisio",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=107400.php"
+      },
+      {
+        "nome_stazione": "La Salute di Livenza",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11517&Argomento=0",
+            "id_sensore": 11517
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=41000.php"
+      }
+    ]
+  },
+  "monticano": {
+    "stazioni": [{
+      "nome_stazione": "Fontanelle",
+      "sensori": {
+        "pluviometro": {
+          "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=11552&Argomento=0",
+          "id_sensore": 11552
+        },
+        "idrometro": {
+          "api_idrometro": "",
+          "id_sensore": -1
+        },
+        "temperatura_aria": {
+          "api_temperatura_aria": "",
+          "id_sensore": -1
+        },
+        "igrometro": {
+          "api_igrometro": "",
+          "id_sensore": -1
+        },
+        "nivometro": {
+          "api_nivometro": "",
+          "id_sensore": -1
+        },
+        "barometro": {
+          "api_barometro": "",
+          "id_sensore": -1
+        },
+        "radiometro": {
+          "api_radiometro": "",
+          "id_sensore": -1
+        },
+        "vento": {
+          "api_vento": "",
+          "id_sensore": -1
+        },
+        "direzione_vento": {
+          "api_direzione_vento": "",
+          "id_sensore": -1
+        },
+        "portata": {
+          "api_portata": "",
+          "id_sensore": -1
+        }
+      },
+      "ente_proprietario": "Regione del Veneto",
+      "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=41300.php"
+    },
+      {
+        "nome_stazione": "Gorgo Monticano",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=12405&Argomento=0",
+            "id_sensore": 12405
+          },
+          "idrometro": {
+            "api_idrometro": "",
+            "id_sensore": -1
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=41500.php"
+      },
+      {
+        "nome_stazione": "Cordignano",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=11513&Argomento=0",
+            "id_sensore": 11513
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11554&Argomento=0",
+            "id_sensore": 11554
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=41600.php"
+      },
+      {
+        "nome_stazione": "Vazzola",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11515&Argomento=0",
+            "id_sensore": 11515
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=41400.php"
+      },
+      {
+        "nome_stazione": "Meduna di Livenza",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11445&Argomento=0",
+            "id_sensore": 11445
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=42200.php"
+      }
+    ]
+  },
+  "scolante laguna": {
+    "stazioni": [{
+      "nome_stazione": "Conegliano",
+      "sensori": {
+        "pluviometro": {
+          "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=11548&Argomento=0",
+          "id_sensore": 11548
+        },
+        "idrometro": {
+          "api_idrometro": "",
+          "id_sensore": -1
+        },
+        "temperatura_aria": {
+          "api_temperatura_aria": "http://www.floods.it/public/download.php?Sensore=11549&Argomento=0",
+          "id_sensore": 11549
+        },
+        "igrometro": {
+          "api_igrometro": "",
+          "id_sensore": -1
+        },
+        "nivometro": {
+          "api_nivometro": "",
+          "id_sensore": -1
+        },
+        "barometro": {
+          "api_barometro": "",
+          "id_sensore": -1
+        },
+        "radiometro": {
+          "api_radiometro": "",
+          "id_sensore": -1
+        },
+        "vento": {
+          "api_vento": "",
+          "id_sensore": -1
+        },
+        "direzione_vento": {
+          "api_direzione_vento": "",
+          "id_sensore": -1
+        },
+        "portata": {
+          "api_portata": "",
+          "id_sensore": -1
+        }
+      },
+      "ente_proprietario": "Regione del Veneto",
+      "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=465100.php"
+    },
+      {
+        "nome_stazione": "Castelfranco Veneto",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=11461&Argomento=0",
+            "id_sensore": 11461
+          },
+          "idrometro": {
+            "api_idrometro": "",
+            "id_sensore": -1
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "http://www.floods.it/public/download.php?Sensore=11460&Argomento=0",
+            "id_sensore": 11460
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=465100.php"
+      }
+    ]
+  },
+  "adige": {
+    "stazioni": [{
+      "nome_stazione": "Trento-S. Lorenzo",
+      "sensori": {
+        "pluviometro": {
+          "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=11696&Argomento=0",
+          "id_sensore": 11696
+        },
+        "idrometro": {
+          "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11697&Argomento=0",
+          "id_sensore": 11697
+        },
+        "temperatura_aria": {
+          "api_temperatura_aria": "http://www.floods.it/public/download.php?Sensore=12336&Argomento=0",
+          "id_sensore": 12336
+        },
+        "igrometro": {
+          "api_igrometro": "",
+          "id_sensore": -1
+        },
+        "nivometro": {
+          "api_nivometro": "",
+          "id_sensore": -1
+        },
+        "barometro": {
+          "api_barometro": "",
+          "id_sensore": -1
+        },
+        "radiometro": {
+          "api_radiometro": "",
+          "id_sensore": -1
+        },
+        "vento": {
+          "api_vento": "",
+          "id_sensore": -1
+        },
+        "direzione_vento": {
+          "api_direzione_vento": "",
+          "id_sensore": -1
+        },
+        "portata": {
+          "api_portata": "http://www.floods.it/public/download.php?Sensore=18701&Argomento=0",
+          "id_sensore": 18701
+        }
+      },
+      "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+      "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=238800.php"
+    },
+      {
+        "nome_stazione": "Monte Finonchio",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=30710&Argomento=0",
+            "id_sensore": 30710
+          },
+          "idrometro": {
+            "api_idrometro": "",
+            "id_sensore": -1
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "http://www.floods.it/public/download.php?Sensore=30712&Argomento=0",
+            "id_sensore": 30712
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=399600.php"
+      },
+      {
+        "nome_stazione": "Vo Destro",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=12325&Argomento=0",
+            "id_sensore": 12325
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=12326&Argomento=0",
+            "id_sensore": 12326
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "http://www.floods.it/public/download.php?Sensore=12327&Argomento=0",
+            "id_sensore": 12327
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "http://www.floods.it/public/download.php?Sensore=18722&Argomento=0",
+            "id_sensore": 18722
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=145700.php"
+      },
+      {
+        "nome_stazione": "San Michele all Adige",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11751&Argomento=0",
+            "id_sensore": 11751
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "http://www.floods.it/public/download.php?Sensore=18708&Argomento=0",
+            "id_sensore": 18708
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=33900.php"
+      },
+      {
+        "nome_stazione": "Mattarello",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=49050&Argomento=0",
+            "id_sensore": 49050
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=655600.php"
+      },
+      {
+        "nome_stazione": "Villa Lagarina",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11700&Argomento=0",
+            "id_sensore": 11700
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "http://www.floods.it/public/download.php?Sensore=18717&Argomento=0",
+            "id_sensore": 18717
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=416600.php"
+      },
+      {
+        "nome_stazione": "Marco",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=12323&Argomento=0",
+            "id_sensore": 12323
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=371200.php"
+      },
+      {
+        "nome_stazione": "Ala",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=28210&Argomento=0",
+            "id_sensore": 28210
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=399800.php"
+      },
+      {
+        "nome_stazione": "Avio",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=28206&Argomento=0",
+            "id_sensore": 28206
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "http://www.floods.it/public/download.php?Sensore=38557&Argomento=0",
+            "id_sensore": 38557
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=399900.php"
+      },
+      {
+        "nome_stazione": "Borghetto",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=30785&Argomento=0",
+            "id_sensore": 30785
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=399700.php"
+      },
+      {
+        "nome_stazione": "Monte Tomba",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "",
+            "id_sensore": -1
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "http://www.floods.it/public/download.php?Sensore=12127&Argomento=0",
+            "id_sensore": 12127
+          },
+          "nivometro": {
+            "api_nivometro": "http://www.floods.it/public/download.php?Sensore=12125&Argomento=0",
+            "id_sensore": 12125
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "http://www.floods.it/public/download.php?Sensore=12131&Argomento=0",
+            "id_sensore": 12131
+          },
+          "vento": {
+            "api_vento": "http://www.floods.it/public/download.php?Sensore=31045&Argomento=0",
+            "id_sensore": 31045
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "http://www.floods.it/public/download.php?Sensore=31046&Argomento=0",
+            "id_sensore": 31046
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Regione del Veneto",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=82200.php"
+      }
+    ]
+  },
+  "po/mincio": {
+    "stazioni": [{
+      "nome_stazione": "Riva del Garda",
+      "sensori": {
+        "pluviometro": {
+          "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=11705&Argomento=0",
+          "id_sensore": 11705
+        },
+        "idrometro": {
+          "api_idrometro": "",
+          "id_sensore": -1
+        },
+        "temperatura_aria": {
+          "api_temperatura_aria": "http://www.floods.it/public/download.php?Sensore=12337&Argomento=0",
+          "id_sensore": 12337
+        },
+        "igrometro": {
+          "api_igrometro": "",
+          "id_sensore": -1
+        },
+        "nivometro": {
+          "api_nivometro": "",
+          "id_sensore": -1
+        },
+        "barometro": {
+          "api_barometro": "",
+          "id_sensore": -1
+        },
+        "radiometro": {
+          "api_radiometro": "",
+          "id_sensore": -1
+        },
+        "vento": {
+          "api_vento": "",
+          "id_sensore": -1
+        },
+        "direzione_vento": {
+          "api_direzione_vento": "",
+          "id_sensore": -1
+        },
+        "portata": {
+          "api_portata": "",
+          "id_sensore": -1
+        }
+      },
+      "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+      "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=238000.php"
+    },
+      {
+        "nome_stazione": "Riva del Garda - Varone",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=11705&Argomento=0",
+            "id_sensore": 11705
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=28160&Argomento=0",
+            "id_sensore": 28160
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=416200.php"
+      }
+    ]
+  },
+  "brenta/cismon": {
+    "stazioni": [{
+      "nome_stazione": "Tognola",
+      "sensori": {
+        "pluviometro": {
+          "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=30980&Argomento=0",
+          "id_sensore": 30980
+        },
+        "idrometro": {
+          "api_idrometro": "",
+          "id_sensore": -1
+        },
+        "temperatura_aria": {
+          "api_temperatura_aria": "http://www.floods.it/public/download.php?Sensore=30982&Argomento=0",
+          "id_sensore": 30982
+        },
+        "igrometro": {
+          "api_igrometro": "",
+          "id_sensore": -1
+        },
+        "nivometro": {
+          "api_nivometro": "",
+          "id_sensore": -1
+        },
+        "barometro": {
+          "api_barometro": "",
+          "id_sensore": -1
+        },
+        "radiometro": {
+          "api_radiometro": "",
+          "id_sensore": -1
+        },
+        "vento": {
+          "api_vento": "",
+          "id_sensore": -1
+        },
+        "direzione_vento": {
+          "api_direzione_vento": "",
+          "id_sensore": -1
+        },
+        "portata": {
+          "api_portata": "",
+          "id_sensore": -1
+        }
+      },
+      "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+      "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=398000.php"
+    },
+      {
+        "nome_stazione": "Pradidali",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=30974&Argomento=0",
+            "id_sensore": 30974
+          },
+          "idrometro": {
+            "api_idrometro": "",
+            "id_sensore": -1
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "http://www.floods.it/public/download.php?Sensore=30976&Argomento=0",
+            "id_sensore": 30976
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=417600.php"
+      },
+      {
+        "nome_stazione": "Fiera di Primiero",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=32119&Argomento=0",
+            "id_sensore": 32119
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11768&Argomento=0",
+            "id_sensore": 11768
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "http://www.floods.it/public/download.php?Sensore=32120&Argomento=0",
+            "id_sensore": 32120
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=144800.php"
+      },
+      {
+        "nome_stazione": "Canal San Bovo",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=11660&Argomento=0",
+            "id_sensore": 11660
+          },
+          "idrometro": {
+            "api_idrometro": "",
+            "id_sensore": -1
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=144800.php"
+      }
+    ,
+      {
+        "nome_stazione": "Caoria Valsorda",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "http://www.floods.it/public/download.php?Sensore=30984&Argomento=0",
+            "id_sensore": 30984
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=30987&Argomento=0",
+            "id_sensore": 30987
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "http://www.floods.it/public/download.php?Sensore=30986&Argomento=0",
+            "id_sensore": 30986
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=399400.php"
+      },
+      {
+        "nome_stazione": "San Martino di Castrozza",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=28240&Argomento=0",
+            "id_sensore": 28240
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=397900.php"
+      },
+      {
+        "nome_stazione": "Tonadico",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=28236&Argomento=0",
+            "id_sensore": 28236
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "",
+            "id_sensore": -1
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=397900.php"
+      },
+      {
+        "nome_stazione": "Caoria",
+        "sensori": {
+          "pluviometro": {
+            "api_pluviometro": "",
+            "id_sensore": -1
+          },
+          "idrometro": {
+            "api_idrometro": "http://www.floods.it/public/download.php?Sensore=11770&Argomento=0",
+            "id_sensore": 11770
+          },
+          "temperatura_aria": {
+            "api_temperatura_aria": "",
+            "id_sensore": -1
+          },
+          "igrometro": {
+            "api_igrometro": "",
+            "id_sensore": -1
+          },
+          "nivometro": {
+            "api_nivometro": "",
+            "id_sensore": -1
+          },
+          "barometro": {
+            "api_barometro": "",
+            "id_sensore": -1
+          },
+          "radiometro": {
+            "api_radiometro": "",
+            "id_sensore": -1
+          },
+          "vento": {
+            "api_vento": "",
+            "id_sensore": -1
+          },
+          "direzione_vento": {
+            "api_direzione_vento": "",
+            "id_sensore": -1
+          },
+          "portata": {
+            "api_portata": "http://www.floods.it/public/download.php?Sensore=18707&Argomento=0",
+            "id_sensore": 18707
+          }
+        },
+        "ente_proprietario": "Provincia Autonoma di Trento - Ufficio Dighe",
+        "api_stazione": "http://www.floods.it/public/DettStaz.php?Nome=397900.php"
+      }
+    ]
+  }
+}

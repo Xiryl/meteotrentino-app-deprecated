@@ -34,6 +34,8 @@
       android:textSize="@dimen/activity_weatherreport_title_size"/>
   </LinearLayout>
   <!-- MAIN TOOLBAR -->
+
+
   <Spinner
     android:id="@+id/activity_weather_station_spinner"
     android:layout_marginTop="80dp"

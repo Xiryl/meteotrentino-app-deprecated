@@ -89,7 +89,7 @@ public class BulletProbDaysAdapter extends RecyclerView.Adapter<BulletProbDaysAd
             first_entry = 2;
         }
 
-        holder.txt_description.setText(data.getGiorni().get(position).getNomeGiorno());
+        holder.txt_description.setText(data.getGiorni().get(position).getNomeGiorno().toUpperCase());
 
         holder.rl.setOnClickListener(new View.OnClickListener() {
             @Override
