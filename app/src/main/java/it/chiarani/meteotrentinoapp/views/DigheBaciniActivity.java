@@ -17,24 +17,29 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
 import it.chiarani.meteotrentinoapp.R;
+import it.chiarani.meteotrentinoapp.adapters.BaciniAdapter;
 import it.chiarani.meteotrentinoapp.adapters.BulletProbDaysAdapter;
 import it.chiarani.meteotrentinoapp.adapters.SensorAdapter;
+import it.chiarani.meteotrentinoapp.api.API_bacini;
+import it.chiarani.meteotrentinoapp.api.API_bacini_response;
 import it.chiarani.meteotrentinoapp.databinding.ActivityDigheBaciniBinding;
 import it.chiarani.meteotrentinoapp.helper.JSONUtilities;
 import it.chiarani.meteotrentinoapp.helper.WeatherStation;
 import it.chiarani.meteotrentinoapp.models.SensoreBacini;
 import it.chiarani.meteotrentinoapp.models.StazioniBacini;
 
-public class DigheBaciniActivity extends SampleActivity implements SensorAdapter.ClickListener {
+public class DigheBaciniActivity extends SampleActivity implements SensorAdapter.ClickListener, API_bacini_response {
 
     ActivityDigheBaciniBinding binding;
     JSONObject jsonObject;
     List<String> bacini;
     List<String> stazioni;
+    List<SensoreBacini> sensori_for_adapter;
 
     @Override
     protected int getLayoutID() {
@@ -311,7 +316,7 @@ public class DigheBaciniActivity extends SampleActivity implements SensorAdapter
                                     linearLayoutManagerslot1.setOrientation(LinearLayoutManager.HORIZONTAL);
                                     binding.activityDigheBaciniRvSensore.setLayoutManager(linearLayoutManagerslot1);
 
-                                    List<SensoreBacini> sensori_for_adapter = new ArrayList<>();
+                                    sensori_for_adapter = new ArrayList<>();
                                     for(SensoreBacini sensore : sensoriBacini)
                                     {
                                         if(!sensore.getApi_sensore().isEmpty())
@@ -357,12 +362,52 @@ public class DigheBaciniActivity extends SampleActivity implements SensorAdapter
 
     }
 
+    int posx = -1;
     @Override
     public void onClick(int day, int position) {
-
+        posx = position;
+        API_bacini api_bacini = new API_bacini(this::processFinish, sensori_for_adapter.get(position).getApi_sensore());
+        api_bacini.execute();
     }
 
-}
+    @Override
+    public void processFinish(String data) {
+        String[] k = data.split("\n");
+        List<String> list_data = new ArrayList<>();
+        String unitamisura = "";
 
-/*
- * brenta_arr.getJSONObject(i).optString("nome_stazione")*/
+        String[] x = Arrays.copyOfRange(k, 6, k.length-1);
+        for(String s : x) {
+            try {
+                String day   = s.split("/")[0] + "/" + s.split("/")[0] + " " + s.split(" ")[1].substring(0, 5);
+
+                switch (sensori_for_adapter.get(posx).getNome_sensore()) {
+                    case "pluviometro": unitamisura = " mm/h"; break;
+                    case "idrometro": unitamisura = " m"; break; //
+                    case "temperatura_aria": unitamisura = " °C"; break;
+                    case "igrometro": unitamisura = " %"; break;
+                    case "nivometro": unitamisura = " cm"; break;
+                    case "barometro": unitamisura = " hPa"; break;
+                    case "radiometro": unitamisura = " W/mq"; break;
+                    case "vento": unitamisura = " m/s"; break;
+                    case "direzione_vento": unitamisura = " °"; break;
+                    case "portata": unitamisura = " mc/s"; break;
+
+                }
+                String value = s.split(";")[1] + unitamisura;
+                list_data.add(day + ";" + value);
+            }
+            catch (StringIndexOutOfBoundsException ex) {
+            }
+        }
+
+        binding.activityDigheBaciniRvDati.setHasFixedSize(true);
+
+        LinearLayoutManager linearLayoutManagerslot1 = new LinearLayoutManager(getApplicationContext());
+        linearLayoutManagerslot1.setOrientation(LinearLayoutManager.VERTICAL);
+        binding.activityDigheBaciniRvDati.setLayoutManager(linearLayoutManagerslot1);
+        BaciniAdapter baciniAdapter = new BaciniAdapter(list_data);
+        binding.activityDigheBaciniRvDati.setAdapter(baciniAdapter);
+
+    }
+}

@@ -106,6 +106,17 @@
                 android:id="@+id/activity_dighe_bacini_rv_sensore"
                 android:orientation="horizontal"/>
 
+            <!-- LIST -->
+            <android.support.v7.widget.RecyclerView
+                android:paddingLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:clipToPadding = "false"
+                android:overScrollMode="never"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal"
+                android:id="@+id/activity_dighe_bacini_rv_dati"
+                android:orientation="vertical"/>
         </LinearLayout>
     </ScrollView>
         </RelativeLayout>
