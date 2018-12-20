@@ -71,9 +71,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".views.BulletinActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".views.AllerteActivity"
             android:screenOrientation="portrait" />
         <activity

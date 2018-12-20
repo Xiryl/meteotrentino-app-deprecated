@@ -18,4 +18,5 @@ public class API_endpoint {
   public static final String ENDPOINT_IMG_ZONA_ALPINA  = "https://api.sat24.com/mostrecent/ALPS/visual5hdcomplete";
   public static final String ENDPOINT_IMG_RADAR_NEVE   = "https://api.sat24.com/animated/EU/snow/1/Central%20European%20Standard%20Time";
   public static final String ENDPOINT_IMG_EUROPA       = "https://api.sat24.com/animated/EU/infraPolair/1/Central%20European%20Standard%20Time";
+  public final static String URL_BOLLETTINO_MONTAGNA   = "https://www.meteotrentino.it/#!/menu?menuItem=41";
 }

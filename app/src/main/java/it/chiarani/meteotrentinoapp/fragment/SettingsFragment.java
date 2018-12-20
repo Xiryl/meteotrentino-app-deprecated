@@ -28,6 +28,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Prefer
   public Preference pref_key_contatti_t;
   public Preference pref_key_sito;
   public Preference pref_key_faq;
+  public Preference pref_key_allor_gps;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Prefer
     pref_key_contatti_t       = findPreference("pref_key_feedback_telegram");
     pref_key_sito             = findPreference("pref_key_sito_web");
     pref_key_faq              = findPreference("pref_key_faq");
+    pref_key_allor_gps        = findPreference("pref_key_gps");
 
     try {
       pref_version.setSummary(this.getContext().getPackageManager().getPackageInfo(this.getContext().getPackageName(), 0).versionName);
@@ -112,4 +114,5 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Prefer
 
     return true;
   }
+
 }

@@ -36,6 +36,7 @@ import java.util.TimeZone;
 import hotchemi.android.rate.AppRate;
 import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.adapters.WeatherSevenDayAdapter;
+import it.chiarani.meteotrentinoapp.api.API_endpoint;
 import it.chiarani.meteotrentinoapp.database.entity.CustomAlertEntity;
 import it.chiarani.meteotrentinoapp.database.entity.OpenWeatherDataEntity;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherForDayEntity;
@@ -108,7 +109,7 @@ public class MainActivity extends SampleActivity {
     MenuItem second_pref = menu.findItem(R.id.drawer_view_second_pref);
     MenuItem app_version = menu.findItem(R.id.drawer_view_app_version);
 
-    app_version.setTitle("3.0.1-stabile");
+    app_version.setTitle("3.3-stabile");
     first_pref. setTitle(first_pos);
     second_pref.setTitle(second_pos);
 
@@ -388,22 +389,38 @@ public class MainActivity extends SampleActivity {
 
   private void sendTips(SharedPreferences getPrefs) {
     boolean isMsgNotifiche = getPrefs.getBoolean("msg_reminder", true);
-    boolean isMsgBollettino = getPrefs.getBoolean("msg_bollettino", true);
+      boolean isMsgBollettino = getPrefs.getBoolean("msg_bollettino", true);
+      boolean isMsggps = getPrefs.getBoolean("msg_gps", true);
 
-    if (isMsgNotifiche) {
-      //  Make a new preferences editor
-      SharedPreferences.Editor e = getPrefs.edit();
+      if (isMsggps) {
+          //  Make a new preferences editor
+          SharedPreferences.Editor e = getPrefs.edit();
 
-      //  Edit preference to make it false because we don't want this to run again
-      e.putBoolean("msg_reminder", false);
+          //  Edit preference to make it false because we don't want this to run again
+          e.putBoolean("msg_gps", false);
 
-      //  Apply changes
-      e.apply();
+          //  Apply changes
+          e.apply();
 
-      CustomDialog cdd = new CustomDialog(MainActivity.this, "Hey!\nLo sai che dalle impostazioni puoi attivare/disattivare le notifiche?");
-      cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-      cdd.show();
-    }
+          CustomDialog cdd = new CustomDialog(MainActivity.this, "TIP: Dalle impostazioni è ora possibile disattivare la richiesta del GPS per sempre!");
+          cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+          cdd.show();
+      }
+
+      if (isMsgNotifiche) {
+          //  Make a new preferences editor
+          SharedPreferences.Editor e = getPrefs.edit();
+
+          //  Edit preference to make it false because we don't want this to run again
+          e.putBoolean("msg_reminder", false);
+
+          //  Apply changes
+          e.apply();
+
+          CustomDialog cdd = new CustomDialog(MainActivity.this, "Hey!\nLo sai che dalle impostazioni puoi attivare/disattivare le notifiche mattutine?");
+          cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+          cdd.show();
+      }
 
     if (isMsgBollettino) {
       //  Make a new preferences editor
@@ -456,6 +473,10 @@ public class MainActivity extends SampleActivity {
           menuItem.setChecked(true);
 
           switch (menuItem.getItemId()){
+              case R.id.drawer_view_widget :
+                  Toast.makeText(this, "Widget in sviluppo. Presto sarà disponibile questa scheda.", Toast.LENGTH_LONG).show();
+                  break;
+
               case R.id.drawer_view_dighe :
                   Intent bacini_intent = new Intent(this, DigheBaciniActivity.class);
                   startActivity(bacini_intent);
@@ -470,7 +491,7 @@ public class MainActivity extends SampleActivity {
               startActivity(faqintent);
               break;
             case R.id.drawer_view_app_version:
-              CustomDialog cdd = new CustomDialog(MainActivity.this, "Versione v3.0.1-stabile\n-Aggiunto Bollettino Probabilistico\n-Migliorata grafica dell'app e migliorata l'esperienza utente");
+              CustomDialog cdd = new CustomDialog(MainActivity.this, "Versione v3.3-stabile\n-Aggiunte Dighe e Bacini\n-Preparata la struttura per i widget");
               cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
               cdd.show();
               break;
@@ -517,12 +538,13 @@ public class MainActivity extends SampleActivity {
               break;
 
             case R.id.drawer_view_staz_neve:
-              Toast.makeText(this, "Servizio attivo dal 1° Dicembre 2018", Toast.LENGTH_LONG).show();
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://avalanche.report"));
+                startActivity(browserIntent);
               break;
 
-            case R.id.drawer_view_bollettini:
-              Intent bulletin_intent = new Intent(MainActivity.this, BulletinActivity.class);
-              startActivity(bulletin_intent);
+            case R.id.drawer_view_montagna:
+                Intent montagnaIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(API_endpoint.URL_BOLLETTINO_MONTAGNA));
+                startActivity(montagnaIntent);
               break;
 
             case R.id.drawer_view_allerte:

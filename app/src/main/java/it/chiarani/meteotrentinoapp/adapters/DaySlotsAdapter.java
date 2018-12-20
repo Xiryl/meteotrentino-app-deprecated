@@ -102,7 +102,7 @@ public class DaySlotsAdapter extends RecyclerView.Adapter<DaySlotsAdapter.ViewHo
         });
 
         WeatherForDayEntity wfd = weather_report.getPrevisione().getGiorni().get(weather_day);
-        WeatherForSlotEntity wfs = wfd.getFasce().get(position);
+        WeatherForSlotEntity wfs = wfd.getFasce().get(position); // TODO: CHECK HERE
         holder.txt_description.setText(wfs.getFasciaPer().toUpperCase() + "\nFascia (" + wfs.getFasciaOre()+ ")" );
 
         if(oldPos == position) {

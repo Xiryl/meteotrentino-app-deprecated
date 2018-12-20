@@ -47,7 +47,7 @@ public class BaciniAdapter extends RecyclerView.Adapter<BaciniAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-            holder.txt_temp.setText(String.format("[%s]", data.get(position).split(";")[1]));
+            holder.txt_temp.setText(String.format(" %s ", data.get(position).split(";")[1]));
             holder.txt_data.setText(String.format("%s", data.get(position).split(";")[0]));
     }
 

@@ -18,6 +18,11 @@
   <PreferenceCategory
     android:title="GENERALI"
     android:key="pref_key_storage_settings">
+      <CheckBoxPreference
+          android:key="pref_key_gps"
+          android:title="Non usare mai il GPS"
+          android:summary="Disattiva al caricamento dell'app la localiz. GPS"
+          android:defaultValue="false"/>
     <Preference
       android:key="pref_key_pulisci_preferiti"
       android:title="Cancella Località Preferite"

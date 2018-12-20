@@ -93,6 +93,8 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
       }
       else {
 
+
+
         // get user location from GPS
         if (ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
           ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSION_REQ_CODE);
@@ -111,42 +113,62 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
           else
           {
             // yes data
+              SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+              Boolean pref_key_gps = settings.getBoolean("pref_key_gps", true);
 
-            try {
-              GpsTracker gpsTracker = new GpsTracker(this);
-              if (gpsTracker.canGetLocation()) {
-                double latitude = gpsTracker.getLatitude();
-                double longitude = gpsTracker.getLongitude();
-                Geocoder geocoder;
-                List<Address> addresses;
-                geocoder = new Geocoder(this, Locale.getDefault());
+              if(pref_key_gps == false) {
+                try {
+                  GpsTracker gpsTracker = new GpsTracker(this);
+                  if (gpsTracker.canGetLocation()) {
+                    double latitude = gpsTracker.getLatitude();
+                    double longitude = gpsTracker.getLongitude();
+                    Geocoder geocoder;
+                    List<Address> addresses;
+                    geocoder = new Geocoder(this, Locale.getDefault());
 
-                addresses = geocoder.getFromLocation(latitude, longitude, 1);
+                    addresses = geocoder.getFromLocation(latitude, longitude, 1);
 
-                user_location = addresses.get(0).getLocality();
+                    user_location = addresses.get(0).getLocality();
 
-                // call API
-                callAPI(user_location);
+                    // call API
+                    callAPI(user_location);
 
-              } else {
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.loaderact_gps_not_active), Toast.LENGTH_SHORT).show();
-                  if (entities.size() <= 0) {
+                  } else {
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.loaderact_gps_not_active), Toast.LENGTH_SHORT).show();
+                      if (entities.size() <= 0) {
+                        Intent i = new Intent(LoaderActivity.this, ChooseLocationActivity.class);
+                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        this.startActivity(i);
+                      }
+                      else
+                      {
+                        // chiamo le API con l'ultima località assumendo che sia la predefinita
+                        String loc = entities.get(entities.size()-1).getPrevisione().getLocalita();
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.loaderact_gps_not_active_get_last), Toast.LENGTH_SHORT).show();
+                        callAPI(loc);
+                      }
+                  }
+                }
+                catch (Exception e) {
+                  Log.d("LoaderAct-ask-gps", e.getMessage());
                     Intent i = new Intent(LoaderActivity.this, ChooseLocationActivity.class);
                     i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     this.startActivity(i);
+                }
+              }
+              else {
+                  if (entities.size() <= 0) {
+                      Intent i = new Intent(LoaderActivity.this, ChooseLocationActivity.class);
+                      i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                      this.startActivity(i);
                   }
                   else
                   {
-                    // chiamo le API con l'ultima località assumendo che sia la predefinita
-                    String loc = entities.get(entities.size()-1).getPrevisione().getLocalita();
-                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.loaderact_gps_not_active_get_last), Toast.LENGTH_SHORT).show();
-                    callAPI(loc);
+                      // chiamo le API con l'ultima località assumendo che sia la predefinita
+                      String loc = entities.get(entities.size()-1).getPrevisione().getLocalita();
+                      callAPI(loc);
                   }
               }
-            }
-            catch (Exception e) {
-              Log.d("LoaderAct-ask-gps", e.getMessage());
-            }
           }
         });
       }

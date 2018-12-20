@@ -1,9 +1,11 @@
 package it.chiarani.meteotrentinoapp.views;
 
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -21,11 +23,13 @@ import it.chiarani.meteotrentinoapp.api.API_bullet_prob_response;
 import it.chiarani.meteotrentinoapp.databinding.ActivityProbBulletBinding;
 import it.chiarani.meteotrentinoapp.helper.CustomDialog;
 import it.chiarani.meteotrentinoapp.models.BulletProbFull;
+import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
 
 public class ProbBulletActivity extends SampleActivity implements API_bullet_prob_response, BulletProbDaysAdapter.ClickListener {
 
     private ActivityProbBulletBinding binding;
     private BulletProbFull data;
+    private final static String URL_BOLLETTINO_PROBABILISTICO = "https://www.meteotrentino.it/protcivtn-meteo/api/front/bollettinoProb?idPrevisione=";
 
 
     @Override
@@ -53,6 +57,18 @@ public class ProbBulletActivity extends SampleActivity implements API_bullet_pro
                 CustomDialog cdd = new CustomDialog(ProbBulletActivity.this, "[0] VERDE: Molto bassa\n[1] GIALLO: bassa\n[2] ARANCIO: Media\n[3] ROSSO: Alta");
                 cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 cdd.show();
+            }
+        });
+
+        binding.btnDownloadProbBullettin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                WeatherReportRepository repo = new WeatherReportRepository(getApplication());
+                repo.getAll().observeForever( entries -> {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(URL_BOLLETTINO_PROBABILISTICO + entries.get(entries.size()-1).getIdPrevisione() + "&history=0"));
+                    startActivity(browserIntent);
+                });
+
             }
         });
     }
@@ -91,5 +107,7 @@ public class ProbBulletActivity extends SampleActivity implements API_bullet_pro
         animator.setDuration(1500);
         animator.start();
     }
+
+
 
 }

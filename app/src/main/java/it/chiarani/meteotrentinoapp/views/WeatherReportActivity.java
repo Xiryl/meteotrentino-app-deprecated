@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.Toast;
 
 import com.daasuu.ei.Ease;
 import com.daasuu.ei.EasingInterpolator;
@@ -26,6 +27,7 @@ import com.takusemba.spotlight.OnTargetStateChangedListener;
 import com.takusemba.spotlight.Spotlight;
 import com.takusemba.spotlight.shape.Circle;
 import com.takusemba.spotlight.target.SimpleTarget;
+import com.thoughtworks.xstream.converters.extended.ToAttributedValueConverter;
 
 import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.adapters.DaySlotsAdapter;
@@ -74,6 +76,14 @@ public class WeatherReportActivity extends SampleActivity implements DaySlotsAda
 
     WeatherReportRepository repository = new WeatherReportRepository(getApplication());
     repository.getAll().observe(this, entries -> {
+
+        if(entries == null || entries.size() == 0)
+        {
+            Toast.makeText(this, "Errore temporaneo. Rirpova", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
       WeatherReportEntity report = entries.get(entries.size()-1);
 
        // activity_weather_report_rv_slot
@@ -89,7 +99,8 @@ public class WeatherReportActivity extends SampleActivity implements DaySlotsAda
       OpenWeatherDataRepository repository_op = new OpenWeatherDataRepository(getApplication());
       repository_op.getAll().observe(this, entries_op -> {
 
-        if(entries_op == null) {
+        if(entries_op == null || entries_op.size() == 0) {
+            Toast.makeText(this, "Errore temporaneo. Rirpova", Toast.LENGTH_SHORT).show();
           return;
         }
 
@@ -161,12 +172,18 @@ public class WeatherReportActivity extends SampleActivity implements DaySlotsAda
         WeatherReportRepository repository = new WeatherReportRepository(getApplication());
         repository.getAll().observe(this, entries -> {
 
+            if( entries == null || entries.size() == 0){
+                Toast.makeText(this, "Errore temporaneo. Rirpova", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+
             WeatherForDayEntity wfd  = entries.get(entries.size()-1).getPrevisione().getGiorni().get(day);
             WeatherForSlotEntity wfs = wfd.getFasce().get(position);
             binding.activityWeatherReportDatiMetereologici.setText("DATI MERETOLOGICI PER: " + wfs.getFasciaPer().toUpperCase());
             binding.itemWeatherReportTxtTmin           .setText(String.format("%s: %s°", this.getResources().getString(R.string.s_weatherreportadapter_tmin), wfd.gettMinGiorno()));
             binding.itemWeatherReportTxtTmax           .setText(String.format("%s: %s°", this.getResources().getString(R.string.s_weatherreportadapter_tmax), wfd.gettMaxGiorno()));
-            binding.itemWeatherReportTxtPressione       .setText(String.format("%s: %s hPa", this.getResources().getString(R.string.s_weatherreportadapter_pressure), ""));
+            binding.itemWeatherReportTxtPressione      .setText(String.format("%s: %s hPa", this.getResources().getString(R.string.s_weatherreportadapter_pressure), ""));
             binding.itemWeatherReportTxtProbPrec      .setText(String.format("%s: %s%%", this.getResources().getString(R.string.s_weatherreportadapter_prob_prec), wfs.getDescPrecProb()));
             binding.itemWeatherReportTxtIntensitaPrec .setText(String.format("%s: %s", this.getResources().getString(R.string.s_weatherreportadapter_int_prec), wfs.getDescPrecInten()));
             binding.itemWeatherReportTxtProbTemp      .setText(String.format("%s: %s%%", this.getResources().getString(R.string.s_weatherreportadapter_prob_temporali), wfs.getDescTempProb()));

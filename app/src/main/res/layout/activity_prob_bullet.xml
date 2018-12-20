@@ -29,16 +29,28 @@
             android:src="@drawable/ic_arrow_back_gray"
             />
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="Bollettino Probabilistico"
             android:fontFamily="@font/os_regular"
-            android:layout_marginRight="30dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:textColor="@color/textgray"
             android:textStyle="bold"
             android:layout_gravity="center_horizontal"
             android:textSize="@dimen/activity_weatherreport_title_size"/>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:id="@+id/btn_download_prob_bullettin"
+            android:background="#00000000"
+            android:src="@drawable/ic_file_download_solid"
+            />
     </LinearLayout>
 
     <TextView

@@ -100,7 +100,7 @@ public class SensorAdapter extends RecyclerView.Adapter<SensorAdapter.ViewHolder
                 holder.img_weather.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.ic_bacino_pluviometro));
                 break;
             case "idrometro" :
-                holder.txt_description.setText("Barometro");
+                holder.txt_description.setText("Idrometro");
                 holder.img_weather.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.ic_bacino_idrometro));
                 break;
             case "temperatura_aria" :

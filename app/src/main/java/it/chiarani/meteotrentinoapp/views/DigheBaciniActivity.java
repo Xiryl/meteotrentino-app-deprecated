@@ -1,6 +1,9 @@
 package it.chiarani.meteotrentinoapp.views;
 
+import android.animation.ObjectAnimator;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.hardware.Sensor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +13,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
+import com.daasuu.ei.Ease;
+import com.daasuu.ei.EasingInterpolator;
 import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
@@ -28,6 +33,7 @@ import it.chiarani.meteotrentinoapp.adapters.SensorAdapter;
 import it.chiarani.meteotrentinoapp.api.API_bacini;
 import it.chiarani.meteotrentinoapp.api.API_bacini_response;
 import it.chiarani.meteotrentinoapp.databinding.ActivityDigheBaciniBinding;
+import it.chiarani.meteotrentinoapp.helper.CustomDialog;
 import it.chiarani.meteotrentinoapp.helper.JSONUtilities;
 import it.chiarani.meteotrentinoapp.helper.WeatherStation;
 import it.chiarani.meteotrentinoapp.models.SensoreBacini;
@@ -54,6 +60,10 @@ public class DigheBaciniActivity extends SampleActivity implements SensorAdapter
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        CustomDialog cdd = new CustomDialog(DigheBaciniActivity.this, "Attenzione!\nQuesta scheda è ancora in fase di sviluppo, non tutti i bacini e stazioni sono attualmente presenti.");
+        cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        cdd.show();
 
         binding.fragmentRadarDayBtnMenu.setOnClickListener(v -> onBackPressed());
 
@@ -329,6 +339,8 @@ public class DigheBaciniActivity extends SampleActivity implements SensorAdapter
                                     stazioniBacini.setSensori(sensori_for_adapter);
                                     SensorAdapter sensorAdapter = new SensorAdapter(getApplicationContext(), stazioniBacini, DigheBaciniActivity.this::onClick, 0);
                                     binding.activityDigheBaciniRvSensore.setAdapter(sensorAdapter);
+
+                                    doBounceAnimation(binding.activityDigheBaciniRvSensore);
                                 }
                                 catch (Exception ex) {
                                     String x = ex.getMessage();
@@ -375,7 +387,6 @@ public class DigheBaciniActivity extends SampleActivity implements SensorAdapter
         String[] k = data.split("\n");
         List<String> list_data = new ArrayList<>();
         String unitamisura = "";
-
         String[] x = Arrays.copyOfRange(k, 6, k.length-1);
         for(String s : x) {
             try {
@@ -392,12 +403,15 @@ public class DigheBaciniActivity extends SampleActivity implements SensorAdapter
                     case "vento": unitamisura = " m/s"; break;
                     case "direzione_vento": unitamisura = " °"; break;
                     case "portata": unitamisura = " mc/s"; break;
-
                 }
+
                 String value = s.split(";")[1] + unitamisura;
                 list_data.add(day + ";" + value);
             }
             catch (StringIndexOutOfBoundsException ex) {
+            }
+            catch (Exception e) {
+
             }
         }
 
@@ -409,5 +423,13 @@ public class DigheBaciniActivity extends SampleActivity implements SensorAdapter
         BaciniAdapter baciniAdapter = new BaciniAdapter(list_data);
         binding.activityDigheBaciniRvDati.setAdapter(baciniAdapter);
 
+    }
+
+    private void doBounceAnimation(View targetView) {
+        ObjectAnimator animator = ObjectAnimator.ofFloat(targetView, "translationX", 0, 30, 0);
+        animator.setInterpolator(new EasingInterpolator(Ease.ELASTIC_IN_OUT));
+        animator.setStartDelay(500);
+        animator.setDuration(1500);
+        animator.start();
     }
 }
