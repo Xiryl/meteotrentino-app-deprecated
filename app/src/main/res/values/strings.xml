@@ -60,6 +60,8 @@
 
     <!-- MainActivity -->
     <string name="main_no_wether_data">Dati meteo non disponibili, riprova più tardi</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 
 
 </resources>

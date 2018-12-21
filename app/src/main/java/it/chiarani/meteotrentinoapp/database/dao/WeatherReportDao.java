@@ -17,6 +17,9 @@ public interface WeatherReportDao {
   @Query("SELECT * FROM weatherReport")
   LiveData<List<WeatherReportEntity>> getAll();
 
+    @Query("SELECT * FROM weatherReport")
+    List<WeatherReportEntity> getAllForWidget();
+
   /**
    * Add new report to database
    * @param entity item to add

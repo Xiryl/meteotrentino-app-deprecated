@@ -228,7 +228,7 @@ public class MainActivity extends SampleActivity {
 
         if(now <= (sunrise - 1800000)) {
           // night
-          binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_night);
+          binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_snow_night);
           window.setStatusBarColor(Color.parseColor("#345A7B"));
           isNight = true;
         }
@@ -240,12 +240,12 @@ public class MainActivity extends SampleActivity {
         }
         if(now >= (sunset - 900000) && now < (sunset + 900000)  ){
           // sunset
-          binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_sunset);
+          binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_snow_sunset);
           window.setStatusBarColor(Color.parseColor("#BA725A"));
         }
         if(  now >= (sunset + 900000)) {
           // night
-          binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_night);
+          binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_snow_night);
           window.setStatusBarColor(Color.parseColor("#345A7B"));
           isNight = true;
         }
@@ -402,7 +402,7 @@ public class MainActivity extends SampleActivity {
           //  Apply changes
           e.apply();
 
-          CustomDialog cdd = new CustomDialog(MainActivity.this, "TIP: Dalle impostazioni è ora possibile disattivare la richiesta del GPS per sempre!");
+          CustomDialog cdd = new CustomDialog(MainActivity.this, "TIP: Dalle impostazioni è possibile disattivare la richiesta del GPS per sempre!");
           cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
           cdd.show();
       }
@@ -417,7 +417,7 @@ public class MainActivity extends SampleActivity {
           //  Apply changes
           e.apply();
 
-          CustomDialog cdd = new CustomDialog(MainActivity.this, "Hey!\nLo sai che dalle impostazioni puoi attivare/disattivare le notifiche mattutine?");
+          CustomDialog cdd = new CustomDialog(MainActivity.this, "TIP: Dalle impostazioni puoi attivare/disattivare le notifiche mattutine!");
           cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
           cdd.show();
       }
@@ -491,7 +491,7 @@ public class MainActivity extends SampleActivity {
               startActivity(faqintent);
               break;
             case R.id.drawer_view_app_version:
-              CustomDialog cdd = new CustomDialog(MainActivity.this, "Versione v3.3-stabile\n-Aggiunte Dighe e Bacini\n-Preparata la struttura per i widget");
+              CustomDialog cdd = new CustomDialog(MainActivity.this, "Versione v3.3-stabile\n-Migliorata esperienza utente\n-Preparazione dei Widget");
               cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
               cdd.show();
               break;

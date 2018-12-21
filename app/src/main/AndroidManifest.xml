@@ -95,7 +95,8 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".views.WebcamActivity" />
         <activity android:name=".views.ProbBulletActivity" />
-        <activity android:name=".views.DigheBaciniActivity"></activity>
+        <activity android:name=".views.DigheBaciniActivity" />
+
     </application>
 
 </manifest>
