@@ -97,6 +97,15 @@
         <activity android:name=".views.ProbBulletActivity" />
         <activity android:name=".views.DigheBaciniActivity" />
 
+        <receiver android:name=".widget.SmallMeteoWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/small_meteo_widget_info" />
+        </receiver>
     </application>
 
 </manifest>
