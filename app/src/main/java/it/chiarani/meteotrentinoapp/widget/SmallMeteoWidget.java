@@ -15,6 +15,8 @@ import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.database.AppDatabase;
 import it.chiarani.meteotrentinoapp.database.dao.WeatherReportDao;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherReportEntity;
+import it.chiarani.meteotrentinoapp.helper.WeatherIconDescriptor;
+import it.chiarani.meteotrentinoapp.models.WeatherForDay;
 import it.chiarani.meteotrentinoapp.models.WeatherReport;
 import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
 
@@ -23,8 +25,7 @@ import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
  */
 public class SmallMeteoWidget extends AppWidgetProvider {
 
-    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
-                                int appWidgetId) {
+    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
 
         CharSequence widgetText = context.getString(R.string.appwidget_text);
         // Construct the RemoteViews object
@@ -83,10 +84,62 @@ class GetData extends AsyncTask<Void, Void, Void> {
         WeatherReportRepository r = new WeatherReportRepository(app);
         r.getAll().observeForever(e -> {
             if(e.size() > 1 ){
-
                 String x = e.get(e.size()-1).getPrevisione().getLocalita();
-                views.setTextViewText(R.id.appwidget_text, x);
+                WeatherForDay wfd = e.get(e.size()-1).getPrevisione().getGiorni().get(0);
+                views.setTextViewText(R.id.small_meteo_widget_txt_descrizione, wfd.getDescIcona());
+                views.setTextViewText(R.id.small_meteo_widget_txt_position, x);
+                views.setTextViewText(R.id.small_meteo_widget_txt_temperatura, wfd.gettMaxGiorno()+"°");
+                views.setTextViewText(R.id.small_meteo_widget_txt_temperatura_min_max, wfd.gettMinGiorno() + "° - " + wfd.gettMaxGiorno()+"°");
+
+                switch (WeatherIconDescriptor.getWeatherType(wfd.getIcona())) {
+                    case COPERTO:
+                        views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_cloud);
+                        break;
+
+                    case COPERTO_CON_PIOGGIA:
+                        views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_light_rain);
+                        break;
+
+                    case COPERTO_CON_PIOGGIA_ABBONDANTE:
+                        views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_rain);
+
+                        break;
+
+                    case COPERTO_CON_PIOGGIA_E_NEVE:
+                        views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_snow_rain);
+                        break;
+
+                    case NEVICATA:
+                        views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_snow);
+                        break;
+
+                    case SOLE:
+                        views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_sun);
+                        break;
+
+                    case SOLEGGIATO:
+                        views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_sun_cloud);
+                        break;
+
+                    case SOLEGGIATO_CON_PIOGGIA:
+                        views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_sun_cloud_rain);
+                        break;
+
+                    case SOLEGGIATO_CON_PIOGGIA_E_NEVE:
+                        views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_sun_cloud_rain_snow);
+                        break;
+
+                    case TEMPORALE:
+                        views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_thunderstorm);
+                        break;
+
+                    case UNDEFINED:
+                        views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_sun_cloud);
+                        break;
+                }
+
                 WidgetManager.updateAppWidget(WidgetID, views);
+
             }
         });
 
