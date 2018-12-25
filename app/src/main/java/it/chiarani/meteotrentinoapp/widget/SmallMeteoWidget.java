@@ -1,13 +1,18 @@
 package it.chiarani.meteotrentinoapp.widget;
 
 import android.app.Application;
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.arch.persistence.room.Room;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.RemoteViews;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -25,23 +30,33 @@ import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
  */
 public class SmallMeteoWidget extends AppWidgetProvider {
 
+    private static final String ACTION_SIMPLEAPPWIDGET = "ACTION_BROADCASTWIDGETSAMPLE";
+
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
 
         CharSequence widgetText = context.getString(R.string.appwidget_text);
-        // Construct the RemoteViews object
+
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.small_meteo_widget);
-        // views.setTextViewText(R.id.appwidget_text, widgetText);
+
+
+        Intent intent = new Intent(context, SmallMeteoWidget.class);
+        intent.setAction(ACTION_SIMPLEAPPWIDGET);
+
+        intent.putExtra("KEY_ID", appWidgetId);
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        views.setOnClickPendingIntent(R.id.small_meteo_widget_btn_refresh, pendingIntent);
 
         new GetData(views, appWidgetId, appWidgetManager, context).execute();
 
-        // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);
 
     }
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        // There may be multiple widgets active, so update all of them
+
         for (int appWidgetId : appWidgetIds) {
             updateAppWidget(context, appWidgetManager, appWidgetId);
         }
@@ -55,6 +70,29 @@ public class SmallMeteoWidget extends AppWidgetProvider {
     @Override
     public void onDisabled(Context context) {
         // Enter relevant functionality for when the last widget is disabled
+    }
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        super.onReceive(context, intent);
+        if (ACTION_SIMPLEAPPWIDGET.equals(intent.getAction())) {
+
+            RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.small_meteo_widget);
+            AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+            appWidgetManager.updateAppWidget(new ComponentName(context, SmallMeteoWidget.class), views);
+
+
+            int widgetId = intent.getIntExtra("KEY_ID", -1);
+            new GetData(views, widgetId, appWidgetManager, context).execute();
+        }
+    }
+
+
+    public static PendingIntent getPendingSelfIntent(Context context, String action, RemoteViews views, int appWidgetID, AppWidgetManager appWidgetManager) {
+        Intent intent = new Intent(context, SmallMeteoWidget.class);
+        intent.setAction(action);
+
+        return PendingIntent.getBroadcast(context, 0, intent, 0);
     }
 }
 
@@ -89,7 +127,7 @@ class GetData extends AsyncTask<Void, Void, Void> {
                 views.setTextViewText(R.id.small_meteo_widget_txt_descrizione, wfd.getDescIcona());
                 views.setTextViewText(R.id.small_meteo_widget_txt_position, x);
                 views.setTextViewText(R.id.small_meteo_widget_txt_temperatura, wfd.gettMaxGiorno()+"°");
-                views.setTextViewText(R.id.small_meteo_widget_txt_temperatura_min_max, wfd.gettMinGiorno() + "° - " + wfd.gettMaxGiorno()+"°");
+                views.setTextViewText(R.id.small_meteo_widget_txt_temperatura_min_max, wfd.gettMinGiorno() + "° | " + wfd.gettMaxGiorno()+"°");
 
                 switch (WeatherIconDescriptor.getWeatherType(wfd.getIcona())) {
                     case COPERTO:
@@ -139,6 +177,7 @@ class GetData extends AsyncTask<Void, Void, Void> {
                 }
 
                 WidgetManager.updateAppWidget(WidgetID, views);
+                Toast.makeText(app, "Aggiornato.", Toast.LENGTH_LONG).show();
 
             }
         });

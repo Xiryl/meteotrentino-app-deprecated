@@ -223,7 +223,7 @@ public class MainActivity extends SampleActivity {
         long sunrise  = opw.getSunrise();
 
         // day
-        binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_snow_main);
+        binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_snow_main_new);
         window.setStatusBarColor(Color.parseColor("#8FBCDB"));
 
         if(now <= (sunrise - 1800000)) {

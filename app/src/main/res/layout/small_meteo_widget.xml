@@ -5,6 +5,18 @@
     android:layout_margin="12dp"
     android:padding="@dimen/widget_margin">
 
+    <ImageButton
+        android:id="@+id/small_meteo_widget_btn_refresh"
+        android:layout_width="17dp"
+        android:background="#00000000"
+        android:layout_height="17dp"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:layout_margin="2dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_refresh"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -35,7 +47,7 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:gravity="center_horizontal"
-                android:text="-42°"/>
+                android:text="-"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -53,7 +65,7 @@
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:gravity="center_horizontal"
-                    android:text="-42°"/>
+                    android:text="-"/>
 
             </LinearLayout>
 
@@ -62,8 +74,8 @@
 
 
         <LinearLayout
-            android:layout_width="113dp"
-            android:paddingRight="6dp"
+            android:layout_width="105dp"
+            android:layout_marginRight="6dp"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
@@ -71,6 +83,7 @@
                 android:id="@+id/small_meteo_widget_txt_position"
                 android:layout_width="match_parent"
                 android:textSize="11sp"
+                android:layout_marginRight="6dp"
                 android:layout_alignParentBottom="true"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/os_regular"
@@ -79,17 +92,17 @@
                 android:textStyle="bold"
                 android:layout_marginTop="6dp"
                 android:gravity="center"
-                android:text="LUOGO LUNGO"/>
+                android:text="località"/>
             <TextView
                 android:id="@+id/small_meteo_widget_txt_descrizione"
                 android:layout_width="match_parent"
+                android:layout_marginRight="6dp"
                 android:textSize="13sp"
                 android:layout_height="match_parent"
-                android:padding="6dp"
                 android:fontFamily="@font/os_regular"
                 android:textColor="@color/white"
                 android:gravity="center"
-                android:text="Nuvoloso"/>
+                android:text="descrizione"/>
         </LinearLayout>
 
 
