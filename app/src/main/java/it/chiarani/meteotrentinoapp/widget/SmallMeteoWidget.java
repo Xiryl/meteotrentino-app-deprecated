@@ -84,6 +84,7 @@ public class SmallMeteoWidget extends AppWidgetProvider {
 
             int widgetId = intent.getIntExtra("KEY_ID", -1);
             new GetData(views, widgetId, appWidgetManager, context).execute();
+            Toast.makeText(context, "Aggiorno...", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -177,7 +178,6 @@ class GetData extends AsyncTask<Void, Void, Void> {
                 }
 
                 WidgetManager.updateAppWidget(WidgetID, views);
-                Toast.makeText(app, "Aggiornato.", Toast.LENGTH_LONG).show();
 
             }
         });
