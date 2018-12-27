@@ -32,6 +32,7 @@ public class LongMeteoWidget extends AppWidgetProvider {
         Intent intent = new Intent(context, LongMeteoWidget.class);
         intent.setAction(ACTION_SIMPLEAPPWIDGET);
 
+
         intent.putExtra("KEY_ID", appWidgetId);
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -101,7 +102,6 @@ class GetDataLongMeteo extends AsyncTask<Void, Void, Void> {
         this.app = app;
     }
 
-
     @Override
     protected Void doInBackground(Void... voids) {
         return null;
@@ -150,7 +150,7 @@ class GetDataLongMeteo extends AsyncTask<Void, Void, Void> {
                         views.setImageViewResource(R.id.long_meteo_widget_weather_img, R.drawable.ic_w_sun_cloud_b);
                         break;
                 }
-                
+
                 WidgetManager.updateAppWidget(WidgetID, views);
 
             }
