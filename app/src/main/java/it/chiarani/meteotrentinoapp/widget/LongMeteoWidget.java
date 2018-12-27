@@ -3,6 +3,7 @@ package it.chiarani.meteotrentinoapp.widget;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
+import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -37,12 +38,9 @@ public class LongMeteoWidget extends AppWidgetProvider {
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        //views.setOnClickPendingIntent(R.id.lon, pendingIntent);
-
+        views.setOnClickPendingIntent(R.id.long_meteo_widget_btn_voice, pendingIntent);
         new GetDataLongMeteo(views, appWidgetId, appWidgetManager, context).execute();
-
       //  appWidgetManager.updateAppWidget(appWidgetId, views);
-
     }
 
     @Override
@@ -67,15 +65,11 @@ public class LongMeteoWidget extends AppWidgetProvider {
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
         if (ACTION_SIMPLEAPPWIDGET.equals(intent.getAction())) {
+            try {
+                context.startActivity(new Intent(Intent.ACTION_VOICE_COMMAND).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            } catch (ActivityNotFoundException anfe) {
 
-            RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.long_meteo_widget);
-            AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
-            appWidgetManager.updateAppWidget(new ComponentName(context, LongMeteoWidget.class), views);
-
-
-            int widgetId = intent.getIntExtra("KEY_ID", -1);
-            new GetDataLongMeteo(views, widgetId, appWidgetManager, context).execute();
-            Toast.makeText(context, "Aggiorno...", Toast.LENGTH_LONG).show();
+            }
         }
     }
 
@@ -83,7 +77,6 @@ public class LongMeteoWidget extends AppWidgetProvider {
     public static PendingIntent getPendingSelfIntent(Context context, String action, RemoteViews views, int appWidgetID, AppWidgetManager appWidgetManager) {
         Intent intent = new Intent(context, SmallMeteoWidget.class);
         intent.setAction(action);
-
         return PendingIntent.getBroadcast(context, 0, intent, 0);
     }
 }
@@ -115,6 +108,9 @@ class GetDataLongMeteo extends AsyncTask<Void, Void, Void> {
 
 
                 WeatherForDay wtf = e.get(e.size()-1).getPrevisione().getGiorni().get(0);
+
+                views.setTextViewText(R.id.long_meteo_widget_txt_temperatura_min_max, wtf.gettMinGiorno() + "° / " + wtf.gettMaxGiorno() + "°");
+                views.setTextViewText(R.id.long_meteo_widget_txt_temperatura, wtf.gettMinGiorno() + "°");
                 switch (WeatherIconDescriptor.getWeatherType(wtf.getIcona())){
                     case COPERTO:
                         views.setImageViewResource(R.id.long_meteo_widget_weather_img, R.drawable.ic_w_cloud_b);

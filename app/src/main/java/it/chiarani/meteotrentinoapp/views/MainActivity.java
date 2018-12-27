@@ -226,26 +226,27 @@ public class MainActivity extends SampleActivity {
           binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_snow_day);
           window.setStatusBarColor(Color.parseColor("#5EB6E2"));
 
+
         if(now <= (sunrise - 1800000)) {
           // night
-        //  binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_snow_night_2);
-          window.setStatusBarColor(Color.parseColor("#26507C"));
+          binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_snow_night);
+          window.setStatusBarColor(Color.parseColor("#29486B"));
           isNight = true;
         }
         if(now > (sunrise - 1800000) && now < (sunrise + 1800000)) {
           // sunrise
-          binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_new_sunsire);
-          window.setStatusBarColor(Color.parseColor("#EF7942"));
+          binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_snow_sunrise);
+          window.setStatusBarColor(Color.parseColor("#E8AF43"));
           binding.activityMainTxtAllerta.setTextColor(Color.parseColor("#12329B"));
         }
         if(now >= (sunset - 900000) && now < (sunset + 900000)  ){
           // sunset
-         //   binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_snow_sunset_2);
-            window.setStatusBarColor(Color.parseColor("#CF6143"));
+            binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_snow_sunset);
+            window.setStatusBarColor(Color.parseColor("#C95941"));
         }
         if(  now >= (sunset + 900000)) {
           // night
-         // binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_snow_night);
+          binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_snow_night);
           window.setStatusBarColor(Color.parseColor("#345A7B"));
           isNight = true;
         }
@@ -261,19 +262,19 @@ public class MainActivity extends SampleActivity {
 
           case COPERTO_CON_PIOGGIA:
             binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_light_rain);
-            binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_cloud);
+            binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_snow_rain);
             window.setStatusBarColor(getResources().getColor(R.color.toolbar_cloud));
             break;
 
           case COPERTO_CON_PIOGGIA_ABBONDANTE:
             binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_rain);
-            binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_cloud);
+            binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_snow_rain);
             window.setStatusBarColor(getResources().getColor(R.color.toolbar_cloud));
             break;
 
           case COPERTO_CON_PIOGGIA_E_NEVE:
             binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_snow_rain);
-            binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_cloud);
+            binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_snow_rain);
             window.setStatusBarColor(getResources().getColor(R.color.toolbar_cloud));
             break;
 
@@ -297,19 +298,19 @@ public class MainActivity extends SampleActivity {
 
           case SOLEGGIATO_CON_PIOGGIA:
             binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_sun_cloud_rain);
-            binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_cloud);
+            binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_snow_rain);
             window.setStatusBarColor(getResources().getColor(R.color.toolbar_cloud));
             break;
 
           case SOLEGGIATO_CON_PIOGGIA_E_NEVE:
             binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_sun_cloud_rain_snow);
-            binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_cloud);
+            binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_snow_rain);
             window.setStatusBarColor(getResources().getColor(R.color.toolbar_cloud));
             break;
 
           case TEMPORALE:
             binding.activityMainIcWeatherIcon.setImageResource(R.drawable.ic_w_thunderstorm);
-            binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_main_cloud);
+            binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_snow_rain);
             window.setStatusBarColor(getResources().getColor(R.color.toolbar_cloud));
             break;
 
