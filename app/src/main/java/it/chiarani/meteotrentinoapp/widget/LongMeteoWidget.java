@@ -14,6 +14,7 @@ import android.widget.Toast;
 import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.helper.WeatherIconDescriptor;
 import it.chiarani.meteotrentinoapp.models.WeatherForDay;
+import it.chiarani.meteotrentinoapp.repositories.OpenWeatherDataRepository;
 import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
 
 /**
@@ -103,14 +104,20 @@ class GetDataLongMeteo extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         WeatherReportRepository r = new WeatherReportRepository(app);
+        OpenWeatherDataRepository or = new OpenWeatherDataRepository(app);
+
         r.getAll().observeForever(e -> {
             if(e.size() > 1 ){
+
+                or.getAll().observeForever( oe -> {
+                    views.setTextViewText(R.id.long_meteo_widget_txt_temperatura, oe.get(oe.size()-1).getActualTemperature()+ "°");
+
 
 
                 WeatherForDay wtf = e.get(e.size()-1).getPrevisione().getGiorni().get(0);
 
                 views.setTextViewText(R.id.long_meteo_widget_txt_temperatura_min_max, wtf.gettMinGiorno() + "° / " + wtf.gettMaxGiorno() + "°");
-                views.setTextViewText(R.id.long_meteo_widget_txt_temperatura, wtf.gettMinGiorno() + "°");
+
                 switch (WeatherIconDescriptor.getWeatherType(wtf.getIcona())){
                     case COPERTO:
                         views.setImageViewResource(R.id.long_meteo_widget_weather_img, R.drawable.ic_w_cloud_b);
@@ -148,6 +155,7 @@ class GetDataLongMeteo extends AsyncTask<Void, Void, Void> {
                 }
 
                 WidgetManager.updateAppWidget(WidgetID, views);
+                });
 
             }
         });

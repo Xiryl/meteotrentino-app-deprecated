@@ -23,6 +23,7 @@ import it.chiarani.meteotrentinoapp.database.entity.WeatherReportEntity;
 import it.chiarani.meteotrentinoapp.helper.WeatherIconDescriptor;
 import it.chiarani.meteotrentinoapp.models.WeatherForDay;
 import it.chiarani.meteotrentinoapp.models.WeatherReport;
+import it.chiarani.meteotrentinoapp.repositories.OpenWeatherDataRepository;
 import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
 
 /**
@@ -120,13 +121,19 @@ class GetDataSmallMeteo extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         WeatherReportRepository r = new WeatherReportRepository(app);
+        OpenWeatherDataRepository or = new OpenWeatherDataRepository(app);
+
         r.getAll().observeForever(e -> {
             if(e.size() > 1 ){
+
+                or.getAll().observeForever( oe -> {
+                    views.setTextViewText(R.id.small_meteo_widget_txt_temperatura, oe.get(oe.size()-1).getActualTemperature()+ "°");
+
+
                 String x = e.get(e.size()-1).getPrevisione().getLocalita();
                 WeatherForDay wfd = e.get(e.size()-1).getPrevisione().getGiorni().get(0);
                 views.setTextViewText(R.id.small_meteo_widget_txt_descrizione, wfd.getDescIcona());
                 views.setTextViewText(R.id.small_meteo_widget_txt_position, x);
-                views.setTextViewText(R.id.small_meteo_widget_txt_temperatura, wfd.gettMaxGiorno()+"°");
                 views.setTextViewText(R.id.small_meteo_widget_txt_temperatura_min_max, wfd.gettMinGiorno() + "° | " + wfd.gettMaxGiorno()+"°");
 
                 switch (WeatherIconDescriptor.getWeatherType(wfd.getIcona())) {
@@ -177,6 +184,7 @@ class GetDataSmallMeteo extends AsyncTask<Void, Void, Void> {
                 }
 
                 WidgetManager.updateAppWidget(WidgetID, views);
+                });
 
             }
         });

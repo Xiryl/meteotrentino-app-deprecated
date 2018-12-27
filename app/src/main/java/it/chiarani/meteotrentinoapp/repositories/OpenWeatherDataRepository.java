@@ -3,6 +3,7 @@ package it.chiarani.meteotrentinoapp.repositories;
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Room;
+import android.content.Context;
 
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -18,7 +19,7 @@ public class OpenWeatherDataRepository {
 
   private LiveData<List<OpenWeatherDataEntity>> openWeatherDataEntities;
 
-  public OpenWeatherDataRepository(Application app ){
+  public OpenWeatherDataRepository(Context app ){
     AppDatabase db          = Room.databaseBuilder(app.getApplicationContext(), AppDatabase.class, "appDatabase")
         .fallbackToDestructiveMigration()
         .build();
