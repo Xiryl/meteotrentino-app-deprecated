@@ -37,6 +37,7 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
   private Application mApp;
   private API_weatherReport_response delegate = null;
   private int response = 1;
+  Context mContext;
   // #END REGION
 
   /**
@@ -49,6 +50,7 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
   public API_weatherReport(Application app, Context mContext, API_weatherReport_response res, String location, String lat, String lon) {
     this.mApp     = app;
     this.delegate = res;
+    this.mContext = mContext;
 
     // build URL API call
     URL_API    = API_endpoint.ENDPOINT_TODAY_WEATHER + location;
@@ -86,7 +88,15 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
   @Override
   protected Integer doInBackground(String... s) {
 
-    WeatherReportRepository reportRepository = new WeatherReportRepository(mApp);
+      WeatherReportRepository reportRepository;
+      if(mApp == null)
+      {
+          reportRepository = new WeatherReportRepository(this.mContext);
+      }
+      else
+      {
+          reportRepository = new WeatherReportRepository(mApp);
+      }
 
     WeatherReportEntity       tmp_report  = new WeatherReportEntity();
     WeatherForWeekEntity      wfw         = new WeatherForWeekEntity();
@@ -246,7 +256,16 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
     // ----- OPENWEATHER DOWNLOAD -----
     // --------------------------------
 
-    OpenWeatherDataRepository repository_op = new OpenWeatherDataRepository(mApp);
+      OpenWeatherDataRepository repository_op;
+      if(mApp == null)
+      {
+          repository_op = new OpenWeatherDataRepository(this.mContext);
+      }
+      else
+      {
+          repository_op = new OpenWeatherDataRepository(mApp);
+      }
+
 
     try {
 

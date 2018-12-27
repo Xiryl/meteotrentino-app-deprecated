@@ -17,12 +17,16 @@ import android.widget.Toast;
 import java.util.List;
 
 import it.chiarani.meteotrentinoapp.R;
+import it.chiarani.meteotrentinoapp.api.API_weatherReport;
+import it.chiarani.meteotrentinoapp.api.API_weatherReport_response;
 import it.chiarani.meteotrentinoapp.database.AppDatabase;
 import it.chiarani.meteotrentinoapp.database.dao.WeatherReportDao;
+import it.chiarani.meteotrentinoapp.database.entity.LocationEntity;
 import it.chiarani.meteotrentinoapp.database.entity.WeatherReportEntity;
 import it.chiarani.meteotrentinoapp.helper.WeatherIconDescriptor;
 import it.chiarani.meteotrentinoapp.models.WeatherForDay;
 import it.chiarani.meteotrentinoapp.models.WeatherReport;
+import it.chiarani.meteotrentinoapp.repositories.LocationRepository;
 import it.chiarani.meteotrentinoapp.repositories.OpenWeatherDataRepository;
 import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
 
@@ -98,7 +102,7 @@ public class SmallMeteoWidget extends AppWidgetProvider {
     }
 }
 
-class GetDataSmallMeteo extends AsyncTask<Void, Void, Void> {
+class GetDataSmallMeteo extends AsyncTask<Void, Void, Void> implements API_weatherReport_response {
 
     private RemoteViews views;
     private int WidgetID;
@@ -112,7 +116,6 @@ class GetDataSmallMeteo extends AsyncTask<Void, Void, Void> {
         this.app = app;
     }
 
-
     @Override
     protected Void doInBackground(Void... voids) {
         return null;
@@ -124,72 +127,85 @@ class GetDataSmallMeteo extends AsyncTask<Void, Void, Void> {
         OpenWeatherDataRepository or = new OpenWeatherDataRepository(app);
 
         r.getAll().observeForever(e -> {
-            if(e.size() > 1 ){
+            if (e.size() > 1) {
 
-                or.getAll().observeForever( oe -> {
-                    views.setTextViewText(R.id.small_meteo_widget_txt_temperatura, oe.get(oe.size()-1).getActualTemperature()+ "°");
-
-
-                String x = e.get(e.size()-1).getPrevisione().getLocalita();
-                WeatherForDay wfd = e.get(e.size()-1).getPrevisione().getGiorni().get(0);
-                views.setTextViewText(R.id.small_meteo_widget_txt_descrizione, wfd.getDescIcona());
-                views.setTextViewText(R.id.small_meteo_widget_txt_position, x);
-                views.setTextViewText(R.id.small_meteo_widget_txt_temperatura_min_max, wfd.gettMinGiorno() + "° | " + wfd.gettMaxGiorno()+"°");
-
-                switch (WeatherIconDescriptor.getWeatherType(wfd.getIcona())) {
-                    case COPERTO:
-                        views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_cloud);
-                        break;
-
-                    case COPERTO_CON_PIOGGIA:
-                        views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_light_rain);
-                        break;
-
-                    case COPERTO_CON_PIOGGIA_ABBONDANTE:
-                        views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_rain);
-
-                        break;
-
-                    case COPERTO_CON_PIOGGIA_E_NEVE:
-                        views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_snow_rain);
-                        break;
-
-                    case NEVICATA:
-                        views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_snow);
-                        break;
-
-                    case SOLE:
-                        views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_sun);
-                        break;
-
-                    case SOLEGGIATO:
-                        views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_sun_cloud);
-                        break;
-
-                    case SOLEGGIATO_CON_PIOGGIA:
-                        views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_sun_cloud_rain);
-                        break;
-
-                    case SOLEGGIATO_CON_PIOGGIA_E_NEVE:
-                        views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_sun_cloud_rain_snow);
-                        break;
-
-                    case TEMPORALE:
-                        views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_thunderstorm);
-                        break;
-
-                    case UNDEFINED:
-                        views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_sun_cloud);
-                        break;
-                }
-
-                WidgetManager.updateAppWidget(WidgetID, views);
+                String loc = e.get(e.size() - 1).getPrevisione().getLocalita();
+                LocationRepository repo = new LocationRepository(app);
+                repo.getAll().observeForever( localityEntities -> {
+                    LocationEntity tmp = new LocationEntity();
+                    for (LocationEntity le : localityEntities)
+                        if (le.getLoc().equals(loc)) {
+                            tmp = le;
+                            break;
+                        }
+                    new API_weatherReport(null, app, this::processFinish, loc, tmp.getLatitude(), tmp.getLongitude()).execute();
                 });
-
             }
         });
+    }
 
+    @Override
+    public void processFinish(int response) {
+
+        if(response == 1) {
+            WeatherReportRepository r = new WeatherReportRepository(app);
+            OpenWeatherDataRepository or = new OpenWeatherDataRepository(app);
+
+            r.getAll().observeForever(e -> {
+                if (e.size() > 1) {
+
+                    or.getAll().observeForever(oe -> {
+
+                        WeatherForDay wfd = e.get(e.size()-1).getPrevisione().getGiorni().get(0);
+                        views.setTextViewText(R.id.small_meteo_widget_txt_temperatura_min_max, wfd.gettMinGiorno() + "° / " + wfd.gettMaxGiorno() + "°");
+                        views.setTextViewText(R.id.small_meteo_widget_txt_temperatura, oe.get(oe.size()-1).getActualTemperature()+ "°");
+                        views.setTextViewText(R.id.small_meteo_widget_txt_position, e.get(e.size()-1).getPrevisione().getLocalita());
+                        views.setTextViewText(R.id.small_meteo_widget_txt_descrizione, wfd.getDescIcona());
+
+                        switch (WeatherIconDescriptor.getWeatherType(wfd.getIcona())){
+                            case COPERTO:
+                                views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_cloud_g);
+                                break;
+                            case COPERTO_CON_PIOGGIA:
+                                views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_light_rain_g);
+                                break;
+                            case COPERTO_CON_PIOGGIA_ABBONDANTE :
+                                views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_rain_g);
+                                break;
+                            case COPERTO_CON_PIOGGIA_E_NEVE:
+                                views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_snow_rain_g);
+                                break;
+                            case NEVICATA:
+                                views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_snow_g);
+                                break;
+                            case SOLE:
+                                views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_sun_g);
+                                break;
+                            case SOLEGGIATO:
+                                views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_sun_cloud_g);
+                                break;
+                            case SOLEGGIATO_CON_PIOGGIA:
+                                views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_sun_cloud_rain_g);
+                                break;
+                            case SOLEGGIATO_CON_PIOGGIA_E_NEVE:
+                                views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_sun_cloud_rain_snow_g);
+                                break;
+                            case TEMPORALE:
+                                views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_thunderstorm_g);
+                                break;
+                            case UNDEFINED:
+                                views.setImageViewResource(R.id.small_meteo_widget_weather_img, R.drawable.ic_w_sun_cloud_g);
+                                break;
+                        }
+
+                        WidgetManager.updateAppWidget(WidgetID, views);
+
+                    });
+                }
+            });
+        }
 
     }
 }
+
 

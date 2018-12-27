@@ -3,6 +3,7 @@ package it.chiarani.meteotrentinoapp.repositories;
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Room;
+import android.content.Context;
 
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class LocationRepository {
   /**
    * Constructor
    */
-  public LocationRepository(Application app) {
+  public LocationRepository(Context app) {
     AppDatabase db = Room.databaseBuilder(app.getApplicationContext(), AppDatabase.class, "appDatabase")
         .fallbackToDestructiveMigration()
         .build();

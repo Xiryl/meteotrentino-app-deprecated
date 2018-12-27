@@ -4,6 +4,6 @@
     android:initialLayout="@layout/small_meteo_widget"
     android:minWidth="240dp"
     android:minHeight="40dp"
-    android:previewImage="@drawable/example_appwidget_preview"
+    android:previewImage="@drawable/widget_prev_con_desc"
     android:updatePeriodMillis="3600000"
     android:widgetCategory="home_screen"></appwidget-provider>
