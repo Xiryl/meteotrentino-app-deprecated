@@ -2,8 +2,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/widget_white_background"
-    android:layout_marginTop="33dp"
-    android:layout_marginBottom="33dp"
+    android:layout_marginTop="29dp"
+    android:layout_marginBottom="29dp"
     android:layout_marginLeft="3dp"
     android:layout_marginRight="3dp"
     android:padding="@dimen/widget_margin">
@@ -18,7 +18,7 @@
         android:layout_margin="4dp"
         android:layout_marginLeft="6dp"
         android:src="@drawable/ic_w_sun"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"/>
 
         <TextView
             android:id="@+id/long_meteo_widget_txt_temperatura"
