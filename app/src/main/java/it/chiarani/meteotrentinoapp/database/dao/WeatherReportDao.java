@@ -30,7 +30,7 @@ public interface WeatherReportDao {
   /**
    * Remove all data from database
    */
-  @Query("DELETE FROM weatherReport")
+  @Query("DELETE FROM weatherReport WHERE idWeatherReport NOT IN ( SELECT idWeatherReport FROM ( SELECT idWeatherReport FROM weatherReport ORDER BY idWeatherReport DESC LIMIT 2  ) );")
   void deleteAll();
 }
 

@@ -265,6 +265,9 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
   }
 
   private void callIntent() {
+
+      WeatherReportRepository repo = new WeatherReportRepository(this);
+      repo.deleteAll();
     Intent i = new Intent(LoaderActivity.this, MainActivity.class);
     i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
     this.startActivity(i);
