@@ -475,7 +475,8 @@ public class MainActivity extends SampleActivity {
 
           switch (menuItem.getItemId()){
               case R.id.drawer_view_widget :
-                  Toast.makeText(this, "Widget in sviluppo. Presto sarà disponibile questa scheda.", Toast.LENGTH_LONG).show();
+                  Intent widget_intent = new Intent(MainActivity.this, WidgetDescriptionActivity.class);
+                  startActivity(widget_intent);
                   break;
 
               case R.id.drawer_view_dighe :

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/view_background"
+        android:layout_width="match_parent"
+        android:layout_margin="6dp"
+        android:layout_height="150dp"
+        android:background="@drawable/card_gray_background">
+
+        <LinearLayout
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="26dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_cancel" />
+            <TextView
+                android:layout_marginTop="6dp"
+                android:layout_width="match_parent"
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/os_bold"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content"
+                android:text="Nascondi"
+                android:textSize="12sp"
+                android:textColor="#ACACAC" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="26dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_cancel" />
+            <TextView
+                android:layout_marginTop="6dp"
+                android:layout_width="match_parent"
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/os_bold"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content"
+                android:text="Nascondi"
+                android:textSize="12sp"
+                android:textColor="#ACACAC" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/view_foreground"
+        android:layout_width="match_parent"
+        android:layout_margin="6dp"
+        android:layout_height="150dp"
+        android:background="@drawable/card_violet_background">
+
+        <ImageView
+            android:id="@+id/fragment_info_img"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/ic_android_widget" />
+
+        <TextView
+            android:id="@+id/fragment_info_title"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:fontFamily="@font/os_bold"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="titolo"
+            android:textSize="18sp"
+            android:textColor="#fff" />
+
+        <TextView
+            android:id="@+id/fragment_info_description"
+            android:layout_marginTop="55dp"
+            android:layout_width="wrap_content"
+            android:fontFamily="@font/os_bold"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="100dp"
+            android:text="descrizione"
+            android:textSize="14sp"
+            android:textColor="#ECECEC" />
+    </RelativeLayout>
+
+</FrameLayout>

@@ -115,6 +115,8 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/long_meteo_widget_info" />
         </receiver>
+
+        <activity android:name=".views.WidgetDescriptionActivity"></activity>
     </application>
 
 </manifest>
