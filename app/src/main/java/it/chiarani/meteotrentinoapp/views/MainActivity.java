@@ -391,9 +391,9 @@ public class MainActivity extends SampleActivity {
   private void sendTips(SharedPreferences getPrefs) {
     boolean isMsgNotifiche = getPrefs.getBoolean("msg_reminder", true);
       boolean isMsgBollettino = getPrefs.getBoolean("msg_bollettino", true);
-      boolean isMsggps = getPrefs.getBoolean("msg_gps", true);
+      boolean isWidget = getPrefs.getBoolean("msg_widget", true);
 
-      if (isMsggps) {
+      if (isWidget) {
           //  Make a new preferences editor
           SharedPreferences.Editor e = getPrefs.edit();
 
@@ -403,7 +403,7 @@ public class MainActivity extends SampleActivity {
           //  Apply changes
           e.apply();
 
-          CustomDialog cdd = new CustomDialog(MainActivity.this, "TIP: Dalle impostazioni è possibile disattivare la richiesta del GPS per sempre!");
+          CustomDialog cdd = new CustomDialog(MainActivity.this, "TIP: Apri il menu e vai alla schemata widget, ora sono disponibili!");
           cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
           cdd.show();
       }

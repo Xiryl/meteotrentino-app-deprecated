@@ -1,19 +1,25 @@
 package it.chiarani.meteotrentinoapp.views;
 
+import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageButton;
+
+import com.daasuu.ei.Ease;
+import com.daasuu.ei.EasingInterpolator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,9 +68,7 @@ public class WidgetDescriptionActivity extends SampleActivity implements Recycle
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(Color.parseColor("#FFFFFF"));
 
-
         //----------
-
 
         recyclerView = findViewById(R.id.widget_recycler_view);
         recyclerViewBlocked= findViewById(R.id.widget_recycler_view_blocked);
@@ -86,14 +90,44 @@ public class WidgetDescriptionActivity extends SampleActivity implements Recycle
         dataBlocked = new ArrayList<>();
         dataBlocked.add(
                 new CardRemovableInformation(
-                        "Aggiungimi alla Home",
-                        "Aggiungi un widget alla home per provare una o più funzionalità. Verrà aggionrato automaticamente dal sistema!",
+                        "Aggiungimi alla Home!",
+                        "Aggiungi un widget alla home per provare una o più funzionalità. I dati saranno aggionrati automaticamente dal sistema!",
                         R.drawable.ic_touch_me,
                         R.drawable.card_green_background,
                         true,
                         null
                 )
         );
+
+        dataBlocked.add(
+                new CardRemovableInformation(
+                        "Doppia scelta!",
+                        "Al momento ci sono due widget disponibili, uno dei quali permette anche di utilizzare la ricerca di google now!",
+                        R.drawable.ic_touch_me,
+                        R.drawable.card_green_background,
+                        true,
+                        null
+                )
+        );
+
+
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:fabio@chiarani.it"));
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "[METEOTRENTINO-APP]");
+
+        dataBlocked.add(
+                new CardRemovableInformation(
+                        "Consigli",
+                        "Vuoi proporre un consiglio o una modifica per i widget? E' in fase di sviluppo la possibilità di personalizzare il widget.",
+                        R.drawable.ic_like_colored,
+                        R.drawable.card_white_background,
+                        true,
+                        emailIntent
+                )
+        );
+
+
+
+
 
         mAdapterBlocked = new CartListAdapter(this, dataBlocked);
 
@@ -132,10 +166,29 @@ public class WidgetDescriptionActivity extends SampleActivity implements Recycle
         // attaching the touch helper to recycler view
         new ItemTouchHelper(itemTouchHelperCallback1).attachToRecyclerView(recyclerView);
 
+
+        doBounceAnimation(recyclerView);
+
+        ImageButton fragmentRadarDayBtnMenu = findViewById(R.id.activity_widget_back_button);
+        fragmentRadarDayBtnMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
     }
 
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position) {
         mAdapter.removeItem(viewHolder.getAdapterPosition());
+    }
+
+    private void doBounceAnimation(View targetView) {
+        ObjectAnimator animator = ObjectAnimator.ofFloat(targetView, "translationX", 0, 30, 0);
+        animator.setInterpolator(new EasingInterpolator(Ease.ELASTIC_IN_OUT));
+        animator.setStartDelay(500);
+        animator.setDuration(1500);
+        animator.start();
     }
 }

@@ -1,6 +1,8 @@
 package it.chiarani.meteotrentinoapp.adapters;
 
+import android.appwidget.AppWidgetManager;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,12 +18,14 @@ import java.util.List;
 import it.chiarani.meteotrentinoapp.R;
 import it.chiarani.meteotrentinoapp.models.CardRemovableInformation;
 
+import static android.app.Activity.RESULT_OK;
+
 public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.MyViewHolder> {
 
     private Context context;
     private List<CardRemovableInformation> cartList;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView title, description;
         public ImageView img;
         public RelativeLayout viewBackground, viewForeground;
@@ -33,6 +37,16 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.MyView
             img = view.findViewById(R.id.fragment_info_img);
             viewBackground = view.findViewById(R.id.view_background);
             viewForeground = view.findViewById(R.id.view_foreground);
+
+            view.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            int pos = this.getAdapterPosition();
+            if(pos == 2) {
+                context.startActivity(cartList.get(pos).getIntent());
+            }
         }
     }
 
