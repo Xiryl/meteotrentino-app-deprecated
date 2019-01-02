@@ -93,4 +93,14 @@
   <!-- ITEM : SEVENDAY -->
   <dimen name="item_sevenday_width">72dp</dimen>
   <dimen name="fab_margin">16dp</dimen>
+
+    <!-- WIDGETS : LONG WIDGET -->
+    <dimen name="l_w_margin_top_bottom">32dp</dimen>
+
+    <!-- WIDGETS : SMALL WIDGET -->
+    <dimen name="s_w_margin">12dp</dimen>
+    <dimen name="s_w_img_width">60dp</dimen>
+    <dimen name="s_w_temperature_width">70dp</dimen>
+
+
 </resources>

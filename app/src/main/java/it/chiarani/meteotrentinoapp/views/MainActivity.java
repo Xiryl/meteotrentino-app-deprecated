@@ -109,7 +109,7 @@ public class MainActivity extends SampleActivity {
     MenuItem second_pref = menu.findItem(R.id.drawer_view_second_pref);
     MenuItem app_version = menu.findItem(R.id.drawer_view_app_version);
 
-    app_version.setTitle("3.3-stabile");
+    app_version.setTitle("3.4.1-stabile");
     first_pref. setTitle(first_pos);
     second_pref.setTitle(second_pos);
 
@@ -223,7 +223,7 @@ public class MainActivity extends SampleActivity {
         long sunrise  = opw.getSunrise();
 
         // day
-          binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_snow_day);
+          binding.activityMainLinearLayoutBg.setBackgroundResource(R.drawable.bg_day);
           window.setStatusBarColor(Color.parseColor("#5EB6E2"));
 
 
@@ -389,26 +389,9 @@ public class MainActivity extends SampleActivity {
   }
 
   private void sendTips(SharedPreferences getPrefs) {
-    boolean isMsgNotifiche = getPrefs.getBoolean("msg_reminder", true);
-      boolean isMsgBollettino = getPrefs.getBoolean("msg_bollettino", true);
-      boolean isWidget = getPrefs.getBoolean("msg_widget", true);
+    boolean isMsgTip = getPrefs.getBoolean("msg_reminder", true);
 
-      if (isWidget) {
-          //  Make a new preferences editor
-          SharedPreferences.Editor e = getPrefs.edit();
-
-          //  Edit preference to make it false because we don't want this to run again
-          e.putBoolean("msg_gps", false);
-
-          //  Apply changes
-          e.apply();
-
-          CustomDialog cdd = new CustomDialog(MainActivity.this, "TIP: Apri il menu e vai alla schemata widget, ora sono disponibili!");
-          cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-          cdd.show();
-      }
-
-      if (isMsgNotifiche) {
+      if (isMsgTip) {
           //  Make a new preferences editor
           SharedPreferences.Editor e = getPrefs.edit();
 
@@ -418,25 +401,10 @@ public class MainActivity extends SampleActivity {
           //  Apply changes
           e.apply();
 
-          CustomDialog cdd = new CustomDialog(MainActivity.this, "TIP: Dalle impostazioni puoi attivare/disattivare le notifiche mattutine!");
+          CustomDialog cdd = new CustomDialog(MainActivity.this, "TIP: \n-Dalle impostazioni è possibile personalizzare le notifiche mattutine, scelta dell'utilizzo del gps e molto altro!");
           cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
           cdd.show();
       }
-
-    if (isMsgBollettino) {
-      //  Make a new preferences editor
-      SharedPreferences.Editor e = getPrefs.edit();
-
-      //  Edit preference to make it false because we don't want this to run again
-      e.putBoolean("msg_bollettino", false);
-
-      //  Apply changes
-      e.apply();
-
-      CustomDialog cdd = new CustomDialog(MainActivity.this, "TIP: Premi sull'immagine del sole/nuvola per leggere direttamente il bollettino!");
-      cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-      cdd.show();
-    }
   }
 
     private void rateApp() {
@@ -493,7 +461,7 @@ public class MainActivity extends SampleActivity {
               startActivity(faqintent);
               break;
             case R.id.drawer_view_app_version:
-              CustomDialog cdd = new CustomDialog(MainActivity.this, "Versione v3.3-stabile\n-Migliorata esperienza utente\n-Preparazione dei Widget");
+              CustomDialog cdd = new CustomDialog(MainActivity.this, "Versione v3.4.1-stabile\n-Aggiunta Widget");
               cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
               cdd.show();
               break;

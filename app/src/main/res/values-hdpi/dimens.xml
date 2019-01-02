@@ -95,7 +95,7 @@
     <dimen name="fab_margin">16dp</dimen>
 
     <!-- WIDGETS : LONG WIDGET -->
-    <dimen name="l_w_margin_top_bottom">16dp</dimen>
+    <dimen name="l_w_margin_top_bottom">3dp</dimen>
 
     <!-- WIDGETS : SMALL WIDGET -->
     <dimen name="s_w_margin">4dp</dimen>
