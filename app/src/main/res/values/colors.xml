@@ -24,5 +24,5 @@
   <color name="seven_day_list_background_color">#568FB8</color>
   <color name="seven_day_list_first_item_background_color">#18464E</color>
   <color name="toolbar_color">#65A8D9</color>
-  <color name="toolbar_cloud">#3C3C3C</color>
+  <color name="toolbar_cloud">#565A5B</color>
 </resources>

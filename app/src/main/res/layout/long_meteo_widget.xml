@@ -1,23 +1,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="@dimen/l_w_margin_height"
+    android:layout_centerVertical="true"
     android:background="@drawable/widget_white_background"
-    android:layout_marginTop="@dimen/l_w_margin_top_bottom"
-    android:layout_marginBottom="@dimen/l_w_margin_top_bottom"
     android:layout_marginLeft="3dp"
     android:layout_marginRight="3dp"
     android:padding="@dimen/widget_margin">
     <LinearLayout
+        android:layout_centerVertical="true"
         android:layout_width="match_parent"
         android:padding="4dp"
         android:layout_height="match_parent"
         android:orientation="horizontal">
     <ImageView
+        android:layout_marginTop="3dp"
         android:id="@+id/long_meteo_widget_weather_img"
         android:layout_width="70dp"
-        android:layout_marginTop="6dp"
         android:layout_marginLeft="6dp"
         android:src="@drawable/ic_w_sun"
+        android:layout_gravity="center_vertical"
         android:layout_height="match_parent"/>
 
         <TextView
@@ -26,7 +27,7 @@
             android:layout_marginLeft="4dp"
             android:layout_marginRight="6dp"
             android:layout_gravity="center"
-            android:textSize="32sp"
+            android:textSize="@dimen/l_w_margin_txt_size"
             android:layout_height="wrap_content"
             android:fontFamily="@font/os_regular"
             android:textColor="@color/weather_blue_color"
@@ -46,14 +47,14 @@
                 android:layout_width="wrap_content"
                 android:layout_marginLeft="2dp"
                 android:layout_gravity="left"
-                android:textSize="12sp"
+                android:textSize="11sp"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/os_regular"
                 android:textColor="#615F5D"
                 android:textStyle="bold"
                 android:layout_marginBottom="5dp"
                 android:gravity="center_horizontal"
-                android:text="Min / Max"/>
+                android:text="min / max"/>
             <TextView
                 android:id="@+id/long_meteo_widget_txt_temperatura_min_max"
                 android:layout_width="wrap_content"

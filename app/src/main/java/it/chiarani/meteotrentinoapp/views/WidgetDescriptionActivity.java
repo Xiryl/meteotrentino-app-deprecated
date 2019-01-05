@@ -101,8 +101,8 @@ public class WidgetDescriptionActivity extends SampleActivity implements Recycle
 
         dataBlocked.add(
                 new CardRemovableInformation(
-                        "Doppia scelta!",
-                        "Al momento ci sono due widget disponibili, uno dei quali permette anche di utilizzare la ricerca di google now!",
+                        "Aggiunta Widget:",
+                        "Dalla home -> Tieni Premuto -> Seleziona Widget -> Cerca \"Meteo Trentino\" -> Trascina il widget che prerisci sulla Home.",
                         R.drawable.ic_touch_me,
                         R.drawable.card_green_background,
                         true,

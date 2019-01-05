@@ -36,9 +36,9 @@
 
     <!-- ACTIVITY : MAIN -->
     <dimen name="activity_main_panel_height">50dp</dimen>
-    <dimen name="activity_main_btn_menu_mt">27dp</dimen>
+    <dimen name="activity_main_btn_menu_mt">17dp</dimen>
     <dimen name="activity_main_btn_menu_mb">10dp</dimen>
-    <dimen name="activity_main_itembar_mt">30dp</dimen>
+    <dimen name="activity_main_itembar_mt">19dp</dimen>
     <dimen name="activity_main_itembar_img_ml">15dp</dimen>
     <dimen name="activity_main_itembar_img_size">20dp</dimen>
     <dimen name="activity_main_itembar_txt_size">14sp</dimen>
@@ -95,7 +95,9 @@
     <dimen name="fab_margin">16dp</dimen>
 
     <!-- WIDGETS : LONG WIDGET -->
-    <dimen name="l_w_margin_top_bottom">3dp</dimen>
+    <dimen name="l_w_margin_top_bottom">20dp</dimen>
+    <dimen name="l_w_margin_txt_size">32dp</dimen>
+    <dimen name="l_w_margin_height">45dp</dimen>
 
     <!-- WIDGETS : SMALL WIDGET -->
     <dimen name="s_w_margin">4dp</dimen>
