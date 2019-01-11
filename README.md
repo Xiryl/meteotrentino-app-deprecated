@@ -9,9 +9,9 @@ Meteo trentino è un'applicazione meteo che utilizza gli opendata della Provinci
 Scaricala dal [Play Store](https://play.google.com/store/apps/details?id=it.chiarani.meteotrentinoapp).
 
 ### Screen
-|Giorno|Notte|Tramonto|Pioggia|Settimana|Radar|Allerte|
-| --- | --- | --- | --- | --- | --- | --- |
-|<img src="https://github.com/Xiryl/MeteoTrentino-App/blob/master/UI/g-play/home1.png" height="200px">| <img src="https://github.com/Xiryl/MeteoTrentino-App/blob/master/UI/g-play/home2.png" height="200px">| <img src="https://github.com/Xiryl/MeteoTrentino-App/blob/master/UI/g-play/home3.png" height="200px">| <img src="https://github.com/Xiryl/MeteoTrentino-App/blob/master/UI/g-play/home4.png" height="200px">| <img src="https://github.com/Xiryl/MeteoTrentino-App/blob/master/UI/g-play/home5.png" height="200px">| <img src="https://github.com/Xiryl/MeteoTrentino-App/blob/master/UI/g-play/radar.png" height="200px">| <img src="https://github.com/Xiryl/MeteoTrentino-App/blob/master/UI/g-play/alert.png" height="200px">|
+| | | |
+| --- | --- | --- |
+|<img src="https://github.com/Xiryl/MeteoTrentino-App/blob/master/UI/g-play/T2.png" height="300px">| <img src="https://github.com/Xiryl/MeteoTrentino-App/blob/master/UI/g-play/T1.png" height="300px">| <img src="https://github.com/Xiryl/MeteoTrentino-App/blob/master/UI/g-play/T3.png" height="300px"> |
 
 ### FAQ
 > D: La notifica di ogni giorno mattutina mi da fastidio, come la tolgo?
