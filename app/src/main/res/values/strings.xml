@@ -63,5 +63,8 @@
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
 
+    <!-- weatherReport Activity -->
+    <string name="s_weatherreportactivity_title">DATI METEREOLOGICI PER</string>
+
 
 </resources>
