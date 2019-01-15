@@ -180,7 +180,7 @@ public class WeatherReportActivity extends SampleActivity implements DaySlotsAda
 
             WeatherForDayEntity wfd  = entries.get(entries.size()-1).getPrevisione().getGiorni().get(day);
             WeatherForSlotEntity wfs = wfd.getFasce().get(position);
-            binding.activityWeatherReportDatiMetereologici.setText("DATI MERETOLOGICI PER: " + wfs.getFasciaPer().toUpperCase());
+            binding.activityWeatherReportDatiMetereologici.setText("DATI METEREOLOGICI PER: " + wfs.getFasciaPer().toUpperCase());
             binding.itemWeatherReportTxtTmin           .setText(String.format("%s: %s°", this.getResources().getString(R.string.s_weatherreportadapter_tmin), wfd.gettMinGiorno()));
             binding.itemWeatherReportTxtTmax           .setText(String.format("%s: %s°", this.getResources().getString(R.string.s_weatherreportadapter_tmax), wfd.gettMaxGiorno()));
             binding.itemWeatherReportTxtPressione      .setText(String.format("%s: %s hPa", this.getResources().getString(R.string.s_weatherreportadapter_pressure), ""));
