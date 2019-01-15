@@ -145,9 +145,9 @@ class GetDataSmallMeteo extends AsyncTask<Void, Void, Void> implements API_weath
     }
 
     @Override
-    public void processFinish(int response) {
+    public void processFinish(String response) {
 
-        if(response == 1) {
+        if(response.equals("ok") || response.equals("ok1")) {
             WeatherReportRepository r = new WeatherReportRepository(app);
             OpenWeatherDataRepository or = new OpenWeatherDataRepository(app);
 

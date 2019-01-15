@@ -50,13 +50,14 @@
   <group android:id="@+id/menu_bottom"
     android:checkableBehavior="none">
       <item
-          android:id="@+id/drawer_view_widget"
-          android:icon="@drawable/ic_widget"
-          android:title="Widget"/>
-      <item
           android:id="@+id/drawer_view_telegram"
           android:icon="@drawable/ic_telegram"
           android:title="Telegram Bot" />
+      <item
+          android:id="@+id/drawer_view_widget"
+          android:icon="@drawable/ic_widget"
+          android:title="Widget"/>
+
     <item
       android:id="@+id/drawer_view_settings"
       android:icon="@drawable/ic_settings"

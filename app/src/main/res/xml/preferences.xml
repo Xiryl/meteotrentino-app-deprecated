@@ -7,7 +7,7 @@
       android:key="pref_key_notifica_mattina"
       android:summary="Ricevi una notifica dell'aggiornamento meteo ogni mattina"
       android:title="Notifiche Mattutine"
-      android:defaultValue="true"/>
+      android:defaultValue="false"/>
     <CheckBoxPreference
       android:key="pref_key_notifica_allerta"
       android:summary="Ricevi una notifica in pubblicazione di nuove allerte"

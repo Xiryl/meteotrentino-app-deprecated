@@ -10,6 +10,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -36,7 +37,7 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
   private String URL_API_OP;
   private Application mApp;
   private API_weatherReport_response delegate = null;
-  private int response = 1;
+  private String response = "";
   Context mContext;
   // #END REGION
 
@@ -131,6 +132,14 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
 
       JSONArray arr_previsioni = json_ob.getJSONArray("previsione");                          // previsione
 
+      if(arr_previsioni.length() == 0) {
+        response = "errore1-previsioni";
+          if (connection != null) {
+              connection.disconnect();
+          }
+        return -1;
+      }
+
       wfw.setLocalita(arr_previsioni.getJSONObject(0).optString("localita"));           // localita
       wfw.setQuota   (arr_previsioni.getJSONObject(0).optInt("quota"));                 // quota
 
@@ -156,7 +165,6 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
         JSONArray arr_fasce = arr_giorni.getJSONObject(i).getJSONArray("fasce");              // fasce
 
         List<WeatherForSlotEntity> a_wfs = new ArrayList<>();
-
 
         // ciclo le fasce giornaliere ( max 4 )
         for (int j = 0; j < arr_fasce.length(); j++) {
@@ -235,7 +243,7 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
 
       reportRepository.insert(tmp_report);
 
-      response = 1;
+      response = "ok";
       // --------------
       //      DONE
       // --------------
@@ -243,12 +251,12 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
     } catch (JSONException jex) {
       jex.printStackTrace();
       Log.e(CLASS_TAG, "Json Exception: " + jex.toString());
-      response = -2;
+      response = "errore1-json";
       return -1;
     } catch (Exception e) {
       e.printStackTrace();
       Log.e(CLASS_TAG, "Errore Exception: " + e.toString());
-      response = -1;
+      response = "errore1-generale";
       return -1;
     }
 
@@ -303,20 +311,28 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
 
       repository_op.insert(new OpenWeatherDataEntity(humidity + "", pressure + "", time_ms_sunrise, time_ms_sunset, act_temp + "", wind + ""));
 
-      response = 1;
-    } catch (Exception e) {
+      response = "ok1";
+    }
+    catch (FileNotFoundException exf) {
+        repository_op.insert(new OpenWeatherDataEntity("-" + "", "-" + "", 0, 0, "-" + "", "-" + ""));
+        response = "errore2-notfound";
+      }
+    catch (Exception e) {
       e.printStackTrace();
       Log.e(CLASS_TAG, "Errore Exception: " + e.toString());
-      response = -1;
+        repository_op.insert(new OpenWeatherDataEntity("-" + "", "-" + "", 0, 0, "-" + "", "-" + ""));
+        response = "errore2-generale";
     } finally {
       if (connection != null) {
         connection.disconnect();
-        if (response == -1)
-          response = -1;
-        else if (response == -2)
-          response = -2;
+       /* if (response.equals("E3"))
+          response = "E3";
+        else if (response.equals("E2"))
+            response = "E22";
+        else if (response.equals("E4"))
+            response = "E4";
         else
-          response = 1;
+          response = "ok1";*/
       }
       try {
         if (reader != null) {
@@ -324,8 +340,9 @@ public class API_weatherReport extends AsyncTask<String, Integer, Integer> {
         }
       } catch (IOException e) {
         e.printStackTrace();
-        Log.e(CLASS_TAG, "Errore IOException1: " + e.toString());
-        response = -1;
+          repository_op.insert(new OpenWeatherDataEntity("-" + "", "-" + "", 0, 0, "-" + "", "-" + ""));
+          Log.e(CLASS_TAG, "Errore IOException1: " + e.toString());
+        response = "errore2-io";
       }
     }
     return -1;

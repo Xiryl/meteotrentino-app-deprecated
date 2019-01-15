@@ -109,7 +109,7 @@ public class MainActivity extends SampleActivity {
     MenuItem second_pref = menu.findItem(R.id.drawer_view_second_pref);
     MenuItem app_version = menu.findItem(R.id.drawer_view_app_version);
 
-    app_version.setTitle("3.5-stabile");
+    app_version.setTitle("3.6-stabile");
     first_pref. setTitle(first_pos);
     second_pref.setTitle(second_pos);
 
@@ -182,8 +182,8 @@ public class MainActivity extends SampleActivity {
       // show today bulletin if weather icon is clicked
       binding.activityMainIcWeatherIcon.setOnClickListener(v -> {
         String txt = wfd.getTestoGiorno();
-
-        CustomDialog cdd = new CustomDialog(MainActivity.this, "Previsione di oggi:\n" + txt);
+          String local = entries.get(entries.size() - 1).getPrevisione().getLocalita();
+          CustomDialog cdd = new CustomDialog(MainActivity.this, "Previsione di oggi per " +local +" :\n" + txt);
         cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         cdd.show();
       });
@@ -201,17 +201,35 @@ public class MainActivity extends SampleActivity {
         OpenWeatherDataEntity opw = od_entries.get(od_entries.size() - 1);
         NumberFormat formatter_w = new DecimalFormat("#0.00");
         DateFormat formatter = new SimpleDateFormat("HH:mm");
-        Double w = Double.parseDouble(opw.getWindSpeed()) * 3.6;
+          Calendar start = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"));
 
-        // set values
-        binding.activityMainTxtActTemperature .setText(String.format("%s",opw.getActualTemperature()));
-        binding.activityMainTxtHumidity       .setText(String.format("%s%%",opw.getHumidity()));
-        binding.activityMainTxtWind           .setText(String.format("%s km/h", formatter_w.format(w)));
+        if(opw.getWindSpeed().equals("-"))
+        {
+            binding.activityMainTxtActTemperature .setText(String.format("%s",opw.getActualTemperature()));
+            binding.activityMainTxtHumidity       .setText(String.format("%s%%",opw.getHumidity()));
+            binding.activityMainTxtWind           .setText(String.format("%s km/h", opw.getWindSpeed()));
+            binding.mainActivityTxtUltimoAgg.setText(String.format(" "));
 
-        formatter.setTimeZone(TimeZone.getTimeZone("Europe/Rome"));
-        Calendar start = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"));
+        }
+        else
+        {
+            Double w = Double.parseDouble(opw.getWindSpeed()) * 3.6;
 
-        binding.mainActivityTxtUltimoAgg.setText(String.format("Alba: %s - Tramonto %s\nAggiornato alle: %s", formatter.format(opw.getSunrise()), formatter.format(opw.getSunset()), formatter.format(entries.get(entries.size()-1).getDataInserimentoDb())));
+            // set values
+            binding.activityMainTxtActTemperature .setText(String.format("%s",opw.getActualTemperature()));
+            binding.activityMainTxtHumidity       .setText(String.format("%s%%",opw.getHumidity()));
+            binding.activityMainTxtWind           .setText(String.format("%s km/h", formatter_w.format(w)));
+
+            formatter.setTimeZone(TimeZone.getTimeZone("Europe/Rome"));
+
+
+
+            binding.mainActivityTxtUltimoAgg.setText(String.format("Alba: %s - Tramonto %s\nAggiornato alle: %s", formatter.format(opw.getSunrise()), formatter.format(opw.getSunset()), formatter.format(entries.get(entries.size()-1).getDataInserimentoDb())));
+
+        }
+
+
+
 
         // ------ ------ ------
         // SET BACKGROUND IMAGE
@@ -373,7 +391,8 @@ public class MainActivity extends SampleActivity {
 
           binding.activityMainIcWeatherIcon.setOnClickListener(v -> {
             String txt = entries.get(entries.size() - 1).getPrevisione().getGiorni().get(0).getTestoGiorno();
-            CustomDialog cdd = new CustomDialog(MainActivity.this, "Previsione di oggi:\n" + txt);
+            String local = entries.get(entries.size() - 1).getPrevisione().getLocalita();
+            CustomDialog cdd = new CustomDialog(MainActivity.this, "Previsione di oggi per " +local +" :\n" + txt);
             cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             cdd.show();
           });
@@ -462,7 +481,7 @@ public class MainActivity extends SampleActivity {
               startActivity(faqintent);
               break;
             case R.id.drawer_view_app_version:
-              CustomDialog cdd = new CustomDialog(MainActivity.this, "Versione v3.5-stabile\n-Fix Widget\n-Fix UI");
+              CustomDialog cdd = new CustomDialog(MainActivity.this, "Versione v3.6-stabile\n-Fix minor bug");
               cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
               cdd.show();
               break;

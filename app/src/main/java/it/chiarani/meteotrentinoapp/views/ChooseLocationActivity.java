@@ -87,6 +87,7 @@ public class ChooseLocationActivity extends SampleActivity implements API_locati
      * Catch ENTER
      */
     binding.chooseLocationAutoCompleteTxt.setOnKeyListener((v, keyCode, event) -> {
+        boolean found = false;
       if (event.getAction() == KeyEvent.ACTION_DOWN)
       {
         switch (keyCode)
@@ -104,11 +105,14 @@ public class ChooseLocationActivity extends SampleActivity implements API_locati
             for(String l : all_locs){
               if(l.toLowerCase().equals(user_location.toLowerCase()))
               {
+                  found = true;
                 callLoaderactivity(getPrefs);
               }
+
             }
 
-            Toast.makeText(v.getContext(), getResources().getString(R.string.error_invalid_location), Toast.LENGTH_LONG).show();
+              if(!found)
+                  Toast.makeText(v.getContext(), getResources().getString(R.string.error_invalid_location), Toast.LENGTH_LONG).show();
             return true;
           default:
             break;
@@ -122,6 +126,8 @@ public class ChooseLocationActivity extends SampleActivity implements API_locati
      */
     binding.chooseLocationBtnNext.setOnClickListener(v -> {
 
+        boolean found = false;
+
       String user_location = binding.chooseLocationAutoCompleteTxt.getText().toString();
 
       if(user_location.isEmpty() || user_location == null || all_locs == null || all_locs.length == 0) {
@@ -132,10 +138,13 @@ public class ChooseLocationActivity extends SampleActivity implements API_locati
       for(String l : all_locs){
         if(l.toLowerCase().equals(user_location.toLowerCase()))
         {
+            found = true;
           callLoaderactivity(getPrefs);
+
         }
       }
-      Toast.makeText(v.getContext(), getResources().getString(R.string.error_invalid_location), Toast.LENGTH_LONG).show();
+      if(!found)
+        Toast.makeText(v.getContext(), getResources().getString(R.string.error_invalid_location), Toast.LENGTH_LONG).show();
     });
 
     /**

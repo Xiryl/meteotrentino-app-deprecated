@@ -1,5 +1,6 @@
 package it.chiarani.meteotrentinoapp.views;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -28,6 +29,7 @@ import it.chiarani.meteotrentinoapp.api.API_weatherReport;
 import it.chiarani.meteotrentinoapp.api.API_weatherReport_response;
 import it.chiarani.meteotrentinoapp.database.entity.LocationEntity;
 import it.chiarani.meteotrentinoapp.databinding.ActivityLoaderBinding;
+import it.chiarani.meteotrentinoapp.helper.DialogShower;
 import it.chiarani.meteotrentinoapp.helper.GpsTracker;
 import it.chiarani.meteotrentinoapp.repositories.LocationRepository;
 import it.chiarani.meteotrentinoapp.repositories.WeatherReportRepository;
@@ -93,8 +95,6 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
       }
       else {
 
-
-
         // get user location from GPS
         if (ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
           ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSION_REQ_CODE);
@@ -105,10 +105,11 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
         repository.getAll().observe(this, entities -> {
 
           // no data
-          if (entities.size() <= 0) {
+          if (entities == null || entities.size() <= 0) {
             Intent i = new Intent(LoaderActivity.this, ChooseLocationActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             this.startActivity(i);
+            this.finish();
           }
           else
           {
@@ -139,6 +140,7 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
                         Intent i = new Intent(LoaderActivity.this, ChooseLocationActivity.class);
                         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         this.startActivity(i);
+                        this.finish();
                       }
                       else
                       {
@@ -150,10 +152,11 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
                   }
                 }
                 catch (Exception e) {
-                  Log.d("LoaderAct-ask-gps", e.getMessage());
+                    Log.d("LoaderAct-ask-gps", e.getMessage());
                     Intent i = new Intent(LoaderActivity.this, ChooseLocationActivity.class);
                     i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     this.startActivity(i);
+                    this.finish();
                 }
               }
               else {
@@ -161,6 +164,7 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
                       Intent i = new Intent(LoaderActivity.this, ChooseLocationActivity.class);
                       i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                       this.startActivity(i);
+                      this.finish();
                   }
                   else
                   {
@@ -249,25 +253,56 @@ public class LoaderActivity extends SampleActivity implements API_weatherReport_
   }
 
   @Override
-  public void processFinish(int response) {
-    if(response == 1) {
-      callIntent();
-    }
-    else if(response == -2)
-    {
-      Toast.makeText(this,getResources().getString(R.string.gps_error), Toast.LENGTH_LONG).show();
-      callIntent();
-    }
-    else if(response == -1) {
-      Toast.makeText(this, getResources().getString(R.string.server_error), Toast.LENGTH_LONG).show();
-      callIntent();
-    }
+  public void processFinish(String response) {
+      if(response.equals("errore1-previsioni")) {
+          WeatherReportRepository repository = new WeatherReportRepository(this.getApplication());
+          repository.getAll().observe(this, entities -> {
+              if (entities.size() <= 0) {
+                  Toast.makeText(getApplicationContext(), getResources().getString(R.string.loaderact_gps_denied), Toast.LENGTH_LONG).show();
+                  Intent i = new Intent(LoaderActivity.this, ChooseLocationActivity.class);
+                  i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                  this.startActivity(i);
+              }
+              else
+              {
+                  // chiamo le API con l'ultima località assumendo che sia la predefinita
+                  String loc = entities.get(entities.size()-1).getPrevisione().getLocalita();
+                  Toast.makeText(getApplicationContext(), getResources().getString(R.string.loaderact_gps_not_active_get_last), Toast.LENGTH_SHORT).show();
+                  callAPI(loc);
+              }
+          });
+      }
+      if(response.equals("ok") || response.equals("ok1")) {
+          callIntent();
+      }
+      else if(response.equals("errore1-generale") || response.equals("errore1-json")) {
+          AlertDialog.Builder builder;
+          builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Dialog_Alert);
+          builder.setTitle("Errore di connessione")
+                  .setMessage("Non sono riuscito a ottenere dati dalla stazione meteo selezionata. L'errore sembra essere dovuto ai server di meteotrentino.it o la mancata connessione a internet del dispositivo.\nRiprova più tardi o cambia la località.\n\nVerrà caricata l'ultima località ricercata.")
+                  .setPositiveButton("OK", (dialog, which) -> {
+                      callIntent();
+                  })
+                  .setCancelable(false)
+                  .setIcon(android.R.drawable.ic_dialog_alert)
+                  .show();
+
+      }
+      else if(response.contains("errore2")){
+          AlertDialog.Builder builder;
+          builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Dialog_Alert);
+          builder.setTitle("Errore di connessione")
+                  .setMessage("Non sono riuscito a ottenere i dati di temperatura, umidità, % precipitazioni e vento dalla stazione meteo selezionata. Sarà comunque possibile visualizzare il bollettino metereologico.")
+                  .setPositiveButton("OK", (dialog, which) -> {
+                      callIntent();
+                  })
+                  .setCancelable(false)
+                  .setIcon(android.R.drawable.ic_dialog_alert)
+                  .show();
+        }
   }
 
   private void callIntent() {
-
-      WeatherReportRepository repo = new WeatherReportRepository(this);
-      repo.deleteAll();
     Intent i = new Intent(LoaderActivity.this, MainActivity.class);
     i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
     this.startActivity(i);
