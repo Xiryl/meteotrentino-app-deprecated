@@ -1,5 +1,7 @@
 ## Meteo Trentino - App
 
+[![forthebadge](https://forthebadge.com/images/badges/built-for-android.svg)](https://forthebadge.com)
+
 *applicazione meteo per le previsioni metereologiche in Trentino*
 
  <img src="https://lh3.googleusercontent.com/Epk79x0nC0k4wBlcCDC8Vghzu4XV-9OrJGH6Gd3J6rlw1EOdovB8kmKcB7fODzsH66s=s360" height="75px"> <a href='https://play.google.com/store/apps/details?id=it.chiarani.meteotrentinoapp'><img alt='Disponibile su Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/it_badge_web_generic.png' height='70px' /></a> 
@@ -8,10 +10,12 @@ Meteo trentino è un'applicazione meteo che utilizza gli opendata della Provinci
 
 Scaricala dal [Play Store](https://play.google.com/store/apps/details?id=it.chiarani.meteotrentinoapp).
 
+
+
 ### Screen
-|Giorno|Notte|Tramonto|Pioggia|Settimana|Radar|Allerte|
-| --- | --- | --- | --- | --- | --- | --- |
-|<img src="https://github.com/Xiryl/MeteoTrentino-App/blob/master/UI/g-play/home1.png" height="200px">| <img src="https://github.com/Xiryl/MeteoTrentino-App/blob/master/UI/g-play/home2.png" height="200px">| <img src="https://github.com/Xiryl/MeteoTrentino-App/blob/master/UI/g-play/home3.png" height="200px">| <img src="https://github.com/Xiryl/MeteoTrentino-App/blob/master/UI/g-play/home4.png" height="200px">| <img src="https://github.com/Xiryl/MeteoTrentino-App/blob/master/UI/g-play/home5.png" height="200px">| <img src="https://github.com/Xiryl/MeteoTrentino-App/blob/master/UI/g-play/radar.png" height="200px">| <img src="https://github.com/Xiryl/MeteoTrentino-App/blob/master/UI/g-play/alert.png" height="200px">|
+| | | |
+| --- | --- | --- |
+|<img src="https://github.com/Xiryl/MeteoTrentino-App/blob/master/UI/g-play/T2.png" height="300px">| <img src="https://github.com/Xiryl/MeteoTrentino-App/blob/master/UI/g-play/T1.png" height="300px">| <img src="https://github.com/Xiryl/MeteoTrentino-App/blob/master/UI/g-play/T3.png" height="300px"> |
 
 ### FAQ
 > D: La notifica di ogni giorno mattutina mi da fastidio, come la tolgo?
