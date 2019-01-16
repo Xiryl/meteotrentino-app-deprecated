@@ -50,7 +50,13 @@ L'applicazione non salva alcun dato personale dell'utente. Vengono utilizzati i 
 
 ### PR
 L'applicazione è ancora in fase di sviluppo, ma si accettano comunque PR seguendo il seguente schema:
- - Creare branch dev
- - Commit con descrizione
+ - Creare branch feature-nomeFeature
+ - Seguire lo standard per lo sviluppo android
+ - Usare lo schema dei commit con la seguente sintassi:
+   * [UP] in caso di update di uno o più file
+   * [REF] in caso di refactor di uno o più file
+   * [ADD] in caso di aggiunta di uni o più file
+ - Verificare che compili senza errori
+ - Inviare la PR
  
 happy coding.
