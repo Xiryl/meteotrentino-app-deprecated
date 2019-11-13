@@ -4,6 +4,10 @@
 
 *applicazione meteo per le previsioni metereologiche in Trentino*
 
+## This app is deprecated. A new version is building.
+## ETA: Feb 2020
+
+
  <img src="https://lh3.googleusercontent.com/Epk79x0nC0k4wBlcCDC8Vghzu4XV-9OrJGH6Gd3J6rlw1EOdovB8kmKcB7fODzsH66s=s360" height="75px"> <a href='https://play.google.com/store/apps/details?id=it.chiarani.meteotrentinoapp'><img alt='Disponibile su Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/it_badge_web_generic.png' height='70px' /></a> 
 
 Meteo trentino è un'applicazione meteo che utilizza gli opendata della Provincia Autonoma di Trento.
